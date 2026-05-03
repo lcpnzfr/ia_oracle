@@ -46,12 +46,17 @@ async def descobrir_modelos_disponiveis(client):
     modelos_validos = []
     
     for model in response:
+
         # Filtra apenas modelos que suportam generateContent
         if "generateContent" in model.supported_actions:
             # Filtra apenas modelos que começam com 'gemini-'
             if model.name.startswith("models/gemini-"):
                 # Remove o prefixo 'models/' para ficar igual ao que enviamos na API
                 nome_limpo = model.name.replace("models/", "")
+                
+                if "robotics" in nome_limpo or "image" in nome_limpo:
+                    continue
+
                 modelos_validos.append(nome_limpo)
     
     print(f"✅ Modelos encontrados: {len(modelos_validos)}")
