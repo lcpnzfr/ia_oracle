@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ia_oracle"
+version = "0.2.0"
+description = "Shared library for Forex System"
+requires-python = ">=3.12.10"
+dependencies = [
+    "sqlalchemy",
+    "psycopg2-binary"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-cov",
+    "black",
+    "flake8",
+    "mypy"
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["ia_oracle*"]
+exclude = ["tests*", ".venv*"]
