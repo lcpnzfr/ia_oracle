@@ -1,10 +1,7 @@
 google-generativeai
 aiofiles
-forex_shared
 
 [dev]
-pytest
-pytest-cov
-black
-flake8
-mypy
+google-generativeai
+aiofiles
+python-dotenv

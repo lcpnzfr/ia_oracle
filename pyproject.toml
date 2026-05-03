@@ -14,11 +14,9 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = [
-    "pytest",
-    "pytest-cov",
-    "black",
-    "flake8",
-    "mypy"
+    "google-genai",
+    "aiofiles",
+    "python-dotenv"
 ]
 
 [tool.setuptools.packages.find]

@@ -1,0 +1,17 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "IA Trend Oracle: Current File",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}\\ia_oracle\\api\\async_gemini_processor.py",
+            "cwd": "${workspaceFolder}",
+            "python": "C:\\Projects\\forex_system\\services\\ia_oracle\\.venv\\Scripts\\python.exe",
+            "console": "integratedTerminal"
+        }
+    ]
+}

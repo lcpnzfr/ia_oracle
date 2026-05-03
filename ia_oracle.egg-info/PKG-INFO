@@ -5,10 +5,7 @@ Summary: Shared library for Forex System
 Requires-Python: >=3.12.10
 Requires-Dist: google-generativeai
 Requires-Dist: aiofiles
-Requires-Dist: forex_shared
 Provides-Extra: dev
-Requires-Dist: pytest; extra == "dev"
-Requires-Dist: pytest-cov; extra == "dev"
-Requires-Dist: black; extra == "dev"
-Requires-Dist: flake8; extra == "dev"
-Requires-Dist: mypy; extra == "dev"
+Requires-Dist: google-generativeai; extra == "dev"
+Requires-Dist: aiofiles; extra == "dev"
+Requires-Dist: python-dotenv; extra == "dev"
