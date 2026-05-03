@@ -1,0 +1,44 @@
+{
+  "input_file": "c:\\Projects\\forex_system\\services\\ia_oracle\\ia_oracle\\data\\mock_intel_items_big_process_result.json",
+  "selected_count": 6,
+  "rejected_count": 0,
+  "selected": [
+    {
+      "id": "4cbe67bb-9eab-4865-8d91-64dc8d4ad072",
+      "title": "Scott Bassent, US Treasury Secretary, wrote on the social network X that following the US president'...",
+      "routing_reason": "candidate_global_tag_local_router",
+      "priority": 100
+    },
+    {
+      "id": "91e05b6d-c44b-4e10-b413-bb75c8592299",
+      "title": "Oil prices have risen dramatically since President Donald Trump met with oil company executives to d...",
+      "routing_reason": "candidate_global_tag_local_router",
+      "priority": 100
+    },
+    {
+      "id": "faf5a411-6a82-4f5f-a0b5-daa337ec7edc",
+      "title": "During the hearing of the House Armed Services Committee, U.S. Secretary of War Pete Haggett, in a m...",
+      "routing_reason": "oracle_review_high_market_clear_route",
+      "priority": 95
+    },
+    {
+      "id": "a7f95de4-012f-46a4-80b3-d4f9cd2d97d1",
+      "title": "Donald Trump, speaking to Axis on Wednesday, emphasized that the Iranian naval blockade would contin...",
+      "routing_reason": "oracle_review_high_market_clear_route",
+      "priority": 95
+    },
+    {
+      "id": "641db5d9-834b-44dd-a139-8c6e0d10a420",
+      "title": "The government news agency Esna reported that the dollar's free-market price was recorded today at 1...",
+      "routing_reason": "oracle_review_market_relevant",
+      "priority": 90
+    },
+    {
+      "id": "04c7dc17-f6ec-422a-aee9-92220b976020",
+      "title": "U.S. Secretary of War Pete Haggett said the incident was still under investigation two months after ...",
+      "routing_reason": "oracle_review_geopolitical_critical",
+      "priority": 75
+    }
+  ],
+  "rejected": []
+}

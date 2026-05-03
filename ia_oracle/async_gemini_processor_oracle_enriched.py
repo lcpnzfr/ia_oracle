@@ -41,7 +41,7 @@ CANDIDATES_FILE = Path(os.getenv("ORACLE_CANDIDATES_FILE", str(DEFAULT_CANDIDATE
 MESSAGES_FILE = Path(os.getenv("ORACLE_MESSAGES_FILE", str(DEFAULT_MESSAGES_FILE)))
 
 MAX_MESSAGES = int(os.getenv("ORACLE_MAX_MESSAGES", "0"))  # 0 = sem limite
-CONCURRENCY = int(os.getenv("ORACLE_CONCURRENCY", "1"))
+CONCURRENCY = int(os.getenv("ORACLE_CONCURRENCY", "2"))
 MAX_RETRIES = int(os.getenv("ORACLE_MAX_RETRIES", "15"))
 
 MIN_MARKET_IMPACT = float(os.getenv("ORACLE_MIN_MARKET_IMPACT", "0.65"))
@@ -51,7 +51,7 @@ MIN_GEO_SEVERITY = float(os.getenv("ORACLE_MIN_GEO_SEVERITY", "0.85"))
 
 ENABLE_URL_CONTEXT = os.getenv("ORACLE_ENABLE_URL_CONTEXT", "true").lower() == "true"
 ENABLE_GOOGLE_SEARCH = os.getenv("ORACLE_ENABLE_GOOGLE_SEARCH", "false").lower() == "true"
-INCLUDE_ROBOTICS_MODELS = os.getenv("ORACLE_INCLUDE_ROBOTICS_MODELS", "true").lower() == "false"
+INCLUDE_ROBOTICS_MODELS = os.getenv("ORACLE_INCLUDE_ROBOTICS_MODELS", "true").lower() == "true"
 
 MODEL_ALLOWLIST = [
     model.strip()
@@ -79,7 +79,7 @@ configuracao_playground = types.GenerateContentConfig(
     top_p=0.95,
     max_output_tokens=22000,
     thinking_config=types.ThinkingConfig(
-        thinking_level="HIGH",
+        thinking_level="MEDIUM",
     ),
     media_resolution="MEDIA_RESOLUTION_MEDIUM",
     tools=tools,

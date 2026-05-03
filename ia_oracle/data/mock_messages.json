@@ -1,6 +1,6 @@
 [
   {"id": "msg_001", "content": "Analise o impacto de um corte de juros surpresa pelo FED na cotação do Ouro."},
-  {"id": "msg_002", "content": "Explique a divergência entre o indicador RSI e a ação de preço em um gráfico diário."},
+  {"id": "msg_002", "content": "Explique a divergência entre o indicador RSI em EUR/USD e a ação de preço em um gráfico diário."},
   {"id": "msg_003", "content": "Quais são os riscos geopolíticos atuais que afetam os preços do Petróleo Brent?"},
   {"id": "msg_004", "content": "Como o indicador ADX mede a força de uma tendência no Forex?"}
 ]
