@@ -1,0 +1,14 @@
+Metadata-Version: 2.4
+Name: ia_oracle
+Version: 0.2.0
+Summary: Shared library for Forex System
+Requires-Python: >=3.12.10
+Requires-Dist: google-generativeai
+Requires-Dist: aiofiles
+Requires-Dist: forex_shared
+Provides-Extra: dev
+Requires-Dist: pytest; extra == "dev"
+Requires-Dist: pytest-cov; extra == "dev"
+Requires-Dist: black; extra == "dev"
+Requires-Dist: flake8; extra == "dev"
+Requires-Dist: mypy; extra == "dev"

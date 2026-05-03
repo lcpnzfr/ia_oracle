@@ -8,8 +8,8 @@ version = "0.2.0"
 description = "Shared library for Forex System"
 requires-python = ">=3.12.10"
 dependencies = [
-    "sqlalchemy",
-    "psycopg2-binary"
+    "google-generativeai",
+    "aiofiles"
 ]
 
 [project.optional-dependencies]
