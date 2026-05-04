@@ -16,7 +16,12 @@ dependencies = [
 dev = [
     "google-genai",
     "aiofiles",
-    "python-dotenv"
+    "python-dotenv", 
+    "openai",
+    "azure-identity",
+    "requests",
+    "urllib3",   
+    "python-multipart"
 ]
 
 [tool.setuptools.packages.find]

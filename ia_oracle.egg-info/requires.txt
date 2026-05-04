@@ -2,6 +2,6 @@ google-generativeai
 aiofiles
 
 [dev]
-google-generativeai
+google-genai
 aiofiles
 python-dotenv

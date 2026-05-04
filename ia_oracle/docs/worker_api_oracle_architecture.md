@@ -1,0 +1,75 @@
+# IA Oracle & Worker API Architecture Documentation
+
+This document provides a technical overview of the refactored intelligence processing pipeline, focusing on the `worker_api` framework and its first implementation: the **IA Oracle** service.
+
+---
+
+## 1. The `worker_api` Framework (Shared Lib)
+
+The `worker_api` is a domain-neutral framework designed to manage distributed, event-driven sessions. It decouples the management of processes (Workers) from the business logic (Sessions).
+
+### Core Components
+- **`BaseBroker`**: The master orchestrator. Responsible for routing session creation requests to the least-loaded workers.
+- **`BaseSessionWorker`**: An autonomous process container that manages a pool of local sessions. It handles MQ command dispatching and health reporting.
+- **`BaseSession`**: The atomic unit of work. Each session runs its own logic (e.g., a specific trading strategy or an LLM reviewer).
+- **`MQEventPublisher`**: A high-performance, asynchronous event relay. It uses background workers, internal buffering, and exponential backoff retries to ensure delivery without blocking the main session logic.
+- **`MQEventConsumer`**: A resilient wrapper for subscribing to MQ topics. It catches callback exceptions to prevent the listener loop from crashing.
+
+---
+
+## 2. IA Oracle Service Implementation
+
+The `ia_oracle` service migrates the legacy `async_gemini_processor` into the distributed `worker_api` architecture. It is designed to review high-impact geopolitical events using Large Language Models (Gemini).
+
+### Key Modules
+- **`OracleSession`**: 
+    - **LLM Integration**: Communicates with the Gemini API.
+    - **Concurrency Control**: Uses a module-level `asyncio.Semaphore` to strictly limit the number of simultaneous API calls, preventing 429 Rate Limit errors.
+    - **Robust Parsing**: Implements a multi-stage JSON extractor to handle markdown-wrapped or truncated LLM outputs.
+- **`OracleWorker`**:
+    - Manages multiple `OracleSession` instances.
+    - Connects incoming `intel.oracle.review` requests to specific session instances.
+    - Handles persistence via `OracleMongoStore` and deduplication via `OracleCache`.
+- **`OracleStore` & `OracleCache`**:
+    - **MongoStore**: Persists a full audit trail of requests and LLM responses.
+    - **RedisCache**: Deduplicates items by `trigger_event_id` with a 7-day TTL to avoid redundant and expensive LLM calls for the same event.
+
+---
+
+## 3. Data Flow & Execution Path
+
+The distributed machine operates in a 5-step cycle:
+
+1.  **Ingestion**: An intelligence item (from `collector_events`) requires deeper review and is published to `intel.oracle.review`.
+2.  **Reception**: An `OracleWorker` receives the event. It first checks the `OracleCache` (Redis). If the event was recently processed, it is discarded immediately.
+3.  **LLM Review**: The item is passed to an `OracleSession`. The session waits for the `Semaphore` to clear and then calls the Gemini API with a specialized trend-oracle prompt.
+4.  **Decision Mapping**: The LLM response is parsed. Decisions are mapped to actions: `EMIT` (Generate Trade Signal), `HOLD` (Needs Human Eyes), or `DISCARD` (Irrelevant).
+5.  **Emission & Audit**: 
+    - A response is published to `intel.oracle.resolved`.
+    - A permanent record is saved to the `oracle_reviews` collection in MongoDB.
+
+---
+
+## 4. Testing & Validation
+
+The service includes specialized testing tools to ensure logic integrity before deployment:
+
+- **`test_oracle_orchestrator.py`**: An offline runner that feeds large mock datasets (`mock_intel_items_big_process_result.json`) directly into the `OracleSession` logic. It validates prompt performance and generates a comprehensive `test_oracle_output_results.json` for review.
+- **`test_oracle_worker.py`**: An E2E integration test that boots a full `OracleWorker`, publishes a real MQ message, and asserts that the resolution lands in the expected output queue and the database.
+
+---
+
+## 5. Security, Performance & Risks
+
+### Current Safeguards
+- **Rate Limiting**: The `Semaphore` is the primary defense against API bans.
+- **Retries**: `MQEventPublisher` ensures that even if RabbitMQ flutters, the Oracle's decision is eventually persisted.
+- **Atomic Persistence**: Test results are written using an atomic rename pattern (`.tmp` -> `.json`) to prevent data corruption.
+
+### Recommendations & Risks
+- **Redis Dependency**: If Redis is unavailable at worker startup, the cache is disabled, and the system loses its deduplication safety, leading to potential duplicate API costs.
+- **Topic Configuration**: Ensure `input_topic` and `output_topic` are synchronized with the `collector_events` service configurations to avoid "black hole" messages.
+- **Model Selection**: Monitor the performance of `gemini-pro-latest`. Consider switching to `gemini-1.5-flash` for high-volume, low-latency geopolitical classification tasks.
+
+---
+*Generated by Antigravity AI — 2026-05-04*
