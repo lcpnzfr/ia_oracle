@@ -51,7 +51,7 @@ MIN_GEO_SEVERITY = float(os.getenv("ORACLE_MIN_GEO_SEVERITY", "0.85"))
 
 ENABLE_URL_CONTEXT = os.getenv("ORACLE_ENABLE_URL_CONTEXT", "true").lower() == "true"
 ENABLE_GOOGLE_SEARCH = os.getenv("ORACLE_ENABLE_GOOGLE_SEARCH", "false").lower() == "true"
-INCLUDE_ROBOTICS_MODELS = os.getenv("ORACLE_INCLUDE_ROBOTICS_MODELS", "true").lower() == "false"
+INCLUDE_ROBOTICS_MODELS = os.getenv("ORACLE_INCLUDE_ROBOTICS_MODELS", "true").lower() == "true"
 
 MODEL_ALLOWLIST = [
     model.strip()
