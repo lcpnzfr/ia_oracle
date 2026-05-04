@@ -1,0 +1,1270 @@
+[
+  {
+    "id": "91e05b6d-c44b-4e10-b413-bb75c8592299",
+    "status": "success",
+    "model_used": "gemini-pro-latest",
+    "oracle_request": {
+      "trigger_event_id": "91e05b6d-c44b-4e10-b413-bb75c8592299",
+      "reason": "candidate_global_tag_local_router",
+      "title": "Oil prices have risen dramatically since President Donald Trump met with oil company executives to d...",
+      "body": "Oil prices have risen dramatically since President Donald Trump met with oil company executives to discuss a months-long extension of Iran's siege of ports and shipping.",
+      "published_at": "2026-04-29 17:54",
+      "source": "telegram_log",
+      "domain": "geopolitical",
+      "danger_score_legacy": 0.618298009932987,
+      "risk_bucket": "low",
+      "impact_category": "commodity price surge or oil market disruption",
+      "scores": {
+        "geopolitical_severity_score": 0.0,
+        "market_impact_score": 0.9400000000000001,
+        "noise_score": 0.0,
+        "directional_confidence_score": 0.845,
+        "asset_route_confidence_score": 0.8300000000000001,
+        "oracle_review_score": 0.7520000000000001,
+        "model_uncertainty_score": 0.15000000000000002,
+        "asset_ambiguity_score": 0.35,
+        "danger_score_legacy": 0.618298009932987
+      },
+      "trade_emit_score": 0.6593,
+      "candidate_directives": [
+        {
+          "asset": "OIL",
+          "bias": "strong_bullish",
+          "confidence": 0.82,
+          "risk_score": 0.5406005800000001,
+          "reason": "keyword:oil",
+          "expiry_minutes": 240,
+          "source": "global_tag_emission.tags_legacy_candidate"
+        },
+        {
+          "asset": "BRENT",
+          "bias": "bullish",
+          "confidence": 0.78,
+          "risk_score": 0.5142298200000001,
+          "reason": "oil_shock",
+          "expiry_minutes": 240,
+          "source": "global_tag_emission.tags_legacy_candidate"
+        },
+        {
+          "asset": "WTI",
+          "bias": "bullish",
+          "confidence": 0.78,
+          "risk_score": 0.5142298200000001,
+          "reason": "oil_shock",
+          "expiry_minutes": 240,
+          "source": "global_tag_emission.tags_legacy_candidate"
+        }
+      ],
+      "score_breakdown": {
+        "version": "balanced_hard_quant_v3_multidimensional",
+        "inputs": {
+          "category": "commodity price surge or oil market disruption",
+          "original_category": "military impact, cost or investigation report",
+          "confidence": 0.85,
+          "original_confidence": 0.5144435167312622,
+          "sentiment": "positive",
+          "severity": "unknown",
+          "severity_key": "",
+          "domain": "geopolitical",
+          "context": {
+            "historical_reference": false,
+            "local_incident": false,
+            "battlefield_micro": false,
+            "self_promotion": false,
+            "active_escalation": false,
+            "threat_rhetoric": false,
+            "propaganda": false,
+            "macro_signal": true,
+            "strategic_signal": true,
+            "impact_report": false
+          }
+        },
+        "category_corrections": [
+          {
+            "rule": "oil_price_surge_detection",
+            "from": "military impact, cost or investigation report",
+            "to": "commodity price surge or oil market disruption"
+          }
+        ],
+        "context_filters": {
+          "historical_reference": false,
+          "local_incident": false,
+          "battlefield_micro": false,
+          "self_promotion": false,
+          "active_escalation": false,
+          "threat_rhetoric": false,
+          "propaganda": false,
+          "macro_signal": true,
+          "strategic_signal": true,
+          "impact_report": false
+        },
+        "gliner_details": {
+          "macro_target": false,
+          "strategic_infra": false,
+          "strategic_raw": false,
+          "kinetic": false,
+          "weapon": false,
+          "military_actor": false,
+          "geopolitical": false,
+          "central_bank": false,
+          "economic_indicator": false,
+          "market_sentiment": false,
+          "commodity_action": false,
+          "institutional_actor": false,
+          "political_leader": true,
+          "localized_noise": false,
+          "strong_tactical_signal": false,
+          "bonus": 0.0,
+          "multiplier": 1.0
+        },
+        "keyword_hits": [
+          {
+            "keyword": "oil price",
+            "root": "oil price",
+            "weight": 0.085,
+            "rank": 1,
+            "contribution": 0.085
+          },
+          {
+            "keyword": "oil",
+            "root": "oil",
+            "weight": 0.065,
+            "rank": 2,
+            "contribution": 0.02275
+          }
+        ],
+        "base": {
+          "severity_base": 0.24,
+          "category_weight": 1.14,
+          "category_component": 0.40697999999999995,
+          "severity_component": 0.27359999999999995,
+          "base_score": 0.40697999999999995
+        },
+        "additive_modifiers": {
+          "sentiment_bonus": 0.0,
+          "entity_bonus": 0.06,
+          "gliner_bonus": 0.0,
+          "numeric_bonus": 0.0,
+          "keyword_bonus": 0.10775000000000001,
+          "engagement_bonus": 0.011890502782720113,
+          "critical_bonus": 0.0
+        },
+        "multipliers": {
+          "domain_weight": 1.12,
+          "effective_domain_weight": 1.054,
+          "gliner_multiplier": 1.0,
+          "context_multiplier": 1.0,
+          "total_multiplier": 1.054
+        },
+        "caps": [],
+        "scores": {
+          "additive_score": 0.58662050278272,
+          "raw_score": 0.618298009932987,
+          "raw_after_context": 0.618298009932987,
+          "compressed_score": 0.618298009932987,
+          "final_score": 0.618298009932987,
+          "risk_bucket": "elevated",
+          "saturation": false
+        },
+        "audit_prediction": {
+          "propose_oracle": true,
+          "propose_emit": false,
+          "audit_trade_score": 0.5163,
+          "audit_oracle_score": 0.752,
+          "reason": "elevated_oracle_score"
+        }
+      },
+      "event_type": "ORACLE_REVIEW_REQUESTED",
+      "created_at": "2026-05-04T11:23:45.169190+00:00"
+    },
+    "oracle_result": {
+      "trigger_event_id": "91e05b6d-c44b-4e10-b413-bb75c8592299",
+      "action": "DISCARD",
+      "oracle_confidence": 0.0,
+      "reasoning": "Parse error or empty response. Raw: {\n  \"event_id\": \"91e05b6d-c44b-4e10-b413-bb75c8592299\",\n  \"oracle_version\": \"ia_trend_oracle_v1\",\n  \"input_assessment\": {\n    \"accepted_for_review\": true,\n    \"source\": \"telegram_log\",\n    \"source_media\": \"unknown\",\n    \"published_at\": \"2026-04-29 17:54\",\n    \"impact_category\": \"commodity price surge or oil market disruption\",\n    \"secondary_impact_categories\": [\n      \"geopolitical escalation\"\n    ],\n    \"risk_bucket\": \"low\",\n    \"danger_score_legacy\": 0.618298009932987,\n    \"geopolitical_severity_score\": 0.0,\n    \"market_impact_score\": 0.9400000000000001,\n    \"asset_route_confidence_score\": 0.8300000000000001,\n    \"directional_confidence_score\": 0.845,\n    \"oracle_review_score\": 0.7520000000000001,\n    \"noise_score\": 0.0\n  },\n  \"event_summary\": {\n    \"one_sentence\": \"Oil prices have surged following a meeting between President Trump and oil executives regarding an extended Iranian siege on ports and shipping.\",\n    \"key_facts\": [\n      \"Oil prices have risen dramatically.\",\n      \"President Trump met with oil company executives.\",\n      \"Discussions centered on a months-long extension of Iran's siege of ports and shipping.\"\n    ],\n    \"market_relevance\": \"Direct and explicit mention of rising oil prices driven by geopolitical supply chain threats (Iran's siege of ports and shipping), which is a strong bullish catalyst for crude oil benchmarks.\",\n    \"non_market_context\": \"The geopolitical context involves US executive branch coordination with the energy sector in response to Iranian aggression in maritime chokepoints.\"\n  },\n  \"oracle_decision\": {\n    \"create_tag\": true,\n    \"review_only\": false,\n    \"ignore\": false,\n    \"decision_reason\": \"Clear directional bias and asset route for oil markets due to explicit mention of rising prices and ongoing geopolitical supply threats.\",\n    \"market_impact_level\": \"high\",\n    \"macro_sentiment\": \"cautious\",\n    \"needs_external_context\": false,\n    \"web_context_used\": false\n  },\n  \"news_alert\": [\n    \"OIL\",\n    \"ENERGY SECTOR\"\n  ],\n  \"directives\": [\n    {\n      \"asset\": \"OIL\",\n      \"bias\": \"bullish\",\n      \"confidence\": 0.85,\n      \"risk_score\": 0.8,\n      \"volatility_duration_minutes\": 240,\n      \"reason\": \"Explicit mention of dramatic oil price increases and ongoing supply chain threats from Iran.\",\n      \"transmission_channel\": \"commodity_supply_shock\"\n    },\n    {\n      \"asset\": \"BRENT\",\n      \"bias\": \"bullish\",\n      \"confidence\": 0.85,\n      \"risk_score\": 0.8,\n      \"volatility_duration_minutes\": 240,\n      \"reason\": \"Explicit mention of dramatic oil price increases and ongoing supply chain threats from Iran.\",\n      \"transmission_channel\": \"commodity_supply_shock\"\n    },\n    {\n      \"asset\": \"WTI\",\n      \"bias\": \"bullish\",\n      \"confidence\": 0.85,\n      \"risk_score\": 0.8,\n      \"volatility_duration_minutes\": 240,\n      \"reason\": \"Explicit mention of dramatic oil price increases and ongoing supply chain threats from Iran.\",\n      \"transmission_channel\": \"commodity_supply_shock\"\n    }\n  ],\n  \"do_not_emit_assets\": [],\n  \"risk_notes\": {\n    \"primary_risk\": \"Oil supply disruption due to maritime siege\",\n    \"secondary_risks\": [\n      \"Geopolitical escalation in the Middle East\",\n      \"Inflationary pressures from energy costs\"\n    ],\n    \"time_sensitivity\": \"high\",\n    \"staleness_risk\": \"low\",\n    \"propaganda_or_source_risk\": \"low\",\n    \"uncertainty_level\": \"low\"\n  },\n  \"audit\": {\n    \"used_fields\": [\n      \"body\",\n      \"scores\",\n      \"impact_category\"\n    ],\n    \"ignored_fields\": [\n      \"score_breakdown\"\n    ],\n    \"contradictions_or_ambiguities\":",
+      "tags_to_emit": [],
+      "event_type": "ORACLE_REVIEW_RESOLVED",
+      "resolved_at": "2026-05-04T11:24:02.024568+00:00"
+    }
+  },
+  {
+    "id": "4cbe67bb-9eab-4865-8d91-64dc8d4ad072",
+    "status": "success",
+    "model_used": "gemini-pro-latest",
+    "oracle_request": {
+      "trigger_event_id": "4cbe67bb-9eab-4865-8d91-64dc8d4ad072",
+      "reason": "candidate_global_tag_local_router",
+      "title": "Scott Bassent, US Treasury Secretary, wrote on the social network X that following the US president'...",
+      "body": "Scott Bassent, US Treasury Secretary, wrote on the social network X that following the US president's \"maximum pressure\" policy, inflation rates in Iran doubled and the value of the country's national currency declined rapidly. Mr Bassent says the measures are targeting and sanctioning Iran's \"extreme economic crisis\" program, Iran's shadow banking infrastructure internationally, its access to crypto-currencies, hidden transport fleets, arms supply networks, the financing of proxy groups in the region, as well as Chinese independent refineries that support Iran's oil trade.",
+      "published_at": "2026-04-29 14:38",
+      "source": "telegram_log",
+      "domain": "geopolitical",
+      "danger_score_legacy": 0.8675700531250303,
+      "risk_bucket": "low",
+      "impact_category": "currency intervention or severe devaluation",
+      "scores": {
+        "geopolitical_severity_score": 0.0,
+        "market_impact_score": 0.9719764709472657,
+        "noise_score": 0.0,
+        "directional_confidence_score": 0.9509588241577148,
+        "asset_route_confidence_score": 0.8300000000000001,
+        "oracle_review_score": 0.7775811767578126,
+        "model_uncertainty_score": 0.07005882263183594,
+        "asset_ambiguity_score": 0.35,
+        "danger_score_legacy": 0.8675700531250303
+      },
+      "trade_emit_score": 0.7672,
+      "candidate_directives": [
+        {
+          "asset": "OIL",
+          "bias": "strong_bullish",
+          "confidence": 0.82,
+          "risk_score": 0.6290851150674169,
+          "reason": "keyword:oil",
+          "expiry_minutes": 240,
+          "source": "global_tag_emission.tags_legacy_candidate"
+        },
+        {
+          "asset": "BRENT",
+          "bias": "bullish",
+          "confidence": 0.78,
+          "risk_score": 0.5983980362836405,
+          "reason": "oil_shock",
+          "expiry_minutes": 240,
+          "source": "global_tag_emission.tags_legacy_candidate"
+        },
+        {
+          "asset": "WTI",
+          "bias": "bullish",
+          "confidence": 0.78,
+          "risk_score": 0.5983980362836405,
+          "reason": "oil_shock",
+          "expiry_minutes": 240,
+          "source": "global_tag_emission.tags_legacy_candidate"
+        }
+      ],
+      "score_breakdown": {
+        "version": "balanced_hard_quant_v3_multidimensional",
+        "inputs": {
+          "category": "currency intervention or severe devaluation",
+          "original_category": "currency intervention or severe devaluation",
+          "confidence": 0.9299411773681641,
+          "original_confidence": 0.9299411773681641,
+          "sentiment": "negative",
+          "severity": "unknown",
+          "severity_key": "",
+          "domain": "geopolitical",
+          "context": {
+            "historical_reference": false,
+            "local_incident": false,
+            "battlefield_micro": false,
+            "self_promotion": false,
+            "active_escalation": false,
+            "threat_rhetoric": false,
+            "propaganda": false,
+            "macro_signal": true,
+            "strategic_signal": true,
+            "impact_report": false
+          }
+        },
+        "category_corrections": [],
+        "context_filters": {
+          "historical_reference": false,
+          "local_incident": false,
+          "battlefield_micro": false,
+          "self_promotion": false,
+          "active_escalation": false,
+          "threat_rhetoric": false,
+          "propaganda": false,
+          "macro_signal": true,
+          "strategic_signal": true,
+          "impact_report": false
+        },
+        "gliner_details": {
+          "macro_target": false,
+          "strategic_infra": false,
+          "strategic_raw": false,
+          "kinetic": false,
+          "weapon": false,
+          "military_actor": false,
+          "geopolitical": false,
+          "central_bank": false,
+          "economic_indicator": true,
+          "market_sentiment": false,
+          "commodity_action": false,
+          "institutional_actor": false,
+          "political_leader": true,
+          "localized_noise": false,
+          "strong_tactical_signal": true,
+          "bonus": 0.09,
+          "multiplier": 1.0
+        },
+        "keyword_hits": [
+          {
+            "keyword": "refineries",
+            "root": "refinery",
+            "weight": 0.08,
+            "rank": 1,
+            "contribution": 0.08
+          },
+          {
+            "keyword": "inflation",
+            "root": "inflation",
+            "weight": 0.075,
+            "rank": 2,
+            "contribution": 0.02625
+          },
+          {
+            "keyword": "oil",
+            "root": "oil",
+            "weight": 0.065,
+            "rank": 3,
+            "contribution": 0.007962499999999999
+          }
+        ],
+        "base": {
+          "severity_base": 0.24,
+          "category_weight": 1.16,
+          "category_component": 0.4530673416137695,
+          "severity_component": 0.2784,
+          "base_score": 0.4530673416137695
+        },
+        "additive_modifiers": {
+          "sentiment_bonus": 0.08090488243103026,
+          "entity_bonus": 0.06,
+          "gliner_bonus": 0.09,
+          "numeric_bonus": 0.1,
+          "keyword_bonus": 0.1142125,
+          "engagement_bonus": 0.02641165613056588,
+          "critical_bonus": 0.08
+        },
+        "multipliers": {
+          "domain_weight": 1.12,
+          "effective_domain_weight": 1.054,
+          "gliner_multiplier": 1.0,
+          "context_multiplier": 1.0,
+          "total_multiplier": 1.054
+        },
+        "caps": [],
+        "scores": {
+          "additive_score": 1.0045963801753657,
+          "raw_score": 1.0588445847048356,
+          "raw_after_context": 1.0588445847048356,
+          "compressed_score": 0.8675700531250303,
+          "final_score": 0.8675700531250303,
+          "risk_bucket": "critical",
+          "saturation": true
+        },
+        "audit_prediction": {
+          "propose_oracle": true,
+          "propose_emit": false,
+          "audit_trade_score": 0.6008,
+          "audit_oracle_score": 0.7776,
+          "reason": "elevated_oracle_score"
+        }
+      },
+      "event_type": "ORACLE_REVIEW_REQUESTED",
+      "created_at": "2026-05-04T11:23:45.169150+00:00"
+    },
+    "oracle_result": {
+      "trigger_event_id": "4cbe67bb-9eab-4865-8d91-64dc8d4ad072",
+      "action": "EMIT",
+      "oracle_confidence": 1.0,
+      "reasoning": "Clear policy statement from the US Treasury Secretary targeting Iranian oil exports and Chinese refineries, providing a credible bullish catalyst for oil markets due to potential supply constraints.",
+      "tags_to_emit": [
+        {
+          "asset": "OIL",
+          "bias": "bullish",
+          "confidence": 0.8,
+          "risk_score": 0.7,
+          "volatility_duration_minutes": 120,
+          "reason": "US Treasury targeting Chinese refineries buying Iranian oil, threatening to tighten global supply.",
+          "transmission_channel": "supply_constraint"
+        },
+        {
+          "asset": "BRENT",
+          "bias": "bullish",
+          "confidence": 0.8,
+          "risk_score": 0.7,
+          "volatility_duration_minutes": 120,
+          "reason": "US Treasury targeting Chinese refineries buying Iranian oil, threatening to tighten global supply.",
+          "transmission_channel": "supply_constraint"
+        },
+        {
+          "asset": "WTI",
+          "bias": "bullish",
+          "confidence": 0.8,
+          "risk_score": 0.7,
+          "volatility_duration_minutes": 120,
+          "reason": "US Treasury targeting Chinese refineries buying Iranian oil, threatening to tighten global supply.",
+          "transmission_channel": "supply_constraint"
+        }
+      ],
+      "event_type": "ORACLE_REVIEW_RESOLVED",
+      "resolved_at": "2026-05-04T11:24:04.220428+00:00"
+    }
+  },
+  {
+    "id": "faf5a411-6a82-4f5f-a0b5-daa337ec7edc",
+    "status": "success",
+    "model_used": "gemini-pro-latest",
+    "oracle_request": {
+      "trigger_event_id": "faf5a411-6a82-4f5f-a0b5-daa337ec7edc",
+      "reason": "oracle_review_high_market_clear_route",
+      "title": "During the hearing of the House Armed Services Committee, U.S. Secretary of War Pete Haggett, in a m...",
+      "body": "During the hearing of the House Armed Services Committee, U.S. Secretary of War Pete Haggett, in a meeting with Adam Smith, defended the Trump administration's military strategy against Iran. Noting the success of Operation Pettak Midnight, Haggett said that Iran's nuclear facilities have been destroyed and buried underground and are now under daylight surveillance. In this controversial debate, Haggett likened Iran's approach to North Korean strategy, saying that Tehran intended to use its conventional missile shields to prevent Iran from slowly moving toward nuclear weapons; but President Trump saw its weakest moment and, with the cooperation of Israeli partners, took action that could only be taken by the United States.",
+      "published_at": "2026-04-29 16:11",
+      "source": "telegram_log",
+      "domain": "geopolitical",
+      "danger_score_legacy": 0.8233062822733395,
+      "risk_bucket": "low",
+      "impact_category": "military attack or action",
+      "scores": {
+        "geopolitical_severity_score": 0.8858289688825607,
+        "market_impact_score": 0.7358289688825608,
+        "noise_score": 0.0,
+        "directional_confidence_score": 0.9716579377651214,
+        "asset_route_confidence_score": 0.66,
+        "oracle_review_score": 0.7358289688825608,
+        "model_uncertainty_score": 0.04048866033554077,
+        "asset_ambiguity_score": 0.5,
+        "danger_score_legacy": 0.8233062822733395
+      },
+      "trade_emit_score": 0.4719,
+      "candidate_directives": [
+        {
+          "asset": "XAU",
+          "bias": "bullish",
+          "confidence": 0.7,
+          "risk_score": null,
+          "reason": "risk_off_safe_haven",
+          "source": "candidate_directives"
+        },
+        {
+          "asset": "XAU/USD",
+          "bias": "bullish",
+          "confidence": 0.7,
+          "risk_score": null,
+          "reason": "risk_off_safe_haven",
+          "source": "candidate_directives"
+        },
+        {
+          "asset": "JPY",
+          "bias": "bullish",
+          "confidence": 0.7,
+          "risk_score": null,
+          "reason": "risk_off_safe_haven",
+          "source": "candidate_directives"
+        },
+        {
+          "asset": "CHF",
+          "bias": "bullish",
+          "confidence": 0.7,
+          "risk_score": null,
+          "reason": "risk_off_safe_haven",
+          "source": "candidate_directives"
+        },
+        {
+          "asset": "SPX",
+          "bias": "bearish",
+          "confidence": 0.66,
+          "risk_score": null,
+          "reason": "equity_risk",
+          "source": "candidate_directives"
+        },
+        {
+          "asset": "NQ",
+          "bias": "bearish",
+          "confidence": 0.66,
+          "risk_score": null,
+          "reason": "equity_risk",
+          "source": "candidate_directives"
+        }
+      ],
+      "score_breakdown": {
+        "version": "balanced_hard_quant_v3_multidimensional",
+        "inputs": {
+          "category": "military attack or action",
+          "original_category": "military attack or action",
+          "confidence": 0.9595113396644592,
+          "original_confidence": 0.9595113396644592,
+          "sentiment": "negative",
+          "severity": "unknown",
+          "severity_key": "",
+          "domain": "geopolitical",
+          "context": {
+            "historical_reference": false,
+            "local_incident": false,
+            "battlefield_micro": false,
+            "self_promotion": false,
+            "active_escalation": true,
+            "threat_rhetoric": false,
+            "propaganda": false,
+            "macro_signal": false,
+            "strategic_signal": false,
+            "impact_report": false
+          }
+        },
+        "category_corrections": [],
+        "context_filters": {
+          "historical_reference": false,
+          "local_incident": false,
+          "battlefield_micro": false,
+          "self_promotion": false,
+          "active_escalation": true,
+          "threat_rhetoric": false,
+          "propaganda": false,
+          "macro_signal": false,
+          "strategic_signal": false,
+          "impact_report": false
+        },
+        "gliner_details": {
+          "macro_target": false,
+          "strategic_infra": false,
+          "strategic_raw": false,
+          "kinetic": false,
+          "weapon": false,
+          "military_actor": false,
+          "geopolitical": false,
+          "central_bank": false,
+          "economic_indicator": false,
+          "market_sentiment": false,
+          "commodity_action": false,
+          "institutional_actor": false,
+          "political_leader": true,
+          "localized_noise": false,
+          "strong_tactical_signal": false,
+          "bonus": 0.0,
+          "multiplier": 1.0
+        },
+        "keyword_hits": [
+          {
+            "keyword": "nuclear",
+            "root": "nuclear",
+            "weight": 0.15,
+            "rank": 1,
+            "contribution": 0.15
+          },
+          {
+            "keyword": "missile",
+            "root": "missile",
+            "weight": 0.09,
+            "rank": 2,
+            "contribution": 0.0315
+          },
+          {
+            "keyword": "war",
+            "root": "war",
+            "weight": 0.09,
+            "rank": 3,
+            "contribution": 0.011024999999999998
+          }
+        ],
+        "base": {
+          "severity_base": 0.24,
+          "category_weight": 1.12,
+          "category_component": 0.45135413417816167,
+          "severity_component": 0.26880000000000004,
+          "base_score": 0.45135413417816167
+        },
+        "additive_modifiers": {
+          "sentiment_bonus": 0.08059895253181458,
+          "entity_bonus": 0.0,
+          "gliner_bonus": 0.0,
+          "numeric_bonus": 0.0,
+          "keyword_bonus": 0.192525,
+          "engagement_bonus": 0.026892962986817114,
+          "critical_bonus": 0.08
+        },
+        "multipliers": {
+          "domain_weight": 1.12,
+          "effective_domain_weight": 1.054,
+          "gliner_multiplier": 1.0,
+          "context_multiplier": 1.0,
+          "total_multiplier": 1.054
+        },
+        "caps": [],
+        "scores": {
+          "additive_score": 0.8313710496967933,
+          "raw_score": 0.8762650863804202,
+          "raw_after_context": 0.8762650863804202,
+          "compressed_score": 0.8233062822733395,
+          "final_score": 0.8233062822733395,
+          "risk_bucket": "high",
+          "saturation": false
+        },
+        "audit_prediction": {
+          "propose_oracle": true,
+          "propose_emit": false,
+          "audit_trade_score": 0.3575,
+          "audit_oracle_score": 0.7358,
+          "reason": "high_market_impact_low_asset_confidence"
+        }
+      },
+      "event_type": "ORACLE_REVIEW_REQUESTED",
+      "created_at": "2026-05-04T11:23:45.169203+00:00"
+    },
+    "oracle_result": {
+      "trigger_event_id": "faf5a411-6a82-4f5f-a0b5-daa337ec7edc",
+      "action": "HOLD",
+      "oracle_confidence": 1.0,
+      "reasoning": "The event describes an extreme geopolitical escalation but uses highly suspicious terminology, indicating a high probability of mistranslation, hallucination, or fake news. External verification is strictly required before any market action.",
+      "tags_to_emit": [
+        {
+          "asset": "OIL",
+          "bias": "bullish",
+          "confidence": 0.3,
+          "risk_score": 0.9,
+          "volatility_duration_minutes": 480,
+          "reason": "If verified, a strike on Iran's nuclear facilities would severely threaten Middle East oil supply and transit routes.",
+          "transmission_channel": "Middle East supply disruption"
+        },
+        {
+          "asset": "XAU",
+          "bias": "bullish",
+          "confidence": 0.3,
+          "risk_score": 0.9,
+          "volatility_duration_minutes": 480,
+          "reason": "Extreme safe-haven demand would materialize if US-Iran direct conflict is confirmed.",
+          "transmission_channel": "Safe-haven flows"
+        },
+        {
+          "asset": "SPX",
+          "bias": "bearish",
+          "confidence": 0.3,
+          "risk_score": 0.9,
+          "volatility_duration_minutes": 480,
+          "reason": "Massive equity sell-off likely on confirmation of a major Middle East war.",
+          "transmission_channel": "Risk-off equity liquidation"
+        }
+      ],
+      "event_type": "ORACLE_REVIEW_RESOLVED",
+      "resolved_at": "2026-05-04T11:24:31.085422+00:00"
+    }
+  },
+  {
+    "id": "a7f95de4-012f-46a4-80b3-d4f9cd2d97d1",
+    "status": "success",
+    "model_used": "gemini-pro-latest",
+    "oracle_request": {
+      "trigger_event_id": "a7f95de4-012f-46a4-80b3-d4f9cd2d97d1",
+      "reason": "oracle_review_high_market_clear_route",
+      "title": "Donald Trump, speaking to Axis on Wednesday, emphasized that the Iranian naval blockade would contin...",
+      "body": "Donald Trump, speaking to Axis on Wednesday, emphasized that the Iranian naval blockade would continue until an agreement was agreed that would address U.S. nuclear concerns. He rejected Tehran's recent proposal to reopen the Strait of Hormuz and postpone nuclear negotiations, noting that he considered the blockade to be somewhat more effective than the bombing. At the same time, three sources familiar with the Axis conversation revealed that the U.S. Central Command (Sentcom) had developed a plan to disrupt negotiations to disrupt the wave of attacks on the nuclear power plants of the United States and Iran.",
+      "published_at": "2026-04-29 16:32",
+      "source": "telegram_log",
+      "domain": "geopolitical",
+      "danger_score_legacy": 0.8064341175954266,
+      "risk_bucket": "low",
+      "impact_category": "military attack or action",
+      "scores": {
+        "geopolitical_severity_score": 0.7988729774951935,
+        "market_impact_score": 0.7488729774951934,
+        "noise_score": 0.0,
+        "directional_confidence_score": 0.7977459549903869,
+        "asset_route_confidence_score": 0.88,
+        "oracle_review_score": 0.7488729774951934,
+        "model_uncertainty_score": 0.2889343500137329,
+        "asset_ambiguity_score": 0.5,
+        "danger_score_legacy": 0.8064341175954266
+      },
+      "trade_emit_score": 0.5257,
+      "candidate_directives": [
+        {
+          "asset": "OIL",
+          "bias": "bullish",
+          "confidence": 0.78,
+          "risk_score": null,
+          "reason": "oil_shock",
+          "source": "candidate_directives"
+        },
+        {
+          "asset": "BRENT",
+          "bias": "bullish",
+          "confidence": 0.78,
+          "risk_score": null,
+          "reason": "oil_shock",
+          "source": "candidate_directives"
+        },
+        {
+          "asset": "WTI",
+          "bias": "bullish",
+          "confidence": 0.78,
+          "risk_score": null,
+          "reason": "oil_shock",
+          "source": "candidate_directives"
+        },
+        {
+          "asset": "XAU",
+          "bias": "bullish",
+          "confidence": 0.7,
+          "risk_score": null,
+          "reason": "risk_off_safe_haven",
+          "source": "candidate_directives"
+        },
+        {
+          "asset": "XAU/USD",
+          "bias": "bullish",
+          "confidence": 0.7,
+          "risk_score": null,
+          "reason": "risk_off_safe_haven",
+          "source": "candidate_directives"
+        },
+        {
+          "asset": "JPY",
+          "bias": "bullish",
+          "confidence": 0.7,
+          "risk_score": null,
+          "reason": "risk_off_safe_haven",
+          "source": "candidate_directives"
+        },
+        {
+          "asset": "CHF",
+          "bias": "bullish",
+          "confidence": 0.7,
+          "risk_score": null,
+          "reason": "risk_off_safe_haven",
+          "source": "candidate_directives"
+        },
+        {
+          "asset": "SPX",
+          "bias": "bearish",
+          "confidence": 0.66,
+          "risk_score": null,
+          "reason": "equity_risk",
+          "source": "candidate_directives"
+        },
+        {
+          "asset": "NQ",
+          "bias": "bearish",
+          "confidence": 0.66,
+          "risk_score": null,
+          "reason": "equity_risk",
+          "source": "candidate_directives"
+        }
+      ],
+      "score_breakdown": {
+        "version": "balanced_hard_quant_v3_multidimensional",
+        "inputs": {
+          "category": "military attack or action",
+          "original_category": "military attack or action",
+          "confidence": 0.7110656499862671,
+          "original_confidence": 0.7110656499862671,
+          "sentiment": "negative",
+          "severity": "unknown",
+          "severity_key": "",
+          "domain": "geopolitical",
+          "context": {
+            "historical_reference": false,
+            "local_incident": false,
+            "battlefield_micro": false,
+            "self_promotion": false,
+            "active_escalation": false,
+            "threat_rhetoric": false,
+            "propaganda": false,
+            "macro_signal": true,
+            "strategic_signal": true,
+            "impact_report": false
+          }
+        },
+        "category_corrections": [],
+        "context_filters": {
+          "historical_reference": false,
+          "local_incident": false,
+          "battlefield_micro": false,
+          "self_promotion": false,
+          "active_escalation": false,
+          "threat_rhetoric": false,
+          "propaganda": false,
+          "macro_signal": true,
+          "strategic_signal": true,
+          "impact_report": false
+        },
+        "gliner_details": {
+          "macro_target": false,
+          "strategic_infra": false,
+          "strategic_raw": false,
+          "kinetic": false,
+          "weapon": false,
+          "military_actor": true,
+          "geopolitical": true,
+          "central_bank": false,
+          "economic_indicator": false,
+          "market_sentiment": false,
+          "commodity_action": false,
+          "institutional_actor": false,
+          "political_leader": true,
+          "localized_noise": false,
+          "strong_tactical_signal": true,
+          "bonus": 0.12000000000000001,
+          "multiplier": 1.0
+        },
+        "keyword_hits": [
+          {
+            "keyword": "strait of hormuz",
+            "root": "strait of hormuz",
+            "weight": 0.12,
+            "rank": 1,
+            "contribution": 0.12
+          },
+          {
+            "keyword": "naval blockade",
+            "root": "naval blockade",
+            "weight": 0.11,
+            "rank": 2,
+            "contribution": 0.0385
+          },
+          {
+            "keyword": "blockade",
+            "root": "blockade",
+            "weight": 0.1,
+            "rank": 3,
+            "contribution": 0.012249999999999999
+          }
+        ],
+        "base": {
+          "severity_base": 0.24,
+          "category_weight": 1.12,
+          "category_component": 0.3344852817535401,
+          "severity_component": 0.26880000000000004,
+          "base_score": 0.3344852817535401
+        },
+        "additive_modifiers": {
+          "sentiment_bonus": 0.05972951459884644,
+          "entity_bonus": 0.0,
+          "gliner_bonus": 0.12000000000000001,
+          "numeric_bonus": 0.0,
+          "keyword_bonus": 0.17075,
+          "engagement_bonus": 0.03304258395912971,
+          "critical_bonus": 0.06
+        },
+        "multipliers": {
+          "domain_weight": 1.12,
+          "effective_domain_weight": 1.054,
+          "gliner_multiplier": 1.0,
+          "context_multiplier": 1.0,
+          "total_multiplier": 1.054
+        },
+        "caps": [],
+        "scores": {
+          "additive_score": 0.7780073803115164,
+          "raw_score": 0.8200197788483383,
+          "raw_after_context": 0.8200197788483383,
+          "compressed_score": 0.8064341175954266,
+          "final_score": 0.8064341175954266,
+          "risk_bucket": "high",
+          "saturation": false
+        },
+        "audit_prediction": {
+          "propose_oracle": true,
+          "propose_emit": false,
+          "audit_trade_score": 0.2987,
+          "audit_oracle_score": 0.7489,
+          "reason": "high_market_impact_low_asset_confidence"
+        }
+      },
+      "event_type": "ORACLE_REVIEW_REQUESTED",
+      "created_at": "2026-05-04T11:23:45.169213+00:00"
+    },
+    "oracle_result": {
+      "trigger_event_id": "a7f95de4-012f-46a4-80b3-d4f9cd2d97d1",
+      "action": "HOLD",
+      "oracle_confidence": 1.0,
+      "reasoning": "The event contains extreme, unverified claims (such as attacks on U.S. nuclear plants) that are highly likely to be fake news or a simulation. Requires human review and external verification before any market action.",
+      "tags_to_emit": [
+        {
+          "asset": "OIL",
+          "bias": "bullish",
+          "confidence": 0.1,
+          "risk_score": 0.9,
+          "volatility_duration_minutes": 120,
+          "reason": "Extreme claims regarding Strait of Hormuz blockade, but highly suspicious source.",
+          "transmission_channel": "Energy supply shock"
+        },
+        {
+          "asset": "SPX",
+          "bias": "bearish",
+          "confidence": 0.1,
+          "risk_score": 0.9,
+          "volatility_duration_minutes": 120,
+          "reason": "Extreme geopolitical risk claims, but highly suspicious source.",
+          "transmission_channel": "Risk-off sentiment"
+        },
+        {
+          "asset": "XAU",
+          "bias": "bullish",
+          "confidence": 0.1,
+          "risk_score": 0.9,
+          "volatility_duration_minutes": 120,
+          "reason": "Safe haven demand in case of extreme escalation, but highly suspicious source.",
+          "transmission_channel": "Safe haven flows"
+        }
+      ],
+      "event_type": "ORACLE_REVIEW_RESOLVED",
+      "resolved_at": "2026-05-04T11:24:40.802677+00:00"
+    }
+  },
+  {
+    "id": "641db5d9-834b-44dd-a139-8c6e0d10a420",
+    "status": "success",
+    "model_used": "gemini-pro-latest",
+    "oracle_request": {
+      "trigger_event_id": "641db5d9-834b-44dd-a139-8c6e0d10a420",
+      "reason": "oracle_review_market_relevant",
+      "title": "The government news agency Esna reported that the dollar's free-market price was recorded today at 1...",
+      "body": "The government news agency Esna reported that the dollar's free-market price was recorded today at 181,100 tomans. This is the highest recorded dollar price and the national currency of Iran has recorded its lowest value ever. The dollar has grown by 120 percent over ten months and more than doubled. @VahidOOnLine @VahidOnline",
+      "published_at": "2026-04-29 14:38",
+      "source": "telegram_log",
+      "domain": "geopolitical",
+      "danger_score_legacy": 0.7350128686968307,
+      "risk_bucket": "low",
+      "impact_category": "currency intervention or severe devaluation",
+      "scores": {
+        "geopolitical_severity_score": 0.0,
+        "market_impact_score": 0.99,
+        "noise_score": 0.0,
+        "directional_confidence_score": 0.604,
+        "asset_route_confidence_score": 0.5,
+        "oracle_review_score": 0.99,
+        "model_uncertainty_score": 0.28,
+        "asset_ambiguity_score": 0.5,
+        "danger_score_legacy": 0.7350128686968307
+      },
+      "trade_emit_score": 0.299,
+      "candidate_directives": [],
+      "score_breakdown": {
+        "version": "balanced_hard_quant_v3_multidimensional",
+        "inputs": {
+          "category": "currency intervention or severe devaluation",
+          "original_category": "military organization or defense capability report",
+          "confidence": 0.72,
+          "original_confidence": 0.3784928321838379,
+          "sentiment": "neutral",
+          "severity": "unknown",
+          "severity_key": "",
+          "domain": "geopolitical",
+          "context": {
+            "historical_reference": false,
+            "local_incident": false,
+            "battlefield_micro": false,
+            "self_promotion": false,
+            "active_escalation": false,
+            "threat_rhetoric": false,
+            "propaganda": false,
+            "macro_signal": true,
+            "strategic_signal": true,
+            "impact_report": false
+          }
+        },
+        "category_corrections": [
+          {
+            "rule": "currency_devaluation_signal",
+            "from": "military organization or defense capability report",
+            "to": "currency intervention or severe devaluation"
+          }
+        ],
+        "context_filters": {
+          "historical_reference": false,
+          "local_incident": false,
+          "battlefield_micro": false,
+          "self_promotion": false,
+          "active_escalation": false,
+          "threat_rhetoric": false,
+          "propaganda": false,
+          "macro_signal": true,
+          "strategic_signal": true,
+          "impact_report": false
+        },
+        "gliner_details": {
+          "macro_target": false,
+          "strategic_infra": false,
+          "strategic_raw": false,
+          "kinetic": false,
+          "weapon": false,
+          "military_actor": false,
+          "geopolitical": false,
+          "central_bank": false,
+          "economic_indicator": true,
+          "market_sentiment": false,
+          "commodity_action": false,
+          "institutional_actor": false,
+          "political_leader": false,
+          "localized_noise": false,
+          "strong_tactical_signal": true,
+          "bonus": 0.075,
+          "multiplier": 1.0
+        },
+        "keyword_hits": [
+          {
+            "keyword": "lowest value ever",
+            "root": "lowest value ever",
+            "weight": 0.1,
+            "rank": 1,
+            "contribution": 0.1
+          },
+          {
+            "keyword": "highest recorded",
+            "root": "highest recorded",
+            "weight": 0.08,
+            "rank": 2,
+            "contribution": 0.027999999999999997
+          }
+        ],
+        "base": {
+          "severity_base": 0.24,
+          "category_weight": 1.16,
+          "category_component": 0.350784,
+          "severity_component": 0.2784,
+          "base_score": 0.350784
+        },
+        "additive_modifiers": {
+          "sentiment_bonus": 0.0,
+          "entity_bonus": 0.0,
+          "gliner_bonus": 0.075,
+          "numeric_bonus": 0.1,
+          "keyword_bonus": 0.128,
+          "engagement_bonus": 0.04357166290021883,
+          "critical_bonus": 0.0
+        },
+        "multipliers": {
+          "domain_weight": 1.12,
+          "effective_domain_weight": 1.054,
+          "gliner_multiplier": 1.0,
+          "context_multiplier": 1.0,
+          "total_multiplier": 1.054
+        },
+        "caps": [],
+        "scores": {
+          "additive_score": 0.6973556629002189,
+          "raw_score": 0.7350128686968307,
+          "raw_after_context": 0.7350128686968307,
+          "compressed_score": 0.7350128686968307,
+          "final_score": 0.7350128686968307,
+          "risk_bucket": "high",
+          "saturation": false
+        },
+        "audit_prediction": {
+          "propose_oracle": true,
+          "propose_emit": false,
+          "audit_trade_score": 0.299,
+          "audit_oracle_score": 0.99,
+          "reason": "high_market_impact_low_asset_confidence"
+        }
+      },
+      "event_type": "ORACLE_REVIEW_REQUESTED",
+      "created_at": "2026-05-04T11:23:45.169223+00:00"
+    },
+    "oracle_result": {
+      "trigger_event_id": "641db5d9-834b-44dd-a139-8c6e0d10a420",
+      "action": "HOLD",
+      "oracle_confidence": 1.0,
+      "reasoning": "Event describes a severe local currency devaluation (USD/IRR) which is not a globally tradable canonical asset and does not have a direct transmission channel to major FX pairs or commodities.",
+      "tags_to_emit": [],
+      "event_type": "ORACLE_REVIEW_RESOLVED",
+      "resolved_at": "2026-05-04T11:24:47.526991+00:00"
+    }
+  },
+  {
+    "id": "04c7dc17-f6ec-422a-aee9-92220b976020",
+    "status": "success",
+    "model_used": "gemini-pro-latest",
+    "oracle_request": {
+      "trigger_event_id": "04c7dc17-f6ec-422a-aee9-92220b976020",
+      "reason": "oracle_review_geopolitical_critical",
+      "title": "U.S. Secretary of War Pete Haggett said the incident was still under investigation two months after ...",
+      "body": "U.S. Secretary of War Pete Haggett said the incident was still under investigation two months after the deadly attack on Minab Elementary School that killed more than 165 people. The comments were made in response to questions from Roe Kana, a California Democrat, who asked Haggett about the human costs and consequences of the attack. Haggett stressed that the incident could not be determined as a \"disgraceful event\". Last month, Haggett told reporters that an army general outside Central Command (CTC) was on duty to investigate the incident; however, he refused to answer questions about the cause of the attack and repeated that the U.S. official did not target civilians.",
+      "published_at": "2026-04-29 17:52",
+      "source": "telegram_log",
+      "domain": "geopolitical",
+      "danger_score_legacy": 0.26549989642533767,
+      "risk_bucket": "low",
+      "impact_category": "military impact, cost or investigation report",
+      "scores": {
+        "geopolitical_severity_score": 0.8685858273779901,
+        "market_impact_score": 0.1,
+        "noise_score": 0.0,
+        "directional_confidence_score": 0.769594919681549,
+        "asset_route_confidence_score": 0.66,
+        "oracle_review_score": 0.694868661902392,
+        "model_uncertainty_score": 0.25772154331207275,
+        "asset_ambiguity_score": 0.5,
+        "danger_score_legacy": 0.26549989642533767
+      },
+      "trade_emit_score": 0.0508,
+      "candidate_directives": [
+        {
+          "asset": "XAU",
+          "bias": "bullish",
+          "confidence": 0.7,
+          "risk_score": null,
+          "reason": "risk_off_safe_haven",
+          "source": "candidate_directives"
+        },
+        {
+          "asset": "XAU/USD",
+          "bias": "bullish",
+          "confidence": 0.7,
+          "risk_score": null,
+          "reason": "risk_off_safe_haven",
+          "source": "candidate_directives"
+        },
+        {
+          "asset": "JPY",
+          "bias": "bullish",
+          "confidence": 0.7,
+          "risk_score": null,
+          "reason": "risk_off_safe_haven",
+          "source": "candidate_directives"
+        },
+        {
+          "asset": "CHF",
+          "bias": "bullish",
+          "confidence": 0.7,
+          "risk_score": null,
+          "reason": "risk_off_safe_haven",
+          "source": "candidate_directives"
+        },
+        {
+          "asset": "SPX",
+          "bias": "bearish",
+          "confidence": 0.66,
+          "risk_score": null,
+          "reason": "equity_risk",
+          "source": "candidate_directives"
+        },
+        {
+          "asset": "NQ",
+          "bias": "bearish",
+          "confidence": 0.66,
+          "risk_score": null,
+          "reason": "equity_risk",
+          "source": "candidate_directives"
+        }
+      ],
+      "score_breakdown": {
+        "version": "balanced_hard_quant_v3_multidimensional",
+        "inputs": {
+          "category": "military impact, cost or investigation report",
+          "original_category": "military impact, cost or investigation report",
+          "confidence": 0.7422784566879272,
+          "original_confidence": 0.7422784566879272,
+          "sentiment": "negative",
+          "severity": "unknown",
+          "severity_key": "",
+          "domain": "geopolitical",
+          "context": {
+            "historical_reference": false,
+            "local_incident": false,
+            "battlefield_micro": false,
+            "self_promotion": false,
+            "active_escalation": false,
+            "threat_rhetoric": false,
+            "propaganda": false,
+            "macro_signal": false,
+            "strategic_signal": true,
+            "impact_report": true
+          }
+        },
+        "category_corrections": [],
+        "context_filters": {
+          "historical_reference": false,
+          "local_incident": false,
+          "battlefield_micro": false,
+          "self_promotion": false,
+          "active_escalation": false,
+          "threat_rhetoric": false,
+          "propaganda": false,
+          "macro_signal": false,
+          "strategic_signal": true,
+          "impact_report": true
+        },
+        "gliner_details": {
+          "macro_target": false,
+          "strategic_infra": false,
+          "strategic_raw": false,
+          "kinetic": false,
+          "weapon": false,
+          "military_actor": true,
+          "geopolitical": false,
+          "central_bank": false,
+          "economic_indicator": false,
+          "market_sentiment": false,
+          "commodity_action": false,
+          "institutional_actor": false,
+          "political_leader": true,
+          "localized_noise": false,
+          "strong_tactical_signal": true,
+          "bonus": 0.07,
+          "multiplier": 1.0
+        },
+        "keyword_hits": [
+          {
+            "keyword": "war",
+            "root": "war",
+            "weight": 0.09,
+            "rank": 1,
+            "contribution": 0.09
+          },
+          {
+            "keyword": "attack",
+            "root": "attack",
+            "weight": 0.055,
+            "rank": 2,
+            "contribution": 0.01925
+          }
+        ],
+        "base": {
+          "severity_base": 0.24,
+          "category_weight": 0.85,
+          "category_component": 0.26499340903759,
+          "severity_component": 0.204,
+          "base_score": 0.26499340903759
+        },
+        "additive_modifiers": {
+          "sentiment_bonus": 0.047320251613855356,
+          "entity_bonus": 0.0,
+          "gliner_bonus": 0.07,
+          "numeric_bonus": 0.0,
+          "keyword_bonus": 0.10925,
+          "engagement_bonus": 0.01223120922585571,
+          "critical_bonus": 0.0
+        },
+        "multipliers": {
+          "domain_weight": 1.12,
+          "effective_domain_weight": 1.054,
+          "gliner_multiplier": 1.0,
+          "context_multiplier": 0.5,
+          "total_multiplier": 0.527
+        },
+        "caps": [],
+        "scores": {
+          "additive_score": 0.503794869877301,
+          "raw_score": 0.5309997928506753,
+          "raw_after_context": 0.26549989642533767,
+          "compressed_score": 0.26549989642533767,
+          "final_score": 0.26549989642533767,
+          "risk_bucket": "low",
+          "saturation": false
+        },
+        "audit_prediction": {
+          "propose_oracle": true,
+          "propose_emit": false,
+          "audit_trade_score": 0.0385,
+          "audit_oracle_score": 0.6949,
+          "reason": "critical_geopolitical_severity"
+        }
+      },
+      "event_type": "ORACLE_REVIEW_REQUESTED",
+      "created_at": "2026-05-04T11:23:45.169231+00:00"
+    },
+    "oracle_result": {
+      "trigger_event_id": "04c7dc17-f6ec-422a-aee9-92220b976020",
+      "action": "HOLD",
+      "oracle_confidence": 1.0,
+      "reasoning": "The event is a retrospective investigation of a two-month-old incident. It lacks new actionable market impact or immediate escalation threat.",
+      "tags_to_emit": [],
+      "event_type": "ORACLE_REVIEW_RESOLVED",
+      "resolved_at": "2026-05-04T11:24:53.371246+00:00"
+    }
+  }
+]
