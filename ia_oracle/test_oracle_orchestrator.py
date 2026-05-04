@@ -17,7 +17,10 @@ from forex_shared.domain.oracle import OracleReviewRequest
 # Ensure environment is loaded and prioritize .env file
 from dotenv import load_dotenv
 load_dotenv(override=True)
-EnvConfigManager.startup()
+try:
+    EnvConfigManager.startup()
+except Exception as _e:
+    logging.warning("EnvConfigManager.startup() skipped: %s", _e)
 
 from ia_oracle.session import OracleSession
 from ia_oracle.store import OracleCache, OracleMongoStore
@@ -92,7 +95,7 @@ class TestOracleOrchestrator:
             self.results.append({
                 "id": request.trigger_event_id,
                 "status": "success",
-                "model_used": self.session.model_name,
+                "model_used": getattr(getattr(self.session, "_provider", None), "model_name", "unknown"),
                 "oracle_request": request.to_dict(),
                 "oracle_result": response.to_dict(),
             })

@@ -175,16 +175,16 @@
         }
       },
       "event_type": "ORACLE_REVIEW_REQUESTED",
-      "created_at": "2026-05-04T11:23:45.169190+00:00"
+      "created_at": "2026-05-04T23:19:41.351569+00:00"
     },
     "oracle_result": {
       "trigger_event_id": "91e05b6d-c44b-4e10-b413-bb75c8592299",
       "action": "DISCARD",
       "oracle_confidence": 0.0,
-      "reasoning": "Parse error or empty response. Raw: {\n  \"event_id\": \"91e05b6d-c44b-4e10-b413-bb75c8592299\",\n  \"oracle_version\": \"ia_trend_oracle_v1\",\n  \"input_assessment\": {\n    \"accepted_for_review\": true,\n    \"source\": \"telegram_log\",\n    \"source_media\": \"unknown\",\n    \"published_at\": \"2026-04-29 17:54\",\n    \"impact_category\": \"commodity price surge or oil market disruption\",\n    \"secondary_impact_categories\": [\n      \"geopolitical escalation\"\n    ],\n    \"risk_bucket\": \"low\",\n    \"danger_score_legacy\": 0.618298009932987,\n    \"geopolitical_severity_score\": 0.0,\n    \"market_impact_score\": 0.9400000000000001,\n    \"asset_route_confidence_score\": 0.8300000000000001,\n    \"directional_confidence_score\": 0.845,\n    \"oracle_review_score\": 0.7520000000000001,\n    \"noise_score\": 0.0\n  },\n  \"event_summary\": {\n    \"one_sentence\": \"Oil prices have surged following a meeting between President Trump and oil executives regarding an extended Iranian siege on ports and shipping.\",\n    \"key_facts\": [\n      \"Oil prices have risen dramatically.\",\n      \"President Trump met with oil company executives.\",\n      \"Discussions centered on a months-long extension of Iran's siege of ports and shipping.\"\n    ],\n    \"market_relevance\": \"Direct and explicit mention of rising oil prices driven by geopolitical supply chain threats (Iran's siege of ports and shipping), which is a strong bullish catalyst for crude oil benchmarks.\",\n    \"non_market_context\": \"The geopolitical context involves US executive branch coordination with the energy sector in response to Iranian aggression in maritime chokepoints.\"\n  },\n  \"oracle_decision\": {\n    \"create_tag\": true,\n    \"review_only\": false,\n    \"ignore\": false,\n    \"decision_reason\": \"Clear directional bias and asset route for oil markets due to explicit mention of rising prices and ongoing geopolitical supply threats.\",\n    \"market_impact_level\": \"high\",\n    \"macro_sentiment\": \"cautious\",\n    \"needs_external_context\": false,\n    \"web_context_used\": false\n  },\n  \"news_alert\": [\n    \"OIL\",\n    \"ENERGY SECTOR\"\n  ],\n  \"directives\": [\n    {\n      \"asset\": \"OIL\",\n      \"bias\": \"bullish\",\n      \"confidence\": 0.85,\n      \"risk_score\": 0.8,\n      \"volatility_duration_minutes\": 240,\n      \"reason\": \"Explicit mention of dramatic oil price increases and ongoing supply chain threats from Iran.\",\n      \"transmission_channel\": \"commodity_supply_shock\"\n    },\n    {\n      \"asset\": \"BRENT\",\n      \"bias\": \"bullish\",\n      \"confidence\": 0.85,\n      \"risk_score\": 0.8,\n      \"volatility_duration_minutes\": 240,\n      \"reason\": \"Explicit mention of dramatic oil price increases and ongoing supply chain threats from Iran.\",\n      \"transmission_channel\": \"commodity_supply_shock\"\n    },\n    {\n      \"asset\": \"WTI\",\n      \"bias\": \"bullish\",\n      \"confidence\": 0.85,\n      \"risk_score\": 0.8,\n      \"volatility_duration_minutes\": 240,\n      \"reason\": \"Explicit mention of dramatic oil price increases and ongoing supply chain threats from Iran.\",\n      \"transmission_channel\": \"commodity_supply_shock\"\n    }\n  ],\n  \"do_not_emit_assets\": [],\n  \"risk_notes\": {\n    \"primary_risk\": \"Oil supply disruption due to maritime siege\",\n    \"secondary_risks\": [\n      \"Geopolitical escalation in the Middle East\",\n      \"Inflationary pressures from energy costs\"\n    ],\n    \"time_sensitivity\": \"high\",\n    \"staleness_risk\": \"low\",\n    \"propaganda_or_source_risk\": \"low\",\n    \"uncertainty_level\": \"low\"\n  },\n  \"audit\": {\n    \"used_fields\": [\n      \"body\",\n      \"scores\",\n      \"impact_category\"\n    ],\n    \"ignored_fields\": [\n      \"score_breakdown\"\n    ],\n    \"contradictions_or_ambiguities\":",
+      "reasoning": "Parse error or empty response. Raw: None",
       "tags_to_emit": [],
       "event_type": "ORACLE_REVIEW_RESOLVED",
-      "resolved_at": "2026-05-04T11:24:02.024568+00:00"
+      "resolved_at": "2026-05-04T23:19:42.044423+00:00"
     }
   },
   {
@@ -364,44 +364,16 @@
         }
       },
       "event_type": "ORACLE_REVIEW_REQUESTED",
-      "created_at": "2026-05-04T11:23:45.169150+00:00"
+      "created_at": "2026-05-04T23:19:41.351569+00:00"
     },
     "oracle_result": {
       "trigger_event_id": "4cbe67bb-9eab-4865-8d91-64dc8d4ad072",
-      "action": "EMIT",
-      "oracle_confidence": 1.0,
-      "reasoning": "Clear policy statement from the US Treasury Secretary targeting Iranian oil exports and Chinese refineries, providing a credible bullish catalyst for oil markets due to potential supply constraints.",
-      "tags_to_emit": [
-        {
-          "asset": "OIL",
-          "bias": "bullish",
-          "confidence": 0.8,
-          "risk_score": 0.7,
-          "volatility_duration_minutes": 120,
-          "reason": "US Treasury targeting Chinese refineries buying Iranian oil, threatening to tighten global supply.",
-          "transmission_channel": "supply_constraint"
-        },
-        {
-          "asset": "BRENT",
-          "bias": "bullish",
-          "confidence": 0.8,
-          "risk_score": 0.7,
-          "volatility_duration_minutes": 120,
-          "reason": "US Treasury targeting Chinese refineries buying Iranian oil, threatening to tighten global supply.",
-          "transmission_channel": "supply_constraint"
-        },
-        {
-          "asset": "WTI",
-          "bias": "bullish",
-          "confidence": 0.8,
-          "risk_score": 0.7,
-          "volatility_duration_minutes": 120,
-          "reason": "US Treasury targeting Chinese refineries buying Iranian oil, threatening to tighten global supply.",
-          "transmission_channel": "supply_constraint"
-        }
-      ],
+      "action": "DISCARD",
+      "oracle_confidence": 0.0,
+      "reasoning": "Parse error or empty response. Raw: None",
+      "tags_to_emit": [],
       "event_type": "ORACLE_REVIEW_RESOLVED",
-      "resolved_at": "2026-05-04T11:24:04.220428+00:00"
+      "resolved_at": "2026-05-04T23:19:42.047505+00:00"
     }
   },
   {
@@ -602,44 +574,16 @@
         }
       },
       "event_type": "ORACLE_REVIEW_REQUESTED",
-      "created_at": "2026-05-04T11:23:45.169203+00:00"
+      "created_at": "2026-05-04T23:19:41.351569+00:00"
     },
     "oracle_result": {
       "trigger_event_id": "faf5a411-6a82-4f5f-a0b5-daa337ec7edc",
-      "action": "HOLD",
-      "oracle_confidence": 1.0,
-      "reasoning": "The event describes an extreme geopolitical escalation but uses highly suspicious terminology, indicating a high probability of mistranslation, hallucination, or fake news. External verification is strictly required before any market action.",
-      "tags_to_emit": [
-        {
-          "asset": "OIL",
-          "bias": "bullish",
-          "confidence": 0.3,
-          "risk_score": 0.9,
-          "volatility_duration_minutes": 480,
-          "reason": "If verified, a strike on Iran's nuclear facilities would severely threaten Middle East oil supply and transit routes.",
-          "transmission_channel": "Middle East supply disruption"
-        },
-        {
-          "asset": "XAU",
-          "bias": "bullish",
-          "confidence": 0.3,
-          "risk_score": 0.9,
-          "volatility_duration_minutes": 480,
-          "reason": "Extreme safe-haven demand would materialize if US-Iran direct conflict is confirmed.",
-          "transmission_channel": "Safe-haven flows"
-        },
-        {
-          "asset": "SPX",
-          "bias": "bearish",
-          "confidence": 0.3,
-          "risk_score": 0.9,
-          "volatility_duration_minutes": 480,
-          "reason": "Massive equity sell-off likely on confirmation of a major Middle East war.",
-          "transmission_channel": "Risk-off equity liquidation"
-        }
-      ],
+      "action": "DISCARD",
+      "oracle_confidence": 0.0,
+      "reasoning": "Parse error or empty response. Raw: None",
+      "tags_to_emit": [],
       "event_type": "ORACLE_REVIEW_RESOLVED",
-      "resolved_at": "2026-05-04T11:24:31.085422+00:00"
+      "resolved_at": "2026-05-04T23:19:42.658095+00:00"
     }
   },
   {
@@ -864,44 +808,16 @@
         }
       },
       "event_type": "ORACLE_REVIEW_REQUESTED",
-      "created_at": "2026-05-04T11:23:45.169213+00:00"
+      "created_at": "2026-05-04T23:19:41.351569+00:00"
     },
     "oracle_result": {
       "trigger_event_id": "a7f95de4-012f-46a4-80b3-d4f9cd2d97d1",
-      "action": "HOLD",
-      "oracle_confidence": 1.0,
-      "reasoning": "The event contains extreme, unverified claims (such as attacks on U.S. nuclear plants) that are highly likely to be fake news or a simulation. Requires human review and external verification before any market action.",
-      "tags_to_emit": [
-        {
-          "asset": "OIL",
-          "bias": "bullish",
-          "confidence": 0.1,
-          "risk_score": 0.9,
-          "volatility_duration_minutes": 120,
-          "reason": "Extreme claims regarding Strait of Hormuz blockade, but highly suspicious source.",
-          "transmission_channel": "Energy supply shock"
-        },
-        {
-          "asset": "SPX",
-          "bias": "bearish",
-          "confidence": 0.1,
-          "risk_score": 0.9,
-          "volatility_duration_minutes": 120,
-          "reason": "Extreme geopolitical risk claims, but highly suspicious source.",
-          "transmission_channel": "Risk-off sentiment"
-        },
-        {
-          "asset": "XAU",
-          "bias": "bullish",
-          "confidence": 0.1,
-          "risk_score": 0.9,
-          "volatility_duration_minutes": 120,
-          "reason": "Safe haven demand in case of extreme escalation, but highly suspicious source.",
-          "transmission_channel": "Safe haven flows"
-        }
-      ],
+      "action": "DISCARD",
+      "oracle_confidence": 0.0,
+      "reasoning": "Parse error or empty response. Raw: None",
+      "tags_to_emit": [],
       "event_type": "ORACLE_REVIEW_RESOLVED",
-      "resolved_at": "2026-05-04T11:24:40.802677+00:00"
+      "resolved_at": "2026-05-04T23:19:42.670936+00:00"
     }
   },
   {
@@ -1052,16 +968,16 @@
         }
       },
       "event_type": "ORACLE_REVIEW_REQUESTED",
-      "created_at": "2026-05-04T11:23:45.169223+00:00"
+      "created_at": "2026-05-04T23:19:41.351569+00:00"
     },
     "oracle_result": {
       "trigger_event_id": "641db5d9-834b-44dd-a139-8c6e0d10a420",
-      "action": "HOLD",
-      "oracle_confidence": 1.0,
-      "reasoning": "Event describes a severe local currency devaluation (USD/IRR) which is not a globally tradable canonical asset and does not have a direct transmission channel to major FX pairs or commodities.",
+      "action": "DISCARD",
+      "oracle_confidence": 0.0,
+      "reasoning": "Parse error or empty response. Raw: None",
       "tags_to_emit": [],
       "event_type": "ORACLE_REVIEW_RESOLVED",
-      "resolved_at": "2026-05-04T11:24:47.526991+00:00"
+      "resolved_at": "2026-05-04T23:19:43.021272+00:00"
     }
   },
   {
@@ -1255,16 +1171,16 @@
         }
       },
       "event_type": "ORACLE_REVIEW_REQUESTED",
-      "created_at": "2026-05-04T11:23:45.169231+00:00"
+      "created_at": "2026-05-04T23:19:41.351569+00:00"
     },
     "oracle_result": {
       "trigger_event_id": "04c7dc17-f6ec-422a-aee9-92220b976020",
-      "action": "HOLD",
-      "oracle_confidence": 1.0,
-      "reasoning": "The event is a retrospective investigation of a two-month-old incident. It lacks new actionable market impact or immediate escalation threat.",
+      "action": "DISCARD",
+      "oracle_confidence": 0.0,
+      "reasoning": "Parse error or empty response. Raw: None",
       "tags_to_emit": [],
       "event_type": "ORACLE_REVIEW_RESOLVED",
-      "resolved_at": "2026-05-04T11:24:53.371246+00:00"
+      "resolved_at": "2026-05-04T23:19:43.039222+00:00"
     }
   }
 ]
