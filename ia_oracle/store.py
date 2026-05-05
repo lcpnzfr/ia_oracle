@@ -1,0 +1,140 @@
+"""OracleMongoStore — async MongoDB persistence for ia_oracle resolved decisions.
+
+Collections:
+    oracle_resolved  — one document per oracle decision (idempotent upsert by trigger_event_id)
+
+Deduplication:
+    trigger_event_id is the idempotent key.
+    Re-processing the same event (e.g. after a crash) updates the existing document
+    rather than creating a duplicate.
+
+Usage::
+
+    store = OracleMongoStore()
+    await store.ensure_indexes()              # once at startup
+    await store.store_item(response)          # per OracleReviewResponse
+    item = await store.get_item({"trigger_event_id": event_id})
+"""
+
+from __future__ import annotations
+
+import uuid
+from datetime import datetime, timezone
+from typing import Any, Dict, Optional
+
+from forex_shared.domain.oracle import OracleReviewResponse
+from forex_shared.mongo_manager import MongoManager
+from forex_shared.worker_api.store import BaseStore
+
+
+class OracleMongoStore(BaseStore):
+    """Async MongoDB persistence for OracleReviewResponse objects.
+
+    Inherits from ``BaseStore`` (shared_lib) which provides ``self._mongo``
+    (MongoManager singleton) and ``self.log`` (Loggable mixin).
+
+    Each resolved oracle decision is stored in ``oracle_resolved`` collection.
+    Re-processing the same trigger_event_id updates the document in place.
+    """
+
+    COLLECTION = "oracle_resolved"
+
+    def __init__(self, mongo_manager: Optional[MongoManager] = None) -> None:
+        super().__init__(mongo_manager)
+
+    # ------------------------------------------------------------------
+    # Index setup
+    # ------------------------------------------------------------------
+
+    async def ensure_indexes(self) -> None:
+        """Idempotent index creation. Call once at service startup."""
+        await self._mongo.async_ensure_indexes(
+            self.COLLECTION,
+            [
+                [("trigger_event_id", 1)],      # primary lookup key
+                [("action", 1)],                 # filter by EMIT / HOLD / DISCARD
+                [("created_at", -1)],            # recency queries
+                [("oracle_confidence", -1)],     # sort by confidence
+            ],
+        )
+        self.log.debug("OracleMongoStore: indexes ensured on '%s'", self.COLLECTION)
+
+    # ------------------------------------------------------------------
+    # Public API
+    # ------------------------------------------------------------------
+
+    async def store_item(self, item: OracleReviewResponse) -> str:
+        """Persist or update an OracleReviewResponse.
+
+        Returns 'new' on insert, 'updated' on upsert of existing document.
+        Idempotent: same trigger_event_id → updates in place.
+        """
+        now = datetime.now(timezone.utc).isoformat()
+
+        # Check if already exists
+        existing = await self._mongo.async_find_many(
+            self.COLLECTION,
+            {"trigger_event_id": item.trigger_event_id},
+            {"_id": 1},
+            limit=1,
+        )
+
+        if existing:
+            await self._mongo.async_update_one(
+                self.COLLECTION,
+                {"trigger_event_id": item.trigger_event_id},
+                {
+                    "$set": {
+                        **self._build_fields(item),
+                        "updated_at": now,
+                    },
+                    "$inc": {"update_count": 1},
+                },
+            )
+            self.log.debug(
+                "OracleMongoStore: updated  id=%s  action=%s",
+                item.trigger_event_id, item.action,
+            )
+            return "updated"
+
+        # Insert new document
+        doc = {
+            "_id":               str(uuid.uuid4()),
+            "trigger_event_id":  item.trigger_event_id,
+            "created_at":        now,
+            "updated_at":        now,
+            "update_count":      0,
+            **self._build_fields(item),
+        }
+        await self._mongo.async_update_one(
+            self.COLLECTION,
+            {"trigger_event_id": item.trigger_event_id},
+            {"$setOnInsert": doc},
+            upsert=True,
+        )
+        self.log.info(
+            "OracleMongoStore: stored  id=%s  action=%s  confidence=%.2f",
+            item.trigger_event_id, item.action, item.oracle_confidence,
+        )
+        return "new"
+
+    async def get_item(self, query: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+        """Retrieve a single oracle_resolved document matching ``query``."""
+        results = await self._mongo.async_find_many(
+            self.COLLECTION, query, limit=1
+        )
+        return results[0] if results else None
+
+    # ------------------------------------------------------------------
+    # Internal helpers
+    # ------------------------------------------------------------------
+
+    @staticmethod
+    def _build_fields(item: OracleReviewResponse) -> dict:
+        """Mutable fields written on both insert and update."""
+        return {
+            "action":           item.action,
+            "oracle_confidence": item.oracle_confidence,
+            "reasoning":        item.reasoning,
+            "tags_to_emit":     item.tags_to_emit or [],
+        }

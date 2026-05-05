@@ -8,9 +8,9 @@
     "published_at": "unknown",
     "impact_category": "geopolitical",
     "secondary_impact_categories": [
-      "political_rhetoric"
+      "humanitarian"
     ],
-    "risk_bucket": "geopolitical_review",
+    "risk_bucket": "geopolitical_risk",
     "danger_score_legacy": 0.26549989642533767,
     "geopolitical_severity_score": 0.8685858273779901,
     "market_impact_score": 0.1,
@@ -20,21 +20,21 @@
     "noise_score": 0.0
   },
   "event_summary": {
-    "one_sentence": "A U.S. official provides a non-committal update on an ongoing investigation into a two-month-old school attack.",
+    "one_sentence": "U.S. official provides a status update on an investigation into a two-month-old incident involving civilian casualties.",
     "key_facts": [
-      "U.S. official comments on Minab Elementary School attack investigation",
-      "Incident occurred two months ago",
-      "Official denies targeting civilians",
-      "Investigation remains ongoing"
+      "Official confirms investigation into a past incident is ongoing.",
+      "Incident occurred two months ago with 165+ casualties.",
+      "Official denies targeting civilians.",
+      "No new military or strategic escalation reported."
     ],
-    "market_relevance": "Negligible; this is a retrospective political statement regarding a past event, not a new market-moving escalation.",
-    "non_market_context": "The event involves a historical/past tragedy and political rhetoric rather than an active, actionable geopolitical threat."
+    "market_relevance": "The event is a retrospective bureaucratic update on a past tragedy with no immediate market-moving implications.",
+    "non_market_context": "The event concerns a humanitarian incident and political inquiry, not a new market-sensitive geopolitical development."
   },
   "oracle_decision": {
     "create_tag": false,
     "review_only": true,
     "ignore": false,
-    "decision_reason": "The event is a retrospective political update on a past incident. It lacks the immediacy and systemic impact required to trigger market-moving directives.",
+    "decision_reason": "The event is a retrospective update on a past incident with no immediate market-moving escalation or actionable trade signal.",
     "market_impact_level": "none",
     "macro_sentiment": "neutral",
     "needs_external_context": false,
@@ -45,33 +45,33 @@
   "do_not_emit_assets": [
     {
       "asset": "XAU",
-      "reason": "insufficient_market_impact"
+      "reason": "insufficient_market_impact_or_stale_event"
     },
     {
       "asset": "XAU/USD",
-      "reason": "insufficient_market_impact"
+      "reason": "insufficient_market_impact_or_stale_event"
     },
     {
       "asset": "JPY",
-      "reason": "insufficient_market_impact"
+      "reason": "insufficient_market_impact_or_stale_event"
     },
     {
       "asset": "CHF",
-      "reason": "insufficient_market_impact"
+      "reason": "insufficient_market_impact_or_stale_event"
     },
     {
       "asset": "SPX",
-      "reason": "insufficient_market_impact"
+      "reason": "insufficient_market_impact_or_stale_event"
     },
     {
       "asset": "NQ",
-      "reason": "insufficient_market_impact"
+      "reason": "insufficient_market_impact_or_stale_event"
     }
   ],
   "risk_notes": {
     "primary_risk": "none",
     "secondary_risks": [
-      "political_rhetoric"
+      "reputational_risk_to_source"
     ],
     "time_sensitivity": "low",
     "staleness_risk": "high",
@@ -80,17 +80,13 @@
   },
   "audit": {
     "used_fields": [
-      "id",
-      "scores",
-      "title",
-      "body"
+      "body",
+      "scores"
     ],
-    "ignored_fields": [
-      "candidate_directives"
-    ],
+    "ignored_fields": [],
     "contradictions_or_ambiguities": [
-      "The event title and body refer to a 'Secretary of War', which is an outdated title, suggesting potential misinformation or fictional context."
+      "The title refers to a 'Secretary of War', which is not a current U.S. cabinet position, suggesting potential misinformation or fictional context."
     ],
-    "reasoning_summary": "The event is a retrospective political statement regarding a two-month-old incident. It does not represent a new, actionable geopolitical shock and therefore does not warrant market directives."
+    "reasoning_summary": "The event is a retrospective update on a past incident. Despite high geopolitical severity due to the casualty count, there is no new market-moving information or escalation that would trigger a risk-off response in global markets."
   }
 }

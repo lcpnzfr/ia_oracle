@@ -3572,3 +3572,516 @@ INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvi
 INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Gemini resolved  id=04c7dc17-f6ec-422a-aee9-92220b976020  action=HOLD  confidence=0.69  reasoning=The event is a retrospective political update regarding a past tragedy. While the geopolitical sever
 INFO → __main__ → [#24] topic=intel.oracle.resolved             ts=2026-05-05T01:17:38+00:00
 INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Published resolved  id=04c7dc17-f6ec-422a-aee9-92220b976020  topic=intel.oracle.resolved
+INFO → __main__ → Idle 302 s — stopping. Total received: 24
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conexão encerrada.
+INFO → __main__ → Done. Total messages received: 24
+INFO → root → Logging system initialized
+ERROR → forex_shared.env_config_manager → [EnvConfig] Falha ao resolver secret para MONGO_URL: 403 Permission denied on resource project forexsystem-492216. [reason: "CONSUMER_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "secretmanager.googleapis.com"
+}
+metadata {
+  key: "containerInfo"
+  value: "forexsystem-492216"
+}
+metadata {
+  key: "consumer"
+  value: "projects/forexsystem-492216"
+}
+, locale: "en-US"
+message: "Permission denied on resource project forexsystem-492216."
+, links {
+  description: "Google developers console"
+  url: "https://console.developers.google.com"
+}
+]
+ERROR → forex_shared.env_config_manager → [EnvConfig] Falha ao resolver secret para SYSTEM_X25519_PRIVATE_KEY: 403 Permission denied on resource project forexsystem-492216. [reason: "CONSUMER_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "secretmanager.googleapis.com"
+}
+metadata {
+  key: "containerInfo"
+  value: "forexsystem-492216"
+}
+metadata {
+  key: "consumer"
+  value: "projects/forexsystem-492216"
+}
+, locale: "en-US"
+message: "Permission denied on resource project forexsystem-492216."
+, links {
+  description: "Google developers console"
+  url: "https://console.developers.google.com"
+}
+]
+INFO → root → Logging system initialized
+INFO → __main__ → === Oracle MQ Subscriber ===
+INFO → __main__ → Provider    : RABBITMQ_ASYNC
+INFO → __main__ → Topics      : intel.oracle.review, intel.oracle.resolved
+INFO → __main__ → Idle timeout: 180 s (after first message)
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@localhost:5672/
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@localhost:5672/
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectado. Exchange 'forex_market_events' ativo.
+INFO → __main__ → MQ connected.
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Inscrito: 'intel.oracle.review' → fila 'amq_bf84a39f34ee47a188c22533e981f63a'
+INFO → __main__ →   subscribed: intel.oracle.review
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Inscrito: 'intel.oracle.resolved' → fila 'amq_286a449879e44862b07449070499deab'
+INFO → __main__ →   subscribed: intel.oracle.resolved
+INFO → __main__ → Waiting for messages... (Ctrl-C to quit)
+
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Consumo ativo. Aguardando eventos...
+ERROR → forex_shared.env_config_manager → [EnvConfig] Falha ao resolver secret para SYSTEM_X25519_PUBLIC_KEY: 403 Permission denied on resource project forexsystem-492216. [reason: "CONSUMER_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "secretmanager.googleapis.com"
+}
+metadata {
+  key: "containerInfo"
+  value: "forexsystem-492216"
+}
+metadata {
+  key: "consumer"
+  value: "projects/forexsystem-492216"
+}
+, locale: "en-US"
+message: "Permission denied on resource project forexsystem-492216."
+, links {
+  description: "Google developers console"
+  url: "https://console.developers.google.com"
+}
+]
+INFO → forex_shared.env_config_manager → [EnvConfig] 🔏 45 chaves marcadas como Secret no arquivo.
+WARNING → __main__ → Failed to sync with MongoDB EnvConfig: No module named 'cryptor'
+INFO → __main__ → Starting OracleWorker: oracle_1 (Max Sessions: 1)
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Starting...
+INFO → forex_shared.worker_api.ia_factory → [IAProviderFactory] IA_PROVIDER='GEMINI' (from env)
+INFO → forex_shared.worker_api.ia_factory → [IAProviderFactory] Instantiated: GeminiIAProvider (backend=GEMINI, model=gemini-2.5-pro-preview-05-06)
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] Querying available Gemini models...
+INFO → httpx → HTTP Request: GET https://generativelanguage.googleapis.com/v1beta/models "HTTP/1.1 200 OK"
+INFO → httpx → HTTP Request: GET https://generativelanguage.googleapis.com/v1beta/models?pageToken=CiRtb2RlbHMvdmVvLTMuMS1mYXN0LWdlbmVyYXRlLXByZXZpZXc%3D "HTTP/1.1 200 OK"
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] Discovered 18 models from API.
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] Initialized. primary=gemini-2.5-pro-preview-05-06 chain=19 concurrency=1 max_retries=15 url_context=False google_search=False thinking=HIGH
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Provider ready: IABackend.GEMINI | model=gemini-2.5-pro-preview-05-06
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@localhost:5672/
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@localhost:5672/
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectado. Exchange 'forex_market_events' ativo.
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] MQ connected.
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Inscrito: 'intel.oracle.review' → fila 'amq_9efb94f52e164df89a31af4c88659a2a'
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Subscribed to intel.oracle.review
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Ready. concurrency=1
+INFO → __main__ → Bootstrapping default OracleSession...
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Running. Waiting for messages...
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Consumo ativo. Aguardando eventos...
+INFO → root → Logging system initialized
+INFO → __main__ → === Oracle MQ Publisher Test ===
+INFO → __main__ → Mock file : C:\Projects\forex_system\services\ia_oracle\ia_oracle\data\mock_intel_items_big_process_result.json
+INFO → __main__ → Topic     : intel.oracle.review
+INFO → __main__ → Count     : 6 items
+INFO → __main__ → Delay     : 1.0 s between messages
+INFO → __main__ → Loaded 6 items
+INFO → __main__ → Connecting to MQ (provider=RABBITMQ_ASYNC)...
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@localhost:5672/
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@localhost:5672/
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectado. Exchange 'forex_market_events' ativo.
+INFO → __main__ → MQ connected.
+INFO → __main__ → [1/6] Published  id=4cbe67bb-9eab-4865-8d91-64dc8d4ad072    title=Scott Bassent, US Treasury Secretary, wrote on the social ne
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Received review  id=4cbe67bb-9eab-4865-8d91-64dc8d4ad072  title=Scott Bassent, US Treasury Secretary, wrote on the social network X that followi
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Calling Gemini for id=4cbe67bb-9eab-4865-8d91-64dc8d4ad072  model=gemini-flash-lite-latest
+INFO → __main__ → [#1] topic=intel.oracle.review               ts=2026-05-05T01:34:07+00:00
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Received review  id=4cbe67bb-9eab-4865-8d91-64dc8d4ad072  title=Scott Bassent, US Treasury Secretary, wrote on the social network X that followi
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Calling Gemini for id=4cbe67bb-9eab-4865-8d91-64dc8d4ad072  model=gemini-2.5-pro-preview-05-06
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Received review  id=4cbe67bb-9eab-4865-8d91-64dc8d4ad072  title=Scott Bassent, US Treasury Secretary, wrote on the social network X that followi
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Calling Gemini for id=4cbe67bb-9eab-4865-8d91-64dc8d4ad072  model=gemini-flash-lite-latest
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Calling Gemini for id=4cbe67bb-9eab-4865-8d91-64dc8d4ad072  model=gemini-2.5-flash-lite
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → __main__ → [2/6] Published  id=91e05b6d-c44b-4e10-b413-bb75c8592299    title=Oil prices have risen dramatically since President Donald Tr
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Received review  id=91e05b6d-c44b-4e10-b413-bb75c8592299  title=Oil prices have risen dramatically since President Donald Trump met with oil com
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Received review  id=91e05b6d-c44b-4e10-b413-bb75c8592299  title=Oil prices have risen dramatically since President Donald Trump met with oil com
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Received review  id=91e05b6d-c44b-4e10-b413-bb75c8592299  title=Oil prices have risen dramatically since President Donald Trump met with oil com
+INFO → __main__ → [#2] topic=intel.oracle.review               ts=2026-05-05T01:34:08+00:00
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Received review  id=91e05b6d-c44b-4e10-b413-bb75c8592299  title=Oil prices have risen dramatically since President Donald Trump met with oil com
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.5-pro-preview-05-06 → rotating to gemini-2.5-flash (attempt 1/15)
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ThinkingConfig not supported on model=gemini-2.5-flash-lite → retrying without thinking.
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → __main__ → [3/6] Published  id=faf5a411-6a82-4f5f-a0b5-daa337ec7edc    title=During the hearing of the House Armed Services Committee, U.
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Received review  id=faf5a411-6a82-4f5f-a0b5-daa337ec7edc  title=During the hearing of the House Armed Services Committee, U.S. Secretary of War 
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Received review  id=faf5a411-6a82-4f5f-a0b5-daa337ec7edc  title=During the hearing of the House Armed Services Committee, U.S. Secretary of War 
+INFO → __main__ → [#3] topic=intel.oracle.review               ts=2026-05-05T01:34:09+00:00
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Received review  id=faf5a411-6a82-4f5f-a0b5-daa337ec7edc  title=During the hearing of the House Armed Services Committee, U.S. Secretary of War 
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Received review  id=faf5a411-6a82-4f5f-a0b5-daa337ec7edc  title=During the hearing of the House Armed Services Committee, U.S. Secretary of War 
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-flash-lite-latest → rotating to gemini-pro-latest (attempt 1/15)
+INFO → __main__ → [4/6] Published  id=a7f95de4-012f-46a4-80b3-d4f9cd2d97d1    title=Donald Trump, speaking to Axis on Wednesday, emphasized that
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Received review  id=a7f95de4-012f-46a4-80b3-d4f9cd2d97d1  title=Donald Trump, speaking to Axis on Wednesday, emphasized that the Iranian naval b
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Received review  id=a7f95de4-012f-46a4-80b3-d4f9cd2d97d1  title=Donald Trump, speaking to Axis on Wednesday, emphasized that the Iranian naval b
+INFO → __main__ → [#4] topic=intel.oracle.review               ts=2026-05-05T01:34:10+00:00
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Received review  id=a7f95de4-012f-46a4-80b3-d4f9cd2d97d1  title=Donald Trump, speaking to Axis on Wednesday, emphasized that the Iranian naval b
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Received review  id=a7f95de4-012f-46a4-80b3-d4f9cd2d97d1  title=Donald Trump, speaking to Axis on Wednesday, emphasized that the Iranian naval b
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-flash-lite-latest → rotating to gemini-pro-latest (attempt 1/15)
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Received review  id=641db5d9-834b-44dd-a139-8c6e0d10a420  title=The government news agency Esna reported that the dollar's free-market price was
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Received review  id=641db5d9-834b-44dd-a139-8c6e0d10a420  title=The government news agency Esna reported that the dollar's free-market price was
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Received review  id=641db5d9-834b-44dd-a139-8c6e0d10a420  title=The government news agency Esna reported that the dollar's free-market price was
+INFO → __main__ → [5/6] Published  id=641db5d9-834b-44dd-a139-8c6e0d10a420    title=The government news agency Esna reported that the dollar's f
+INFO → __main__ → [#5] topic=intel.oracle.review               ts=2026-05-05T01:34:11+00:00
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Received review  id=641db5d9-834b-44dd-a139-8c6e0d10a420  title=The government news agency Esna reported that the dollar's free-market price was
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ThinkingConfig not supported on model=gemini-2.5-flash → retrying without thinking.
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.5-flash → rotating to gemini-2.5-pro (attempt 3/15)
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-pro-latest → rotating to gemini-2.5-flash-lite (attempt 2/15)
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Received review  id=04c7dc17-f6ec-422a-aee9-92220b976020  title=U.S. Secretary of War Pete Haggett said the incident was still under investigati
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Received review  id=04c7dc17-f6ec-422a-aee9-92220b976020  title=U.S. Secretary of War Pete Haggett said the incident was still under investigati
+INFO → __main__ → [#6] topic=intel.oracle.review               ts=2026-05-05T01:34:13+00:00
+INFO → __main__ → [6/6] Published  id=04c7dc17-f6ec-422a-aee9-92220b976020    title=U.S. Secretary of War Pete Haggett said the incident was sti
+INFO → __main__ → Done. 6/6 published.
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Received review  id=04c7dc17-f6ec-422a-aee9-92220b976020  title=U.S. Secretary of War Pete Haggett said the incident was still under investigati
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Received review  id=04c7dc17-f6ec-422a-aee9-92220b976020  title=U.S. Secretary of War Pete Haggett said the incident was still under investigati
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conexão encerrada.
+INFO → __main__ → MQ disconnected.
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.5-pro → rotating to gemini-2.0-flash (attempt 4/15)
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-pro-latest → rotating to gemini-2.5-flash-lite (attempt 2/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ThinkingConfig not supported on model=gemini-2.5-flash-lite → retrying without thinking.
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ✅ Succeeded on model=gemini-2.5-flash-lite (attempt=2)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.0-flash → rotating to gemini-2.0-flash-001 (attempt 5/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Gemini resolved  id=4cbe67bb-9eab-4865-8d91-64dc8d4ad072  action=EMIT  confidence=0.74  reasoning=Event details US sanctions on Iran's oil trade and economic infrastructure. Clear asset route (OIL, 
+INFO → __main__ → [#7] topic=intel.oracle.resolved             ts=2026-05-05T01:34:17+00:00
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Published resolved  id=4cbe67bb-9eab-4865-8d91-64dc8d4ad072  topic=intel.oracle.resolved
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Calling Gemini for id=91e05b6d-c44b-4e10-b413-bb75c8592299  model=gemini-2.5-flash-lite
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ThinkingConfig not supported on model=gemini-2.5-flash-lite → retrying without thinking.
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ThinkingConfig not supported on model=gemini-2.5-flash-lite → retrying without thinking.
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.0-flash-001 → rotating to gemini-2.0-flash-lite-001 (attempt 6/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.0-flash-lite-001 → rotating to gemini-2.0-flash-lite (attempt 7/15)
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ✅ Succeeded on model=gemini-2.5-flash-lite (attempt=4)
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Gemini resolved  id=4cbe67bb-9eab-4865-8d91-64dc8d4ad072  action=EMIT  confidence=0.79  reasoning=Event details US sanctions on Iran's oil trade, impacting OIL, BRENT, WTI with a bullish bias due to
+INFO → __main__ → [#8] topic=intel.oracle.resolved             ts=2026-05-05T01:34:22+00:00
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Published resolved  id=4cbe67bb-9eab-4865-8d91-64dc8d4ad072  topic=intel.oracle.resolved
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Calling Gemini for id=91e05b6d-c44b-4e10-b413-bb75c8592299  model=gemini-2.5-flash-lite
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ThinkingConfig not supported on model=gemini-2.5-flash-lite → retrying without thinking.
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ✅ Succeeded on model=gemini-2.5-flash-lite (attempt=2)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.0-flash-lite → rotating to gemini-flash-latest (attempt 8/15)
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Gemini resolved  id=91e05b6d-c44b-4e10-b413-bb75c8592299  action=EMIT  confidence=0.79  reasoning=The event presents a clear and direct link between geopolitical events (Iran's actions against shipp
+INFO → __main__ → [#9] topic=intel.oracle.resolved             ts=2026-05-05T01:34:24+00:00
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Published resolved  id=91e05b6d-c44b-4e10-b413-bb75c8592299  topic=intel.oracle.resolved
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Calling Gemini for id=faf5a411-6a82-4f5f-a0b5-daa337ec7edc  model=gemini-2.5-flash-lite
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.5-flash-lite → rotating to gemini-3-pro-preview (attempt 1/15)
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ✅ Succeeded on model=gemini-2.5-flash-lite (attempt=4)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-flash-latest → rotating to gemini-flash-lite-latest (attempt 9/15)
+INFO → __main__ → [#10] topic=intel.oracle.resolved             ts=2026-05-05T01:34:26+00:00
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Raw Gemini response (first 200):
+{
+  "event_id": "4cbe67bb-9eab-4865-8d91-64dc8d4ad072",
+  "oracle_version": "ia_trend_oracle_v1",
+  "input_assessment": {
+    "accepted_for_review": true,
+    "source": "telegram_log",
+    "source_med
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Gemini resolved  id=4cbe67bb-9eab-4865-8d91-64dc8d4ad072  action=EMIT  confidence=0.76  reasoning=Event details US sanctions impacting Iran's oil trade via Chinese refineries, creating a clear bulli
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Published resolved  id=4cbe67bb-9eab-4865-8d91-64dc8d4ad072  topic=intel.oracle.resolved
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Calling Gemini for id=91e05b6d-c44b-4e10-b413-bb75c8592299  model=gemini-2.5-flash-lite
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.5-flash-lite → rotating to gemini-3-pro-preview (attempt 1/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-3-pro-preview → rotating to gemini-3-flash-preview (attempt 2/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ✅ Succeeded on model=gemini-2.5-flash-lite (attempt=2)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-3-pro-preview → rotating to gemini-3-flash-preview (attempt 2/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Gemini resolved  id=91e05b6d-c44b-4e10-b413-bb75c8592299  action=EMIT  confidence=0.79  reasoning=Event links geopolitical tensions and potential supply disruptions to a significant rise in oil pric
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Published resolved  id=91e05b6d-c44b-4e10-b413-bb75c8592299  topic=intel.oracle.resolved
+INFO → __main__ → [#11] topic=intel.oracle.resolved             ts=2026-05-05T01:34:29+00:00
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Calling Gemini for id=faf5a411-6a82-4f5f-a0b5-daa337ec7edc  model=gemini-2.5-flash-lite
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-3-flash-preview → rotating to gemini-3.1-pro-preview (attempt 3/15)
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ThinkingConfig not supported on model=gemini-2.5-flash-lite → retrying without thinking.
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.5-flash-lite → rotating to gemini-3-pro-preview (attempt 2/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-3-flash-preview → rotating to gemini-3.1-pro-preview (attempt 3/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-3.1-pro-preview → rotating to gemini-3.1-pro-preview-customtools (attempt 4/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-3-pro-preview → rotating to gemini-3-flash-preview (attempt 3/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-3.1-pro-preview → rotating to gemini-3.1-pro-preview-customtools (attempt 4/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-3.1-pro-preview-customtools → rotating to gemini-3.1-flash-lite-preview (attempt 5/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-3-flash-preview → rotating to gemini-3.1-pro-preview (attempt 4/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-3.1-pro-preview-customtools → rotating to gemini-3.1-flash-lite-preview (attempt 5/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-3.1-pro-preview → rotating to gemini-3.1-pro-preview-customtools (attempt 5/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-3.1-pro-preview-customtools → rotating to gemini-3.1-flash-lite-preview (attempt 6/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ✅ Succeeded on model=gemini-3.1-flash-lite-preview (attempt=7)
+INFO → __main__ → [#12] topic=intel.oracle.resolved             ts=2026-05-05T01:34:46+00:00
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Gemini resolved  id=faf5a411-6a82-4f5f-a0b5-daa337ec7edc  action=EMIT  confidence=0.68  reasoning=The event reports a confirmed military strike on strategic assets, which historically correlates wit
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Published resolved  id=faf5a411-6a82-4f5f-a0b5-daa337ec7edc  topic=intel.oracle.resolved
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Calling Gemini for id=a7f95de4-012f-46a4-80b3-d4f9cd2d97d1  model=gemini-3.1-flash-lite-preview
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ✅ Succeeded on model=gemini-flash-lite-latest (attempt=10)
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Resolved  id=4cbe67bb-9eab-4865-8d91-64dc8d4ad072  action=EMIT  confidence=0.79  reasoning=The event confirms a tightening of sanctions on Iranian oil exports via Chinese refineries, which is
+INFO → __main__ → [#13] topic=intel.oracle.resolved             ts=2026-05-05T01:34:51+00:00
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Published resolved  id=4cbe67bb-9eab-4865-8d91-64dc8d4ad072  topic=intel.oracle.resolved
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] GlobalTag emitted  asset=OIL  bias=bullish  risk=0.63  ttl_until=2026-05-05T05:34:51.978979+00:00  topic=intel.global_tags
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] GlobalTag emitted  asset=BRENT  bias=bullish  risk=0.60  ttl_until=2026-05-05T05:34:51.978979+00:00  topic=intel.global_tags
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] GlobalTag emitted  asset=WTI  bias=bullish  risk=0.60  ttl_until=2026-05-05T05:34:51.978979+00:00  topic=intel.global_tags
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Calling Gemini for id=91e05b6d-c44b-4e10-b413-bb75c8592299  model=gemini-flash-lite-latest
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ✅ Succeeded on model=gemini-3.1-flash-lite-preview (attempt=6)
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Gemini resolved  id=faf5a411-6a82-4f5f-a0b5-daa337ec7edc  action=HOLD  confidence=0.40  reasoning=Event flagged as high-impact but low-reliability. The content appears to be a fabrication or misinfo
+INFO → __main__ → [#14] topic=intel.oracle.resolved             ts=2026-05-05T01:34:53+00:00
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Published resolved  id=faf5a411-6a82-4f5f-a0b5-daa337ec7edc  topic=intel.oracle.resolved
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Calling Gemini for id=a7f95de4-012f-46a4-80b3-d4f9cd2d97d1  model=gemini-3.1-flash-lite-preview
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ✅ Succeeded on model=gemini-flash-lite-latest (attempt=1)
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ✅ Succeeded on model=gemini-3.1-flash-lite-preview (attempt=1)
+INFO → __main__ → [#15] topic=intel.oracle.resolved             ts=2026-05-05T01:35:02+00:00
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Resolved  id=91e05b6d-c44b-4e10-b413-bb75c8592299  action=HOLD  confidence=0.75  reasoning=The event is flagged for review due to the high probability of misinformation regarding an alleged I
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Published resolved  id=91e05b6d-c44b-4e10-b413-bb75c8592299  topic=intel.oracle.resolved
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Calling Gemini for id=faf5a411-6a82-4f5f-a0b5-daa337ec7edc  model=gemini-flash-lite-latest
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Gemini resolved  id=a7f95de4-012f-46a4-80b3-d4f9cd2d97d1  action=EMIT  confidence=0.78  reasoning=The event describes a concrete, ongoing blockade of a critical energy chokepoint. This is a high-con
+INFO → __main__ → [#16] topic=intel.oracle.resolved             ts=2026-05-05T01:35:03+00:00
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Published resolved  id=a7f95de4-012f-46a4-80b3-d4f9cd2d97d1  topic=intel.oracle.resolved
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Calling Gemini for id=641db5d9-834b-44dd-a139-8c6e0d10a420  model=gemini-3.1-flash-lite-preview
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ✅ Succeeded on model=gemini-3.1-flash-lite-preview (attempt=1)
+INFO → __main__ → [#17] topic=intel.oracle.resolved             ts=2026-05-05T01:35:06+00:00
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Gemini resolved  id=a7f95de4-012f-46a4-80b3-d4f9cd2d97d1  action=EMIT  confidence=0.72  reasoning=The event describes a direct threat to the Strait of Hormuz, a critical global oil chokepoint. Given
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Published resolved  id=a7f95de4-012f-46a4-80b3-d4f9cd2d97d1  topic=intel.oracle.resolved
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Calling Gemini for id=641db5d9-834b-44dd-a139-8c6e0d10a420  model=gemini-3.1-flash-lite-preview
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ✅ Succeeded on model=gemini-3.1-flash-lite-preview (attempt=1)
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ✅ Succeeded on model=gemini-flash-lite-latest (attempt=1)
+INFO → __main__ → [#18] topic=intel.oracle.resolved             ts=2026-05-05T01:35:10+00:00
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Gemini resolved  id=641db5d9-834b-44dd-a139-8c6e0d10a420  action=HOLD  confidence=0.99  reasoning=Event is a local currency devaluation. No clear path to global asset volatility. Review-only status 
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Published resolved  id=641db5d9-834b-44dd-a139-8c6e0d10a420  topic=intel.oracle.resolved
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Calling Gemini for id=04c7dc17-f6ec-422a-aee9-92220b976020  model=gemini-3.1-flash-lite-preview
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Resolved  id=faf5a411-6a82-4f5f-a0b5-daa337ec7edc  action=HOLD  confidence=0.74  reasoning=The event claims a major military strike on Iran. While the geopolitical severity is high, the sourc
+INFO → __main__ → [#19] topic=intel.oracle.resolved             ts=2026-05-05T01:35:11+00:00
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Published resolved  id=faf5a411-6a82-4f5f-a0b5-daa337ec7edc  topic=intel.oracle.resolved
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Calling Gemini for id=a7f95de4-012f-46a4-80b3-d4f9cd2d97d1  model=gemini-flash-lite-latest
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ✅ Succeeded on model=gemini-3.1-flash-lite-preview (attempt=1)
+INFO → __main__ → [#20] topic=intel.oracle.resolved             ts=2026-05-05T01:35:17+00:00
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Gemini resolved  id=641db5d9-834b-44dd-a139-8c6e0d10a420  action=HOLD  confidence=0.99  reasoning=Event is a local currency devaluation. No clear path to global asset volatility without further geop
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Published resolved  id=641db5d9-834b-44dd-a139-8c6e0d10a420  topic=intel.oracle.resolved
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Calling Gemini for id=04c7dc17-f6ec-422a-aee9-92220b976020  model=gemini-3.1-flash-lite-preview
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ✅ Succeeded on model=gemini-3.1-flash-lite-preview (attempt=1)
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Gemini resolved  id=04c7dc17-f6ec-422a-aee9-92220b976020  action=HOLD  confidence=0.69  reasoning=The event is a retrospective political statement regarding a past tragedy. It does not constitute a 
+INFO → __main__ → [#21] topic=intel.oracle.resolved             ts=2026-05-05T01:35:22+00:00
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Published resolved  id=04c7dc17-f6ec-422a-aee9-92220b976020  topic=intel.oracle.resolved
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ✅ Succeeded on model=gemini-flash-lite-latest (attempt=1)
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Resolved  id=a7f95de4-012f-46a4-80b3-d4f9cd2d97d1  action=EMIT  confidence=0.74  reasoning=The event describes a direct, high-stakes threat to the Strait of Hormuz, a critical global energy c
+INFO → __main__ → [#22] topic=intel.oracle.resolved             ts=2026-05-05T01:35:24+00:00
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Published resolved  id=a7f95de4-012f-46a4-80b3-d4f9cd2d97d1  topic=intel.oracle.resolved
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] GlobalTag emitted  asset=OIL  bias=bullish  risk=0.85  ttl_until=2026-05-05T09:35:24.140988+00:00  topic=intel.global_tags
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] GlobalTag emitted  asset=BRENT  bias=bullish  risk=0.85  ttl_until=2026-05-05T09:35:24.140988+00:00  topic=intel.global_tags
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] GlobalTag emitted  asset=WTI  bias=bullish  risk=0.85  ttl_until=2026-05-05T09:35:24.140988+00:00  topic=intel.global_tags
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] GlobalTag emitted  asset=XAU  bias=bullish  risk=0.75  ttl_until=2026-05-05T05:35:24.140988+00:00  topic=intel.global_tags
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] GlobalTag emitted  asset=SPX  bias=bearish  risk=0.70  ttl_until=2026-05-05T05:35:24.140988+00:00  topic=intel.global_tags
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Calling Gemini for id=641db5d9-834b-44dd-a139-8c6e0d10a420  model=gemini-flash-lite-latest
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ✅ Succeeded on model=gemini-3.1-flash-lite-preview (attempt=1)
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Gemini resolved  id=04c7dc17-f6ec-422a-aee9-92220b976020  action=HOLD  confidence=0.69  reasoning=The event is a retrospective political statement regarding a past incident. It does not meet the thr
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Published resolved  id=04c7dc17-f6ec-422a-aee9-92220b976020  topic=intel.oracle.resolved
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ✅ Succeeded on model=gemini-flash-lite-latest (attempt=1)
+INFO → __main__ → [#24] topic=intel.oracle.resolved             ts=2026-05-05T01:35:34+00:00
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Resolved  id=641db5d9-834b-44dd-a139-8c6e0d10a420  action=HOLD  confidence=0.99  reasoning=Event is a local currency devaluation report. Per system rules, local currency collapses without cle
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Published resolved  id=641db5d9-834b-44dd-a139-8c6e0d10a420  topic=intel.oracle.resolved
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Calling Gemini for id=04c7dc17-f6ec-422a-aee9-92220b976020  model=gemini-flash-lite-latest
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ✅ Succeeded on model=gemini-flash-lite-latest (attempt=1)
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Resolved  id=04c7dc17-f6ec-422a-aee9-92220b976020  action=HOLD  confidence=0.69  reasoning=The event is a retrospective investigation update on a past tragedy. It does not constitute a new ma
+INFO → __main__ → [#25] topic=intel.oracle.resolved             ts=2026-05-05T01:35:42+00:00
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Published resolved  id=04c7dc17-f6ec-422a-aee9-92220b976020  topic=intel.oracle.resolved
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ✅ Succeeded on model=gemini-3.1-flash-lite-preview (attempt=6)
+INFO → __main__ → [#26] topic=intel.oracle.resolved             ts=2026-05-05T01:35:47+00:00
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Raw Gemini response (first 200):
+{
+  "event_id": "91e05b6d-c44b-4e10-b413-bb75c8592299",
+  "oracle_version": "ia_trend_oracle_v1",
+  "input_assessment": {
+    "accepted_for_review": true,
+    "source": "telegram_log",
+    "source_med
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Gemini resolved  id=91e05b6d-c44b-4e10-b413-bb75c8592299  action=DISCARD  confidence=0.00  reasoning=[parse error] Expecting value: line 69 column 37 (char 2884) — raw: {
+  "event_id": "91e05b6d-c44b-4
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Published resolved  id=91e05b6d-c44b-4e10-b413-bb75c8592299  topic=intel.oracle.resolved
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Calling Gemini for id=faf5a411-6a82-4f5f-a0b5-daa337ec7edc  model=gemini-3.1-flash-lite-preview
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ✅ Succeeded on model=gemini-3.1-flash-lite-preview (attempt=1)
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Raw Gemini response (first 200):
+{
+  "event_id": "faf5a411-6a82-4f5f-a0b5-daa337ec7edc",
+  "oracle_version": "ia_trend_oracle_v1",
+  "input_assessment": {
+    "accepted_for_review": true,
+    "source": "telegram_log",
+    "source_med
+INFO → __main__ → [#27] topic=intel.oracle.resolved             ts=2026-05-05T01:35:54+00:00
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Gemini resolved  id=faf5a411-6a82-4f5f-a0b5-daa337ec7edc  action=HOLD  confidence=0.74  reasoning=The event is flagged as high-severity but is likely misinformation due to the use of incorrect offic
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Published resolved  id=faf5a411-6a82-4f5f-a0b5-daa337ec7edc  topic=intel.oracle.resolved
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Calling Gemini for id=a7f95de4-012f-46a4-80b3-d4f9cd2d97d1  model=gemini-3.1-flash-lite-preview
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ✅ Succeeded on model=gemini-3.1-flash-lite-preview (attempt=1)
+INFO → __main__ → [#28] topic=intel.oracle.resolved             ts=2026-05-05T01:36:05+00:00
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Raw Gemini response (first 200):
+{
+  "event_id": "a7f95de4-012f-46a4-80b3-d4f9cd2d97d1",
+  "oracle_version": "ia_trend_oracle_v1",
+  "input_assessment": {
+    "accepted_for_review": true,
+    "source": "telegram_log",
+    "source_med
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Gemini resolved  id=a7f95de4-012f-46a4-80b3-d4f9cd2d97d1  action=EMIT  confidence=0.74  reasoning=The event describes a direct threat to the Strait of Hormuz, a critical energy chokepoint. Given the
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Published resolved  id=a7f95de4-012f-46a4-80b3-d4f9cd2d97d1  topic=intel.oracle.resolved
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Calling Gemini for id=641db5d9-834b-44dd-a139-8c6e0d10a420  model=gemini-3.1-flash-lite-preview
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ✅ Succeeded on model=gemini-3.1-flash-lite-preview (attempt=1)
+INFO → __main__ → [#29] topic=intel.oracle.resolved             ts=2026-05-05T01:36:13+00:00
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Raw Gemini response (first 200):
+{
+  "event_id": "641db5d9-834b-44dd-a139-8c6e0d10a420",
+  "oracle_version": "ia_trend_oracle_v1",
+  "input_assessment": {
+    "accepted_for_review": true,
+    "source": "telegram_log",
+    "source_med
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Gemini resolved  id=641db5d9-834b-44dd-a139-8c6e0d10a420  action=HOLD  confidence=0.99  reasoning=The event is a local currency devaluation. While the impact score is high, it is contained within th
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Published resolved  id=641db5d9-834b-44dd-a139-8c6e0d10a420  topic=intel.oracle.resolved
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Calling Gemini for id=04c7dc17-f6ec-422a-aee9-92220b976020  model=gemini-3.1-flash-lite-preview
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ✅ Succeeded on model=gemini-3.1-flash-lite-preview (attempt=1)
+INFO → __main__ → [#30] topic=intel.oracle.resolved             ts=2026-05-05T01:36:35+00:00
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Raw Gemini response (first 200):
+{
+  "event_id": "04c7dc17-f6ec-422a-aee9-92220b976020",
+  "oracle_version": "ia_trend_oracle_v1",
+  "input_assessment": {
+    "accepted_for_review": true,
+    "source": "telegram_log",
+    "source_med
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Gemini resolved  id=04c7dc17-f6ec-422a-aee9-92220b976020  action=HOLD  confidence=0.69  reasoning=The event is a retrospective update on a past incident. Despite high geopolitical severity due to th
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Published resolved  id=04c7dc17-f6ec-422a-aee9-92220b976020  topic=intel.oracle.resolved
+INFO → __main__ → Idle 182 s — stopping. Total received: 30
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conexão encerrada.
+INFO → __main__ → Done. Total messages received: 30
+INFO → root → Logging system initialized
+ERROR → forex_shared.env_config_manager → [EnvConfig] Falha ao resolver secret para MONGO_URL: 403 Permission denied on resource project forexsystem-492216. [reason: "CONSUMER_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "secretmanager.googleapis.com"
+}
+metadata {
+  key: "containerInfo"
+  value: "forexsystem-492216"
+}
+metadata {
+  key: "consumer"
+  value: "projects/forexsystem-492216"
+}
+, locale: "en-US"
+message: "Permission denied on resource project forexsystem-492216."
+, links {
+  description: "Google developers console"
+  url: "https://console.developers.google.com"
+}
+]
+ERROR → forex_shared.env_config_manager → [EnvConfig] Falha ao resolver secret para SYSTEM_X25519_PRIVATE_KEY: 403 Permission denied on resource project forexsystem-492216. [reason: "CONSUMER_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "secretmanager.googleapis.com"
+}
+metadata {
+  key: "containerInfo"
+  value: "forexsystem-492216"
+}
+metadata {
+  key: "consumer"
+  value: "projects/forexsystem-492216"
+}
+, locale: "en-US"
+message: "Permission denied on resource project forexsystem-492216."
+, links {
+  description: "Google developers console"
+  url: "https://console.developers.google.com"
+}
+]
+ERROR → forex_shared.env_config_manager → [EnvConfig] Falha ao resolver secret para SYSTEM_X25519_PUBLIC_KEY: 403 Permission denied on resource project forexsystem-492216. [reason: "CONSUMER_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "secretmanager.googleapis.com"
+}
+metadata {
+  key: "containerInfo"
+  value: "forexsystem-492216"
+}
+metadata {
+  key: "consumer"
+  value: "projects/forexsystem-492216"
+}
+, locale: "en-US"
+message: "Permission denied on resource project forexsystem-492216."
+, links {
+  description: "Google developers console"
+  url: "https://console.developers.google.com"
+}
+]
+INFO → forex_shared.env_config_manager → [EnvConfig] 🔏 45 chaves marcadas como Secret no arquivo.
+WARNING → __main__ → Failed to sync with MongoDB EnvConfig: No module named 'cryptor'
+INFO → __main__ → Starting OracleWorker: oracle_1 (Max Sessions: 1)
+WARNING → __main__ → MongoDB unavailable — persistence skipped: Username and password must be escaped according to RFC 3986, use urllib.parse.quote_plus
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Starting...
+INFO → forex_shared.worker_api.ia_factory → [IAProviderFactory] IA_PROVIDER='GEMINI' (from env)
+INFO → forex_shared.worker_api.ia_factory → [IAProviderFactory] Instantiated: GeminiIAProvider (backend=GEMINI, model=gemini-2.5-pro-preview-05-06)
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] Querying available Gemini models...
+INFO → httpx → HTTP Request: GET https://generativelanguage.googleapis.com/v1beta/models "HTTP/1.1 200 OK"
+INFO → httpx → HTTP Request: GET https://generativelanguage.googleapis.com/v1beta/models?pageToken=CiRtb2RlbHMvdmVvLTMuMS1mYXN0LWdlbmVyYXRlLXByZXZpZXc%3D "HTTP/1.1 200 OK"
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] Discovered 18 models from API.
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] Initialized. primary=gemini-2.5-pro-preview-05-06 chain=19 concurrency=1 max_retries=15 url_context=False google_search=False thinking=HIGH
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Provider ready: IABackend.GEMINI | model=gemini-2.5-pro-preview-05-06
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@localhost:5672/
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@localhost:5672/
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectado. Exchange 'forex_market_events' ativo.
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] MQ connected.
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Inscrito: 'intel.oracle.review' → fila 'amq_edf4ca004bae45c2827ce3a9946acadc'
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Subscribed to intel.oracle.review
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Ready. concurrency=1
+INFO → __main__ → Bootstrapping default OracleSession...
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Running. Waiting for messages...
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Consumo ativo. Aguardando eventos...

@@ -24,13 +24,25 @@ except Exception as e:
     logger.warning(f"Failed to sync with MongoDB EnvConfig: {e}")
 
 from ia_oracle.worker import OracleWorker
+from ia_oracle.store import OracleMongoStore
 
-async def run_worker(worker_id: str, max_sessions: int) -> None:
+async def run_worker(worker_id: str, max_sessions: int, enable_mongo: bool = True) -> None:
     """Starts a standalone Oracle Worker process."""
-    
+
     logger.info(f"Starting OracleWorker: {worker_id} (Max Sessions: {max_sessions})")
-    
-    worker = OracleWorker(worker_id=worker_id, max_sessions=max_sessions)
+
+    # ── MongoDB store (optional — graceful degradation) ───────────────
+    store: OracleMongoStore | None = None
+    if enable_mongo:
+        try:
+            store = OracleMongoStore()
+            await store.ensure_indexes()
+            logger.info("MongoDB persistence enabled (collection: oracle_resolved)")
+        except Exception as exc:
+            logger.warning("MongoDB unavailable — persistence skipped: %s", exc)
+            store = None
+
+    worker = OracleWorker(worker_id=worker_id, max_sessions=max_sessions, store=store)
     
     # Graceful shutdown handler
     loop = asyncio.get_running_loop()
@@ -64,11 +76,12 @@ def main():
     parser = argparse.ArgumentParser(description="IA Oracle Worker Node")
     parser.add_argument("--worker-id", type=str, default="oracle_worker_1", help="Unique ID for this worker")
     parser.add_argument("--max-sessions", type=int, default=1, help="Max concurrent LLM sessions on this worker")
+    parser.add_argument("--no-mongo", action="store_true", help="Disable MongoDB persistence (dry-run mode)")
     
     args = parser.parse_args()
 
     try:
-        asyncio.run(run_worker(args.worker_id, args.max_sessions))
+        asyncio.run(run_worker(args.worker_id, args.max_sessions, enable_mongo=not args.no_mongo))
     except KeyboardInterrupt:
         logger.info("Exiting.")
     except Exception as e:
