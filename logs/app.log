@@ -5464,3 +5464,136 @@ INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Ready.
 INFO → __main__ → Bootstrapping default OracleSession...
 INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Running. Waiting for messages...
 INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Consumo ativo. Aguardando eventos...
+INFO → root → Logging system initialized
+INFO → forex_shared.env_config_manager → [EnvConfig] 🔏 47 chaves marcadas como Secret no arquivo.
+INFO → forex_shared.env_config_manager → [EnvConfig] 5 chaves bootstrap carregadas do arquivo.
+WARNING → forex_shared.env_config_manager → [EnvConfig] Crypto engine não inicializado: No module named 'azure.keyvault'
+WARNING → forex_shared.env_config_manager → [EnvConfig] MongoDB indisponível no startup: No module named 'azure.keyvault'
+INFO → forex_shared.env_config_manager → [EnvConfig] 144 novas chaves setadas em os.environ.
+ERROR → forex_shared.env_config_manager → [EnvConfig] Falha ao carregar do MongoDB: Invalid URI scheme: URI must begin with 'mongodb://' or 'mongodb+srv://'
+INFO → root → Logging system initialized
+INFO → forex_shared.env_config_manager → [EnvConfig] 🔏 47 chaves marcadas como Secret no arquivo.
+INFO → forex_shared.env_config_manager → [EnvConfig] 5 chaves bootstrap carregadas do arquivo.
+WARNING → forex_shared.env_config_manager → [EnvConfig] Crypto engine não inicializado: No module named 'azure.keyvault'
+WARNING → forex_shared.env_config_manager → [EnvConfig] MongoDB indisponível no startup: No module named 'azure.keyvault'
+INFO → forex_shared.env_config_manager → [EnvConfig] 144 novas chaves setadas em os.environ.
+ERROR → forex_shared.env_config_manager → [EnvConfig] Falha ao carregar do MongoDB: Invalid URI scheme: URI must begin with 'mongodb://' or 'mongodb+srv://'
+INFO → root → Logging system initialized
+INFO → forex_shared.env_config_manager → [EnvConfig] 🔏 47 chaves marcadas como Secret no arquivo.
+INFO → forex_shared.env_config_manager → [EnvConfig] 5 chaves bootstrap carregadas do arquivo.
+INFO → azure.identity._credentials.environment → No environment configuration found.
+INFO → azure.identity._credentials.managed_identity → ManagedIdentityCredential will use IMDS
+INFO → azure.core.pipeline.policies.http_logging_policy → Request URL: 'https://forexsystemkeyvault.vault.azure.net/secrets/SYSTEM-X25519-PUBLIC-KEY/?api-version=2025-07-01'
+Request method: 'GET'
+Request headers:
+    'Accept': 'application/json'
+    'x-ms-client-request-id': '65110331-484c-11f1-8a6d-04e8b995c80f'
+    'User-Agent': 'azsdk-python-keyvault-secrets/4.11.0 Python/3.12.10 (Windows-11-10.0.26200-SP0)'
+No body was attached to the request
+INFO → azure.core.pipeline.policies.http_logging_policy → Response status: 401
+Response headers:
+    'Cache-Control': 'no-cache'
+    'Pragma': 'no-cache'
+    'Content-Type': 'application/json; charset=utf-8'
+    'Expires': '-1'
+    'x-ms-keyvault-region': 'eastus'
+    'x-ms-client-request-id': '65110331-484c-11f1-8a6d-04e8b995c80f'
+    'x-ms-request-id': 'a86f37ed-a01c-4981-b310-1af0b7f41c83'
+    'x-ms-keyvault-service-version': '1.9.3070.2'
+    'x-ms-keyvault-network-info': 'conn_type=Ipv4;addr=45.224.235.237;act_addr_fam=InterNetwork;'
+    'X-Content-Type-Options': 'REDACTED'
+    'Strict-Transport-Security': 'REDACTED'
+    'WWW-Authenticate': 'Bearer authorization="https://login.microsoftonline.com/20805bf8-a8ad-43b8-b57f-8780a65dc1a6", resource="https://vault.azure.net"'
+    'Date': 'Tue, 05 May 2026 06:33:57 GMT'
+    'Content-Length': '108'
+INFO → azure.core.pipeline.policies.http_logging_policy → Request URL: 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=REDACTED'
+Request method: 'GET'
+Request headers:
+    'User-Agent': 'azsdk-python-identity/1.25.3 Python/3.12.10 (Windows-11-10.0.26200-SP0)'
+No body was attached to the request
+INFO → azure.identity._credentials.chained → DefaultAzureCredential acquired a token from AzureCliCredential
+INFO → azure.core.pipeline.policies.http_logging_policy → Request URL: 'https://forexsystemkeyvault.vault.azure.net/secrets/SYSTEM-X25519-PUBLIC-KEY/?api-version=2025-07-01'
+Request method: 'GET'
+Request headers:
+    'Accept': 'application/json'
+    'x-ms-client-request-id': '65110331-484c-11f1-8a6d-04e8b995c80f'
+    'User-Agent': 'azsdk-python-keyvault-secrets/4.11.0 Python/3.12.10 (Windows-11-10.0.26200-SP0)'
+    'Authorization': 'REDACTED'
+No body was attached to the request
+INFO → azure.core.pipeline.policies.http_logging_policy → Response status: 200
+Response headers:
+    'Cache-Control': 'no-cache'
+    'Pragma': 'no-cache'
+    'Content-Type': 'application/json; charset=utf-8'
+    'Expires': '-1'
+    'x-ms-keyvault-region': 'eastus'
+    'x-ms-client-request-id': '65110331-484c-11f1-8a6d-04e8b995c80f'
+    'x-ms-request-id': '3ad913c2-21b5-498e-ab4b-95da0ca6cfba'
+    'x-ms-keyvault-service-version': '1.9.3070.2'
+    'x-ms-keyvault-network-info': 'conn_type=Ipv4;addr=45.224.235.237;act_addr_fam=InterNetwork;'
+    'X-Content-Type-Options': 'REDACTED'
+    'Strict-Transport-Security': 'REDACTED'
+    'Date': 'Tue, 05 May 2026 06:33:58 GMT'
+    'Content-Length': '339'
+INFO → azure.core.pipeline.policies.http_logging_policy → Request URL: 'https://forexsystemkeyvault.vault.azure.net/secrets/SYSTEM-X25519-PRIVATE-KEY/?api-version=2025-07-01'
+Request method: 'GET'
+Request headers:
+    'Accept': 'application/json'
+    'x-ms-client-request-id': '665ed45a-484c-11f1-9bb2-04e8b995c80f'
+    'User-Agent': 'azsdk-python-keyvault-secrets/4.11.0 Python/3.12.10 (Windows-11-10.0.26200-SP0)'
+    'Authorization': 'REDACTED'
+No body was attached to the request
+INFO → azure.core.pipeline.policies.http_logging_policy → Response status: 200
+Response headers:
+    'Cache-Control': 'no-cache'
+    'Pragma': 'no-cache'
+    'Content-Type': 'application/json; charset=utf-8'
+    'Expires': '-1'
+    'x-ms-keyvault-region': 'eastus'
+    'x-ms-client-request-id': '665ed45a-484c-11f1-9bb2-04e8b995c80f'
+    'x-ms-request-id': 'eb3073de-27ab-4162-ad04-39d9426ab25e'
+    'x-ms-keyvault-service-version': '1.9.3070.2'
+    'x-ms-keyvault-network-info': 'conn_type=Ipv4;addr=45.224.235.237;act_addr_fam=InterNetwork;'
+    'X-Content-Type-Options': 'REDACTED'
+    'Strict-Transport-Security': 'REDACTED'
+    'Date': 'Tue, 05 May 2026 06:33:58 GMT'
+    'Content-Length': '340'
+INFO → forex_shared.env_config_manager → [EnvConfig] CryptoBeast inicializado via Azure Key Vault | key_id=I🔥Love💞You🔥Babe
+INFO → azure.identity._credentials.environment → No environment configuration found.
+INFO → azure.identity._credentials.managed_identity → ManagedIdentityCredential will use IMDS
+INFO → azure.core.pipeline.policies.http_logging_policy → Request URL: 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=REDACTED'
+Request method: 'GET'
+Request headers:
+    'User-Agent': 'azsdk-python-identity/1.25.3 Python/3.12.10 (Windows-11-10.0.26200-SP0)'
+No body was attached to the request
+INFO → azure.identity._credentials.chained → DefaultAzureCredential acquired a token from AzureCliCredential
+INFO → azure.core.pipeline.policies.http_logging_policy → Request URL: 'https://forexsystemkeyvault.vault.azure.net/secrets/MONGO-URL/?api-version=2025-07-01'
+Request method: 'GET'
+Request headers:
+    'Accept': 'application/json'
+    'x-ms-client-request-id': '6688f814-484c-11f1-9f1a-04e8b995c80f'
+    'User-Agent': 'azsdk-python-keyvault-secrets/4.11.0 Python/3.12.10 (Windows-11-10.0.26200-SP0)'
+    'Authorization': 'REDACTED'
+No body was attached to the request
+INFO → azure.core.pipeline.policies.http_logging_policy → Response status: 404
+Response headers:
+    'Cache-Control': 'no-cache'
+    'Pragma': 'no-cache'
+    'Content-Type': 'application/json; charset=utf-8'
+    'Expires': '-1'
+    'x-ms-keyvault-region': 'eastus'
+    'x-ms-client-request-id': '6688f814-484c-11f1-9f1a-04e8b995c80f'
+    'x-ms-request-id': 'aafa29b5-72ed-4726-8771-5d57b697c48a'
+    'x-ms-keyvault-service-version': '1.9.3070.2'
+    'x-ms-keyvault-network-info': 'conn_type=Ipv4;addr=45.224.235.237;act_addr_fam=InterNetwork;'
+    'X-Content-Type-Options': 'REDACTED'
+    'Strict-Transport-Security': 'REDACTED'
+    'Date': 'Tue, 05 May 2026 06:34:01 GMT'
+    'Content-Length': '306'
+ERROR → forex_shared.env_config_manager → [EnvConfig] Falha ao resolver secret para MONGO_URL: (SecretNotFound) A secret with (name/id) MONGO-URL was not found in this key vault. If you recently deleted this secret you may be able to recover it using the correct recovery command. For help resolving this issue, please see https://go.microsoft.com/fwlink/?linkid=2125182
+Code: SecretNotFound
+Message: A secret with (name/id) MONGO-URL was not found in this key vault. If you recently deleted this secret you may be able to recover it using the correct recovery command. For help resolving this issue, please see https://go.microsoft.com/fwlink/?linkid=2125182
+WARNING → forex_shared.env_config_manager → [EnvConfig] MongoDB indisponível no startup: Invalid URI scheme: URI must begin with 'mongodb://' or 'mongodb+srv://'
+INFO → forex_shared.env_config_manager → [EnvConfig] 144 novas chaves setadas em os.environ.
+ERROR → forex_shared.env_config_manager → [EnvConfig] Falha ao carregar do MongoDB: Invalid URI scheme: URI must begin with 'mongodb://' or 'mongodb+srv://'
+INFO → __main__ → OK!

@@ -21,7 +21,9 @@ logger = get_logger(__name__)
 try:
     EnvConfigManager.startup()
 except Exception as e:
-    logger.warning(f"Failed to sync with MongoDB EnvConfig: {e}")
+    logger.exception(f"Failed to sync with MongoDB EnvConfig: {e}")
+    raise Exception(f"Failed to sync with MongoDB EnvConfig: {e}")
+    sys.exit(1)
 
 from ia_oracle.worker import OracleWorker
 from ia_oracle.store import OracleMongoStore
