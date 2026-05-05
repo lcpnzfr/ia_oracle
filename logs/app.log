@@ -5597,3 +5597,366 @@ WARNING → forex_shared.env_config_manager → [EnvConfig] MongoDB indisponíve
 INFO → forex_shared.env_config_manager → [EnvConfig] 144 novas chaves setadas em os.environ.
 ERROR → forex_shared.env_config_manager → [EnvConfig] Falha ao carregar do MongoDB: Invalid URI scheme: URI must begin with 'mongodb://' or 'mongodb+srv://'
 INFO → __main__ → OK!
+INFO → root → Logging system initialized
+INFO → forex_shared.env_config_manager → [EnvConfig] 🔏 47 chaves marcadas como Secret no arquivo.
+INFO → forex_shared.env_config_manager → [EnvConfig] 5 chaves bootstrap carregadas do arquivo.
+INFO → azure.identity._credentials.environment → No environment configuration found.
+INFO → azure.identity._credentials.managed_identity → ManagedIdentityCredential will use IMDS
+INFO → azure.core.pipeline.policies.http_logging_policy → Request URL: 'https://forexsystemkeyvault.vault.azure.net/secrets/SYSTEM-X25519-PUBLIC-KEY/?api-version=2025-07-01'
+Request method: 'GET'
+Request headers:
+    'Accept': 'application/json'
+    'x-ms-client-request-id': 'acbfd313-4893-11f1-943c-04e8b995c80f'
+    'User-Agent': 'azsdk-python-keyvault-secrets/4.11.0 Python/3.12.10 (Windows-11-10.0.26200-SP0)'
+No body was attached to the request
+INFO → azure.core.pipeline.policies.http_logging_policy → Response status: 401
+Response headers:
+    'Cache-Control': 'no-cache'
+    'Pragma': 'no-cache'
+    'Content-Type': 'application/json; charset=utf-8'
+    'Expires': '-1'
+    'x-ms-keyvault-region': 'eastus'
+    'x-ms-client-request-id': 'acbfd313-4893-11f1-943c-04e8b995c80f'
+    'x-ms-request-id': '19c78c2c-ea62-4f22-b7c7-338e9301946a'
+    'x-ms-keyvault-service-version': '1.9.3070.2'
+    'x-ms-keyvault-network-info': 'conn_type=Ipv4;addr=45.224.235.237;act_addr_fam=InterNetwork;'
+    'X-Content-Type-Options': 'REDACTED'
+    'Strict-Transport-Security': 'REDACTED'
+    'WWW-Authenticate': 'Bearer authorization="https://login.microsoftonline.com/20805bf8-a8ad-43b8-b57f-8780a65dc1a6", resource="https://vault.azure.net"'
+    'Date': 'Tue, 05 May 2026 15:04:12 GMT'
+    'Content-Length': '108'
+INFO → azure.core.pipeline.policies.http_logging_policy → Request URL: 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=REDACTED'
+Request method: 'GET'
+Request headers:
+    'User-Agent': 'azsdk-python-identity/1.25.3 Python/3.12.10 (Windows-11-10.0.26200-SP0)'
+No body was attached to the request
+INFO → azure.identity._credentials.chained → DefaultAzureCredential acquired a token from AzureCliCredential
+INFO → azure.core.pipeline.policies.http_logging_policy → Request URL: 'https://forexsystemkeyvault.vault.azure.net/secrets/SYSTEM-X25519-PUBLIC-KEY/?api-version=2025-07-01'
+Request method: 'GET'
+Request headers:
+    'Accept': 'application/json'
+    'x-ms-client-request-id': 'acbfd313-4893-11f1-943c-04e8b995c80f'
+    'User-Agent': 'azsdk-python-keyvault-secrets/4.11.0 Python/3.12.10 (Windows-11-10.0.26200-SP0)'
+    'Authorization': 'REDACTED'
+No body was attached to the request
+INFO → azure.core.pipeline.policies.http_logging_policy → Response status: 200
+Response headers:
+    'Cache-Control': 'no-cache'
+    'Pragma': 'no-cache'
+    'Content-Type': 'application/json; charset=utf-8'
+    'Expires': '-1'
+    'x-ms-keyvault-region': 'eastus'
+    'x-ms-client-request-id': 'acbfd313-4893-11f1-943c-04e8b995c80f'
+    'x-ms-request-id': 'd8ba4fa5-37c1-49d8-a878-ced8018b3403'
+    'x-ms-keyvault-service-version': '1.9.3070.2'
+    'x-ms-keyvault-network-info': 'conn_type=Ipv4;addr=45.224.235.237;act_addr_fam=InterNetwork;'
+    'X-Content-Type-Options': 'REDACTED'
+    'Strict-Transport-Security': 'REDACTED'
+    'Date': 'Tue, 05 May 2026 15:04:16 GMT'
+    'Content-Length': '339'
+INFO → azure.core.pipeline.policies.http_logging_policy → Request URL: 'https://forexsystemkeyvault.vault.azure.net/secrets/SYSTEM-X25519-PRIVATE-KEY/?api-version=2025-07-01'
+Request method: 'GET'
+Request headers:
+    'Accept': 'application/json'
+    'x-ms-client-request-id': 'b027f0a4-4893-11f1-bfa2-04e8b995c80f'
+    'User-Agent': 'azsdk-python-keyvault-secrets/4.11.0 Python/3.12.10 (Windows-11-10.0.26200-SP0)'
+    'Authorization': 'REDACTED'
+No body was attached to the request
+INFO → azure.core.pipeline.policies.http_logging_policy → Response status: 200
+Response headers:
+    'Cache-Control': 'no-cache'
+    'Pragma': 'no-cache'
+    'Content-Type': 'application/json; charset=utf-8'
+    'Expires': '-1'
+    'x-ms-keyvault-region': 'eastus'
+    'x-ms-client-request-id': 'b027f0a4-4893-11f1-bfa2-04e8b995c80f'
+    'x-ms-request-id': 'a0e6934a-20aa-4eb0-b3df-b7001a3ef60a'
+    'x-ms-keyvault-service-version': '1.9.3070.2'
+    'x-ms-keyvault-network-info': 'conn_type=Ipv4;addr=45.224.235.237;act_addr_fam=InterNetwork;'
+    'X-Content-Type-Options': 'REDACTED'
+    'Strict-Transport-Security': 'REDACTED'
+    'Date': 'Tue, 05 May 2026 15:04:16 GMT'
+    'Content-Length': '340'
+INFO → forex_shared.env_config_manager → [EnvConfig] CryptoBeast inicializado via Azure Key Vault | key_id=I🔥Love💞You🔥Babe
+INFO → forex_shared.env_config_manager → [EnvConfig] 1 bootstrap secrets carregados.
+INFO → forex_shared.mongo_manager → [MongoManager] Conectado via connection string | db=forex_system
+INFO → forex_shared.mongo_manager → [MongoManager] bulk_sync(env_config): 150 novos, 0 atualizados.
+INFO → forex_shared.env_config_manager → [EnvConfig] 150 chaves sincronizadas com MongoDB.
+INFO → forex_shared.env_config_manager → [EnvConfig] 143 novas chaves setadas em os.environ.
+INFO → forex_shared.env_config_manager → [EnvConfig] 150 chaves recarregadas do MongoDB.
+INFO → __main__ → OK!
+INFO → root → Logging system initialized
+INFO → forex_shared.env_config_manager → [EnvConfig] 🔏 47 chaves marcadas como Secret no arquivo.
+INFO → forex_shared.env_config_manager → [EnvConfig] 5 chaves bootstrap carregadas do arquivo.
+INFO → azure.identity._credentials.environment → No environment configuration found.
+INFO → azure.identity._credentials.managed_identity → ManagedIdentityCredential will use IMDS
+INFO → azure.core.pipeline.policies.http_logging_policy → Request URL: 'https://forexsystemkeyvault.vault.azure.net/secrets/SYSTEM-X25519-PUBLIC-KEY/?api-version=2025-07-01'
+Request method: 'GET'
+Request headers:
+    'Accept': 'application/json'
+    'x-ms-client-request-id': 'ec50ca68-4893-11f1-8667-04e8b995c80f'
+    'User-Agent': 'azsdk-python-keyvault-secrets/4.11.0 Python/3.12.10 (Windows-11-10.0.26200-SP0)'
+No body was attached to the request
+INFO → azure.core.pipeline.policies.http_logging_policy → Response status: 401
+Response headers:
+    'Cache-Control': 'no-cache'
+    'Pragma': 'no-cache'
+    'Content-Type': 'application/json; charset=utf-8'
+    'Expires': '-1'
+    'x-ms-keyvault-region': 'eastus'
+    'x-ms-client-request-id': 'ec50ca68-4893-11f1-8667-04e8b995c80f'
+    'x-ms-request-id': 'a1888301-4d8b-4153-bbd1-83be7edbe6ca'
+    'x-ms-keyvault-service-version': '1.9.3070.2'
+    'x-ms-keyvault-network-info': 'conn_type=Ipv4;addr=45.224.235.237;act_addr_fam=InterNetwork;'
+    'X-Content-Type-Options': 'REDACTED'
+    'Strict-Transport-Security': 'REDACTED'
+    'WWW-Authenticate': 'Bearer authorization="https://login.microsoftonline.com/20805bf8-a8ad-43b8-b57f-8780a65dc1a6", resource="https://vault.azure.net"'
+    'Date': 'Tue, 05 May 2026 15:05:58 GMT'
+    'Content-Length': '108'
+INFO → azure.core.pipeline.policies.http_logging_policy → Request URL: 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=REDACTED'
+Request method: 'GET'
+Request headers:
+    'User-Agent': 'azsdk-python-identity/1.25.3 Python/3.12.10 (Windows-11-10.0.26200-SP0)'
+No body was attached to the request
+INFO → azure.identity._credentials.chained → DefaultAzureCredential acquired a token from AzureCliCredential
+INFO → azure.core.pipeline.policies.http_logging_policy → Request URL: 'https://forexsystemkeyvault.vault.azure.net/secrets/SYSTEM-X25519-PUBLIC-KEY/?api-version=2025-07-01'
+Request method: 'GET'
+Request headers:
+    'Accept': 'application/json'
+    'x-ms-client-request-id': 'ec50ca68-4893-11f1-8667-04e8b995c80f'
+    'User-Agent': 'azsdk-python-keyvault-secrets/4.11.0 Python/3.12.10 (Windows-11-10.0.26200-SP0)'
+    'Authorization': 'REDACTED'
+No body was attached to the request
+INFO → azure.core.pipeline.policies.http_logging_policy → Response status: 200
+Response headers:
+    'Cache-Control': 'no-cache'
+    'Pragma': 'no-cache'
+    'Content-Type': 'application/json; charset=utf-8'
+    'Expires': '-1'
+    'x-ms-keyvault-region': 'eastus'
+    'x-ms-client-request-id': 'ec50ca68-4893-11f1-8667-04e8b995c80f'
+    'x-ms-request-id': '265bc0fb-522a-493b-9403-b5e78e9be1fa'
+    'x-ms-keyvault-service-version': '1.9.3070.2'
+    'x-ms-keyvault-network-info': 'conn_type=Ipv4;addr=45.224.235.237;act_addr_fam=InterNetwork;'
+    'X-Content-Type-Options': 'REDACTED'
+    'Strict-Transport-Security': 'REDACTED'
+    'Date': 'Tue, 05 May 2026 15:06:00 GMT'
+    'Content-Length': '339'
+INFO → azure.core.pipeline.policies.http_logging_policy → Request URL: 'https://forexsystemkeyvault.vault.azure.net/secrets/SYSTEM-X25519-PRIVATE-KEY/?api-version=2025-07-01'
+Request method: 'GET'
+Request headers:
+    'Accept': 'application/json'
+    'x-ms-client-request-id': 'ed9194b4-4893-11f1-8fca-04e8b995c80f'
+    'User-Agent': 'azsdk-python-keyvault-secrets/4.11.0 Python/3.12.10 (Windows-11-10.0.26200-SP0)'
+    'Authorization': 'REDACTED'
+No body was attached to the request
+INFO → azure.core.pipeline.policies.http_logging_policy → Response status: 200
+Response headers:
+    'Cache-Control': 'no-cache'
+    'Pragma': 'no-cache'
+    'Content-Type': 'application/json; charset=utf-8'
+    'Expires': '-1'
+    'x-ms-keyvault-region': 'eastus'
+    'x-ms-client-request-id': 'ed9194b4-4893-11f1-8fca-04e8b995c80f'
+    'x-ms-request-id': '4216b73e-94a9-41de-bcd5-751ef0524a8f'
+    'x-ms-keyvault-service-version': '1.9.3070.2'
+    'x-ms-keyvault-network-info': 'conn_type=Ipv4;addr=45.224.235.237;act_addr_fam=InterNetwork;'
+    'X-Content-Type-Options': 'REDACTED'
+    'Strict-Transport-Security': 'REDACTED'
+    'Date': 'Tue, 05 May 2026 15:06:00 GMT'
+    'Content-Length': '340'
+INFO → forex_shared.env_config_manager → [EnvConfig] CryptoBeast inicializado via Azure Key Vault | key_id=I🔥Love💞You🔥Babe
+INFO → forex_shared.env_config_manager → [EnvConfig] 1 bootstrap secrets carregados.
+INFO → forex_shared.mongo_manager → [MongoManager] Conectado via connection string | db=forex_system
+INFO → forex_shared.mongo_manager → [MongoManager] bulk_sync(env_config): 0 novos, 26 atualizados.
+INFO → forex_shared.env_config_manager → [EnvConfig] 150 chaves sincronizadas com MongoDB.
+INFO → forex_shared.env_config_manager → [EnvConfig] 143 novas chaves setadas em os.environ.
+INFO → forex_shared.env_config_manager → [EnvConfig] 150 chaves recarregadas do MongoDB.
+INFO → __main__ → OK!
+INFO → root → Logging system initialized
+INFO → forex_shared.env_config_manager → [EnvConfig] 🔏 47 chaves marcadas como Secret no arquivo.
+INFO → forex_shared.env_config_manager → [EnvConfig] 5 chaves bootstrap carregadas do arquivo.
+INFO → forex_shared.env_config_manager → [EnvConfig] CryptoBeast inicializado via Azure Key Vault | key_id=I🔥Love💞You🔥Babe
+INFO → forex_shared.env_config_manager → [EnvConfig] 1 bootstrap secrets carregados.
+INFO → forex_shared.mongo_manager → [MongoManager] Conectado via connection string | db=forex_system
+INFO → forex_shared.mongo_manager → [MongoManager] bulk_sync(env_config): 0 novos, 26 atualizados.
+INFO → forex_shared.env_config_manager → [EnvConfig] 150 chaves sincronizadas com MongoDB.
+INFO → forex_shared.env_config_manager → [EnvConfig] 143 novas chaves setadas em os.environ.
+INFO → forex_shared.env_config_manager → [EnvConfig] 150 chaves recarregadas do MongoDB.
+INFO → __main__ → OK!
+INFO → root → Logging system initialized
+INFO → forex_shared.env_config_manager → [EnvConfig] 🔏 47 chaves marcadas como Secret no arquivo.
+INFO → forex_shared.env_config_manager → [EnvConfig] 5 chaves bootstrap carregadas do arquivo.
+INFO → forex_shared.env_config_manager → [EnvConfig] CryptoBeast inicializado via Azure Key Vault | key_id=I🔥Love💞You🔥Babe
+INFO → forex_shared.env_config_manager → [EnvConfig] 1 bootstrap secrets carregados.
+INFO → forex_shared.mongo_manager → [MongoManager] Conectado via connection string | db=forex_system
+INFO → forex_shared.mongo_manager → [MongoManager] bulk_sync(env_config): 0 novos, 26 atualizados.
+INFO → forex_shared.env_config_manager → [EnvConfig] 150 chaves sincronizadas com MongoDB.
+INFO → forex_shared.env_config_manager → [EnvConfig] 143 novas chaves setadas em os.environ.
+INFO → forex_shared.env_config_manager → [EnvConfig] 150 chaves recarregadas do MongoDB.
+INFO → __main__ → OK!
+INFO → root → Logging system initialized
+INFO → forex_shared.env_config_manager → [EnvConfig] 🔏 47 chaves marcadas como Secret no arquivo.
+INFO → forex_shared.env_config_manager → [EnvConfig] 5 chaves bootstrap carregadas do arquivo.
+INFO → forex_shared.env_config_manager → [EnvConfig] CryptoBeast inicializado via Azure Key Vault | key_id=I🔥Love💞You🔥Babe
+INFO → forex_shared.env_config_manager → [EnvConfig] 1 bootstrap secrets carregados.
+INFO → forex_shared.mongo_manager → [MongoManager] Conectado via connection string | db=forex_system
+INFO → forex_shared.mongo_manager → [MongoManager] bulk_sync(env_config): 0 novos, 26 atualizados.
+INFO → forex_shared.env_config_manager → [EnvConfig] 150 chaves sincronizadas com MongoDB.
+INFO → forex_shared.env_config_manager → [EnvConfig] 143 novas chaves setadas em os.environ.
+INFO → forex_shared.env_config_manager → [EnvConfig] 150 chaves recarregadas do MongoDB.
+INFO → root → Logging system initialized
+INFO → __main__ → === Oracle MQ Subscriber ===
+INFO → __main__ → Provider    : RABBITMQ_ASYNC
+INFO → __main__ → Topics      : intel.oracle.review, intel.oracle.resolved, intel.global_tags
+INFO → __main__ → Idle timeout: 60 s (after first message)
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@localhost:5672/
+INFO → __main__ → Starting OracleWorker: test_worker (Max Sessions: 2)
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@localhost:5672/
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectado. Exchange 'forex_market_events' ativo.
+INFO → __main__ → MQ connected.
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Inscrito: 'intel.oracle.review' → fila 'amq_031674bdd8304db4944c9bedbdaec4a1'
+INFO → __main__ →   subscribed: intel.oracle.review
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Inscrito: 'intel.oracle.resolved' → fila 'amq_b19f09db57604a8594d385b15d2bf2ef'
+INFO → __main__ →   subscribed: intel.oracle.resolved
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Inscrito: 'intel.global_tags' → fila 'amq_153466cf191944b9bc9d83aee07e7314'
+INFO → __main__ →   subscribed: intel.global_tags
+INFO → __main__ → Waiting for messages... (Ctrl-C to quit)
+
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Consumo ativo. Aguardando eventos...
+INFO → root → Logging system initialized
+INFO → __main__ → === Oracle MQ Publisher Test ===
+INFO → __main__ → Mock file : C:\Projects\forex_system\services\ia_oracle\ia_oracle\data\mock_intel_items_big_process_result.json
+INFO → __main__ → Topic     : intel.oracle.review
+INFO → __main__ → Count     : 1 items
+INFO → __main__ → Delay     : 0.5 s between messages
+INFO → __main__ → Loaded 1 items
+INFO → __main__ → Connecting to MQ (provider=RABBITMQ_ASYNC)...
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@localhost:5672/
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@localhost:5672/
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectado. Exchange 'forex_market_events' ativo.
+INFO → __main__ → MQ connected.
+INFO → __main__ → [#1] topic=intel.oracle.review               ts=2026-05-05T15:16:03+00:00
+INFO → __main__ → [1/1] Published  id=4cbe67bb-9eab-4865-8d91-64dc8d4ad072    title=Scott Bassent, US Treasury Secretary, wrote on the social ne
+INFO → __main__ → Done. 1/1 published.
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conexão encerrada.
+INFO → __main__ → MQ disconnected.
+INFO → __main__ → MongoDB persistence enabled (collection: oracle_resolved)
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:test_worker] Starting...
+INFO → forex_shared.worker_api.ia_factory → [IAProviderFactory] IA_PROVIDER='GEMINI' (from OracleConfig)
+INFO → forex_shared.worker_api.ia_factory → [IAProviderFactory] Instantiated: GeminiIAProvider (backend=GEMINI, model=gemini-2.5-pro)
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] Querying available Gemini models...
+INFO → httpx → HTTP Request: GET https://generativelanguage.googleapis.com/v1beta/models "HTTP/1.1 200 OK"
+INFO → httpx → HTTP Request: GET https://generativelanguage.googleapis.com/v1beta/models?pageToken=CiRtb2RlbHMvdmVvLTMuMS1mYXN0LWdlbmVyYXRlLXByZXZpZXc%3D "HTTP/1.1 200 OK"
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] Discovered 18 models from API.
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] Initialized. primary=gemini-2.5-pro chain=18 concurrency=1 max_retries=15 url_context=False google_search=False thinking=HIGH
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:test_worker] Provider ready: IABackend.GEMINI | model=gemini-2.5-pro
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@localhost:5672/
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@localhost:5672/
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectado. Exchange 'forex_market_events' ativo.
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:test_worker] MQ connected.
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Inscrito: 'intel.oracle.review' → fila 'amq_4a8ac735693047b89846b03ea0fc1cac'
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:test_worker] Subscribed to intel.oracle.review
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:test_worker] Ready. concurrency=2
+INFO → __main__ → Bootstrapping default OracleSession...
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:test_worker] Running. Waiting for messages...
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Consumo ativo. Aguardando eventos...
+INFO → __main__ → Idle 60 s — stopping. Total received: 1
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conexão encerrada.
+INFO → __main__ → Done. Total messages received: 1
+INFO → root → Logging system initialized
+INFO → __main__ → === Oracle MQ Publisher Test ===
+INFO → __main__ → Mock file : C:\Projects\forex_system\services\ia_oracle\ia_oracle\data\mock_intel_items_big_process_result.json
+INFO → __main__ → Topic     : intel.oracle.review
+INFO → __main__ → Count     : 3 items
+INFO → __main__ → Delay     : 0.5 s between messages
+INFO → __main__ → Loaded 3 items
+INFO → __main__ → Connecting to MQ (provider=RABBITMQ_ASYNC)...
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@localhost:5672/
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@localhost:5672/
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectado. Exchange 'forex_market_events' ativo.
+INFO → __main__ → MQ connected.
+INFO → __main__ → [1/3] Published  id=4cbe67bb-9eab-4865-8d91-64dc8d4ad072    title=Scott Bassent, US Treasury Secretary, wrote on the social ne
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:test_worker] Received review  id=4cbe67bb-9eab-4865-8d91-64dc8d4ad072  title=Scott Bassent, US Treasury Secretary, wrote on the social network X that followi
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:test_worker] Calling Gemini for id=4cbe67bb-9eab-4865-8d91-64dc8d4ad072  model=gemini-2.5-pro
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → __main__ → [2/3] Published  id=91e05b6d-c44b-4e10-b413-bb75c8592299    title=Oil prices have risen dramatically since President Donald Tr
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.5-pro → rotating to gemini-2.5-flash (attempt 1/15)
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:test_worker] Received review  id=91e05b6d-c44b-4e10-b413-bb75c8592299  title=Oil prices have risen dramatically since President Donald Trump met with oil com
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:test_worker] Calling Gemini for id=91e05b6d-c44b-4e10-b413-bb75c8592299  model=gemini-2.5-flash
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:test_worker] Received review  id=faf5a411-6a82-4f5f-a0b5-daa337ec7edc  title=During the hearing of the House Armed Services Committee, U.S. Secretary of War 
+INFO → __main__ → [3/3] Published  id=faf5a411-6a82-4f5f-a0b5-daa337ec7edc    title=During the hearing of the House Armed Services Committee, U.
+INFO → __main__ → Done. 3/3 published.
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conexão encerrada.
+INFO → __main__ → MQ disconnected.
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ThinkingConfig not supported on model=gemini-2.5-flash → retrying without thinking.
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ✅ Succeeded on model=gemini-2.5-flash (attempt=3)
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:test_worker] Resolved  id=4cbe67bb-9eab-4865-8d91-64dc8d4ad072  action=EMIT  confidence=0.82  reasoning=The event describes new US sanctions targeting Iran's oil trade via Chinese refineries, a clear and 
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:test_worker] Published resolved  id=4cbe67bb-9eab-4865-8d91-64dc8d4ad072  topic=intel.oracle.resolved
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:test_worker] GlobalTag emitted  asset=OIL  bias=strong_bullish  risk=0.75  ttl_until=2026-05-05T19:18:43.996038+00:00  topic=intel.global_tags
+INFO → ia_oracle.store.OracleMongoStore → OracleMongoStore: stored global tag for asset=OIL, trigger=4cbe67bb-9eab-4865-8d91-64dc8d4ad072
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:test_worker] MongoDB GlobalTag saved! Retrieved (stored in mongodb): {'_id': ObjectId('69fa0a536119af247d0c9a20'), 'trigger_event_id': '4cbe67bb-9eab-4865-8d91-64dc8d4ad072', 'asset': 'OIL', 'bias': 'strong_bullish', 'risk_score': 0.75, 'established_at': '2026-05-05T15:18:43.996038+00:00', 'expires_at': '2026-05-05T19:18:43.996038+00:00', 'active': True, 'updated_at': '2026-05-05T15:18:43.998173+00:00', 'created_at': '2026-05-05T15:18:43.998173+00:00'}
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:test_worker] GlobalTag emitted  asset=BRENT  bias=bullish  risk=0.70  ttl_until=2026-05-05T19:18:43.996038+00:00  topic=intel.global_tags
+INFO → ia_oracle.store.OracleMongoStore → OracleMongoStore: stored global tag for asset=BRENT, trigger=4cbe67bb-9eab-4865-8d91-64dc8d4ad072
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:test_worker] MongoDB GlobalTag saved! Retrieved (stored in mongodb): {'_id': ObjectId('69fa0a53915d7ae43f02ffc6'), 'trigger_event_id': '4cbe67bb-9eab-4865-8d91-64dc8d4ad072', 'asset': 'BRENT', 'bias': 'bullish', 'risk_score': 0.7, 'established_at': '2026-05-05T15:18:43.996038+00:00', 'expires_at': '2026-05-05T19:18:43.996038+00:00', 'active': True, 'updated_at': '2026-05-05T15:18:44.089170+00:00', 'created_at': '2026-05-05T15:18:44.089170+00:00'}
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:test_worker] GlobalTag emitted  asset=WTI  bias=bullish  risk=0.70  ttl_until=2026-05-05T19:18:43.996038+00:00  topic=intel.global_tags
+INFO → ia_oracle.store.OracleMongoStore → OracleMongoStore: stored global tag for asset=WTI, trigger=4cbe67bb-9eab-4865-8d91-64dc8d4ad072
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:test_worker] MongoDB GlobalTag saved! Retrieved (stored in mongodb): {'_id': ObjectId('69fa0a53530a55f324011f10'), 'trigger_event_id': '4cbe67bb-9eab-4865-8d91-64dc8d4ad072', 'asset': 'WTI', 'bias': 'bullish', 'risk_score': 0.7, 'established_at': '2026-05-05T15:18:43.996038+00:00', 'expires_at': '2026-05-05T19:18:43.996038+00:00', 'active': True, 'updated_at': '2026-05-05T15:18:44.174701+00:00', 'created_at': '2026-05-05T15:18:44.174701+00:00'}
+INFO → ia_oracle.store.OracleMongoStore → OracleMongoStore: stored  id=4cbe67bb-9eab-4865-8d91-64dc8d4ad072  action=EMIT  confidence=0.82
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ThinkingConfig not supported on model=gemini-2.5-flash → retrying without thinking.
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:test_worker] MongoDB new id=4cbe67bb-9eab-4865-8d91-64dc8d4ad072. Retrieved (stored in mongodb): EMIT
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:test_worker] Calling Gemini for id=faf5a411-6a82-4f5f-a0b5-daa337ec7edc  model=gemini-2.5-flash
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ✅ Succeeded on model=gemini-2.5-flash (attempt=2)
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:test_worker] Resolved  id=91e05b6d-c44b-4e10-b413-bb75c8592299  action=HOLD  confidence=0.75  reasoning=Event describes a historical market reaction to a past geopolitical event involving a former US Pres
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:test_worker] Published resolved  id=91e05b6d-c44b-4e10-b413-bb75c8592299  topic=intel.oracle.resolved
+INFO → ia_oracle.store.OracleMongoStore → OracleMongoStore: stored  id=91e05b6d-c44b-4e10-b413-bb75c8592299  action=HOLD  confidence=0.75
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:test_worker] MongoDB new id=91e05b6d-c44b-4e10-b413-bb75c8592299. Retrieved (stored in mongodb): HOLD
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ThinkingConfig not supported on model=gemini-2.5-flash → retrying without thinking.
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ✅ Succeeded on model=gemini-2.5-flash (attempt=2)
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:test_worker] Resolved  id=faf5a411-6a82-4f5f-a0b5-daa337ec7edc  action=HOLD  confidence=0.74  reasoning=The event describes highly improbable and likely fabricated claims regarding the destruction of Iran
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:test_worker] Published resolved  id=faf5a411-6a82-4f5f-a0b5-daa337ec7edc  topic=intel.oracle.resolved
+INFO → ia_oracle.store.OracleMongoStore → OracleMongoStore: stored  id=faf5a411-6a82-4f5f-a0b5-daa337ec7edc  action=HOLD  confidence=0.74
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:test_worker] MongoDB new id=faf5a411-6a82-4f5f-a0b5-daa337ec7edc. Retrieved (stored in mongodb): HOLD
+INFO → root → Logging system initialized
+INFO → forex_shared.env_config_manager → [EnvConfig] 🔏 47 chaves marcadas como Secret no arquivo.
+INFO → forex_shared.env_config_manager → [EnvConfig] 5 chaves bootstrap carregadas do arquivo.
+INFO → forex_shared.env_config_manager → [EnvConfig] CryptoBeast inicializado via Azure Key Vault | key_id=I🔥Love💞You🔥Babe
+INFO → forex_shared.env_config_manager → [EnvConfig] 1 bootstrap secrets carregados.
+INFO → forex_shared.mongo_manager → [MongoManager] Conectado via connection string | db=forex_system
+INFO → forex_shared.mongo_manager → [MongoManager] bulk_sync(env_config): 0 novos, 26 atualizados.
+INFO → forex_shared.env_config_manager → [EnvConfig] 150 chaves sincronizadas com MongoDB.
+INFO → forex_shared.env_config_manager → [EnvConfig] 143 novas chaves setadas em os.environ.
+INFO → forex_shared.env_config_manager → [EnvConfig] 150 chaves recarregadas do MongoDB.
+INFO → __main__ → OK!
+INFO → forex_shared.env_config_manager → [EnvConfig] Ambiente de configuração já foi previamente carregado.
+INFO → __main__ → OK!
+INFO → root → Logging system initialized
+INFO → forex_shared.env_config_manager → [EnvConfig] 🔏 47 chaves marcadas como Secret no arquivo.
+INFO → forex_shared.env_config_manager → [EnvConfig] 5 chaves bootstrap carregadas do arquivo.
+INFO → forex_shared.env_config_manager → [EnvConfig] 1 bootstrap secrets carregados.
+INFO → forex_shared.mongo_manager → [MongoManager] Conectado via connection string | db=forex_system
+INFO → forex_shared.mongo_manager → [MongoManager] bulk_sync(env_config): 0 novos, 26 atualizados.
+INFO → forex_shared.env_config_manager → [EnvConfig] 150 chaves sincronizadas com MongoDB.
+INFO → forex_shared.env_config_manager → [EnvConfig] 143 novas chaves setadas em os.environ.
+INFO → forex_shared.env_config_manager → [EnvConfig] 150 chaves recarregadas do MongoDB.
+INFO → __main__ → OK!
+INFO → forex_shared.env_config_manager → Environment is already configured
+INFO → __main__ → OK!
+INFO → root → Logging system initialized
+INFO → forex_shared.env_config_manager → [EnvConfig] 🔏 47 chaves marcadas como Secret no arquivo.
+INFO → forex_shared.env_config_manager → [EnvConfig] 5 chaves bootstrap carregadas do arquivo.
+INFO → forex_shared.env_config_manager → [EnvConfig] 1 bootstrap secrets carregados.
+INFO → forex_shared.mongo_manager → [MongoManager] Conectado via connection string | db=forex_system
+INFO → forex_shared.mongo_manager → [MongoManager] bulk_sync(env_config): 0 novos, 26 atualizados.
+INFO → forex_shared.env_config_manager → [EnvConfig] 150 chaves sincronizadas com MongoDB.
+INFO → forex_shared.env_config_manager → [EnvConfig] 143 novas chaves setadas em os.environ.
+INFO → forex_shared.env_config_manager → [EnvConfig] 150 chaves recarregadas do MongoDB.
+INFO → __main__ → OK!
+INFO → forex_shared.env_config_manager → Environment is already configured
+INFO → __main__ → OK!
