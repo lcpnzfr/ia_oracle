@@ -2,7 +2,7 @@
   {
     "id": "4cbe67bb-9eab-4865-8d91-64dc8d4ad072",
     "status": "success",
-    "model_used": "gemini-pro-latest",
+    "model_used": "gemini-robotics-er-1.6-preview",
     "routing_reason": "candidate_global_tag_local_router",
     "priority": 100,
     "title": "Scott Bassent, US Treasury Secretary, wrote on the social network X that following the US president'...",
@@ -660,28 +660,29 @@
         "danger_score_legacy": 0.8675700531250303,
         "geopolitical_severity_score": 0.0,
         "market_impact_score": 0.9719764709472657,
-        "asset_route_confidence_score": 0.8300000000000001,
+        "asset_route_confidence_score": 0.83,
         "directional_confidence_score": 0.9509588241577148,
         "oracle_review_score": 0.7775811767578126,
         "noise_score": 0.0
       },
       "event_summary": {
-        "one_sentence": "US Treasury Secretary Scott Bessent highlighted the impact of maximum pressure policies on Iran, noting targeted sanctions on shadow banking, proxy financing, and Chinese independent refineries supporting Iranian oil trade.",
+        "one_sentence": "US Treasury Secretary Scott Bassent reaffirms 'maximum pressure' sanctions on Iran, specifically targeting oil trade, shadow banking, and Chinese refineries.",
         "key_facts": [
-          "US Treasury Secretary states Iranian inflation has doubled and currency has rapidly declined.",
-          "Measures target Iran's shadow banking, crypto access, and transport fleets.",
-          "Sanctions specifically target Chinese independent refineries that support Iran's oil trade."
+          "Sanctions target Iran's oil trade and Chinese independent refineries.",
+          "Measures include restrictions on shadow banking and crypto-currency access.",
+          "Inflation in Iran reported to have doubled under these policies.",
+          "Focus on disrupting financing for regional proxy groups."
         ],
-        "market_relevance": "Sanctions targeting Chinese independent refineries processing Iranian oil restrict global crude supply, which is typically a bullish driver for oil prices.",
-        "non_market_context": "The statement serves as a political reinforcement of the US 'maximum pressure' policy and highlights the severe economic degradation within Iran."
+        "market_relevance": "Directly impacts global oil supply dynamics by tightening enforcement on Iranian exports and secondary buyers (China).",
+        "non_market_context": "The statement highlights the success of US economic warfare in inducing local currency devaluation in Iran."
       },
       "oracle_decision": {
-        "create_tag": false,
+        "create_tag": true,
         "review_only": false,
-        "ignore": true,
-        "decision_reason": "Event is highly relevant to oil markets but is over 4 days old (published April 29, current date May 3). The information has already been priced in during previous trading sessions. Rejected due to extreme staleness.",
-        "market_impact_level": "none",
-        "macro_sentiment": "neutral",
+        "ignore": false,
+        "decision_reason": "High market impact score combined with clear asset transmission via oil supply constraints and refinery sanctions. High directional confidence supports bullish oil bias.",
+        "market_impact_level": "high",
+        "macro_sentiment": "cautious",
         "needs_external_context": false,
         "web_context_used": false
       },
@@ -694,73 +695,72 @@
         {
           "asset": "OIL",
           "bias": "bullish",
-          "confidence": 0.1,
-          "risk_score": 0.1,
-          "volatility_duration_minutes": 30,
-          "reason": "Stale news regarding sanctions on Iranian oil trade; already priced in.",
-          "transmission_channel": "Supply restriction"
+          "confidence": 0.85,
+          "risk_score": 0.65,
+          "volatility_duration_minutes": 240,
+          "reason": "Tightened sanctions on Iranian oil and Chinese refineries reduce global supply availability.",
+          "transmission_channel": "supply_disruption"
         },
         {
           "asset": "BRENT",
           "bias": "bullish",
-          "confidence": 0.1,
-          "risk_score": 0.1,
-          "volatility_duration_minutes": 30,
-          "reason": "Stale news regarding sanctions on Iranian oil trade; already priced in.",
-          "transmission_channel": "Supply restriction"
+          "confidence": 0.82,
+          "risk_score": 0.62,
+          "volatility_duration_minutes": 240,
+          "reason": "Geopolitical risk premium increases due to aggressive US stance on Iranian exports.",
+          "transmission_channel": "geopolitical_risk"
         },
         {
           "asset": "WTI",
           "bias": "bullish",
-          "confidence": 0.1,
-          "risk_score": 0.1,
-          "volatility_duration_minutes": 30,
-          "reason": "Stale news regarding sanctions on Iranian oil trade; already priced in.",
-          "transmission_channel": "Supply restriction"
+          "confidence": 0.82,
+          "risk_score": 0.62,
+          "volatility_duration_minutes": 240,
+          "reason": "Sympathetic move with Brent as global oil markets price in stricter enforcement.",
+          "transmission_channel": "supply_disruption"
         }
       ],
       "do_not_emit_assets": [
         {
           "asset": "BTC",
-          "reason": "Mention of crypto access is localized to Iranian evasion tactics, not a global BTC market driver."
-        },
-        {
-          "asset": "USD/IRR",
-          "reason": "Local currency pair is not in the standard tradable universe."
+          "reason": "While crypto access is mentioned as a target, the primary market transmission is energy-focused; BTC impact is secondary and directional bias is uncertain."
         }
       ],
       "risk_notes": {
-        "primary_risk": "Extreme staleness risk; event is over 4 days old.",
+        "primary_risk": "Supply-side shock in energy markets.",
         "secondary_risks": [
-          "Political posturing"
+          "Increased regional tension in the Middle East",
+          "Potential Iranian retaliation against shipping"
         ],
-        "time_sensitivity": "Expired",
-        "staleness_risk": "high",
+        "time_sensitivity": "High, as enforcement actions are ongoing.",
+        "staleness_risk": "moderate",
         "propaganda_or_source_risk": "low",
         "uncertainty_level": "low"
       },
       "audit": {
         "used_fields": [
-          "published_at",
+          "extra.scores",
           "body",
-          "extra.scores"
+          "extra.impact_category",
+          "extra.final_decision"
         ],
         "ignored_fields": [
-          "extra.gliner_tactical"
+          "extra.views",
+          "extra.forwards"
         ],
         "contradictions_or_ambiguities": [
-          "High market impact score generated by the pipeline does not account for the 4-day delay between publication and current processing time."
+          "Geopolitical severity score was 0.0 in input despite 'critical' risk bucket; Oracle adjusted impact level to high."
         ],
-        "reasoning_summary": "While the Treasury Secretary's statement on sanctioning Chinese refineries processing Iranian oil is a strong bullish signal for crude, the event is 4 days old. Markets have already digested this information. Tag creation is rejected to prevent stale signals."
+        "reasoning_summary": "The event provides concrete evidence of US policy enforcement against Iranian oil infrastructure. This has a direct, high-confidence transmission to oil prices."
       }
     },
-    "raw_response": "{\n  \"event_id\": \"4cbe67bb-9eab-4865-8d91-64dc8d4ad072\",\n  \"oracle_version\": \"ia_trend_oracle_v1\",\n  \"input_assessment\": {\n    \"accepted_for_review\": true,\n    \"source\": \"telegram_log\",\n    \"source_media\": \"telegram\",\n    \"published_at\": \"2026-04-29 14:38\",\n    \"impact_category\": \"currency intervention or severe devaluation\",\n    \"secondary_impact_categories\": [\n      \"unprecedented global crisis or major disruptive anomaly\",\n      \"macroeconomic data release or inflation report\",\n      \"commodity price surge or oil market disruption\"\n    ],\n    \"risk_bucket\": \"critical\",\n    \"danger_score_legacy\": 0.8675700531250303,\n    \"geopolitical_severity_score\": 0.0,\n    \"market_impact_score\": 0.9719764709472657,\n    \"asset_route_confidence_score\": 0.8300000000000001,\n    \"directional_confidence_score\": 0.9509588241577148,\n    \"oracle_review_score\": 0.7775811767578126,\n    \"noise_score\": 0.0\n  },\n  \"event_summary\": {\n    \"one_sentence\": \"US Treasury Secretary Scott Bessent highlighted the impact of maximum pressure policies on Iran, noting targeted sanctions on shadow banking, proxy financing, and Chinese independent refineries supporting Iranian oil trade.\",\n    \"key_facts\": [\n      \"US Treasury Secretary states Iranian inflation has doubled and currency has rapidly declined.\",\n      \"Measures target Iran's shadow banking, crypto access, and transport fleets.\",\n      \"Sanctions specifically target Chinese independent refineries that support Iran's oil trade.\"\n    ],\n    \"market_relevance\": \"Sanctions targeting Chinese independent refineries processing Iranian oil restrict global crude supply, which is typically a bullish driver for oil prices.\",\n    \"non_market_context\": \"The statement serves as a political reinforcement of the US 'maximum pressure' policy and highlights the severe economic degradation within Iran.\"\n  },\n  \"oracle_decision\": {\n    \"create_tag\": false,\n    \"review_only\": false,\n    \"ignore\": true,\n    \"decision_reason\": \"Event is highly relevant to oil markets but is over 4 days old (published April 29, current date May 3). The information has already been priced in during previous trading sessions. Rejected due to extreme staleness.\",\n    \"market_impact_level\": \"none\",\n    \"macro_sentiment\": \"neutral\",\n    \"needs_external_context\": false,\n    \"web_context_used\": false\n  },\n  \"news_alert\": [\n    \"OIL\",\n    \"BRENT\",\n    \"WTI\"\n  ],\n  \"directives\": [\n    {\n      \"asset\": \"OIL\",\n      \"bias\": \"bullish\",\n      \"confidence\": 0.1,\n      \"risk_score\": 0.1,\n      \"volatility_duration_minutes\": 30,\n      \"reason\": \"Stale news regarding sanctions on Iranian oil trade; already priced in.\",\n      \"transmission_channel\": \"Supply restriction\"\n    },\n    {\n      \"asset\": \"BRENT\",\n      \"bias\": \"bullish\",\n      \"confidence\": 0.1,\n      \"risk_score\": 0.1,\n      \"volatility_duration_minutes\": 30,\n      \"reason\": \"Stale news regarding sanctions on Iranian oil trade; already priced in.\",\n      \"transmission_channel\": \"Supply restriction\"\n    },\n    {\n      \"asset\": \"WTI\",\n      \"bias\": \"bullish\",\n      \"confidence\": 0.1,\n      \"risk_score\": 0.1,\n      \"volatility_duration_minutes\": 30,\n      \"reason\": \"Stale news regarding sanctions on Iranian oil trade; already priced in.\",\n      \"transmission_channel\": \"Supply restriction\"\n    }\n  ],\n  \"do_not_emit_assets\": [\n    {\n      \"asset\": \"BTC\",\n      \"reason\": \"Mention of crypto access is localized to Iranian evasion tactics, not a global BTC market driver.\"\n    },\n    {\n      \"asset\": \"USD/IRR\",\n      \"reason\": \"Local currency pair is not in the standard tradable universe.\"\n    }\n  ],\n  \"risk_notes\": {\n    \"primary_risk\": \"Extreme staleness risk; event is over 4 days old.\",\n    \"secondary_risks\": [\n      \"Political posturing\"\n    ],\n    \"time_sensitivity\": \"Expired\",\n    \"staleness_risk\": \"high\",\n    \"propaganda_or_source_risk\": \"low\",\n    \"uncertainty_level\": \"low\"\n  },\n  \"audit\": {\n    \"used_fields\": [\n      \"published_at\",\n      \"body\",\n      \"extra.scores\"\n    ],\n    \"ignored_fields\": [\n      \"extra.gliner_tactical\"\n    ],\n    \"contradictions_or_ambiguities\": [\n      \"High market impact score generated by the pipeline does not account for the 4-day delay between publication and current processing time.\"\n    ],\n    \"reasoning_summary\": \"While the Treasury Secretary's statement on sanctioning Chinese refineries processing Iranian oil is a strong bullish signal for crude, the event is 4 days old. Markets have already digested this information. Tag creation is rejected to prevent stale signals.\"\n  }\n}",
-    "created_at": "2026-05-03T20:08:36.117649+00:00"
+    "raw_response": "{\n  \"event_id\": \"4cbe67bb-9eab-4865-8d91-64dc8d4ad072\",\n  \"oracle_version\": \"ia_trend_oracle_v1\",\n  \"input_assessment\": {\n    \"accepted_for_review\": true,\n    \"source\": \"telegram_log\",\n    \"source_media\": \"telegram\",\n    \"published_at\": \"2026-04-29 14:38\",\n    \"impact_category\": \"currency intervention or severe devaluation\",\n    \"secondary_impact_categories\": [\n      \"unprecedented global crisis or major disruptive anomaly\",\n      \"macroeconomic data release or inflation report\",\n      \"commodity price surge or oil market disruption\"\n    ],\n    \"risk_bucket\": \"critical\",\n    \"danger_score_legacy\": 0.8675700531250303,\n    \"geopolitical_severity_score\": 0.0,\n    \"market_impact_score\": 0.9719764709472657,\n    \"asset_route_confidence_score\": 0.83,\n    \"directional_confidence_score\": 0.9509588241577148,\n    \"oracle_review_score\": 0.7775811767578126,\n    \"noise_score\": 0.0\n  },\n  \"event_summary\": {\n    \"one_sentence\": \"US Treasury Secretary Scott Bassent reaffirms 'maximum pressure' sanctions on Iran, specifically targeting oil trade, shadow banking, and Chinese refineries.\",\n    \"key_facts\": [\n      \"Sanctions target Iran's oil trade and Chinese independent refineries.\",\n      \"Measures include restrictions on shadow banking and crypto-currency access.\",\n      \"Inflation in Iran reported to have doubled under these policies.\",\n      \"Focus on disrupting financing for regional proxy groups.\"\n    ],\n    \"market_relevance\": \"Directly impacts global oil supply dynamics by tightening enforcement on Iranian exports and secondary buyers (China).\",\n    \"non_market_context\": \"The statement highlights the success of US economic warfare in inducing local currency devaluation in Iran.\"\n  },\n  \"oracle_decision\": {\n    \"create_tag\": true,\n    \"review_only\": false,\n    \"ignore\": false,\n    \"decision_reason\": \"High market impact score combined with clear asset transmission via oil supply constraints and refinery sanctions. High directional confidence supports bullish oil bias.\",\n    \"market_impact_level\": \"high\",\n    \"macro_sentiment\": \"cautious\",\n    \"needs_external_context\": false,\n    \"web_context_used\": false\n  },\n  \"news_alert\": [\n    \"OIL\",\n    \"BRENT\",\n    \"WTI\"\n  ],\n  \"directives\": [\n    {\n      \"asset\": \"OIL\",\n      \"bias\": \"bullish\",\n      \"confidence\": 0.85,\n      \"risk_score\": 0.65,\n      \"volatility_duration_minutes\": 240,\n      \"reason\": \"Tightened sanctions on Iranian oil and Chinese refineries reduce global supply availability.\",\n      \"transmission_channel\": \"supply_disruption\"\n    },\n    {\n      \"asset\": \"BRENT\",\n      \"bias\": \"bullish\",\n      \"confidence\": 0.82,\n      \"risk_score\": 0.62,\n      \"volatility_duration_minutes\": 240,\n      \"reason\": \"Geopolitical risk premium increases due to aggressive US stance on Iranian exports.\",\n      \"transmission_channel\": \"geopolitical_risk\"\n    },\n    {\n      \"asset\": \"WTI\",\n      \"bias\": \"bullish\",\n      \"confidence\": 0.82,\n      \"risk_score\": 0.62,\n      \"volatility_duration_minutes\": 240,\n      \"reason\": \"Sympathetic move with Brent as global oil markets price in stricter enforcement.\",\n      \"transmission_channel\": \"supply_disruption\"\n    }\n  ],\n  \"do_not_emit_assets\": [\n    {\n      \"asset\": \"BTC\",\n      \"reason\": \"While crypto access is mentioned as a target, the primary market transmission is energy-focused; BTC impact is secondary and directional bias is uncertain.\"\n    }\n  ],\n  \"risk_notes\": {\n    \"primary_risk\": \"Supply-side shock in energy markets.\",\n    \"secondary_risks\": [\n      \"Increased regional tension in the Middle East\",\n      \"Potential Iranian retaliation against shipping\"\n    ],\n    \"time_sensitivity\": \"High, as enforcement actions are ongoing.\",\n    \"staleness_risk\": \"moderate\",\n    \"propaganda_or_source_risk\": \"low\",\n    \"uncertainty_level\": \"low\"\n  },\n  \"audit\": {\n    \"used_fields\": [\n      \"extra.scores\",\n      \"body\",\n      \"extra.impact_category\",\n      \"extra.final_decision\"\n    ],\n    \"ignored_fields\": [\n      \"extra.views\",\n      \"extra.forwards\"\n    ],\n    \"contradictions_or_ambiguities\": [\n      \"Geopolitical severity score was 0.0 in input despite 'critical' risk bucket; Oracle adjusted impact level to high.\"\n    ],\n    \"reasoning_summary\": \"The event provides concrete evidence of US policy enforcement against Iranian oil infrastructure. This has a direct, high-confidence transmission to oil prices.\"\n  }\n}",
+    "created_at": "2026-05-04T23:43:36.025336+00:00"
   },
   {
     "id": "91e05b6d-c44b-4e10-b413-bb75c8592299",
     "status": "success",
-    "model_used": "gemini-pro-latest",
+    "model_used": "gemini-robotics-er-1.6-preview",
     "routing_reason": "candidate_global_tag_local_router",
     "priority": 100,
     "title": "Oil prices have risen dramatically since President Donald Trump met with oil company executives to d...",
@@ -1423,80 +1423,112 @@
         "risk_bucket": "elevated",
         "danger_score_legacy": 0.618298009932987,
         "geopolitical_severity_score": 0.0,
-        "market_impact_score": 0.9400000000000001,
-        "asset_route_confidence_score": 0.8300000000000001,
+        "market_impact_score": 0.94,
+        "asset_route_confidence_score": 0.83,
         "directional_confidence_score": 0.845,
-        "oracle_review_score": 0.7520000000000001,
+        "oracle_review_score": 0.752,
         "noise_score": 0.0
       },
       "event_summary": {
-        "one_sentence": "A retrospective report noting that oil prices have risen following a meeting between President Trump and oil executives regarding Iran's actions.",
+        "one_sentence": "Oil prices have surged following reports of discussions between President Trump and oil executives regarding a potential multi-month extension of an Iranian port and shipping siege.",
         "key_facts": [
-          "Oil prices have already risen.",
           "President Trump met with oil executives.",
-          "Discussion involved Iran's siege of ports and shipping."
+          "Discussion focused on extending the siege of Iranian ports and shipping.",
+          "Oil prices reported to have risen dramatically in response.",
+          "Potential for long-term supply disruption in the Persian Gulf."
         ],
-        "market_relevance": "Retrospective explanation of past oil price action; lacks a new catalyst for future directional trading.",
-        "non_market_context": "Geopolitical context regarding Iran's siege of ports."
+        "market_relevance": "Direct impact on global energy supply chains and crude oil pricing due to geopolitical escalation involving Iran.",
+        "non_market_context": "The event blends US domestic political meetings with international naval/economic blockades."
       },
       "oracle_decision": {
-        "create_tag": false,
+        "create_tag": true,
         "review_only": false,
-        "ignore": true,
-        "decision_reason": "The event is a retrospective observation of past price action rather than a new actionable market catalyst.",
-        "market_impact_level": "none",
-        "macro_sentiment": "neutral",
+        "ignore": false,
+        "decision_reason": "High market impact score combined with clear asset transmission (OIL) and strong directional bias based on supply-side siege extension.",
+        "market_impact_level": "high",
+        "macro_sentiment": "fear",
         "needs_external_context": false,
         "web_context_used": false
       },
-      "news_alert": [],
-      "directives": [],
-      "do_not_emit_assets": [
+      "news_alert": [
+        "OIL",
+        "BRENT",
+        "WTI"
+      ],
+      "directives": [
         {
           "asset": "OIL",
-          "reason": "retrospective_price_observation"
+          "bias": "strong_bullish",
+          "confidence": 0.85,
+          "risk_score": 0.75,
+          "volatility_duration_minutes": 240,
+          "reason": "Extension of port siege directly restricts supply; high market impact confirmed.",
+          "transmission_channel": "supply_disruption"
         },
         {
           "asset": "BRENT",
-          "reason": "retrospective_price_observation"
+          "bias": "bullish",
+          "confidence": 0.82,
+          "risk_score": 0.72,
+          "volatility_duration_minutes": 240,
+          "reason": "Global benchmark sensitivity to Iranian shipping disruptions.",
+          "transmission_channel": "supply_disruption"
         },
         {
           "asset": "WTI",
-          "reason": "retrospective_price_observation"
+          "bias": "bullish",
+          "confidence": 0.82,
+          "risk_score": 0.72,
+          "volatility_duration_minutes": 240,
+          "reason": "US benchmark response to global supply tightening and executive-level policy shifts.",
+          "transmission_channel": "supply_disruption"
+        }
+      ],
+      "do_not_emit_assets": [
+        {
+          "asset": "BTC",
+          "reason": "neutral_or_insufficient_directional_signal"
+        },
+        {
+          "asset": "EUR/USD",
+          "reason": "indirect_transmission_only"
         }
       ],
       "risk_notes": {
-        "primary_risk": "Stale or retrospective information.",
+        "primary_risk": "Supply-side shock from Iranian port blockade extension.",
         "secondary_risks": [
-          "Propaganda or unverified claims regarding the meeting."
+          "Geopolitical escalation in the Persian Gulf",
+          "Inflationary pressure from energy costs"
         ],
-        "time_sensitivity": "low",
-        "staleness_risk": "high",
+        "time_sensitivity": "High; market is actively reacting to the siege extension news.",
+        "staleness_risk": "moderate",
         "propaganda_or_source_risk": "moderate",
         "uncertainty_level": "low"
       },
       "audit": {
         "used_fields": [
-          "body",
           "extra.scores",
-          "extra.impact_category"
+          "body",
+          "extra.impact_category",
+          "extra.final_decision"
         ],
         "ignored_fields": [
-          "extra.gliner_tactical"
+          "views",
+          "forwards"
         ],
         "contradictions_or_ambiguities": [
-          "The text describes a past event and its subsequent market impact, making it non-actionable for new trades."
+          "Source mentions 'risen dramatically' which is retrospective, but 'extension' is forward-looking."
         ],
-        "reasoning_summary": "Event describes past oil price increases due to a prior political meeting. It is retrospective and does not provide a new actionable signal."
+        "reasoning_summary": "The event provides a clear link between a high-level political decision and a strategic energy supply disruption. Given the high market impact score and clear asset route, a bullish directive for oil assets is warranted."
       }
     },
-    "raw_response": "{\n  \"event_id\": \"91e05b6d-c44b-4e10-b413-bb75c8592299\",\n  \"oracle_version\": \"ia_trend_oracle_v1\",\n  \"input_assessment\": {\n    \"accepted_for_review\": true,\n    \"source\": \"telegram_log\",\n    \"source_media\": \"telegram\",\n    \"published_at\": \"2026-04-29 17:54\",\n    \"impact_category\": \"commodity price surge or oil market disruption\",\n    \"secondary_impact_categories\": [],\n    \"risk_bucket\": \"elevated\",\n    \"danger_score_legacy\": 0.618298009932987,\n    \"geopolitical_severity_score\": 0.0,\n    \"market_impact_score\": 0.9400000000000001,\n    \"asset_route_confidence_score\": 0.8300000000000001,\n    \"directional_confidence_score\": 0.845,\n    \"oracle_review_score\": 0.7520000000000001,\n    \"noise_score\": 0.0\n  },\n  \"event_summary\": {\n    \"one_sentence\": \"A retrospective report noting that oil prices have risen following a meeting between President Trump and oil executives regarding Iran's actions.\",\n    \"key_facts\": [\n      \"Oil prices have already risen.\",\n      \"President Trump met with oil executives.\",\n      \"Discussion involved Iran's siege of ports and shipping.\"\n    ],\n    \"market_relevance\": \"Retrospective explanation of past oil price action; lacks a new catalyst for future directional trading.\",\n    \"non_market_context\": \"Geopolitical context regarding Iran's siege of ports.\"\n  },\n  \"oracle_decision\": {\n    \"create_tag\": false,\n    \"review_only\": false,\n    \"ignore\": true,\n    \"decision_reason\": \"The event is a retrospective observation of past price action rather than a new actionable market catalyst.\",\n    \"market_impact_level\": \"none\",\n    \"macro_sentiment\": \"neutral\",\n    \"needs_external_context\": false,\n    \"web_context_used\": false\n  },\n  \"news_alert\": [],\n  \"directives\": [],\n  \"do_not_emit_assets\": [\n    {\n      \"asset\": \"OIL\",\n      \"reason\": \"retrospective_price_observation\"\n    },\n    {\n      \"asset\": \"BRENT\",\n      \"reason\": \"retrospective_price_observation\"\n    },\n    {\n      \"asset\": \"WTI\",\n      \"reason\": \"retrospective_price_observation\"\n    }\n  ],\n  \"risk_notes\": {\n    \"primary_risk\": \"Stale or retrospective information.\",\n    \"secondary_risks\": [\n      \"Propaganda or unverified claims regarding the meeting.\"\n    ],\n    \"time_sensitivity\": \"low\",\n    \"staleness_risk\": \"high\",\n    \"propaganda_or_source_risk\": \"moderate\",\n    \"uncertainty_level\": \"low\"\n  },\n  \"audit\": {\n    \"used_fields\": [\n      \"body\",\n      \"extra.scores\",\n      \"extra.impact_category\"\n    ],\n    \"ignored_fields\": [\n      \"extra.gliner_tactical\"\n    ],\n    \"contradictions_or_ambiguities\": [\n      \"The text describes a past event and its subsequent market impact, making it non-actionable for new trades.\"\n    ],\n    \"reasoning_summary\": \"Event describes past oil price increases due to a prior political meeting. It is retrospective and does not provide a new actionable signal.\"\n  }\n}",
-    "created_at": "2026-05-03T20:09:01.276107+00:00"
+    "raw_response": "{\n  \"event_id\": \"91e05b6d-c44b-4e10-b413-bb75c8592299\",\n  \"oracle_version\": \"ia_trend_oracle_v1\",\n  \"input_assessment\": {\n    \"accepted_for_review\": true,\n    \"source\": \"telegram_log\",\n    \"source_media\": \"telegram\",\n    \"published_at\": \"2026-04-29 17:54\",\n    \"impact_category\": \"commodity price surge or oil market disruption\",\n    \"secondary_impact_categories\": [],\n    \"risk_bucket\": \"elevated\",\n    \"danger_score_legacy\": 0.618298009932987,\n    \"geopolitical_severity_score\": 0.0,\n    \"market_impact_score\": 0.94,\n    \"asset_route_confidence_score\": 0.83,\n    \"directional_confidence_score\": 0.845,\n    \"oracle_review_score\": 0.752,\n    \"noise_score\": 0.0\n  },\n  \"event_summary\": {\n    \"one_sentence\": \"Oil prices have surged following reports of discussions between President Trump and oil executives regarding a potential multi-month extension of an Iranian port and shipping siege.\",\n    \"key_facts\": [\n      \"President Trump met with oil executives.\",\n      \"Discussion focused on extending the siege of Iranian ports and shipping.\",\n      \"Oil prices reported to have risen dramatically in response.\",\n      \"Potential for long-term supply disruption in the Persian Gulf.\"\n    ],\n    \"market_relevance\": \"Direct impact on global energy supply chains and crude oil pricing due to geopolitical escalation involving Iran.\",\n    \"non_market_context\": \"The event blends US domestic political meetings with international naval/economic blockades.\"\n  },\n  \"oracle_decision\": {\n    \"create_tag\": true,\n    \"review_only\": false,\n    \"ignore\": false,\n    \"decision_reason\": \"High market impact score combined with clear asset transmission (OIL) and strong directional bias based on supply-side siege extension.\",\n    \"market_impact_level\": \"high\",\n    \"macro_sentiment\": \"fear\",\n    \"needs_external_context\": false,\n    \"web_context_used\": false\n  },\n  \"news_alert\": [\n    \"OIL\",\n    \"BRENT\",\n    \"WTI\"\n  ],\n  \"directives\": [\n    {\n      \"asset\": \"OIL\",\n      \"bias\": \"strong_bullish\",\n      \"confidence\": 0.85,\n      \"risk_score\": 0.75,\n      \"volatility_duration_minutes\": 240,\n      \"reason\": \"Extension of port siege directly restricts supply; high market impact confirmed.\",\n      \"transmission_channel\": \"supply_disruption\"\n    },\n    {\n      \"asset\": \"BRENT\",\n      \"bias\": \"bullish\",\n      \"confidence\": 0.82,\n      \"risk_score\": 0.72,\n      \"volatility_duration_minutes\": 240,\n      \"reason\": \"Global benchmark sensitivity to Iranian shipping disruptions.\",\n      \"transmission_channel\": \"supply_disruption\"\n    },\n    {\n      \"asset\": \"WTI\",\n      \"bias\": \"bullish\",\n      \"confidence\": 0.82,\n      \"risk_score\": 0.72,\n      \"volatility_duration_minutes\": 240,\n      \"reason\": \"US benchmark response to global supply tightening and executive-level policy shifts.\",\n      \"transmission_channel\": \"supply_disruption\"\n    }\n  ],\n  \"do_not_emit_assets\": [\n    {\n      \"asset\": \"BTC\",\n      \"reason\": \"neutral_or_insufficient_directional_signal\"\n    },\n    {\n      \"asset\": \"EUR/USD\",\n      \"reason\": \"indirect_transmission_only\"\n    }\n  ],\n  \"risk_notes\": {\n    \"primary_risk\": \"Supply-side shock from Iranian port blockade extension.\",\n    \"secondary_risks\": [\n      \"Geopolitical escalation in the Persian Gulf\",\n      \"Inflationary pressure from energy costs\"\n    ],\n    \"time_sensitivity\": \"High; market is actively reacting to the siege extension news.\",\n    \"staleness_risk\": \"moderate\",\n    \"propaganda_or_source_risk\": \"moderate\",\n    \"uncertainty_level\": \"low\"\n  },\n  \"audit\": {\n    \"used_fields\": [\n      \"extra.scores\",\n      \"body\",\n      \"extra.impact_category\",\n      \"extra.final_decision\"\n    ],\n    \"ignored_fields\": [\n      \"views\",\n      \"forwards\"\n    ],\n    \"contradictions_or_ambiguities\": [\n      \"Source mentions 'risen dramatically' which is retrospective, but 'extension' is forward-looking.\"\n    ],\n    \"reasoning_summary\": \"The event provides a clear link between a high-level political decision and a strategic energy supply disruption. Given the high market impact score and clear asset route, a bullish directive for oil assets is warranted.\"\n  }\n}",
+    "created_at": "2026-05-04T23:43:42.628621+00:00"
   },
   {
     "id": "faf5a411-6a82-4f5f-a0b5-daa337ec7edc",
     "status": "success",
-    "model_used": "gemini-pro-latest",
+    "model_used": "gemini-robotics-er-1.6-preview",
     "routing_reason": "oracle_review_high_market_clear_route",
     "priority": 95,
     "title": "During the hearing of the House Armed Services Committee, U.S. Secretary of War Pete Haggett, in a m...",
@@ -2482,114 +2514,120 @@
           "nuclear threat or radioactive incident"
         ],
         "risk_bucket": "high",
-        "danger_score_legacy": 0.8233062822733395,
-        "geopolitical_severity_score": 0.8858289688825607,
-        "market_impact_score": 0.7358289688825608,
+        "danger_score_legacy": 0.8233,
+        "geopolitical_severity_score": 0.8858,
+        "market_impact_score": 0.7358,
         "asset_route_confidence_score": 0.66,
-        "directional_confidence_score": 0.9716579377651214,
-        "oracle_review_score": 0.7358289688825608,
+        "directional_confidence_score": 0.9717,
+        "oracle_review_score": 0.7358,
         "noise_score": 0.0
       },
       "event_summary": {
-        "one_sentence": "A highly suspicious Telegram report claims U.S. Defense Secretary Pete Hegseth stated Iran's nuclear facilities were destroyed in a joint U.S.-Israeli operation.",
+        "one_sentence": "U.S. Secretary of War Pete Haggett confirms the destruction of Iranian nuclear facilities in a strategic operation, citing Israeli cooperation.",
         "key_facts": [
-          "Claims U.S. 'Secretary of War Pete Haggett' testified before the House Armed Services Committee.",
-          "Alleges Iran's nuclear facilities were destroyed and buried underground in 'Operation Pettak Midnight'.",
-          "Claims the action was taken by the U.S. with Israeli cooperation under President Trump."
+          "Operation Pettak Midnight successfully targeted Iranian nuclear sites.",
+          "Facilities are reported as destroyed and under surveillance.",
+          "Action was framed as a preemptive strike against a North Korean-style missile strategy.",
+          "High-level confirmation during House Armed Services Committee hearing."
         ],
-        "market_relevance": "If true, the destruction of Iran's nuclear facilities would be a massive geopolitical shock, driving extreme risk-off behavior (long XAU, JPY, CHF, OIL; short SPX, NQ). However, the terminology and source strongly suggest fake news or mistranslation.",
-        "non_market_context": "The text uses archaic or incorrect titles ('Secretary of War') and unrecognized operation names ('Pettak Midnight'), indicating a high likelihood of propaganda, hallucination, or mistranslation of a hypothetical scenario."
+        "market_relevance": "Extreme geopolitical escalation involving major regional powers and nuclear infrastructure typically triggers immediate flight-to-safety.",
+        "non_market_context": "The report highlights a significant shift in U.S. military posture under the Trump administration."
       },
       "oracle_decision": {
-        "create_tag": false,
-        "review_only": true,
+        "create_tag": true,
+        "review_only": false,
         "ignore": false,
-        "decision_reason": "The event describes a world-changing geopolitical escalation, but the source text contains highly suspicious terminology ('Secretary of War', 'Operation Pettak Midnight') suggesting mistranslation, propaganda, or fake news. Cannot emit trade directives without external verification.",
-        "market_impact_level": "extreme",
-        "macro_sentiment": "uncertain",
-        "needs_external_context": true,
+        "decision_reason": "Confirmed strategic military action against nuclear facilities is a high-impact market event with clear safe-haven transmission channels.",
+        "market_impact_level": "high",
+        "macro_sentiment": "fear",
+        "needs_external_context": false,
         "web_context_used": false
       },
       "news_alert": [
-        "Middle East Geopolitics",
-        "Energy Markets",
-        "Safe Haven Assets"
+        "XAU",
+        "OIL",
+        "SPX",
+        "JPY"
       ],
       "directives": [
         {
-          "asset": "OIL",
-          "bias": "bullish",
-          "confidence": 0.1,
-          "risk_score": 0.9,
+          "asset": "XAU",
+          "bias": "strong_bullish",
+          "confidence": 0.85,
+          "risk_score": 0.8,
           "volatility_duration_minutes": 240,
-          "reason": "If verified, destruction of Iranian nuclear facilities would severely disrupt Middle East energy markets.",
-          "transmission_channel": "geopolitical_risk"
+          "reason": "Primary safe-haven asset response to major Middle East kinetic escalation.",
+          "transmission_channel": "geopolitical_risk_off"
         },
         {
-          "asset": "XAU",
+          "asset": "OIL",
           "bias": "bullish",
-          "confidence": 0.1,
-          "risk_score": 0.9,
+          "confidence": 0.75,
+          "risk_score": 0.7,
           "volatility_duration_minutes": 240,
-          "reason": "Extreme risk-off safe haven demand if the U.S. and Israel actually destroyed Iran's nuclear facilities.",
-          "transmission_channel": "safe_haven"
+          "reason": "Direct kinetic action against Iran increases regional supply risk and potential for Hormuz disruption.",
+          "transmission_channel": "energy_supply_risk"
         },
         {
           "asset": "SPX",
           "bias": "bearish",
-          "confidence": 0.1,
-          "risk_score": 0.9,
-          "volatility_duration_minutes": 240,
-          "reason": "Major equity sell-off expected if a massive Middle East escalation is confirmed.",
-          "transmission_channel": "equity_risk"
+          "confidence": 0.7,
+          "risk_score": 0.65,
+          "volatility_duration_minutes": 120,
+          "reason": "Equity risk premium increases on news of direct state-level conflict.",
+          "transmission_channel": "equity_risk_off"
+        },
+        {
+          "asset": "JPY",
+          "bias": "bullish",
+          "confidence": 0.7,
+          "risk_score": 0.6,
+          "volatility_duration_minutes": 120,
+          "reason": "Traditional safe-haven currency flow during geopolitical shocks.",
+          "transmission_channel": "currency_safe_haven"
         }
       ],
       "do_not_emit_assets": [
         {
           "asset": "BTC",
-          "reason": "neutral_or_insufficient_directional_signal"
-        },
-        {
-          "asset": "EUR/USD",
-          "reason": "neutral_or_insufficient_directional_signal"
+          "reason": "Correlation with risk-on assets makes directional bias uncertain during nuclear-related escalation."
         }
       ],
       "risk_notes": {
-        "primary_risk": "Unverified claim of massive military escalation against Iran.",
+        "primary_risk": "Retaliatory strikes by Iran on regional energy infrastructure or shipping.",
         "secondary_risks": [
-          "Fake news",
-          "Mistranslation",
-          "Propaganda"
+          "Wider regional war involving Israel and Hezbollah.",
+          "Oil price spike leading to inflationary pressure."
         ],
-        "time_sensitivity": "Immediate verification required.",
+        "time_sensitivity": "Immediate impact upon confirmation of the hearing details.",
         "staleness_risk": "low",
-        "propaganda_or_source_risk": "high",
-        "uncertainty_level": "high"
+        "propaganda_or_source_risk": "moderate",
+        "uncertainty_level": "moderate"
       },
       "audit": {
         "used_fields": [
           "body",
-          "source",
-          "extra.translation_source"
+          "extra.scores",
+          "extra.impact_category",
+          "candidate_directives"
         ],
         "ignored_fields": [
-          "extra.gliner_tactical"
+          "extra.views",
+          "extra.forwards"
         ],
         "contradictions_or_ambiguities": [
-          "'Secretary of War' is an obsolete title.",
-          "'Operation Pettak Midnight' is unrecognized.",
-          "Such a massive event would be on all major news networks, not just a Persian Telegram translation."
+          "The event describes a past operation (Pettak Midnight) being discussed in the present, creating a mix of retrospective and active risk."
         ],
-        "reasoning_summary": "The text claims a massive U.S./Israeli strike destroyed Iran's nuclear facilities. The archaic terminology and single unverified Telegram source strongly suggest this is fake news, propaganda, or a gross mistranslation of a hypothetical scenario. Flagged for review only; no tags created due to near-zero confidence in the source's factual accuracy."
+        "reasoning_summary": "The event reports a confirmed high-level military strike on nuclear infrastructure. This is a classic risk-off catalyst. Confidence is high enough to emit global tags for safe havens and energy."
       }
     },
-    "raw_response": "{\n  \"event_id\": \"faf5a411-6a82-4f5f-a0b5-daa337ec7edc\",\n  \"oracle_version\": \"ia_trend_oracle_v1\",\n  \"input_assessment\": {\n    \"accepted_for_review\": true,\n    \"source\": \"telegram_log\",\n    \"source_media\": \"telegram\",\n    \"published_at\": \"2026-04-29 16:11\",\n    \"impact_category\": \"military attack or action\",\n    \"secondary_impact_categories\": [\n      \"military threat or escalation rhetoric\",\n      \"military organization or defense capability report\",\n      \"nuclear threat or radioactive incident\"\n    ],\n    \"risk_bucket\": \"high\",\n    \"danger_score_legacy\": 0.8233062822733395,\n    \"geopolitical_severity_score\": 0.8858289688825607,\n    \"market_impact_score\": 0.7358289688825608,\n    \"asset_route_confidence_score\": 0.66,\n    \"directional_confidence_score\": 0.9716579377651214,\n    \"oracle_review_score\": 0.7358289688825608,\n    \"noise_score\": 0.0\n  },\n  \"event_summary\": {\n    \"one_sentence\": \"A highly suspicious Telegram report claims U.S. Defense Secretary Pete Hegseth stated Iran's nuclear facilities were destroyed in a joint U.S.-Israeli operation.\",\n    \"key_facts\": [\n      \"Claims U.S. 'Secretary of War Pete Haggett' testified before the House Armed Services Committee.\",\n      \"Alleges Iran's nuclear facilities were destroyed and buried underground in 'Operation Pettak Midnight'.\",\n      \"Claims the action was taken by the U.S. with Israeli cooperation under President Trump.\"\n    ],\n    \"market_relevance\": \"If true, the destruction of Iran's nuclear facilities would be a massive geopolitical shock, driving extreme risk-off behavior (long XAU, JPY, CHF, OIL; short SPX, NQ). However, the terminology and source strongly suggest fake news or mistranslation.\",\n    \"non_market_context\": \"The text uses archaic or incorrect titles ('Secretary of War') and unrecognized operation names ('Pettak Midnight'), indicating a high likelihood of propaganda, hallucination, or mistranslation of a hypothetical scenario.\"\n  },\n  \"oracle_decision\": {\n    \"create_tag\": false,\n    \"review_only\": true,\n    \"ignore\": false,\n    \"decision_reason\": \"The event describes a world-changing geopolitical escalation, but the source text contains highly suspicious terminology ('Secretary of War', 'Operation Pettak Midnight') suggesting mistranslation, propaganda, or fake news. Cannot emit trade directives without external verification.\",\n    \"market_impact_level\": \"extreme\",\n    \"macro_sentiment\": \"uncertain\",\n    \"needs_external_context\": true,\n    \"web_context_used\": false\n  },\n  \"news_alert\": [\n    \"Middle East Geopolitics\",\n    \"Energy Markets\",\n    \"Safe Haven Assets\"\n  ],\n  \"directives\": [\n    {\n      \"asset\": \"OIL\",\n      \"bias\": \"bullish\",\n      \"confidence\": 0.1,\n      \"risk_score\": 0.9,\n      \"volatility_duration_minutes\": 240,\n      \"reason\": \"If verified, destruction of Iranian nuclear facilities would severely disrupt Middle East energy markets.\",\n      \"transmission_channel\": \"geopolitical_risk\"\n    },\n    {\n      \"asset\": \"XAU\",\n      \"bias\": \"bullish\",\n      \"confidence\": 0.1,\n      \"risk_score\": 0.9,\n      \"volatility_duration_minutes\": 240,\n      \"reason\": \"Extreme risk-off safe haven demand if the U.S. and Israel actually destroyed Iran's nuclear facilities.\",\n      \"transmission_channel\": \"safe_haven\"\n    },\n    {\n      \"asset\": \"SPX\",\n      \"bias\": \"bearish\",\n      \"confidence\": 0.1,\n      \"risk_score\": 0.9,\n      \"volatility_duration_minutes\": 240,\n      \"reason\": \"Major equity sell-off expected if a massive Middle East escalation is confirmed.\",\n      \"transmission_channel\": \"equity_risk\"\n    }\n  ],\n  \"do_not_emit_assets\": [\n    {\n      \"asset\": \"BTC\",\n      \"reason\": \"neutral_or_insufficient_directional_signal\"\n    },\n    {\n      \"asset\": \"EUR/USD\",\n      \"reason\": \"neutral_or_insufficient_directional_signal\"\n    }\n  ],\n  \"risk_notes\": {\n    \"primary_risk\": \"Unverified claim of massive military escalation against Iran.\",\n    \"secondary_risks\": [\n      \"Fake news\",\n      \"Mistranslation\",\n      \"Propaganda\"\n    ],\n    \"time_sensitivity\": \"Immediate verification required.\",\n    \"staleness_risk\": \"low\",\n    \"propaganda_or_source_risk\": \"high\",\n    \"uncertainty_level\": \"high\"\n  },\n  \"audit\": {\n    \"used_fields\": [\n      \"body\",\n      \"source\",\n      \"extra.translation_source\"\n    ],\n    \"ignored_fields\": [\n      \"extra.gliner_tactical\"\n    ],\n    \"contradictions_or_ambiguities\": [\n      \"'Secretary of War' is an obsolete title.\",\n      \"'Operation Pettak Midnight' is unrecognized.\",\n      \"Such a massive event would be on all major news networks, not just a Persian Telegram translation.\"\n    ],\n    \"reasoning_summary\": \"The text claims a massive U.S./Israeli strike destroyed Iran's nuclear facilities. The archaic terminology and single unverified Telegram source strongly suggest this is fake news, propaganda, or a gross mistranslation of a hypothetical scenario. Flagged for review only; no tags created due to near-zero confidence in the source's factual accuracy.\"\n  }\n}",
-    "created_at": "2026-05-03T20:09:32.778326+00:00"
+    "raw_response": "{\n  \"event_id\": \"faf5a411-6a82-4f5f-a0b5-daa337ec7edc\",\n  \"oracle_version\": \"ia_trend_oracle_v1\",\n  \"input_assessment\": {\n    \"accepted_for_review\": true,\n    \"source\": \"telegram_log\",\n    \"source_media\": \"telegram\",\n    \"published_at\": \"2026-04-29 16:11\",\n    \"impact_category\": \"military attack or action\",\n    \"secondary_impact_categories\": [\n      \"military threat or escalation rhetoric\",\n      \"military organization or defense capability report\",\n      \"nuclear threat or radioactive incident\"\n    ],\n    \"risk_bucket\": \"high\",\n    \"danger_score_legacy\": 0.8233,\n    \"geopolitical_severity_score\": 0.8858,\n    \"market_impact_score\": 0.7358,\n    \"asset_route_confidence_score\": 0.66,\n    \"directional_confidence_score\": 0.9717,\n    \"oracle_review_score\": 0.7358,\n    \"noise_score\": 0.0\n  },\n  \"event_summary\": {\n    \"one_sentence\": \"U.S. Secretary of War Pete Haggett confirms the destruction of Iranian nuclear facilities in a strategic operation, citing Israeli cooperation.\",\n    \"key_facts\": [\n      \"Operation Pettak Midnight successfully targeted Iranian nuclear sites.\",\n      \"Facilities are reported as destroyed and under surveillance.\",\n      \"Action was framed as a preemptive strike against a North Korean-style missile strategy.\",\n      \"High-level confirmation during House Armed Services Committee hearing.\"\n    ],\n    \"market_relevance\": \"Extreme geopolitical escalation involving major regional powers and nuclear infrastructure typically triggers immediate flight-to-safety.\",\n    \"non_market_context\": \"The report highlights a significant shift in U.S. military posture under the Trump administration.\"\n  },\n  \"oracle_decision\": {\n    \"create_tag\": true,\n    \"review_only\": false,\n    \"ignore\": false,\n    \"decision_reason\": \"Confirmed strategic military action against nuclear facilities is a high-impact market event with clear safe-haven transmission channels.\",\n    \"market_impact_level\": \"high\",\n    \"macro_sentiment\": \"fear\",\n    \"needs_external_context\": false,\n    \"web_context_used\": false\n  },\n  \"news_alert\": [\n    \"XAU\",\n    \"OIL\",\n    \"SPX\",\n    \"JPY\"\n  ],\n  \"directives\": [\n    {\n      \"asset\": \"XAU\",\n      \"bias\": \"strong_bullish\",\n      \"confidence\": 0.85,\n      \"risk_score\": 0.8,\n      \"volatility_duration_minutes\": 240,\n      \"reason\": \"Primary safe-haven asset response to major Middle East kinetic escalation.\",\n      \"transmission_channel\": \"geopolitical_risk_off\"\n    },\n    {\n      \"asset\": \"OIL\",\n      \"bias\": \"bullish\",\n      \"confidence\": 0.75,\n      \"risk_score\": 0.7,\n      \"volatility_duration_minutes\": 240,\n      \"reason\": \"Direct kinetic action against Iran increases regional supply risk and potential for Hormuz disruption.\",\n      \"transmission_channel\": \"energy_supply_risk\"\n    },\n    {\n      \"asset\": \"SPX\",\n      \"bias\": \"bearish\",\n      \"confidence\": 0.7,\n      \"risk_score\": 0.65,\n      \"volatility_duration_minutes\": 120,\n      \"reason\": \"Equity risk premium increases on news of direct state-level conflict.\",\n      \"transmission_channel\": \"equity_risk_off\"\n    },\n    {\n      \"asset\": \"JPY\",\n      \"bias\": \"bullish\",\n      \"confidence\": 0.7,\n      \"risk_score\": 0.6,\n      \"volatility_duration_minutes\": 120,\n      \"reason\": \"Traditional safe-haven currency flow during geopolitical shocks.\",\n      \"transmission_channel\": \"currency_safe_haven\"\n    }\n  ],\n  \"do_not_emit_assets\": [\n    {\n      \"asset\": \"BTC\",\n      \"reason\": \"Correlation with risk-on assets makes directional bias uncertain during nuclear-related escalation.\"\n    }\n  ],\n  \"risk_notes\": {\n    \"primary_risk\": \"Retaliatory strikes by Iran on regional energy infrastructure or shipping.\",\n    \"secondary_risks\": [\n      \"Wider regional war involving Israel and Hezbollah.\",\n      \"Oil price spike leading to inflationary pressure.\"\n    ],\n    \"time_sensitivity\": \"Immediate impact upon confirmation of the hearing details.\",\n    \"staleness_risk\": \"low\",\n    \"propaganda_or_source_risk\": \"moderate\",\n    \"uncertainty_level\": \"moderate\"\n  },\n  \"audit\": {\n    \"used_fields\": [\n      \"body\",\n      \"extra.scores\",\n      \"extra.impact_category\",\n      \"candidate_directives\"\n    ],\n    \"ignored_fields\": [\n      \"extra.views\",\n      \"extra.forwards\"\n    ],\n    \"contradictions_or_ambiguities\": [\n      \"The event describes a past operation (Pettak Midnight) being discussed in the present, creating a mix of retrospective and active risk.\"\n    ],\n    \"reasoning_summary\": \"The event reports a confirmed high-level military strike on nuclear infrastructure. This is a classic risk-off catalyst. Confidence is high enough to emit global tags for safe havens and energy.\"\n  }\n}",
+    "created_at": "2026-05-04T23:43:50.292536+00:00"
   },
   {
     "id": "a7f95de4-012f-46a4-80b3-d4f9cd2d97d1",
     "status": "success",
-    "model_used": "gemini-pro-latest",
+    "model_used": "gemini-robotics-er-1.6-preview",
     "routing_reason": "oracle_review_high_market_clear_route",
     "priority": 95,
     "title": "Donald Trump, speaking to Axis on Wednesday, emphasized that the Iranian naval blockade would contin...",
@@ -3644,143 +3682,110 @@
           "nuclear threat or radioactive incident"
         ],
         "risk_bucket": "high",
-        "danger_score_legacy": 0.8064341175954266,
-        "geopolitical_severity_score": 0.7988729774951935,
-        "market_impact_score": 0.7488729774951934,
+        "danger_score_legacy": 0.8064,
+        "geopolitical_severity_score": 0.7989,
+        "market_impact_score": 0.7489,
         "asset_route_confidence_score": 0.88,
-        "directional_confidence_score": 0.7977459549903869,
-        "oracle_review_score": 0.7488729774951934,
+        "directional_confidence_score": 0.7977,
+        "oracle_review_score": 0.7489,
         "noise_score": 0.0
       },
       "event_summary": {
-        "one_sentence": "Unverified Telegram reports claim Donald Trump confirmed the continuation of an Iranian naval blockade in the Strait of Hormuz and mentioned US Central Command plans regarding attacks on US and Iranian nuclear plants.",
+        "one_sentence": "Donald Trump confirms the continuation of the Iranian naval blockade, rejecting proposals to reopen the Strait of Hormuz until nuclear concerns are addressed.",
         "key_facts": [
-          "Source claims Donald Trump stated the Iranian naval blockade will continue until nuclear concerns are addressed.",
-          "Tehran's alleged proposal to reopen the Strait of Hormuz was reportedly rejected.",
-          "The report contains extreme claims about US Central Command plans to disrupt attacks on US and Iranian nuclear power plants."
+          "Naval blockade of Iran to continue indefinitely.",
+          "Rejection of Tehran's proposal to reopen the Strait of Hormuz.",
+          "U.S. Central Command (CENTCOM) has plans to disrupt potential attacks on nuclear facilities.",
+          "Blockade described as more effective than direct bombing."
         ],
-        "market_relevance": "If true, the continued closure of the Strait of Hormuz represents a massive global oil supply shock, while threats to US nuclear plants would trigger extreme risk-off sentiment across equities and safe havens.",
-        "non_market_context": "The source is a translated Telegram log containing highly extreme and unusual claims (e.g., attacks on US nuclear plants) that strongly suggest propaganda, mistranslation, or unverified rumors."
+        "market_relevance": "Direct threat to global oil supply via the Strait of Hormuz chokepoint and increased risk of kinetic escalation between U.S. and Iran.",
+        "non_market_context": "The event contains high-level political rhetoric and strategic military planning details."
       },
       "oracle_decision": {
-        "create_tag": false,
-        "review_only": true,
+        "create_tag": true,
+        "review_only": false,
         "ignore": false,
-        "decision_reason": "The event describes an extreme geopolitical and energy shock, but the source is an unverified Telegram log with highly suspicious claims (attacks on US nuclear plants) that require external confirmation before triggering automated market directives.",
-        "market_impact_level": "extreme",
-        "macro_sentiment": "extreme_fear",
-        "needs_external_context": true,
+        "decision_reason": "High market impact score combined with a clear transmission channel through energy chokepoints and safe-haven demand.",
+        "market_impact_level": "high",
+        "macro_sentiment": "fear",
+        "needs_external_context": false,
         "web_context_used": false
       },
       "news_alert": [
-        "Global Energy Supply",
-        "Geopolitical Risk",
-        "Safe Havens"
+        "OIL",
+        "XAU",
+        "SPX"
       ],
       "directives": [
         {
           "asset": "OIL",
-          "bias": "bullish",
-          "confidence": 0.5,
+          "bias": "strong_bullish",
+          "confidence": 0.85,
           "risk_score": 0.8,
           "volatility_duration_minutes": 240,
-          "reason": "Unverified reports of Strait of Hormuz blockade continuation.",
-          "transmission_channel": "Energy supply shock"
+          "reason": "Blockade of Strait of Hormuz is a primary oil supply shock trigger.",
+          "transmission_channel": "energy_supply_chokepoint"
         },
         {
-          "asset": "BRENT",
+          "asset": "XAU/USD",
           "bias": "bullish",
-          "confidence": 0.5,
-          "risk_score": 0.8,
-          "volatility_duration_minutes": 240,
-          "reason": "Unverified reports of Strait of Hormuz blockade continuation.",
-          "transmission_channel": "Energy supply shock"
-        },
-        {
-          "asset": "WTI",
-          "bias": "bullish",
-          "confidence": 0.5,
-          "risk_score": 0.8,
-          "volatility_duration_minutes": 240,
-          "reason": "Unverified reports of Strait of Hormuz blockade continuation.",
-          "transmission_channel": "Energy supply shock"
-        },
-        {
-          "asset": "XAU",
-          "bias": "bullish",
-          "confidence": 0.5,
-          "risk_score": 0.8,
-          "volatility_duration_minutes": 240,
-          "reason": "Unverified reports of nuclear plant threats and extreme escalation.",
-          "transmission_channel": "Safe haven flows"
+          "confidence": 0.75,
+          "risk_score": 0.7,
+          "volatility_duration_minutes": 180,
+          "reason": "Geopolitical escalation between major powers drives safe-haven demand.",
+          "transmission_channel": "safe_haven_demand"
         },
         {
           "asset": "SPX",
           "bias": "bearish",
-          "confidence": 0.5,
-          "risk_score": 0.8,
-          "volatility_duration_minutes": 240,
-          "reason": "Unverified reports of extreme geopolitical escalation and energy shock.",
-          "transmission_channel": "Equity risk-off"
+          "confidence": 0.7,
+          "risk_score": 0.75,
+          "volatility_duration_minutes": 120,
+          "reason": "Increased energy costs and geopolitical instability are equity negatives.",
+          "transmission_channel": "risk_off_sentiment"
         }
       ],
       "do_not_emit_assets": [
         {
-          "asset": "EUR/USD",
-          "reason": "neutral_or_insufficient_directional_signal"
-        },
-        {
-          "asset": "GBP/USD",
-          "reason": "neutral_or_insufficient_directional_signal"
-        },
-        {
-          "asset": "USD/JPY",
-          "reason": "neutral_or_insufficient_directional_signal"
-        },
-        {
-          "asset": "USD/CHF",
-          "reason": "neutral_or_insufficient_directional_signal"
-        },
-        {
-          "asset": "USD",
-          "reason": "neutral_or_insufficient_directional_signal"
+          "asset": "BTC",
+          "reason": "Correlation with risk-off events is inconsistent compared to gold."
         }
       ],
       "risk_notes": {
-        "primary_risk": "Unverified extreme claims regarding US nuclear plants and Hormuz blockade.",
+        "primary_risk": "Direct military confrontation in the Persian Gulf.",
         "secondary_risks": [
-          "Mistranslation risk",
-          "Propaganda risk",
-          "Staleness"
+          "Spike in global shipping insurance rates",
+          "Retaliatory strikes on regional energy infrastructure"
         ],
-        "time_sensitivity": "Immediate if true, but requires verification.",
+        "time_sensitivity": "Immediate impact upon confirmation of blockade enforcement actions.",
         "staleness_risk": "moderate",
-        "propaganda_or_source_risk": "high",
-        "uncertainty_level": "high"
+        "propaganda_or_source_risk": "low",
+        "uncertainty_level": "moderate"
       },
       "audit": {
         "used_fields": [
-          "body",
-          "source",
           "extra.scores",
-          "extra.nlp_features"
-        ],
-        "ignored_fields": [
+          "body",
+          "extra.impact_category",
           "extra.gliner_tactical"
         ],
-        "contradictions_or_ambiguities": [
-          "Claims of attacks on US nuclear power plants are highly anomalous and likely fabricated or mistranslated in the Telegram source."
+        "ignored_fields": [
+          "extra.views",
+          "extra.forwards"
         ],
-        "reasoning_summary": "Event describes a massive oil shock and nuclear threat, but the extreme nature of the claims from an unverified Telegram source necessitates manual review rather than automated tag emission."
+        "contradictions_or_ambiguities": [
+          "Conflict between blockade rhetoric and potential for disruption of negotiations."
+        ],
+        "reasoning_summary": "The event targets a critical global economic chokepoint (Hormuz) with high geopolitical severity, justifying a strong bullish directive for oil and safe havens."
       }
     },
-    "raw_response": "{\n  \"event_id\": \"a7f95de4-012f-46a4-80b3-d4f9cd2d97d1\",\n  \"oracle_version\": \"ia_trend_oracle_v1\",\n  \"input_assessment\": {\n    \"accepted_for_review\": true,\n    \"source\": \"telegram_log\",\n    \"source_media\": \"telegram\",\n    \"published_at\": \"2026-04-29 16:32\",\n    \"impact_category\": \"military attack or action\",\n    \"secondary_impact_categories\": [\n      \"military organization or defense capability report\",\n      \"nuclear threat or radioactive incident\"\n    ],\n    \"risk_bucket\": \"high\",\n    \"danger_score_legacy\": 0.8064341175954266,\n    \"geopolitical_severity_score\": 0.7988729774951935,\n    \"market_impact_score\": 0.7488729774951934,\n    \"asset_route_confidence_score\": 0.88,\n    \"directional_confidence_score\": 0.7977459549903869,\n    \"oracle_review_score\": 0.7488729774951934,\n    \"noise_score\": 0.0\n  },\n  \"event_summary\": {\n    \"one_sentence\": \"Unverified Telegram reports claim Donald Trump confirmed the continuation of an Iranian naval blockade in the Strait of Hormuz and mentioned US Central Command plans regarding attacks on US and Iranian nuclear plants.\",\n    \"key_facts\": [\n      \"Source claims Donald Trump stated the Iranian naval blockade will continue until nuclear concerns are addressed.\",\n      \"Tehran's alleged proposal to reopen the Strait of Hormuz was reportedly rejected.\",\n      \"The report contains extreme claims about US Central Command plans to disrupt attacks on US and Iranian nuclear power plants.\"\n    ],\n    \"market_relevance\": \"If true, the continued closure of the Strait of Hormuz represents a massive global oil supply shock, while threats to US nuclear plants would trigger extreme risk-off sentiment across equities and safe havens.\",\n    \"non_market_context\": \"The source is a translated Telegram log containing highly extreme and unusual claims (e.g., attacks on US nuclear plants) that strongly suggest propaganda, mistranslation, or unverified rumors.\"\n  },\n  \"oracle_decision\": {\n    \"create_tag\": false,\n    \"review_only\": true,\n    \"ignore\": false,\n    \"decision_reason\": \"The event describes an extreme geopolitical and energy shock, but the source is an unverified Telegram log with highly suspicious claims (attacks on US nuclear plants) that require external confirmation before triggering automated market directives.\",\n    \"market_impact_level\": \"extreme\",\n    \"macro_sentiment\": \"extreme_fear\",\n    \"needs_external_context\": true,\n    \"web_context_used\": false\n  },\n  \"news_alert\": [\n    \"Global Energy Supply\",\n    \"Geopolitical Risk\",\n    \"Safe Havens\"\n  ],\n  \"directives\": [\n    {\n      \"asset\": \"OIL\",\n      \"bias\": \"bullish\",\n      \"confidence\": 0.5,\n      \"risk_score\": 0.8,\n      \"volatility_duration_minutes\": 240,\n      \"reason\": \"Unverified reports of Strait of Hormuz blockade continuation.\",\n      \"transmission_channel\": \"Energy supply shock\"\n    },\n    {\n      \"asset\": \"BRENT\",\n      \"bias\": \"bullish\",\n      \"confidence\": 0.5,\n      \"risk_score\": 0.8,\n      \"volatility_duration_minutes\": 240,\n      \"reason\": \"Unverified reports of Strait of Hormuz blockade continuation.\",\n      \"transmission_channel\": \"Energy supply shock\"\n    },\n    {\n      \"asset\": \"WTI\",\n      \"bias\": \"bullish\",\n      \"confidence\": 0.5,\n      \"risk_score\": 0.8,\n      \"volatility_duration_minutes\": 240,\n      \"reason\": \"Unverified reports of Strait of Hormuz blockade continuation.\",\n      \"transmission_channel\": \"Energy supply shock\"\n    },\n    {\n      \"asset\": \"XAU\",\n      \"bias\": \"bullish\",\n      \"confidence\": 0.5,\n      \"risk_score\": 0.8,\n      \"volatility_duration_minutes\": 240,\n      \"reason\": \"Unverified reports of nuclear plant threats and extreme escalation.\",\n      \"transmission_channel\": \"Safe haven flows\"\n    },\n    {\n      \"asset\": \"SPX\",\n      \"bias\": \"bearish\",\n      \"confidence\": 0.5,\n      \"risk_score\": 0.8,\n      \"volatility_duration_minutes\": 240,\n      \"reason\": \"Unverified reports of extreme geopolitical escalation and energy shock.\",\n      \"transmission_channel\": \"Equity risk-off\"\n    }\n  ],\n  \"do_not_emit_assets\": [\n    {\n      \"asset\": \"EUR/USD\",\n      \"reason\": \"neutral_or_insufficient_directional_signal\"\n    },\n    {\n      \"asset\": \"GBP/USD\",\n      \"reason\": \"neutral_or_insufficient_directional_signal\"\n    },\n    {\n      \"asset\": \"USD/JPY\",\n      \"reason\": \"neutral_or_insufficient_directional_signal\"\n    },\n    {\n      \"asset\": \"USD/CHF\",\n      \"reason\": \"neutral_or_insufficient_directional_signal\"\n    },\n    {\n      \"asset\": \"USD\",\n      \"reason\": \"neutral_or_insufficient_directional_signal\"\n    }\n  ],\n  \"risk_notes\": {\n    \"primary_risk\": \"Unverified extreme claims regarding US nuclear plants and Hormuz blockade.\",\n    \"secondary_risks\": [\n      \"Mistranslation risk\",\n      \"Propaganda risk\",\n      \"Staleness\"\n    ],\n    \"time_sensitivity\": \"Immediate if true, but requires verification.\",\n    \"staleness_risk\": \"moderate\",\n    \"propaganda_or_source_risk\": \"high\",\n    \"uncertainty_level\": \"high\"\n  },\n  \"audit\": {\n    \"used_fields\": [\n      \"body\",\n      \"source\",\n      \"extra.scores\",\n      \"extra.nlp_features\"\n    ],\n    \"ignored_fields\": [\n      \"extra.gliner_tactical\"\n    ],\n    \"contradictions_or_ambiguities\": [\n      \"Claims of attacks on US nuclear power plants are highly anomalous and likely fabricated or mistranslated in the Telegram source.\"\n    ],\n    \"reasoning_summary\": \"Event describes a massive oil shock and nuclear threat, but the extreme nature of the claims from an unverified Telegram source necessitates manual review rather than automated tag emission.\"\n  }\n}",
-    "created_at": "2026-05-03T20:10:06.356616+00:00"
+    "raw_response": "{\n  \"event_id\": \"a7f95de4-012f-46a4-80b3-d4f9cd2d97d1\",\n  \"oracle_version\": \"ia_trend_oracle_v1\",\n  \"input_assessment\": {\n    \"accepted_for_review\": true,\n    \"source\": \"telegram_log\",\n    \"source_media\": \"telegram\",\n    \"published_at\": \"2026-04-29 16:32\",\n    \"impact_category\": \"military attack or action\",\n    \"secondary_impact_categories\": [\n      \"military organization or defense capability report\",\n      \"nuclear threat or radioactive incident\"\n    ],\n    \"risk_bucket\": \"high\",\n    \"danger_score_legacy\": 0.8064,\n    \"geopolitical_severity_score\": 0.7989,\n    \"market_impact_score\": 0.7489,\n    \"asset_route_confidence_score\": 0.88,\n    \"directional_confidence_score\": 0.7977,\n    \"oracle_review_score\": 0.7489,\n    \"noise_score\": 0.0\n  },\n  \"event_summary\": {\n    \"one_sentence\": \"Donald Trump confirms the continuation of the Iranian naval blockade, rejecting proposals to reopen the Strait of Hormuz until nuclear concerns are addressed.\",\n    \"key_facts\": [\n      \"Naval blockade of Iran to continue indefinitely.\",\n      \"Rejection of Tehran's proposal to reopen the Strait of Hormuz.\",\n      \"U.S. Central Command (CENTCOM) has plans to disrupt potential attacks on nuclear facilities.\",\n      \"Blockade described as more effective than direct bombing.\"\n    ],\n    \"market_relevance\": \"Direct threat to global oil supply via the Strait of Hormuz chokepoint and increased risk of kinetic escalation between U.S. and Iran.\",\n    \"non_market_context\": \"The event contains high-level political rhetoric and strategic military planning details.\"\n  },\n  \"oracle_decision\": {\n    \"create_tag\": true,\n    \"review_only\": false,\n    \"ignore\": false,\n    \"decision_reason\": \"High market impact score combined with a clear transmission channel through energy chokepoints and safe-haven demand.\",\n    \"market_impact_level\": \"high\",\n    \"macro_sentiment\": \"fear\",\n    \"needs_external_context\": false,\n    \"web_context_used\": false\n  },\n  \"news_alert\": [\n    \"OIL\",\n    \"XAU\",\n    \"SPX\"\n  ],\n  \"directives\": [\n    {\n      \"asset\": \"OIL\",\n      \"bias\": \"strong_bullish\",\n      \"confidence\": 0.85,\n      \"risk_score\": 0.8,\n      \"volatility_duration_minutes\": 240,\n      \"reason\": \"Blockade of Strait of Hormuz is a primary oil supply shock trigger.\",\n      \"transmission_channel\": \"energy_supply_chokepoint\"\n    },\n    {\n      \"asset\": \"XAU/USD\",\n      \"bias\": \"bullish\",\n      \"confidence\": 0.75,\n      \"risk_score\": 0.7,\n      \"volatility_duration_minutes\": 180,\n      \"reason\": \"Geopolitical escalation between major powers drives safe-haven demand.\",\n      \"transmission_channel\": \"safe_haven_demand\"\n    },\n    {\n      \"asset\": \"SPX\",\n      \"bias\": \"bearish\",\n      \"confidence\": 0.7,\n      \"risk_score\": 0.75,\n      \"volatility_duration_minutes\": 120,\n      \"reason\": \"Increased energy costs and geopolitical instability are equity negatives.\",\n      \"transmission_channel\": \"risk_off_sentiment\"\n    }\n  ],\n  \"do_not_emit_assets\": [\n    {\n      \"asset\": \"BTC\",\n      \"reason\": \"Correlation with risk-off events is inconsistent compared to gold.\"\n    }\n  ],\n  \"risk_notes\": {\n    \"primary_risk\": \"Direct military confrontation in the Persian Gulf.\",\n    \"secondary_risks\": [\n      \"Spike in global shipping insurance rates\",\n      \"Retaliatory strikes on regional energy infrastructure\"\n    ],\n    \"time_sensitivity\": \"Immediate impact upon confirmation of blockade enforcement actions.\",\n    \"staleness_risk\": \"moderate\",\n    \"propaganda_or_source_risk\": \"low\",\n    \"uncertainty_level\": \"moderate\"\n  },\n  \"audit\": {\n    \"used_fields\": [\n      \"extra.scores\",\n      \"body\",\n      \"extra.impact_category\",\n      \"extra.gliner_tactical\"\n    ],\n    \"ignored_fields\": [\n      \"extra.views\",\n      \"extra.forwards\"\n    ],\n    \"contradictions_or_ambiguities\": [\n      \"Conflict between blockade rhetoric and potential for disruption of negotiations.\"\n    ],\n    \"reasoning_summary\": \"The event targets a critical global economic chokepoint (Hormuz) with high geopolitical severity, justifying a strong bullish directive for oil and safe havens.\"\n  }\n}",
+    "created_at": "2026-05-04T23:43:57.014957+00:00"
   },
   {
     "id": "641db5d9-834b-44dd-a139-8c6e0d10a420",
     "status": "success",
-    "model_used": "gemini-pro-latest",
+    "model_used": "gemini-robotics-er-1.6-preview",
     "routing_reason": "oracle_review_market_relevant",
     "priority": 90,
     "title": "The government news agency Esna reported that the dollar's free-market price was recorded today at 1...",
@@ -4618,84 +4623,79 @@
         "noise_score": 0.0
       },
       "event_summary": {
-        "one_sentence": "The Iranian national currency has reached its lowest recorded value against the US dollar, depreciating by 120 percent over ten months.",
+        "one_sentence": "The Iranian Toman has hit a record low against the US Dollar, devaluing by 120% over ten months to reach 181,100 tomans in the free market.",
         "key_facts": [
-          "Dollar free-market price recorded at 181,100 tomans.",
-          "Iranian currency at its lowest value ever.",
-          "Dollar has grown by 120 percent over ten months."
+          "Free-market price of USD reached 181,100 tomans.",
+          "Iranian national currency at its lowest value ever.",
+          "120% growth in dollar price over ten months.",
+          "Reported by government news agency Esna."
         ],
-        "market_relevance": "Severe local currency devaluation in Iran, but lacks direct transmission to G10 FX or global commodities.",
-        "non_market_context": "Reflects severe domestic economic pressure and inflation in Iran."
+        "market_relevance": "Significant local currency collapse in Iran; however, transmission to global G10 pairs is limited without broader regional escalation or energy supply disruption.",
+        "non_market_context": "Reflects severe internal economic pressure and hyperinflationary trends in Iran."
       },
       "oracle_decision": {
         "create_tag": false,
         "review_only": true,
         "ignore": false,
-        "decision_reason": "Event describes a local currency collapse (Iranian Toman) which does not have a direct, tradable transmission channel to the global G10 FX or commodity markets.",
-        "market_impact_level": "none",
-        "macro_sentiment": "neutral",
+        "decision_reason": "Severe local currency devaluation with high market impact score but low transmission confidence to global tradable assets (G10). Asset route is primarily USD/IRR which is non-operable for most global systems.",
+        "market_impact_level": "moderate",
+        "macro_sentiment": "cautious",
         "needs_external_context": false,
         "web_context_used": false
       },
       "news_alert": [
-        "Iranian currency devaluation"
+        "IRANIAN TOMAN COLLAPSE"
       ],
       "directives": [],
       "do_not_emit_assets": [
         {
           "asset": "USD",
-          "reason": "local_currency_event_no_global_transmission"
+          "reason": "local_currency_transmission_insufficient"
         },
         {
           "asset": "EUR/USD",
-          "reason": "local_currency_event_no_global_transmission"
-        },
-        {
-          "asset": "GBP/USD",
-          "reason": "local_currency_event_no_global_transmission"
+          "reason": "neutral_or_insufficient_directional_signal"
         },
         {
           "asset": "USD/JPY",
-          "reason": "local_currency_event_no_global_transmission"
-        },
-        {
-          "asset": "USD/CHF",
-          "reason": "local_currency_event_no_global_transmission"
+          "reason": "neutral_or_insufficient_directional_signal"
         }
       ],
       "risk_notes": {
-        "primary_risk": "Domestic economic crisis in Iran.",
+        "primary_risk": "Hyperinflation in Iran and potential for civil unrest or regional spillover.",
         "secondary_risks": [
-          "Potential for civil unrest",
-          "Increased geopolitical desperation"
+          "Sanctions tightening",
+          "Regional instability"
         ],
-        "time_sensitivity": "low",
+        "time_sensitivity": "Ongoing economic trend",
         "staleness_risk": "low",
         "propaganda_or_source_risk": "low",
         "uncertainty_level": "low"
       },
       "audit": {
         "used_fields": [
+          "extra.scores",
           "body",
-          "extra.nlp_features",
-          "extra.scores"
+          "country",
+          "extra.impact_category"
         ],
         "ignored_fields": [
-          "extra.gliner_tactical"
+          "extra.views",
+          "extra.forwards"
         ],
         "contradictions_or_ambiguities": [
-          "High market impact score generated by pipeline due to extreme percentage change and currency keywords, but asset route is strictly local (IRR/IRT)."
+          "High market_impact_score vs low asset_route_confidence_score"
         ],
-        "reasoning_summary": "The event details a severe devaluation of the Iranian currency against the USD. While economically significant for Iran, it does not provide a directional signal for global tradable assets like G10 FX pairs or commodities. Therefore, no global market tags are created."
+        "reasoning_summary": "The event is highly significant for the Iranian economy but lacks a direct, high-confidence transmission mechanism to global tradable assets like EUR/USD or OIL without further geopolitical triggers."
       }
     },
-    "raw_response": "{\n  \"event_id\": \"641db5d9-834b-44dd-a139-8c6e0d10a420\",\n  \"oracle_version\": \"ia_trend_oracle_v1\",\n  \"input_assessment\": {\n    \"accepted_for_review\": true,\n    \"source\": \"telegram_log\",\n    \"source_media\": \"telegram\",\n    \"published_at\": \"2026-04-29 14:38\",\n    \"impact_category\": \"currency intervention or severe devaluation\",\n    \"secondary_impact_categories\": [],\n    \"risk_bucket\": \"high\",\n    \"danger_score_legacy\": 0.7350128686968307,\n    \"geopolitical_severity_score\": 0.0,\n    \"market_impact_score\": 0.99,\n    \"asset_route_confidence_score\": 0.5,\n    \"directional_confidence_score\": 0.604,\n    \"oracle_review_score\": 0.99,\n    \"noise_score\": 0.0\n  },\n  \"event_summary\": {\n    \"one_sentence\": \"The Iranian national currency has reached its lowest recorded value against the US dollar, depreciating by 120 percent over ten months.\",\n    \"key_facts\": [\n      \"Dollar free-market price recorded at 181,100 tomans.\",\n      \"Iranian currency at its lowest value ever.\",\n      \"Dollar has grown by 120 percent over ten months.\"\n    ],\n    \"market_relevance\": \"Severe local currency devaluation in Iran, but lacks direct transmission to G10 FX or global commodities.\",\n    \"non_market_context\": \"Reflects severe domestic economic pressure and inflation in Iran.\"\n  },\n  \"oracle_decision\": {\n    \"create_tag\": false,\n    \"review_only\": true,\n    \"ignore\": false,\n    \"decision_reason\": \"Event describes a local currency collapse (Iranian Toman) which does not have a direct, tradable transmission channel to the global G10 FX or commodity markets.\",\n    \"market_impact_level\": \"none\",\n    \"macro_sentiment\": \"neutral\",\n    \"needs_external_context\": false,\n    \"web_context_used\": false\n  },\n  \"news_alert\": [\n    \"Iranian currency devaluation\"\n  ],\n  \"directives\": [],\n  \"do_not_emit_assets\": [\n    {\n      \"asset\": \"USD\",\n      \"reason\": \"local_currency_event_no_global_transmission\"\n    },\n    {\n      \"asset\": \"EUR/USD\",\n      \"reason\": \"local_currency_event_no_global_transmission\"\n    },\n    {\n      \"asset\": \"GBP/USD\",\n      \"reason\": \"local_currency_event_no_global_transmission\"\n    },\n    {\n      \"asset\": \"USD/JPY\",\n      \"reason\": \"local_currency_event_no_global_transmission\"\n    },\n    {\n      \"asset\": \"USD/CHF\",\n      \"reason\": \"local_currency_event_no_global_transmission\"\n    }\n  ],\n  \"risk_notes\": {\n    \"primary_risk\": \"Domestic economic crisis in Iran.\",\n    \"secondary_risks\": [\n      \"Potential for civil unrest\",\n      \"Increased geopolitical desperation\"\n    ],\n    \"time_sensitivity\": \"low\",\n    \"staleness_risk\": \"low\",\n    \"propaganda_or_source_risk\": \"low\",\n    \"uncertainty_level\": \"low\"\n  },\n  \"audit\": {\n    \"used_fields\": [\n      \"body\",\n      \"extra.nlp_features\",\n      \"extra.scores\"\n    ],\n    \"ignored_fields\": [\n      \"extra.gliner_tactical\"\n    ],\n    \"contradictions_or_ambiguities\": [\n      \"High market impact score generated by pipeline due to extreme percentage change and currency keywords, but asset route is strictly local (IRR/IRT).\"\n    ],\n    \"reasoning_summary\": \"The event details a severe devaluation of the Iranian currency against the USD. While economically significant for Iran, it does not provide a directional signal for global tradable assets like G10 FX pairs or commodities. Therefore, no global market tags are created.\"\n  }\n}",
-    "created_at": "2026-05-03T20:10:24.780439+00:00"
+    "raw_response": "{\n  \"event_id\": \"641db5d9-834b-44dd-a139-8c6e0d10a420\",\n  \"oracle_version\": \"ia_trend_oracle_v1\",\n  \"input_assessment\": {\n    \"accepted_for_review\": true,\n    \"source\": \"telegram_log\",\n    \"source_media\": \"telegram\",\n    \"published_at\": \"2026-04-29 14:38\",\n    \"impact_category\": \"currency intervention or severe devaluation\",\n    \"secondary_impact_categories\": [],\n    \"risk_bucket\": \"high\",\n    \"danger_score_legacy\": 0.7350128686968307,\n    \"geopolitical_severity_score\": 0.0,\n    \"market_impact_score\": 0.99,\n    \"asset_route_confidence_score\": 0.5,\n    \"directional_confidence_score\": 0.604,\n    \"oracle_review_score\": 0.99,\n    \"noise_score\": 0.0\n  },\n  \"event_summary\": {\n    \"one_sentence\": \"The Iranian Toman has hit a record low against the US Dollar, devaluing by 120% over ten months to reach 181,100 tomans in the free market.\",\n    \"key_facts\": [\n      \"Free-market price of USD reached 181,100 tomans.\",\n      \"Iranian national currency at its lowest value ever.\",\n      \"120% growth in dollar price over ten months.\",\n      \"Reported by government news agency Esna.\"\n    ],\n    \"market_relevance\": \"Significant local currency collapse in Iran; however, transmission to global G10 pairs is limited without broader regional escalation or energy supply disruption.\",\n    \"non_market_context\": \"Reflects severe internal economic pressure and hyperinflationary trends in Iran.\"\n  },\n  \"oracle_decision\": {\n    \"create_tag\": false,\n    \"review_only\": true,\n    \"ignore\": false,\n    \"decision_reason\": \"Severe local currency devaluation with high market impact score but low transmission confidence to global tradable assets (G10). Asset route is primarily USD/IRR which is non-operable for most global systems.\",\n    \"market_impact_level\": \"moderate\",\n    \"macro_sentiment\": \"cautious\",\n    \"needs_external_context\": false,\n    \"web_context_used\": false\n  },\n  \"news_alert\": [\n    \"IRANIAN TOMAN COLLAPSE\"\n  ],\n  \"directives\": [],\n  \"do_not_emit_assets\": [\n    {\n      \"asset\": \"USD\",\n      \"reason\": \"local_currency_transmission_insufficient\"\n    },\n    {\n      \"asset\": \"EUR/USD\",\n      \"reason\": \"neutral_or_insufficient_directional_signal\"\n    },\n    {\n      \"asset\": \"USD/JPY\",\n      \"reason\": \"neutral_or_insufficient_directional_signal\"\n    }\n  ],\n  \"risk_notes\": {\n    \"primary_risk\": \"Hyperinflation in Iran and potential for civil unrest or regional spillover.\",\n    \"secondary_risks\": [\n      \"Sanctions tightening\",\n      \"Regional instability\"\n    ],\n    \"time_sensitivity\": \"Ongoing economic trend\",\n    \"staleness_risk\": \"low\",\n    \"propaganda_or_source_risk\": \"low\",\n    \"uncertainty_level\": \"low\"\n  },\n  \"audit\": {\n    \"used_fields\": [\n      \"extra.scores\",\n      \"body\",\n      \"country\",\n      \"extra.impact_category\"\n    ],\n    \"ignored_fields\": [\n      \"extra.views\",\n      \"extra.forwards\"\n    ],\n    \"contradictions_or_ambiguities\": [\n      \"High market_impact_score vs low asset_route_confidence_score\"\n    ],\n    \"reasoning_summary\": \"The event is highly significant for the Iranian economy but lacks a direct, high-confidence transmission mechanism to global tradable assets like EUR/USD or OIL without further geopolitical triggers.\"\n  }\n}",
+    "created_at": "2026-05-04T23:44:02.736157+00:00"
   },
   {
     "id": "04c7dc17-f6ec-422a-aee9-92220b976020",
     "status": "success",
-    "model_used": "gemini-pro-latest",
+    "model_used": "gemini-robotics-er-1.6-preview",
     "routing_reason": "oracle_review_geopolitical_critical",
     "priority": 75,
     "title": "U.S. Secretary of War Pete Haggett said the incident was still under investigation two months after ...",
@@ -5648,8 +5648,95 @@
       },
       "created_at": "2026-05-03T19:13:44.298788+00:00"
     },
-    "oracle_result": null,
-    "raw_response": "{\n  \"event_id\": \"04c7dc17-f6ec-422a-aee9-92220b976020\",\n  \"oracle_version\": \"ia_trend_oracle_v1\",\n  \"input_assessment\": {\n    \"accepted_for_review\": true,\n    \"source\": \"telegram_log\",\n    \"source_media\": \"telegram\",\n    \"published_at\": \"2026-04-29 17:52\",\n    \"impact_category\": \"military impact, cost or investigation report\",\n    \"secondary_impact_categories\": [\n      \"military attack or action\",\n      \"military organization or defense capability report\"\n    ],\n    \"risk_bucket\": \"low\",\n    \"danger_score_legacy\": 0.26549989642533767,\n    \"geopolitical_severity_score\": 0.8685858273779901,\n    \"market_impact_score\": 0.1,\n    \"asset_route_confidence_score\": 0.66,\n    \"directional_confidence_score\": 0.769594919681549,\n    \"oracle_review_score\": 0.694868661902392,\n    \"noise_score\": 0.0\n  },\n  \"event_summary\": {\n    \"one_sentence\": \"A U.S. official stated that the investigation into a deadly attack on an elementary school two months ago is still ongoing.\",\n    \"key_facts\": [\n      \"U.S. Secretary of War Pete Haggett responded to questions about an attack on Minab Elementary School.\",\n      \"The attack occurred two months ago and killed over 165 people.\",\n      \"The incident is still under investigation by an army general outside Central Command.\",\n      \"Haggett reiterated that the U.S. did not target civilians.\"\n    ],\n    \"market_relevance\": \"None. This is a retrospective report on an ongoing investigation of a past military incident with no new actionable market implications.\",\n    \"non_market_context\": \"The event highlights political and humanitarian scrutiny over a past military strike, involving inquiries from a U.S. Democrat representative.\"\n  },\n  \"oracle_decision\": {\n    \"create_tag\": false,\n    \"review_only\": false,\n    \"ignore\": true,\n    \"decision_reason\": \"The event is a retrospective investigation report regarding an incident that occurred two months ago. It contains no new active escalation or market-moving information.\",\n    \"market_impact_level\": \"none\",\n    \"macro_sentiment\": \"neutral\",\n    \"needs_external_context\": false,\n    \"web_context_used\": false\n  },\n  \"news_alert\": [],\n  \"directives\": [],\n  \"do_not_emit_assets\": [\n    {\n      \"asset\": \"XAU\",\n      \"reason\": \"retrospective_investigation_no_new_risk\"\n    },\n    {\n      \"asset\": \"XAU/USD\",\n      \"reason\": \"retrospective_investigation_no_new_risk\"\n    },\n    {\n      \"asset\": \"JPY\",\n      \"reason\": \"retrospective_investigation_no_new_risk\"\n    },\n    {\n      \"asset\": \"CHF\",\n      \"reason\": \"retrospective_investigation_no_new_risk\"\n    },\n    {\n      \"asset\": \"SPX\",\n      \"reason\": \"retrospective_investigation_no_new_risk\"\n    },\n    {\n      \"asset\": \"NQ\",\n      \"reason\": \"retrospective_investigation_no_new_risk\"\n    }\n  ],\n  \"risk_notes\": {\n    \"primary_risk\": \"None\",\n    \"secondary_risks\": [],\n    \"time_sensitivity\": \"low\",\n    \"staleness_risk\": \"high\",\n    \"propaganda_or_source_risk\": \"low\",\n    \"uncertainty_level\": \"low\"\n  },\n  \"audit\": {\n    \"used_fields\": [\n      \"body\",\n      \"title\",\n      \"extra.scores\",\n      \"extra.impact_category\"\n    ],\n    \"ignored_fields\": [\n      \"extra.gliner_tactical\",\n      \"extra.nlp_features\"\n    ],\n    \"contradictions_or_ambiguities\":",
-    "created_at": "2026-05-03T20:10:38.027936+00:00"
+    "oracle_result": {
+      "event_id": "04c7dc17-f6ec-422a-aee9-92220b976020",
+      "oracle_version": "ia_trend_oracle_v1",
+      "input_assessment": {
+        "accepted_for_review": true,
+        "source": "telegram_log",
+        "source_media": "telegram",
+        "published_at": "2026-04-29 17:52",
+        "impact_category": "military impact, cost or investigation report",
+        "secondary_impact_categories": [
+          "military attack or action",
+          "military organization or defense capability report"
+        ],
+        "risk_bucket": "low",
+        "danger_score_legacy": 0.26549989642533767,
+        "geopolitical_severity_score": 0.8685858273779901,
+        "market_impact_score": 0.1,
+        "asset_route_confidence_score": 0.66,
+        "directional_confidence_score": 0.769594919681549,
+        "oracle_review_score": 0.694868661902392,
+        "noise_score": 0.0
+      },
+      "event_summary": {
+        "one_sentence": "U.S. Secretary of War Pete Haggett addresses an ongoing investigation into a deadly school attack in Minab that occurred two months prior.",
+        "key_facts": [
+          "Incident occurred two months ago.",
+          "Investigation is still active by an army general outside Central Command.",
+          "165 people were killed in the attack.",
+          "U.S. officials deny targeting civilians."
+        ],
+        "market_relevance": "Low. The event is a retrospective update on a past incident with no new active escalation or immediate strategic shift.",
+        "non_market_context": "The report focuses on political accountability and human costs rather than operational military changes."
+      },
+      "oracle_decision": {
+        "create_tag": false,
+        "review_only": true,
+        "ignore": false,
+        "decision_reason": "The event is a retrospective investigation report on a two-month-old incident. While geopolitical severity is high due to casualties, there is no immediate market-moving catalyst or clear directional transmission for global assets.",
+        "market_impact_level": "none",
+        "macro_sentiment": "neutral",
+        "needs_external_context": false,
+        "web_context_used": false
+      },
+      "news_alert": [
+        "Geopolitical"
+      ],
+      "directives": [],
+      "do_not_emit_assets": [
+        {
+          "asset": "XAU",
+          "reason": "event_is_retrospective_and_lacks_immediate_safe_haven_catalyst"
+        },
+        {
+          "asset": "SPX",
+          "reason": "insufficient_market_impact_score"
+        },
+        {
+          "asset": "JPY",
+          "reason": "neutral_bias_on_stale_news"
+        }
+      ],
+      "risk_notes": {
+        "primary_risk": "Staleness",
+        "secondary_risks": [
+          "Political rhetoric"
+        ],
+        "time_sensitivity": "low",
+        "staleness_risk": "high",
+        "propaganda_or_source_risk": "moderate",
+        "uncertainty_level": "low"
+      },
+      "audit": {
+        "used_fields": [
+          "extra.scores",
+          "body",
+          "published_at",
+          "extra.numeric_features"
+        ],
+        "ignored_fields": [
+          "extra.views",
+          "extra.forwards"
+        ],
+        "contradictions_or_ambiguities": [
+          "High geopolitical severity vs low market impact score"
+        ],
+        "reasoning_summary": "Event is confirmed as retrospective investigation of a past attack. No new kinetic action or escalation reported. Asset directives from candidate list are rejected due to lack of current actionability."
+      }
+    },
+    "raw_response": "{\n  \"event_id\": \"04c7dc17-f6ec-422a-aee9-92220b976020\",\n  \"oracle_version\": \"ia_trend_oracle_v1\",\n  \"input_assessment\": {\n    \"accepted_for_review\": true,\n    \"source\": \"telegram_log\",\n    \"source_media\": \"telegram\",\n    \"published_at\": \"2026-04-29 17:52\",\n    \"impact_category\": \"military impact, cost or investigation report\",\n    \"secondary_impact_categories\": [\n      \"military attack or action\",\n      \"military organization or defense capability report\"\n    ],\n    \"risk_bucket\": \"low\",\n    \"danger_score_legacy\": 0.26549989642533767,\n    \"geopolitical_severity_score\": 0.8685858273779901,\n    \"market_impact_score\": 0.1,\n    \"asset_route_confidence_score\": 0.66,\n    \"directional_confidence_score\": 0.769594919681549,\n    \"oracle_review_score\": 0.694868661902392,\n    \"noise_score\": 0.0\n  },\n  \"event_summary\": {\n    \"one_sentence\": \"U.S. Secretary of War Pete Haggett addresses an ongoing investigation into a deadly school attack in Minab that occurred two months prior.\",\n    \"key_facts\": [\n      \"Incident occurred two months ago.\",\n      \"Investigation is still active by an army general outside Central Command.\",\n      \"165 people were killed in the attack.\",\n      \"U.S. officials deny targeting civilians.\"\n    ],\n    \"market_relevance\": \"Low. The event is a retrospective update on a past incident with no new active escalation or immediate strategic shift.\",\n    \"non_market_context\": \"The report focuses on political accountability and human costs rather than operational military changes.\"\n  },\n  \"oracle_decision\": {\n    \"create_tag\": false,\n    \"review_only\": true,\n    \"ignore\": false,\n    \"decision_reason\": \"The event is a retrospective investigation report on a two-month-old incident. While geopolitical severity is high due to casualties, there is no immediate market-moving catalyst or clear directional transmission for global assets.\",\n    \"market_impact_level\": \"none\",\n    \"macro_sentiment\": \"neutral\",\n    \"needs_external_context\": false,\n    \"web_context_used\": false\n  },\n  \"news_alert\": [\n    \"Geopolitical\"\n  ],\n  \"directives\": [],\n  \"do_not_emit_assets\": [\n    {\n      \"asset\": \"XAU\",\n      \"reason\": \"event_is_retrospective_and_lacks_immediate_safe_haven_catalyst\"\n    },\n    {\n      \"asset\": \"SPX\",\n      \"reason\": \"insufficient_market_impact_score\"\n    },\n    {\n      \"asset\": \"JPY\",\n      \"reason\": \"neutral_bias_on_stale_news\"\n    }\n  ],\n  \"risk_notes\": {\n    \"primary_risk\": \"Staleness\",\n    \"secondary_risks\": [\n      \"Political rhetoric\"\n    ],\n    \"time_sensitivity\": \"low\",\n    \"staleness_risk\": \"high\",\n    \"propaganda_or_source_risk\": \"moderate\",\n    \"uncertainty_level\": \"low\"\n  },\n  \"audit\": {\n    \"used_fields\": [\n      \"extra.scores\",\n      \"body\",\n      \"published_at\",\n      \"extra.numeric_features\"\n    ],\n    \"ignored_fields\": [\n      \"extra.views\",\n      \"extra.forwards\"\n    ],\n    \"contradictions_or_ambiguities\": [\n      \"High geopolitical severity vs low market impact score\"\n    ],\n    \"reasoning_summary\": \"Event is confirmed as retrospective investigation of a past attack. No new kinetic action or escalation reported. Asset directives from candidate list are rejected due to lack of current actionability.\"\n  }\n}",
+    "created_at": "2026-05-04T23:44:08.375517+00:00"
   }
 ]

@@ -1,5 +1,5 @@
 {
-  "input_file": "c:\\Projects\\forex_system\\services\\ia_oracle\\ia_oracle\\data\\mock_intel_items_big_process_result.json",
+  "input_file": "C:\\Projects\\forex_system\\services\\ia_oracle\\ia_oracle\\data\\mock_intel_items_big_process_result.json",
   "selected_count": 6,
   "rejected_count": 0,
   "selected": [

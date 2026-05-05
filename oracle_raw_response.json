@@ -1,0 +1,96 @@
+{
+  "event_id": "04c7dc17-f6ec-422a-aee9-92220b976020",
+  "oracle_version": "ia_trend_oracle_v1",
+  "input_assessment": {
+    "accepted_for_review": true,
+    "source": "telegram_log",
+    "source_media": "telegram",
+    "published_at": "unknown",
+    "impact_category": "geopolitical",
+    "secondary_impact_categories": [
+      "political_rhetoric"
+    ],
+    "risk_bucket": "geopolitical_review",
+    "danger_score_legacy": 0.26549989642533767,
+    "geopolitical_severity_score": 0.8685858273779901,
+    "market_impact_score": 0.1,
+    "asset_route_confidence_score": 0.66,
+    "directional_confidence_score": 0.769594919681549,
+    "oracle_review_score": 0.694868661902392,
+    "noise_score": 0.0
+  },
+  "event_summary": {
+    "one_sentence": "A U.S. official provides a non-committal update on an ongoing investigation into a two-month-old school attack.",
+    "key_facts": [
+      "U.S. official comments on Minab Elementary School attack investigation",
+      "Incident occurred two months ago",
+      "Official denies targeting civilians",
+      "Investigation remains ongoing"
+    ],
+    "market_relevance": "Negligible; this is a retrospective political statement regarding a past event, not a new market-moving escalation.",
+    "non_market_context": "The event involves a historical/past tragedy and political rhetoric rather than an active, actionable geopolitical threat."
+  },
+  "oracle_decision": {
+    "create_tag": false,
+    "review_only": true,
+    "ignore": false,
+    "decision_reason": "The event is a retrospective political update on a past incident. It lacks the immediacy and systemic impact required to trigger market-moving directives.",
+    "market_impact_level": "none",
+    "macro_sentiment": "neutral",
+    "needs_external_context": false,
+    "web_context_used": false
+  },
+  "news_alert": [],
+  "directives": [],
+  "do_not_emit_assets": [
+    {
+      "asset": "XAU",
+      "reason": "insufficient_market_impact"
+    },
+    {
+      "asset": "XAU/USD",
+      "reason": "insufficient_market_impact"
+    },
+    {
+      "asset": "JPY",
+      "reason": "insufficient_market_impact"
+    },
+    {
+      "asset": "CHF",
+      "reason": "insufficient_market_impact"
+    },
+    {
+      "asset": "SPX",
+      "reason": "insufficient_market_impact"
+    },
+    {
+      "asset": "NQ",
+      "reason": "insufficient_market_impact"
+    }
+  ],
+  "risk_notes": {
+    "primary_risk": "none",
+    "secondary_risks": [
+      "political_rhetoric"
+    ],
+    "time_sensitivity": "low",
+    "staleness_risk": "high",
+    "propaganda_or_source_risk": "moderate",
+    "uncertainty_level": "low"
+  },
+  "audit": {
+    "used_fields": [
+      "id",
+      "scores",
+      "title",
+      "body"
+    ],
+    "ignored_fields": [
+      "candidate_directives"
+    ],
+    "contradictions_or_ambiguities": [
+      "The event title and body refer to a 'Secretary of War', which is an outdated title, suggesting potential misinformation or fictional context."
+    ],
+    "reasoning_summary": "The event is a retrospective political statement regarding a two-month-old incident. It does not represent a new, actionable geopolitical shock and therefore does not warrant market directives."
+  }
+}
