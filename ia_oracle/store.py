@@ -38,6 +38,7 @@ class OracleMongoStore(BaseStore):
     """
 
     COLLECTION = "oracle_resolved"
+    TAGS_COLLECTION = "global_tags"
 
     def __init__(self, mongo_manager: Optional[MongoManager] = None) -> None:
         super().__init__(mongo_manager)
@@ -55,6 +56,14 @@ class OracleMongoStore(BaseStore):
                 [("action", 1)],                 # filter by EMIT / HOLD / DISCARD
                 [("created_at", -1)],            # recency queries
                 [("oracle_confidence", -1)],     # sort by confidence
+            ],
+        )
+        await self._mongo.async_ensure_indexes(
+            self.TAGS_COLLECTION,
+            [
+                [("trigger_event_id", 1), ("asset", 1)], # composite lookup key
+                [("asset", 1)],
+                [("established_at", -1)],
             ],
         )
         self.log.debug("OracleMongoStore: indexes ensured on '%s'", self.COLLECTION)
@@ -122,6 +131,50 @@ class OracleMongoStore(BaseStore):
         """Retrieve a single oracle_resolved document matching ``query``."""
         results = await self._mongo.async_find_many(
             self.COLLECTION, query, limit=1
+        )
+        return results[0] if results else None
+
+    # ------------------------------------------------------------------
+    # Global Tags API
+    # ------------------------------------------------------------------
+
+    async def store_global_tag(self, tag: Any) -> str:
+        """Persist a GlobalTag.
+        
+        Idempotent by trigger_event_id and asset.
+        """
+        now = datetime.now(timezone.utc).isoformat()
+        
+        doc = tag.to_dict() if hasattr(tag, 'to_dict') else tag.__dict__.copy()
+        
+        # Upsert composite key
+        query = {
+            "trigger_event_id": tag.trigger_event_id,
+            "asset": tag.asset
+        }
+        
+        await self._mongo.async_update_one(
+            self.TAGS_COLLECTION,
+            query,
+            {
+                "$set": {**doc, "updated_at": now},
+                "$setOnInsert": {"created_at": now}
+            },
+            upsert=True,
+        )
+        
+        self.log.info(
+            "OracleMongoStore: stored global tag for asset=%s, trigger=%s",
+            tag.asset, tag.trigger_event_id
+        )
+        return f"{tag.asset}_{tag.trigger_event_id}"
+
+    async def get_global_tag(self, trigger_event_id: str, asset: str) -> Optional[Dict[str, Any]]:
+        """Retrieve a single global_tag document."""
+        results = await self._mongo.async_find_many(
+            self.TAGS_COLLECTION,
+            {"trigger_event_id": trigger_event_id, "asset": asset},
+            limit=1
         )
         return results[0] if results else None
 

@@ -4085,3 +4085,1004 @@ INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Ready. concur
 INFO → __main__ → Bootstrapping default OracleSession...
 INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Running. Waiting for messages...
 INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Consumo ativo. Aguardando eventos...
+INFO → root → Logging system initialized
+ERROR → forex_shared.env_config_manager → [EnvConfig] Falha ao resolver secret para MONGO_URL: 403 Permission denied on resource project forexsystem-492216. [reason: "CONSUMER_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "secretmanager.googleapis.com"
+}
+metadata {
+  key: "containerInfo"
+  value: "forexsystem-492216"
+}
+metadata {
+  key: "consumer"
+  value: "projects/forexsystem-492216"
+}
+, locale: "en-US"
+message: "Permission denied on resource project forexsystem-492216."
+, links {
+  description: "Google developers console"
+  url: "https://console.developers.google.com"
+}
+]
+ERROR → forex_shared.env_config_manager → [EnvConfig] Falha ao resolver secret para SYSTEM_X25519_PRIVATE_KEY: 403 Permission denied on resource project forexsystem-492216. [reason: "CONSUMER_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "secretmanager.googleapis.com"
+}
+metadata {
+  key: "containerInfo"
+  value: "forexsystem-492216"
+}
+metadata {
+  key: "consumer"
+  value: "projects/forexsystem-492216"
+}
+, locale: "en-US"
+message: "Permission denied on resource project forexsystem-492216."
+, links {
+  description: "Google developers console"
+  url: "https://console.developers.google.com"
+}
+]
+ERROR → forex_shared.env_config_manager → [EnvConfig] Falha ao resolver secret para SYSTEM_X25519_PUBLIC_KEY: 403 Permission denied on resource project forexsystem-492216. [reason: "CONSUMER_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "secretmanager.googleapis.com"
+}
+metadata {
+  key: "containerInfo"
+  value: "forexsystem-492216"
+}
+metadata {
+  key: "consumer"
+  value: "projects/forexsystem-492216"
+}
+, locale: "en-US"
+message: "Permission denied on resource project forexsystem-492216."
+, links {
+  description: "Google developers console"
+  url: "https://console.developers.google.com"
+}
+]
+INFO → forex_shared.env_config_manager → [EnvConfig] 🔏 45 chaves marcadas como Secret no arquivo.
+WARNING → __main__ → Failed to sync with MongoDB EnvConfig: 403 Permission denied on resource project forexsystem-492216. [reason: "CONSUMER_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "secretmanager.googleapis.com"
+}
+metadata {
+  key: "containerInfo"
+  value: "forexsystem-492216"
+}
+metadata {
+  key: "consumer"
+  value: "projects/forexsystem-492216"
+}
+, locale: "en-US"
+message: "Permission denied on resource project forexsystem-492216."
+, links {
+  description: "Google developers console"
+  url: "https://console.developers.google.com"
+}
+]
+INFO → __main__ → Starting OracleWorker: oracle_1 (Max Sessions: 1)
+WARNING → __main__ → MongoDB unavailable — persistence skipped: Username and password must be escaped according to RFC 3986, use urllib.parse.quote_plus
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Starting...
+INFO → forex_shared.worker_api.ia_factory → [IAProviderFactory] IA_PROVIDER='GEMINI' (from env)
+INFO → forex_shared.worker_api.ia_factory → [IAProviderFactory] Instantiated: GeminiIAProvider (backend=GEMINI, model=gemini-2.5-pro-preview-05-06)
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] Querying available Gemini models...
+INFO → httpx → HTTP Request: GET https://generativelanguage.googleapis.com/v1beta/models "HTTP/1.1 200 OK"
+INFO → httpx → HTTP Request: GET https://generativelanguage.googleapis.com/v1beta/models?pageToken=CiRtb2RlbHMvdmVvLTMuMS1mYXN0LWdlbmVyYXRlLXByZXZpZXc%3D "HTTP/1.1 200 OK"
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] Discovered 18 models from API.
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] Initialized. primary=gemini-2.5-pro-preview-05-06 chain=19 concurrency=1 max_retries=15 url_context=False google_search=False thinking=HIGH
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Provider ready: IABackend.GEMINI | model=gemini-2.5-pro-preview-05-06
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@localhost:5672/
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@localhost:5672/
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectado. Exchange 'forex_market_events' ativo.
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] MQ connected.
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Inscrito: 'intel.oracle.review' → fila 'amq_670ff0d3819a4c88b1999217e3ca0a5e'
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Subscribed to intel.oracle.review
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Ready. concurrency=1
+INFO → __main__ → Bootstrapping default OracleSession...
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_1] Running. Waiting for messages...
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Consumo ativo. Aguardando eventos...
+INFO → root → Logging system initialized
+ERROR → forex_shared.env_config_manager → [EnvConfig] Falha ao resolver secret para MONGO_URL: 403 Permission denied on resource project forexsystem-492216. [reason: "CONSUMER_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "secretmanager.googleapis.com"
+}
+metadata {
+  key: "containerInfo"
+  value: "forexsystem-492216"
+}
+metadata {
+  key: "consumer"
+  value: "projects/forexsystem-492216"
+}
+, locale: "en-US"
+message: "Permission denied on resource project forexsystem-492216."
+, links {
+  description: "Google developers console"
+  url: "https://console.developers.google.com"
+}
+]
+ERROR → forex_shared.env_config_manager → [EnvConfig] Falha ao resolver secret para SYSTEM_X25519_PRIVATE_KEY: 403 Permission denied on resource project forexsystem-492216. [reason: "CONSUMER_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "secretmanager.googleapis.com"
+}
+metadata {
+  key: "containerInfo"
+  value: "forexsystem-492216"
+}
+metadata {
+  key: "consumer"
+  value: "projects/forexsystem-492216"
+}
+, locale: "en-US"
+message: "Permission denied on resource project forexsystem-492216."
+, links {
+  description: "Google developers console"
+  url: "https://console.developers.google.com"
+}
+]
+ERROR → forex_shared.env_config_manager → [EnvConfig] Falha ao resolver secret para SYSTEM_X25519_PUBLIC_KEY: 403 Permission denied on resource project forexsystem-492216. [reason: "CONSUMER_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "secretmanager.googleapis.com"
+}
+metadata {
+  key: "containerInfo"
+  value: "forexsystem-492216"
+}
+metadata {
+  key: "consumer"
+  value: "projects/forexsystem-492216"
+}
+, locale: "en-US"
+message: "Permission denied on resource project forexsystem-492216."
+, links {
+  description: "Google developers console"
+  url: "https://console.developers.google.com"
+}
+]
+INFO → forex_shared.env_config_manager → [EnvConfig] 🔏 47 chaves marcadas como Secret no arquivo.
+WARNING → __main__ → Failed to sync with MongoDB EnvConfig: 403 Permission denied on resource project forexsystem-492216. [reason: "CONSUMER_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "secretmanager.googleapis.com"
+}
+metadata {
+  key: "containerInfo"
+  value: "forexsystem-492216"
+}
+metadata {
+  key: "consumer"
+  value: "projects/forexsystem-492216"
+}
+, locale: "en-US"
+message: "Permission denied on resource project forexsystem-492216."
+, links {
+  description: "Google developers console"
+  url: "https://console.developers.google.com"
+}
+]
+INFO → root → Logging system initialized
+INFO → __main__ → === Oracle MQ Publisher Test ===
+INFO → __main__ → Mock file : C:\Projects\forex_system\services\ia_oracle\ia_oracle\data\mock_intel_items_big_process_result.json
+INFO → __main__ → Topic     : intel.oracle.review
+INFO → __main__ → Count     : 1 items
+INFO → __main__ → Delay     : 0.5 s between messages
+INFO → __main__ → Loaded 1 items
+INFO → __main__ → Connecting to MQ (provider=RABBITMQ_ASYNC)...
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@localhost:5672/
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@localhost:5672/
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectado. Exchange 'forex_market_events' ativo.
+INFO → __main__ → MQ connected.
+INFO → __main__ → [1/1] Published  id=4cbe67bb-9eab-4865-8d91-64dc8d4ad072    title=Scott Bassent, US Treasury Secretary, wrote on the social ne
+INFO → __main__ → Done. 1/1 published.
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conexão encerrada.
+INFO → __main__ → MQ disconnected.
+INFO → root → Logging system initialized
+ERROR → forex_shared.env_config_manager → [EnvConfig] Falha ao resolver secret para MONGO_URL: 403 Permission denied on resource project forexsystem-492216. [reason: "CONSUMER_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "secretmanager.googleapis.com"
+}
+metadata {
+  key: "containerInfo"
+  value: "forexsystem-492216"
+}
+metadata {
+  key: "consumer"
+  value: "projects/forexsystem-492216"
+}
+, locale: "en-US"
+message: "Permission denied on resource project forexsystem-492216."
+, links {
+  description: "Google developers console"
+  url: "https://console.developers.google.com"
+}
+]
+ERROR → forex_shared.env_config_manager → [EnvConfig] Falha ao resolver secret para SYSTEM_X25519_PRIVATE_KEY: 403 Permission denied on resource project forexsystem-492216. [reason: "CONSUMER_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "secretmanager.googleapis.com"
+}
+metadata {
+  key: "containerInfo"
+  value: "forexsystem-492216"
+}
+metadata {
+  key: "consumer"
+  value: "projects/forexsystem-492216"
+}
+, locale: "en-US"
+message: "Permission denied on resource project forexsystem-492216."
+, links {
+  description: "Google developers console"
+  url: "https://console.developers.google.com"
+}
+]
+ERROR → forex_shared.env_config_manager → [EnvConfig] Falha ao resolver secret para SYSTEM_X25519_PUBLIC_KEY: 403 Permission denied on resource project forexsystem-492216. [reason: "CONSUMER_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "secretmanager.googleapis.com"
+}
+metadata {
+  key: "containerInfo"
+  value: "forexsystem-492216"
+}
+metadata {
+  key: "consumer"
+  value: "projects/forexsystem-492216"
+}
+, locale: "en-US"
+message: "Permission denied on resource project forexsystem-492216."
+, links {
+  description: "Google developers console"
+  url: "https://console.developers.google.com"
+}
+]
+INFO → forex_shared.env_config_manager → [EnvConfig] 🔏 47 chaves marcadas como Secret no arquivo.
+WARNING → __main__ → Failed to sync with MongoDB EnvConfig: 403 Permission denied on resource project forexsystem-492216. [reason: "CONSUMER_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "secretmanager.googleapis.com"
+}
+metadata {
+  key: "containerInfo"
+  value: "forexsystem-492216"
+}
+metadata {
+  key: "consumer"
+  value: "projects/forexsystem-492216"
+}
+, locale: "en-US"
+message: "Permission denied on resource project forexsystem-492216."
+, links {
+  description: "Google developers console"
+  url: "https://console.developers.google.com"
+}
+]
+INFO → __main__ → Starting OracleWorker: oracle_worker_1 (Max Sessions: 1)
+WARNING → __main__ → MongoDB unavailable — persistence skipped: Username and password must be escaped according to RFC 3986, use urllib.parse.quote_plus
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Starting...
+INFO → forex_shared.worker_api.ia_factory → [IAProviderFactory] IA_PROVIDER='GEMINI' (from OracleConfig)
+ERROR → __main__ → Fatal error running OracleWorker: GeminiIAProvider requires 'google-genai'. Install it with: pip install google-genai
+Traceback (most recent call last):
+  File "C:\Projects\forex_system\shared_lib\forex_shared\worker_api\providers\gemini_ia_provider.py", line 132, in __init__
+    from google import genai  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^
+ImportError: cannot import name 'genai' from 'google' (unknown location)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Projects\forex_system\services\ia_oracle\ia_oracle\main.py", line 84, in main
+    asyncio.run(run_worker(args.worker_id, args.max_sessions, enable_mongo=not args.no_mongo))
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python313\Lib\asyncio\runners.py", line 195, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "C:\Program Files\Python313\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Program Files\Python313\Lib\asyncio\base_events.py", line 725, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "C:\Projects\forex_system\services\ia_oracle\ia_oracle\main.py", line 61, in run_worker
+    await worker.start()
+  File "C:\Projects\forex_system\services\ia_oracle\ia_oracle\worker.py", line 242, in start
+    self._provider = IAProviderFactory.create_from_env()
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Projects\forex_system\shared_lib\forex_shared\worker_api\ia_factory.py", line 160, in create_from_env
+    return cls.create_provider(config)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Projects\forex_system\shared_lib\forex_shared\worker_api\ia_factory.py", line 139, in create_provider
+    provider = cls._PROVIDERS[key](config)
+  File "C:\Projects\forex_system\shared_lib\forex_shared\worker_api\providers\gemini_ia_provider.py", line 135, in __init__
+    raise ImportError(
+    ...<2 lines>...
+    ) from exc
+ImportError: GeminiIAProvider requires 'google-genai'. Install it with: pip install google-genai
+INFO → root → Logging system initialized
+INFO → __main__ → === Oracle MQ Publisher Test ===
+INFO → __main__ → Mock file : C:\Projects\forex_system\services\ia_oracle\ia_oracle\data\mock_intel_items_big_process_result.json
+INFO → __main__ → Topic     : intel.oracle.review
+INFO → __main__ → Count     : 1 items
+INFO → __main__ → Delay     : 0.5 s between messages
+INFO → __main__ → Loaded 1 items
+INFO → __main__ → Connecting to MQ (provider=RABBITMQ_ASYNC)...
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@localhost:5672/
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@localhost:5672/
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectado. Exchange 'forex_market_events' ativo.
+INFO → __main__ → MQ connected.
+INFO → __main__ → [1/1] Published  id=4cbe67bb-9eab-4865-8d91-64dc8d4ad072    title=Scott Bassent, US Treasury Secretary, wrote on the social ne
+INFO → __main__ → Done. 1/1 published.
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conexão encerrada.
+INFO → __main__ → MQ disconnected.
+INFO → root → Logging system initialized
+ERROR → forex_shared.env_config_manager → [EnvConfig] Falha ao resolver secret para MONGO_URL: 403 Permission denied on resource project forexsystem-492216. [reason: "CONSUMER_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "secretmanager.googleapis.com"
+}
+metadata {
+  key: "containerInfo"
+  value: "forexsystem-492216"
+}
+metadata {
+  key: "consumer"
+  value: "projects/forexsystem-492216"
+}
+, locale: "en-US"
+message: "Permission denied on resource project forexsystem-492216."
+, links {
+  description: "Google developers console"
+  url: "https://console.developers.google.com"
+}
+]
+ERROR → forex_shared.env_config_manager → [EnvConfig] Falha ao resolver secret para SYSTEM_X25519_PRIVATE_KEY: 403 Permission denied on resource project forexsystem-492216. [reason: "CONSUMER_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "secretmanager.googleapis.com"
+}
+metadata {
+  key: "containerInfo"
+  value: "forexsystem-492216"
+}
+metadata {
+  key: "consumer"
+  value: "projects/forexsystem-492216"
+}
+, locale: "en-US"
+message: "Permission denied on resource project forexsystem-492216."
+, links {
+  description: "Google developers console"
+  url: "https://console.developers.google.com"
+}
+]
+ERROR → forex_shared.env_config_manager → [EnvConfig] Falha ao resolver secret para SYSTEM_X25519_PUBLIC_KEY: 403 Permission denied on resource project forexsystem-492216. [reason: "CONSUMER_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "secretmanager.googleapis.com"
+}
+metadata {
+  key: "containerInfo"
+  value: "forexsystem-492216"
+}
+metadata {
+  key: "consumer"
+  value: "projects/forexsystem-492216"
+}
+, locale: "en-US"
+message: "Permission denied on resource project forexsystem-492216."
+, links {
+  description: "Google developers console"
+  url: "https://console.developers.google.com"
+}
+]
+INFO → forex_shared.env_config_manager → [EnvConfig] 🔏 47 chaves marcadas como Secret no arquivo.
+WARNING → __main__ → Failed to sync with MongoDB EnvConfig: 403 Permission denied on resource project forexsystem-492216. [reason: "CONSUMER_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "secretmanager.googleapis.com"
+}
+metadata {
+  key: "containerInfo"
+  value: "forexsystem-492216"
+}
+metadata {
+  key: "consumer"
+  value: "projects/forexsystem-492216"
+}
+, locale: "en-US"
+message: "Permission denied on resource project forexsystem-492216."
+, links {
+  description: "Google developers console"
+  url: "https://console.developers.google.com"
+}
+]
+INFO → __main__ → Starting OracleWorker: oracle_worker_1 (Max Sessions: 1)
+WARNING → __main__ → MongoDB unavailable — persistence skipped: Username and password must be escaped according to RFC 3986, use urllib.parse.quote_plus
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Starting...
+INFO → forex_shared.worker_api.ia_factory → [IAProviderFactory] IA_PROVIDER='GEMINI' (from OracleConfig)
+INFO → forex_shared.worker_api.ia_factory → [IAProviderFactory] Instantiated: GeminiIAProvider (backend=GEMINI, model=gemini-2.5-pro)
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] Querying available Gemini models...
+INFO → httpx → HTTP Request: GET https://generativelanguage.googleapis.com/v1beta/models "HTTP/1.1 200 OK"
+INFO → httpx → HTTP Request: GET https://generativelanguage.googleapis.com/v1beta/models?pageToken=CiRtb2RlbHMvdmVvLTMuMS1mYXN0LWdlbmVyYXRlLXByZXZpZXc%3D "HTTP/1.1 200 OK"
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] Discovered 18 models from API.
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] Initialized. primary=gemini-2.5-pro chain=18 concurrency=1 max_retries=15 url_context=False google_search=False thinking=HIGH
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Provider ready: IABackend.GEMINI | model=gemini-2.5-pro
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@localhost:5672/
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@localhost:5672/
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectado. Exchange 'forex_market_events' ativo.
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] MQ connected.
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Inscrito: 'intel.oracle.review' → fila 'amq_bf68eea7406a428ab8e629eec6769389'
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Subscribed to intel.oracle.review
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Ready. concurrency=1
+INFO → __main__ → Bootstrapping default OracleSession...
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Running. Waiting for messages...
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Consumo ativo. Aguardando eventos...
+INFO → root → Logging system initialized
+INFO → __main__ → === Oracle MQ Publisher Test ===
+INFO → __main__ → Mock file : C:\Projects\forex_system\services\ia_oracle\ia_oracle\data\mock_intel_items_big_process_result.json
+INFO → __main__ → Topic     : intel.oracle.review
+INFO → __main__ → Count     : 1 items
+INFO → __main__ → Delay     : 0.5 s between messages
+INFO → __main__ → Loaded 1 items
+INFO → __main__ → Connecting to MQ (provider=RABBITMQ_ASYNC)...
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@localhost:5672/
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@localhost:5672/
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectado. Exchange 'forex_market_events' ativo.
+INFO → __main__ → MQ connected.
+INFO → __main__ → [1/1] Published  id=4cbe67bb-9eab-4865-8d91-64dc8d4ad072    title=Scott Bassent, US Treasury Secretary, wrote on the social ne
+INFO → __main__ → Done. 1/1 published.
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Received review  id=4cbe67bb-9eab-4865-8d91-64dc8d4ad072  title=Scott Bassent, US Treasury Secretary, wrote on the social network X that followi
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conexão encerrada.
+INFO → __main__ → MQ disconnected.
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Calling Gemini for id=4cbe67bb-9eab-4865-8d91-64dc8d4ad072  model=gemini-2.5-pro
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.5-pro → rotating to gemini-2.5-flash (attempt 1/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ThinkingConfig not supported on model=gemini-2.5-flash → retrying without thinking.
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.5-flash → rotating to gemini-2.0-flash (attempt 3/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.0-flash → rotating to gemini-2.0-flash-001 (attempt 4/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.0-flash-001 → rotating to gemini-2.0-flash-lite-001 (attempt 5/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.0-flash-lite-001 → rotating to gemini-2.0-flash-lite (attempt 6/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.0-flash-lite → rotating to gemini-flash-latest (attempt 7/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ✅ Succeeded on model=gemini-flash-latest (attempt=8)
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Resolved  id=4cbe67bb-9eab-4865-8d91-64dc8d4ad072  action=EMIT  confidence=0.79  reasoning=The event represents a high-confidence policy signal from a top US official. The explicit targeting 
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Published resolved  id=4cbe67bb-9eab-4865-8d91-64dc8d4ad072  topic=intel.oracle.resolved
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] GlobalTag emitted  asset=OIL  bias=bullish  risk=0.75  ttl_until=2026-05-05T06:37:52.880832+00:00  topic=intel.global_tags
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] GlobalTag emitted  asset=BRENT  bias=bullish  risk=0.72  ttl_until=2026-05-05T06:37:52.880832+00:00  topic=intel.global_tags
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] GlobalTag emitted  asset=WTI  bias=bullish  risk=0.72  ttl_until=2026-05-05T06:37:52.880832+00:00  topic=intel.global_tags
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] GlobalTag emitted  asset=XAU/USD  bias=bullish  risk=0.55  ttl_until=2026-05-05T04:37:52.880832+00:00  topic=intel.global_tags
+INFO → root → Logging system initialized
+ERROR → forex_shared.env_config_manager → [EnvConfig] Falha ao resolver secret para MONGO_URL: 403 Permission denied on resource project forexsystem-492216. [reason: "CONSUMER_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "secretmanager.googleapis.com"
+}
+metadata {
+  key: "containerInfo"
+  value: "forexsystem-492216"
+}
+metadata {
+  key: "consumer"
+  value: "projects/forexsystem-492216"
+}
+, locale: "en-US"
+message: "Permission denied on resource project forexsystem-492216."
+, links {
+  description: "Google developers console"
+  url: "https://console.developers.google.com"
+}
+]
+ERROR → forex_shared.env_config_manager → [EnvConfig] Falha ao resolver secret para SYSTEM_X25519_PRIVATE_KEY: 403 Permission denied on resource project forexsystem-492216. [reason: "CONSUMER_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "secretmanager.googleapis.com"
+}
+metadata {
+  key: "containerInfo"
+  value: "forexsystem-492216"
+}
+metadata {
+  key: "consumer"
+  value: "projects/forexsystem-492216"
+}
+, locale: "en-US"
+message: "Permission denied on resource project forexsystem-492216."
+, links {
+  description: "Google developers console"
+  url: "https://console.developers.google.com"
+}
+]
+ERROR → forex_shared.env_config_manager → [EnvConfig] Falha ao resolver secret para SYSTEM_X25519_PUBLIC_KEY: 403 Permission denied on resource project forexsystem-492216. [reason: "CONSUMER_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "secretmanager.googleapis.com"
+}
+metadata {
+  key: "containerInfo"
+  value: "forexsystem-492216"
+}
+metadata {
+  key: "consumer"
+  value: "projects/forexsystem-492216"
+}
+, locale: "en-US"
+message: "Permission denied on resource project forexsystem-492216."
+, links {
+  description: "Google developers console"
+  url: "https://console.developers.google.com"
+}
+]
+INFO → forex_shared.env_config_manager → [EnvConfig] 🔏 47 chaves marcadas como Secret no arquivo.
+WARNING → __main__ → Failed to sync with MongoDB EnvConfig: 403 Permission denied on resource project forexsystem-492216. [reason: "CONSUMER_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "secretmanager.googleapis.com"
+}
+metadata {
+  key: "containerInfo"
+  value: "forexsystem-492216"
+}
+metadata {
+  key: "consumer"
+  value: "projects/forexsystem-492216"
+}
+, locale: "en-US"
+message: "Permission denied on resource project forexsystem-492216."
+, links {
+  description: "Google developers console"
+  url: "https://console.developers.google.com"
+}
+]
+INFO → __main__ → Starting OracleWorker: oracle_worker_1 (Max Sessions: 1)
+WARNING → __main__ → MongoDB unavailable — persistence skipped: Authentication failed., full error: {'ok': 0.0, 'errmsg': 'Authentication failed.', 'code': 18, 'codeName': 'AuthenticationFailed'}
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Starting...
+INFO → forex_shared.worker_api.ia_factory → [IAProviderFactory] IA_PROVIDER='GEMINI' (from OracleConfig)
+INFO → forex_shared.worker_api.ia_factory → [IAProviderFactory] Instantiated: GeminiIAProvider (backend=GEMINI, model=gemini-2.5-pro)
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] Querying available Gemini models...
+INFO → httpx → HTTP Request: GET https://generativelanguage.googleapis.com/v1beta/models "HTTP/1.1 200 OK"
+INFO → httpx → HTTP Request: GET https://generativelanguage.googleapis.com/v1beta/models?pageToken=CiRtb2RlbHMvdmVvLTMuMS1mYXN0LWdlbmVyYXRlLXByZXZpZXc%3D "HTTP/1.1 200 OK"
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] Discovered 18 models from API.
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] Initialized. primary=gemini-2.5-pro chain=18 concurrency=1 max_retries=15 url_context=False google_search=False thinking=HIGH
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Provider ready: IABackend.GEMINI | model=gemini-2.5-pro
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@localhost:5672/
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@localhost:5672/
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectado. Exchange 'forex_market_events' ativo.
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] MQ connected.
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Inscrito: 'intel.oracle.review' → fila 'amq_fda3b4586bfe41c3bca2549bcfc7b272'
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Subscribed to intel.oracle.review
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Ready. concurrency=1
+INFO → __main__ → Bootstrapping default OracleSession...
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Running. Waiting for messages...
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Consumo ativo. Aguardando eventos...
+INFO → root → Logging system initialized
+INFO → __main__ → === Oracle MQ Publisher Test ===
+INFO → __main__ → Mock file : C:\Projects\forex_system\services\ia_oracle\ia_oracle\data\mock_intel_items_big_process_result.json
+INFO → __main__ → Topic     : intel.oracle.review
+INFO → __main__ → Count     : 1 items
+INFO → __main__ → Delay     : 0.5 s between messages
+INFO → __main__ → Loaded 1 items
+INFO → __main__ → Connecting to MQ (provider=RABBITMQ_ASYNC)...
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@localhost:5672/
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@localhost:5672/
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectado. Exchange 'forex_market_events' ativo.
+INFO → __main__ → MQ connected.
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Received review  id=4cbe67bb-9eab-4865-8d91-64dc8d4ad072  title=Scott Bassent, US Treasury Secretary, wrote on the social network X that followi
+INFO → __main__ → [1/1] Published  id=4cbe67bb-9eab-4865-8d91-64dc8d4ad072    title=Scott Bassent, US Treasury Secretary, wrote on the social ne
+INFO → __main__ → Done. 1/1 published.
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Calling Gemini for id=4cbe67bb-9eab-4865-8d91-64dc8d4ad072  model=gemini-2.5-pro
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conexão encerrada.
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → __main__ → MQ disconnected.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.5-pro → rotating to gemini-2.5-flash (attempt 1/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ThinkingConfig not supported on model=gemini-2.5-flash → retrying without thinking.
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.5-flash → rotating to gemini-2.0-flash (attempt 3/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.0-flash → rotating to gemini-2.0-flash-001 (attempt 4/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.0-flash-001 → rotating to gemini-2.0-flash-lite-001 (attempt 5/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.0-flash-lite-001 → rotating to gemini-2.0-flash-lite (attempt 6/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.0-flash-lite → rotating to gemini-flash-latest (attempt 7/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ✅ Succeeded on model=gemini-flash-latest (attempt=8)
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Resolved  id=4cbe67bb-9eab-4865-8d91-64dc8d4ad072  action=EMIT  confidence=0.83  reasoning=The event details concrete enforcement actions against oil trade infrastructure and financial interm
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Published resolved  id=4cbe67bb-9eab-4865-8d91-64dc8d4ad072  topic=intel.oracle.resolved
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] GlobalTag emitted  asset=OIL  bias=bullish  risk=0.75  ttl_until=2026-05-05T06:42:52.235948+00:00  topic=intel.global_tags
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] GlobalTag emitted  asset=BRENT  bias=bullish  risk=0.72  ttl_until=2026-05-05T06:42:52.235948+00:00  topic=intel.global_tags
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] GlobalTag emitted  asset=WTI  bias=bullish  risk=0.72  ttl_until=2026-05-05T06:42:52.235948+00:00  topic=intel.global_tags
+INFO → root → Logging system initialized
+ERROR → forex_shared.env_config_manager → [EnvConfig] Falha ao resolver secret para MONGO_URL: 403 Permission denied on resource project forexsystem-492216. [reason: "CONSUMER_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "secretmanager.googleapis.com"
+}
+metadata {
+  key: "containerInfo"
+  value: "forexsystem-492216"
+}
+metadata {
+  key: "consumer"
+  value: "projects/forexsystem-492216"
+}
+, locale: "en-US"
+message: "Permission denied on resource project forexsystem-492216."
+, links {
+  description: "Google developers console"
+  url: "https://console.developers.google.com"
+}
+]
+ERROR → forex_shared.env_config_manager → [EnvConfig] Falha ao resolver secret para SYSTEM_X25519_PRIVATE_KEY: 403 Permission denied on resource project forexsystem-492216. [reason: "CONSUMER_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "secretmanager.googleapis.com"
+}
+metadata {
+  key: "containerInfo"
+  value: "forexsystem-492216"
+}
+metadata {
+  key: "consumer"
+  value: "projects/forexsystem-492216"
+}
+, locale: "en-US"
+message: "Permission denied on resource project forexsystem-492216."
+, links {
+  description: "Google developers console"
+  url: "https://console.developers.google.com"
+}
+]
+ERROR → forex_shared.env_config_manager → [EnvConfig] Falha ao resolver secret para SYSTEM_X25519_PUBLIC_KEY: 403 Permission denied on resource project forexsystem-492216. [reason: "CONSUMER_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "secretmanager.googleapis.com"
+}
+metadata {
+  key: "containerInfo"
+  value: "forexsystem-492216"
+}
+metadata {
+  key: "consumer"
+  value: "projects/forexsystem-492216"
+}
+, locale: "en-US"
+message: "Permission denied on resource project forexsystem-492216."
+, links {
+  description: "Google developers console"
+  url: "https://console.developers.google.com"
+}
+]
+INFO → forex_shared.env_config_manager → [EnvConfig] 🔏 47 chaves marcadas como Secret no arquivo.
+WARNING → __main__ → Failed to sync with MongoDB EnvConfig: 403 Permission denied on resource project forexsystem-492216. [reason: "CONSUMER_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "secretmanager.googleapis.com"
+}
+metadata {
+  key: "containerInfo"
+  value: "forexsystem-492216"
+}
+metadata {
+  key: "consumer"
+  value: "projects/forexsystem-492216"
+}
+, locale: "en-US"
+message: "Permission denied on resource project forexsystem-492216."
+, links {
+  description: "Google developers console"
+  url: "https://console.developers.google.com"
+}
+]
+INFO → __main__ → Starting OracleWorker: oracle_worker_1 (Max Sessions: 1)
+WARNING → __main__ → MongoDB unavailable — persistence skipped: BSON field 'ping.timeoutMS' is an unknown field., full error: {'ok': 0.0, 'errmsg': "BSON field 'ping.timeoutMS' is an unknown field.", 'code': 40415, 'codeName': 'IDLUnknownField'}
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Starting...
+INFO → forex_shared.worker_api.ia_factory → [IAProviderFactory] IA_PROVIDER='GEMINI' (from OracleConfig)
+INFO → forex_shared.worker_api.ia_factory → [IAProviderFactory] Instantiated: GeminiIAProvider (backend=GEMINI, model=gemini-2.5-pro)
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] Querying available Gemini models...
+INFO → httpx → HTTP Request: GET https://generativelanguage.googleapis.com/v1beta/models "HTTP/1.1 200 OK"
+INFO → httpx → HTTP Request: GET https://generativelanguage.googleapis.com/v1beta/models?pageToken=CiRtb2RlbHMvdmVvLTMuMS1mYXN0LWdlbmVyYXRlLXByZXZpZXc%3D "HTTP/1.1 200 OK"
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] Discovered 18 models from API.
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] Initialized. primary=gemini-2.5-pro chain=18 concurrency=1 max_retries=15 url_context=False google_search=False thinking=HIGH
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Provider ready: IABackend.GEMINI | model=gemini-2.5-pro
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@localhost:5672/
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@localhost:5672/
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectado. Exchange 'forex_market_events' ativo.
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] MQ connected.
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Inscrito: 'intel.oracle.review' → fila 'amq_6ac774acf2084554ba32cd0802645be9'
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Subscribed to intel.oracle.review
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Ready. concurrency=1
+INFO → __main__ → Bootstrapping default OracleSession...
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Running. Waiting for messages...
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Consumo ativo. Aguardando eventos...
+INFO → root → Logging system initialized
+INFO → __main__ → === Oracle MQ Publisher Test ===
+INFO → __main__ → Mock file : C:\Projects\forex_system\services\ia_oracle\ia_oracle\data\mock_intel_items_big_process_result.json
+INFO → __main__ → Topic     : intel.oracle.review
+INFO → __main__ → Count     : 1 items
+INFO → __main__ → Delay     : 0.5 s between messages
+INFO → __main__ → Loaded 1 items
+INFO → __main__ → Connecting to MQ (provider=RABBITMQ_ASYNC)...
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@localhost:5672/
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@localhost:5672/
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectado. Exchange 'forex_market_events' ativo.
+INFO → __main__ → MQ connected.
+INFO → __main__ → [1/1] Published  id=4cbe67bb-9eab-4865-8d91-64dc8d4ad072    title=Scott Bassent, US Treasury Secretary, wrote on the social ne
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Received review  id=4cbe67bb-9eab-4865-8d91-64dc8d4ad072  title=Scott Bassent, US Treasury Secretary, wrote on the social network X that followi
+INFO → __main__ → Done. 1/1 published.
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Calling Gemini for id=4cbe67bb-9eab-4865-8d91-64dc8d4ad072  model=gemini-2.5-pro
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conexão encerrada.
+INFO → __main__ → MQ disconnected.
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.5-pro → rotating to gemini-2.5-flash (attempt 1/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ThinkingConfig not supported on model=gemini-2.5-flash → retrying without thinking.
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → root → Logging system initialized
+ERROR → forex_shared.env_config_manager → [EnvConfig] Falha ao resolver secret para MONGO_URL: 403 Permission denied on resource project forexsystem-492216. [reason: "CONSUMER_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "secretmanager.googleapis.com"
+}
+metadata {
+  key: "containerInfo"
+  value: "forexsystem-492216"
+}
+metadata {
+  key: "consumer"
+  value: "projects/forexsystem-492216"
+}
+, locale: "en-US"
+message: "Permission denied on resource project forexsystem-492216."
+, links {
+  description: "Google developers console"
+  url: "https://console.developers.google.com"
+}
+]
+ERROR → forex_shared.env_config_manager → [EnvConfig] Falha ao resolver secret para SYSTEM_X25519_PRIVATE_KEY: 403 Permission denied on resource project forexsystem-492216. [reason: "CONSUMER_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "secretmanager.googleapis.com"
+}
+metadata {
+  key: "containerInfo"
+  value: "forexsystem-492216"
+}
+metadata {
+  key: "consumer"
+  value: "projects/forexsystem-492216"
+}
+, locale: "en-US"
+message: "Permission denied on resource project forexsystem-492216."
+, links {
+  description: "Google developers console"
+  url: "https://console.developers.google.com"
+}
+]
+ERROR → forex_shared.env_config_manager → [EnvConfig] Falha ao resolver secret para SYSTEM_X25519_PUBLIC_KEY: 403 Permission denied on resource project forexsystem-492216. [reason: "CONSUMER_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "secretmanager.googleapis.com"
+}
+metadata {
+  key: "containerInfo"
+  value: "forexsystem-492216"
+}
+metadata {
+  key: "consumer"
+  value: "projects/forexsystem-492216"
+}
+, locale: "en-US"
+message: "Permission denied on resource project forexsystem-492216."
+, links {
+  description: "Google developers console"
+  url: "https://console.developers.google.com"
+}
+]
+INFO → forex_shared.env_config_manager → [EnvConfig] 🔏 47 chaves marcadas como Secret no arquivo.
+WARNING → __main__ → Failed to sync with MongoDB EnvConfig: 403 Permission denied on resource project forexsystem-492216. [reason: "CONSUMER_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "secretmanager.googleapis.com"
+}
+metadata {
+  key: "containerInfo"
+  value: "forexsystem-492216"
+}
+metadata {
+  key: "consumer"
+  value: "projects/forexsystem-492216"
+}
+, locale: "en-US"
+message: "Permission denied on resource project forexsystem-492216."
+, links {
+  description: "Google developers console"
+  url: "https://console.developers.google.com"
+}
+]
+INFO → __main__ → Starting OracleWorker: oracle_worker_1 (Max Sessions: 1)
+INFO → __main__ → MongoDB persistence enabled (collection: oracle_resolved)
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Starting...
+INFO → forex_shared.worker_api.ia_factory → [IAProviderFactory] IA_PROVIDER='GEMINI' (from OracleConfig)
+INFO → forex_shared.worker_api.ia_factory → [IAProviderFactory] Instantiated: GeminiIAProvider (backend=GEMINI, model=gemini-2.5-pro)
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] Querying available Gemini models...
+INFO → httpx → HTTP Request: GET https://generativelanguage.googleapis.com/v1beta/models "HTTP/1.1 200 OK"
+INFO → httpx → HTTP Request: GET https://generativelanguage.googleapis.com/v1beta/models?pageToken=CiRtb2RlbHMvdmVvLTMuMS1mYXN0LWdlbmVyYXRlLXByZXZpZXc%3D "HTTP/1.1 200 OK"
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] Discovered 18 models from API.
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] Initialized. primary=gemini-2.5-pro chain=18 concurrency=1 max_retries=15 url_context=False google_search=False thinking=HIGH
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Provider ready: IABackend.GEMINI | model=gemini-2.5-pro
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@localhost:5672/
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@localhost:5672/
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectado. Exchange 'forex_market_events' ativo.
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] MQ connected.
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Inscrito: 'intel.oracle.review' → fila 'amq_c17be99bfc6145c698c66b18198dcd97'
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Subscribed to intel.oracle.review
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Ready. concurrency=1
+INFO → __main__ → Bootstrapping default OracleSession...
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Running. Waiting for messages...
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Consumo ativo. Aguardando eventos...
+INFO → root → Logging system initialized
+INFO → __main__ → === Oracle MQ Publisher Test ===
+INFO → __main__ → Mock file : C:\Projects\forex_system\services\ia_oracle\ia_oracle\data\mock_intel_items_big_process_result.json
+INFO → __main__ → Topic     : intel.oracle.review
+INFO → __main__ → Count     : 1 items
+INFO → __main__ → Delay     : 0.5 s between messages
+INFO → __main__ → Loaded 1 items
+INFO → __main__ → Connecting to MQ (provider=RABBITMQ_ASYNC)...
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@localhost:5672/
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@localhost:5672/
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectado. Exchange 'forex_market_events' ativo.
+INFO → __main__ → MQ connected.
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Received review  id=4cbe67bb-9eab-4865-8d91-64dc8d4ad072  title=Scott Bassent, US Treasury Secretary, wrote on the social network X that followi
+INFO → __main__ → [1/1] Published  id=4cbe67bb-9eab-4865-8d91-64dc8d4ad072    title=Scott Bassent, US Treasury Secretary, wrote on the social ne
+INFO → __main__ → Done. 1/1 published.
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conexão encerrada.
+INFO → __main__ → MQ disconnected.
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Calling Gemini for id=4cbe67bb-9eab-4865-8d91-64dc8d4ad072  model=gemini-2.5-pro
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.5-pro → rotating to gemini-2.5-flash (attempt 1/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.5-flash → rotating to gemini-2.0-flash (attempt 2/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.0-flash → rotating to gemini-2.0-flash-001 (attempt 3/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.0-flash-001 → rotating to gemini-2.0-flash-lite-001 (attempt 4/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.0-flash-lite-001 → rotating to gemini-2.0-flash-lite (attempt 5/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.0-flash-lite → rotating to gemini-flash-latest (attempt 6/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-flash-latest → rotating to gemini-flash-lite-latest (attempt 7/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-flash-lite-latest → rotating to gemini-pro-latest (attempt 8/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-pro-latest → rotating to gemini-2.5-flash-lite (attempt 9/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ThinkingConfig not supported on model=gemini-2.5-flash-lite → retrying without thinking.
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.5-flash-lite → rotating to gemini-3-pro-preview (attempt 11/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-3-pro-preview → rotating to gemini-3-flash-preview (attempt 12/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-3-flash-preview → rotating to gemini-3.1-pro-preview (attempt 13/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-3.1-pro-preview → rotating to gemini-3.1-pro-preview-customtools (attempt 14/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+ERROR → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ❌ All 18 models exhausted after 15 retries.
+ERROR → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Error processing id=4cbe67bb-9eab-4865-8d91-64dc8d4ad072: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-3.1-pro\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-3.1-pro\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-3.1-pro\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-3.1-pro\nPlease retry in 25.138798151s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.1-pro'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-3.1-pro', 'location': 'global'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_input_token_count', 'quotaId': 'GenerateContentInputTokensPerModelPerMinute-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.1-pro'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_input_token_count', 'quotaId': 'GenerateContentInputTokensPerModelPerDay-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.1-pro'}}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '25s'}]}}
+Traceback (most recent call last):
+  File "C:\Projects\forex_system\services\ia_oracle\ia_oracle\worker.py", line 333, in _handle_review
+    raw      = await self._provider.generate(user_prompt)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\forex_system\shared_lib\forex_shared\worker_api\providers\gemini_ia_provider.py", line 327, in generate
+    raise last_exc  # type: ignore[misc]
+    ^^^^^^^^^^^^^^
+  File "C:\Projects\forex_system\shared_lib\forex_shared\worker_api\providers\gemini_ia_provider.py", line 227, in generate
+    response = await self._client.aio.models.generate_content(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\Adm\AppData\Roaming\Python\Python313\site-packages\google\genai\models.py", line 8422, in generate_content
+    response = await self._generate_content(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        model=model, contents=contents, config=parsed_config
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Adm\AppData\Roaming\Python\Python313\site-packages\google\genai\models.py", line 6953, in _generate_content
+    response = await self._api_client.async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        'post', path, request_dict, http_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Adm\AppData\Roaming\Python\Python313\site-packages\google\genai\_api_client.py", line 1651, in async_request
+    result = await self._async_request(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+        http_request=http_request, http_options=http_options, stream=False
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Adm\AppData\Roaming\Python\Python313\site-packages\google\genai\_api_client.py", line 1584, in _async_request
+    return await self._async_retry(  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self._async_request_once, http_request, stream
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Adm\AppData\Roaming\Python\Python313\site-packages\tenacity\asyncio\__init__.py", line 112, in __call__
+    do = await self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Adm\AppData\Roaming\Python\Python313\site-packages\tenacity\asyncio\__init__.py", line 157, in iter
+    result = await action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Adm\AppData\Roaming\Python\Python313\site-packages\tenacity\_utils.py", line 111, in inner
+    return call(*args, **kwargs)
+  File "C:\Users\Adm\AppData\Roaming\Python\Python313\site-packages\tenacity\__init__.py", line 413, in exc_check
+    raise retry_exc.reraise()
+          ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Adm\AppData\Roaming\Python\Python313\site-packages\tenacity\__init__.py", line 184, in reraise
+    raise self.last_attempt.result()
+          ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Program Files\Python313\Lib\concurrent\futures\_base.py", line 449, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "C:\Program Files\Python313\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Users\Adm\AppData\Roaming\Python\Python313\site-packages\tenacity\asyncio\__init__.py", line 116, in __call__
+    result = await fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Adm\AppData\Roaming\Python\Python313\site-packages\google\genai\_api_client.py", line 1515, in _async_request_once
+    await errors.APIError.raise_for_async_response(response)
+  File "C:\Users\Adm\AppData\Roaming\Python\Python313\site-packages\google\genai\errors.py", line 247, in raise_for_async_response
+    await cls.raise_error_async(status_code, response_json, response)
+  File "C:\Users\Adm\AppData\Roaming\Python\Python313\site-packages\google\genai\errors.py", line 269, in raise_error_async
+    raise ClientError(status_code, response_json, response)
+google.genai.errors.ClientError: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-3.1-pro\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-3.1-pro\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-3.1-pro\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-3.1-pro\nPlease retry in 25.138798151s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.1-pro'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-3.1-pro', 'location': 'global'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_input_token_count', 'quotaId': 'GenerateContentInputTokensPerModelPerMinute-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.1-pro'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_input_token_count', 'quotaId': 'GenerateContentInputTokensPerModelPerDay-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.1-pro'}}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '25s'}]}}

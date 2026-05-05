@@ -408,6 +408,22 @@ class OracleWorker(Loggable):
                     tag.expires_at,
                     TAGS_TOPIC,
                 )
+                
+                # TEST: Persistir e recuperar GlobalTag no MongoDB
+                if getattr(self, "_store", None):
+                    try:
+                        await self._store.store_global_tag(tag)
+                        saved_tag = await self._store.get_global_tag(tag.trigger_event_id, tag.asset)
+                        self.log.info(
+                            "[OracleWorker:%s] MongoDB GlobalTag saved! Retrieved (stored in mongodb): %s",
+                            self.worker_id,
+                            saved_tag,
+                        )
+                    except Exception as exc:
+                        self.log.warning(
+                            "[OracleWorker:%s] Failed to persist GlobalTag to MongoDB: %s",
+                            self.worker_id, exc
+                        )
             else:
                 self.log.warning(
                     "[OracleWorker:%s] Failed to emit GlobalTag for asset=%s",
@@ -425,11 +441,16 @@ class OracleWorker(Loggable):
             return
         try:
             outcome = await self._store.store_item(response)
-            self.log.debug(
-                "[OracleWorker:%s] MongoDB %s  id=%s",
+            
+            # TEST: Lendo de volta do MongoDB para validar a gravação
+            saved_item = await self._store.get_item({"trigger_event_id": response.trigger_event_id})
+            
+            self.log.info(
+                "[OracleWorker:%s] MongoDB %s id=%s. Retrieved (stored in mongodb): %s",
                 self.worker_id,
                 outcome,
                 response.trigger_event_id,
+                saved_item.get("action") if saved_item else "NOT FOUND",
             )
         except Exception as exc:
             self.log.warning(
