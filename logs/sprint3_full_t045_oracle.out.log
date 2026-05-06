@@ -1,0 +1,121 @@
+INFO     👀 Logging system initialized                     logger_config.py:182
+INFO     👀 [EnvConfig] 🔏 47 chaves marcadas como   env_config_manager.py:1072
+         Secret no arquivo.                                                    
+INFO     👀 [EnvConfig] 5 chaves bootstrap           env_config_manager.py:1025
+         carregadas do arquivo.                                                
+INFO     👀 [EnvConfig] 1 bootstrap secrets           env_config_manager.py:690
+         carregados.                                                           
+C:\Projects\forex_system\shared_lib\forex_shared\mongo_manager.py:128: UserWarning: You appear to be connected to a CosmosDB cluster. For more information regarding feature compatibility and support please visit https://www.mongodb.com/supportability/cosmosdb
+  self.client = MongoClient(
+INFO     👀 [MongoManager] Conectado via connection string mongo_manager.py:143
+         | db=forex_system                                                     
+INFO     👀 [MongoManager] bulk_sync(env_config): 0 novos, mongo_manager.py:208
+         26 atualizados.                                                       
+INFO     👀 [EnvConfig] 150 chaves sincronizadas com  env_config_manager.py:951
+         MongoDB.                                                              
+INFO     👀 [EnvConfig] 143 novas chaves setadas em   env_config_manager.py:886
+         os.environ.                                                           
+INFO     👀 [EnvConfig] 150 chaves recarregadas do    env_config_manager.py:965
+         MongoDB.                                                              
+INFO     👀 Starting OracleWorker: sprint3_oracle_t045 (Max          main.py:44
+         Sessions: 2)                                                          
+INFO     👀 MongoDB persistence enabled (collection:                 main.py:52
+         oracle_resolved)                                                      
+INFO     👀 [OracleWorker:sprint3_oracle_t045] Starting...        worker.py:244
+INFO     👀 [OracleWorker:sprint3_oracle_t045] Output validation  worker.py:404
+         file enabled:                                                         
+         C:\Projects\forex_system\services\ia_oracle\test_runs\sp              
+         rint3_full_oracle_threshold045_output.json                            
+INFO     👀 [IAProviderFactory] IA_PROVIDER='GEMINI' (from    ia_factory.py:180
+         OracleConfig)                                                         
+INFO     👀 [IAProviderFactory] Instantiated:                 ia_factory.py:162
+         GeminiIAProvider (backend=GEMINI,                                     
+         model=gemini-2.5-pro)                                                 
+INFO     👀 [GeminiIAProvider] Querying available     gemini_ia_provider.py:369
+         Gemini models...                                                      
+INFO     👀 HTTP Request: GET                                   _client.py:1025
+         https://generativelanguage.googleapis.com/v1beta/model                
+         s "HTTP/1.1 200 OK"                                                   
+INFO     👀 [GeminiIAProvider] Discovered 18 models   gemini_ia_provider.py:399
+         from API.                                                             
+INFO     👀 [GeminiIAProvider] Initialized.           gemini_ia_provider.py:170
+         primary=gemini-2.5-pro chain=18                                       
+         concurrency=1 max_retries=15                                          
+         url_context=False google_search=False                                 
+         thinking=HIGH                                                         
+INFO     👀 [OracleWorker:sprint3_oracle_t045] Provider ready:    worker.py:254
+         GEMINI | model=gemini-2.5-pro                                         
+INFO     👀 [RabbitMQ Async] Conectando:          rabbitmq_provider_async.py:53
+         amqp://guest:guest@localhost:5672/                                    
+INFO     👀 [RabbitMQ Async] Conectando:          rabbitmq_provider_async.py:62
+         amqp://guest:guest@localhost:5672/                                    
+INFO     👀 [RabbitMQ Async] Conectado. Exchange  rabbitmq_provider_async.py:85
+         'forex_market_events' ativo.                                          
+INFO     👀 [OracleWorker:sprint3_oracle_t045] MQ connected.      worker.py:264
+INFO     👀 [RabbitMQ Async] Inscrito:           rabbitmq_provider_async.py:218
+         'intel.oracle.review' → fila                                          
+         'amq_8cf238344a7c4c91b67374ee8e0866c9'                                
+INFO     👀 [OracleWorker:sprint3_oracle_t045] Subscribed to      worker.py:267
+         intel.oracle.review                                                   
+INFO     👀 [OracleWorker:sprint3_oracle_t045] Ready.             worker.py:270
+         concurrency=2                                                         
+INFO     👀 Bootstrapping default OracleSession...                   main.py:82
+INFO     👀 [OracleWorker:sprint3_oracle_t045] Running. Waiting   worker.py:293
+         for messages...                                                       
+INFO     👀 [RabbitMQ Async] Consumo ativo.      rabbitmq_provider_async.py:231
+         Aguardando eventos...                                                 
+INFO     👀 [OracleWorker:sprint3_oracle_t045] Received review    worker.py:321
+         id=telegram:firstsquaw:132000  title=An arms depot at an              
+         Iranian Kurdish opposition camp north of Erbil, Iraq,                 
+         was hi                                                                
+INFO     👀 [OracleWorker:sprint3_oracle_t045] Calling GEMINI for worker.py:332
+         id=telegram:firstsquaw:132000  model=gemini-2.5-pro                   
+INFO     👀 AFC is enabled with max remote calls: 10.            models.py:8412
+WARNING  ⚠️ [GeminiIAProvider] ⚠️ Quota on            gemini_ia_provider.py:292
+         model=gemini-2.5-pro → rotating to                                    
+         gemini-2.5-flash (attempt 1/15)                                       
+INFO     👀 AFC is enabled with max remote calls: 10.            models.py:8412
+WARNING  ⚠️ [GeminiIAProvider] ThinkingConfig not     gemini_ia_provider.py:261
+         supported on model=gemini-2.5-flash →                                 
+         retrying without thinking.                                            
+INFO     👀 AFC is enabled with max remote calls: 10.            models.py:8412
+WARNING  ⚠️ [GeminiIAProvider] ⚠️ Quota on            gemini_ia_provider.py:292
+         model=gemini-2.5-flash → rotating to                                  
+         gemini-2.0-flash (attempt 3/15)                                       
+INFO     👀 AFC is enabled with max remote calls: 10.            models.py:8412
+WARNING  ⚠️ [GeminiIAProvider] ⚠️ Quota on            gemini_ia_provider.py:292
+         model=gemini-2.0-flash → rotating to                                  
+         gemini-2.0-flash-001 (attempt 4/15)                                   
+INFO     👀 AFC is enabled with max remote calls: 10.            models.py:8412
+WARNING  ⚠️ [GeminiIAProvider] ⚠️ Quota on            gemini_ia_provider.py:292
+         model=gemini-2.0-flash-001 → rotating to                              
+         gemini-2.0-flash-lite-001 (attempt 5/15)                              
+INFO     👀 AFC is enabled with max remote calls: 10.            models.py:8412
+WARNING  ⚠️ [GeminiIAProvider] ⚠️ Quota on            gemini_ia_provider.py:292
+         model=gemini-2.0-flash-lite-001 → rotating                            
+         to gemini-2.0-flash-lite (attempt 6/15)                               
+INFO     👀 AFC is enabled with max remote calls: 10.            models.py:8412
+WARNING  ⚠️ [GeminiIAProvider] ⚠️ Quota on            gemini_ia_provider.py:292
+         model=gemini-2.0-flash-lite → rotating to                             
+         gemini-flash-latest (attempt 7/15)                                    
+INFO     👀 AFC is enabled with max remote calls: 10.            models.py:8412
+INFO     👀 [GeminiIAProvider] ✅ Succeeded on        gemini_ia_provider.py:245
+         model=gemini-flash-latest (attempt=8)                                 
+INFO     👀 [OracleWorker:sprint3_oracle_t045] Resolved           worker.py:343
+         id=telegram:firstsquaw:132000  action=HOLD                            
+         confidence=0.42  reasoning=The event is a tactical                    
+         military update. While it contributes to the 'Middle                  
+         East risk' narrative, i                                               
+INFO     👀 [OracleWorker:sprint3_oracle_t045] Published resolved worker.py:376
+         id=telegram:firstsquaw:132000                                         
+         topic=intel.oracle.resolved                                           
+INFO     👀 [OracleWorker:sprint3_oracle_t045] Output file        worker.py:448
+         updated  count=1                                                      
+         path=C:\Projects\forex_system\services\ia_oracle\test_ru              
+         ns\sprint3_full_oracle_threshold045_output.json                       
+INFO     👀 OracleMongoStore: stored                               store.py:124
+         id=telegram:firstsquaw:132000  action=HOLD                            
+         confidence=0.42                                                       
+INFO     👀 [OracleWorker:sprint3_oracle_t045] MongoDB new        worker.py:529
+         id=telegram:firstsquaw:132000. Retrieved (stored in                   
+         mongodb): HOLD                                                        

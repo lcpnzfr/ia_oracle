@@ -1,0 +1,30 @@
+[
+  {
+    "trigger_event_id": "telegram:firstsquaw:132000",
+    "action": "HOLD",
+    "oracle_confidence": 0.425,
+    "reasoning": "The event is a tactical military update. While it contributes to the 'Middle East risk' narrative, it does not meet the threshold for a high-confidence global market tag without further escalation or impact on oil production/transit.",
+    "tags_to_emit": [
+      {
+        "asset": "OIL",
+        "bias": "bullish",
+        "confidence": 0.45,
+        "risk_score": 0.5,
+        "volatility_duration_minutes": 60,
+        "reason": "Geopolitical friction in Iraq often triggers speculative risk premiums in oil markets.",
+        "transmission_channel": "Supply disruption fears"
+      },
+      {
+        "asset": "XAU",
+        "bias": "bullish",
+        "confidence": 0.4,
+        "risk_score": 0.4,
+        "volatility_duration_minutes": 60,
+        "reason": "Safe-haven demand due to regional instability.",
+        "transmission_channel": "Risk-off sentiment"
+      }
+    ],
+    "event_type": "ORACLE_REVIEW_RESOLVED",
+    "resolved_at": "2026-05-06T21:51:43.828180+00:00"
+  }
+]

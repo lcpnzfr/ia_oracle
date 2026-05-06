@@ -6142,3 +6142,116 @@ INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_openai_full_test
 INFO → __main__ → Idle 48 s — stopping. Total received: 12
 INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conexão encerrada.
 INFO → __main__ → Done. Total messages received: 12
+INFO → root → Logging system initialized
+INFO → forex_shared.env_config_manager → [EnvConfig] 🔏 47 chaves marcadas como Secret no arquivo.
+INFO → forex_shared.env_config_manager → [EnvConfig] 5 chaves bootstrap carregadas do arquivo.
+INFO → forex_shared.env_config_manager → [EnvConfig] 1 bootstrap secrets carregados.
+INFO → forex_shared.mongo_manager → [MongoManager] Conectado via connection string | db=forex_system
+INFO → forex_shared.mongo_manager → [MongoManager] bulk_sync(env_config): 0 novos, 26 atualizados.
+INFO → forex_shared.env_config_manager → [EnvConfig] 150 chaves sincronizadas com MongoDB.
+INFO → forex_shared.env_config_manager → [EnvConfig] 143 novas chaves setadas em os.environ.
+INFO → forex_shared.env_config_manager → [EnvConfig] 150 chaves recarregadas do MongoDB.
+INFO → __main__ → Starting OracleWorker: sprint3_oracle (Max Sessions: 1)
+INFO → __main__ → MongoDB persistence enabled (collection: oracle_resolved)
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:sprint3_oracle] Starting...
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:sprint3_oracle] Output validation file enabled: C:\Projects\forex_system\services\ia_oracle\test_runs\sprint3_full_oracle_output.json
+INFO → forex_shared.worker_api.ia_factory → [IAProviderFactory] IA_PROVIDER='GEMINI' (from OracleConfig)
+INFO → forex_shared.worker_api.ia_factory → [IAProviderFactory] Instantiated: GeminiIAProvider (backend=GEMINI, model=gemini-2.5-pro)
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] Querying available Gemini models...
+INFO → httpx → HTTP Request: GET https://generativelanguage.googleapis.com/v1beta/models "HTTP/1.1 200 OK"
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] Discovered 18 models from API.
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] Initialized. primary=gemini-2.5-pro chain=18 concurrency=1 max_retries=15 url_context=False google_search=False thinking=HIGH
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:sprint3_oracle] Provider ready: GEMINI | model=gemini-2.5-pro
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@localhost:5672/
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@localhost:5672/
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectado. Exchange 'forex_market_events' ativo.
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:sprint3_oracle] MQ connected.
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Inscrito: 'intel.oracle.review' → fila 'amq_1d63412fed0b4222983b4d48663a37e8'
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:sprint3_oracle] Subscribed to intel.oracle.review
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:sprint3_oracle] Ready. concurrency=1
+INFO → __main__ → Bootstrapping default OracleSession...
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:sprint3_oracle] Running. Waiting for messages...
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Consumo ativo. Aguardando eventos...
+INFO → root → Logging system initialized
+INFO → forex_shared.env_config_manager → [EnvConfig] 🔏 47 chaves marcadas como Secret no arquivo.
+INFO → forex_shared.env_config_manager → [EnvConfig] 5 chaves bootstrap carregadas do arquivo.
+INFO → forex_shared.env_config_manager → [EnvConfig] 1 bootstrap secrets carregados.
+INFO → forex_shared.mongo_manager → [MongoManager] Conectado via connection string | db=forex_system
+INFO → forex_shared.mongo_manager → [MongoManager] bulk_sync(env_config): 0 novos, 26 atualizados.
+INFO → forex_shared.env_config_manager → [EnvConfig] 150 chaves sincronizadas com MongoDB.
+INFO → forex_shared.env_config_manager → [EnvConfig] 143 novas chaves setadas em os.environ.
+INFO → forex_shared.env_config_manager → [EnvConfig] 150 chaves recarregadas do MongoDB.
+INFO → __main__ → Starting OracleWorker: sprint3_oracle_t045 (Max Sessions: 2)
+INFO → __main__ → MongoDB persistence enabled (collection: oracle_resolved)
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:sprint3_oracle_t045] Starting...
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:sprint3_oracle_t045] Output validation file enabled: C:\Projects\forex_system\services\ia_oracle\test_runs\sprint3_full_oracle_threshold045_output.json
+INFO → forex_shared.worker_api.ia_factory → [IAProviderFactory] IA_PROVIDER='GEMINI' (from OracleConfig)
+INFO → forex_shared.worker_api.ia_factory → [IAProviderFactory] Instantiated: GeminiIAProvider (backend=GEMINI, model=gemini-2.5-pro)
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] Querying available Gemini models...
+INFO → httpx → HTTP Request: GET https://generativelanguage.googleapis.com/v1beta/models "HTTP/1.1 200 OK"
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] Discovered 18 models from API.
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] Initialized. primary=gemini-2.5-pro chain=18 concurrency=1 max_retries=15 url_context=False google_search=False thinking=HIGH
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:sprint3_oracle_t045] Provider ready: GEMINI | model=gemini-2.5-pro
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@localhost:5672/
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@localhost:5672/
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectado. Exchange 'forex_market_events' ativo.
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:sprint3_oracle_t045] MQ connected.
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Inscrito: 'intel.oracle.review' → fila 'amq_fc9a0ace02094dc7b79725d76a9c17e4'
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:sprint3_oracle_t045] Subscribed to intel.oracle.review
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:sprint3_oracle_t045] Ready. concurrency=2
+INFO → __main__ → Bootstrapping default OracleSession...
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:sprint3_oracle_t045] Running. Waiting for messages...
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Consumo ativo. Aguardando eventos...
+INFO → root → Logging system initialized
+INFO → forex_shared.env_config_manager → [EnvConfig] 🔏 47 chaves marcadas como Secret no arquivo.
+INFO → forex_shared.env_config_manager → [EnvConfig] 5 chaves bootstrap carregadas do arquivo.
+INFO → forex_shared.env_config_manager → [EnvConfig] 1 bootstrap secrets carregados.
+INFO → forex_shared.mongo_manager → [MongoManager] Conectado via connection string | db=forex_system
+INFO → forex_shared.mongo_manager → [MongoManager] bulk_sync(env_config): 0 novos, 26 atualizados.
+INFO → forex_shared.env_config_manager → [EnvConfig] 150 chaves sincronizadas com MongoDB.
+INFO → forex_shared.env_config_manager → [EnvConfig] 143 novas chaves setadas em os.environ.
+INFO → forex_shared.env_config_manager → [EnvConfig] 150 chaves recarregadas do MongoDB.
+INFO → __main__ → Starting OracleWorker: sprint3_oracle_t045 (Max Sessions: 2)
+INFO → __main__ → MongoDB persistence enabled (collection: oracle_resolved)
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:sprint3_oracle_t045] Starting...
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:sprint3_oracle_t045] Output validation file enabled: C:\Projects\forex_system\services\ia_oracle\test_runs\sprint3_full_oracle_threshold045_output.json
+INFO → forex_shared.worker_api.ia_factory → [IAProviderFactory] IA_PROVIDER='GEMINI' (from OracleConfig)
+INFO → forex_shared.worker_api.ia_factory → [IAProviderFactory] Instantiated: GeminiIAProvider (backend=GEMINI, model=gemini-2.5-pro)
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] Querying available Gemini models...
+INFO → httpx → HTTP Request: GET https://generativelanguage.googleapis.com/v1beta/models "HTTP/1.1 200 OK"
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] Discovered 18 models from API.
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] Initialized. primary=gemini-2.5-pro chain=18 concurrency=1 max_retries=15 url_context=False google_search=False thinking=HIGH
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:sprint3_oracle_t045] Provider ready: GEMINI | model=gemini-2.5-pro
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@localhost:5672/
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@localhost:5672/
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectado. Exchange 'forex_market_events' ativo.
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:sprint3_oracle_t045] MQ connected.
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Inscrito: 'intel.oracle.review' → fila 'amq_8cf238344a7c4c91b67374ee8e0866c9'
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:sprint3_oracle_t045] Subscribed to intel.oracle.review
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:sprint3_oracle_t045] Ready. concurrency=2
+INFO → __main__ → Bootstrapping default OracleSession...
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:sprint3_oracle_t045] Running. Waiting for messages...
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Consumo ativo. Aguardando eventos...
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:sprint3_oracle_t045] Received review  id=telegram:firstsquaw:132000  title=An arms depot at an Iranian Kurdish opposition camp north of Erbil, Iraq, was hi
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:sprint3_oracle_t045] Calling GEMINI for id=telegram:firstsquaw:132000  model=gemini-2.5-pro
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.5-pro → rotating to gemini-2.5-flash (attempt 1/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ThinkingConfig not supported on model=gemini-2.5-flash → retrying without thinking.
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.5-flash → rotating to gemini-2.0-flash (attempt 3/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.0-flash → rotating to gemini-2.0-flash-001 (attempt 4/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.0-flash-001 → rotating to gemini-2.0-flash-lite-001 (attempt 5/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.0-flash-lite-001 → rotating to gemini-2.0-flash-lite (attempt 6/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.0-flash-lite → rotating to gemini-flash-latest (attempt 7/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ✅ Succeeded on model=gemini-flash-latest (attempt=8)
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:sprint3_oracle_t045] Resolved  id=telegram:firstsquaw:132000  action=HOLD  confidence=0.42  reasoning=The event is a tactical military update. While it contributes to the 'Middle East risk' narrative, i
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:sprint3_oracle_t045] Published resolved  id=telegram:firstsquaw:132000  topic=intel.oracle.resolved
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:sprint3_oracle_t045] Output file updated  count=1  path=C:\Projects\forex_system\services\ia_oracle\test_runs\sprint3_full_oracle_threshold045_output.json
+INFO → ia_oracle.store.OracleMongoStore → OracleMongoStore: stored  id=telegram:firstsquaw:132000  action=HOLD  confidence=0.42
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:sprint3_oracle_t045] MongoDB new id=telegram:firstsquaw:132000. Retrieved (stored in mongodb): HOLD
