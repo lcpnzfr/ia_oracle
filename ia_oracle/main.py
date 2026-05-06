@@ -1,12 +1,13 @@
 """Entrypoint for the IA Oracle service.
 
-This script starts an OracleWorker in standalone mode or connects to a Broker 
-cluster, ready to process `intel.oracle.review` requests via the Gemini LLM.
+This script starts an OracleWorker in standalone mode or connects to a Broker
+cluster, ready to process `intel.oracle.review` requests via the configured IA provider.
 """
 
 import argparse
 import asyncio
 import logging
+import os
 import signal
 import sys
 from typing import Optional
@@ -79,8 +80,27 @@ def main():
     parser.add_argument("--worker-id", type=str, default="oracle_worker_1", help="Unique ID for this worker")
     parser.add_argument("--max-sessions", type=int, default=1, help="Max concurrent LLM sessions on this worker")
     parser.add_argument("--no-mongo", action="store_true", help="Disable MongoDB persistence (dry-run mode)")
+    parser.add_argument(
+        "--provider",
+        type=str,
+        default=None,
+        help="IA provider override: GEMINI, OPENAI, OPENAI_NATIVE, CLAUDE, or AZURE",
+    )
+    parser.add_argument(
+        "--model",
+        type=str,
+        default=None,
+        help="Provider model override, for example gpt-4.1 or gemini-2.5-pro",
+    )
     
     args = parser.parse_args()
+
+    if args.provider:
+        os.environ["IA_PROVIDER"] = args.provider.strip().upper().replace("-", "_")
+        logger.info("IA provider override enabled: %s", os.environ["IA_PROVIDER"])
+    if args.model:
+        os.environ["ORACLE_MODEL"] = args.model.strip()
+        logger.info("Oracle model override enabled: %s", os.environ["ORACLE_MODEL"])
 
     try:
         asyncio.run(run_worker(args.worker_id, args.max_sessions, enable_mongo=not args.no_mongo))

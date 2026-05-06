@@ -33,6 +33,7 @@ mdurl==0.1.2
 multidict==6.7.1
 numba==0.61.2
 numpy==2.2.6
+openai
 packaging==26.2
 pamqp==3.3.0
 pandas==3.0.2

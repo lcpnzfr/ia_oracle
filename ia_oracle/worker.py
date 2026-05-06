@@ -1,8 +1,8 @@
 """OracleWorker — IA Oracle MQ worker (production).
 
 Pipeline:
-    intel.oracle.review  →  [Gemini LLM]  →  intel.oracle.resolved  (audit)
-                                           →  intel.global_tags       (if EMIT, one GlobalTag per directive)
+    intel.oracle.review  ->  [IA provider]  ->  intel.oracle.resolved  (audit)
+                                             ->  intel.global_tags       (if EMIT, one GlobalTag per directive)
 
 The GlobalTag published to intel.global_tags is consumed by:
     - session_manager   → injects intel bias into strategy additional_data
@@ -202,7 +202,7 @@ def _build_global_tags(
 class OracleWorker(Loggable):
     """MQ-driven IA Oracle worker — production class.
 
-    Subscribes to ``intel.oracle.review``, processes with Gemini LLM, and:
+    Subscribes to ``intel.oracle.review``, processes with the configured IA provider, and:
 
     1. Publishes resolved decision to ``intel.oracle.resolved``  (audit / monitoring)
     2. If action == EMIT: publishes one ``GlobalTag`` per directive to
@@ -238,7 +238,7 @@ class OracleWorker(Loggable):
     async def start(self) -> None:
         self.log.info("[OracleWorker:%s] Starting...", self.worker_id)
 
-        # ── Gemini provider ───────────────────────────────────────────
+        # ── IA provider ───────────────────────────────────────────────
         self._provider = IAProviderFactory.create_from_env()
         await self._provider.initialize()
 
@@ -304,7 +304,7 @@ class OracleWorker(Loggable):
         Flow:
             1. Deserialize OracleReviewRequest from payload
             2. Build user prompt
-            3. Call Gemini (with model rotation + feature fallbacks)
+            3. Call the configured IA provider
             4. Parse response → OracleReviewResponse
             5. Publish audit to intel.oracle.resolved
             6. If action == EMIT: publish GlobalTag(s) to intel.global_tags
@@ -321,11 +321,12 @@ class OracleWorker(Loggable):
 
         async with self._semaphore:
             try:
-                # ── Step 2-4: prompt → Gemini → parse ────────────────
+                # ── Step 2-4: prompt -> IA provider -> parse ─────────
                 user_prompt = _build_user_prompt(req)
                 self.log.info(
-                    "[OracleWorker:%s] Calling Gemini for id=%s  model=%s",
+                    "[OracleWorker:%s] Calling %s for id=%s  model=%s",
                     self.worker_id,
+                    self._provider.provider_type,
                     event_id,
                     self._provider.model_name,
                 )
