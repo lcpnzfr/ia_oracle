@@ -1,0 +1,260 @@
+INFO     👀 Logging system initialized                     logger_config.py:182
+INFO     👀 [EnvConfig] 🔏 47 chaves marcadas como   env_config_manager.py:1072
+         Secret no arquivo.                                                    
+INFO     👀 [EnvConfig] 5 chaves bootstrap           env_config_manager.py:1025
+         carregadas do arquivo.                                                
+INFO     👀 [EnvConfig] 1 bootstrap secrets           env_config_manager.py:690
+         carregados.                                                           
+INFO     👀 [MongoManager] Conectado via connection string mongo_manager.py:143
+         | db=forex_system                                                     
+INFO     👀 [MongoManager] bulk_sync(env_config): 0 novos, mongo_manager.py:208
+         26 atualizados.                                                       
+INFO     👀 [EnvConfig] 150 chaves sincronizadas com  env_config_manager.py:951
+         MongoDB.                                                              
+INFO     👀 [EnvConfig] 143 novas chaves setadas em   env_config_manager.py:886
+         os.environ.                                                           
+INFO     👀 [EnvConfig] 150 chaves recarregadas do    env_config_manager.py:965
+         MongoDB.                                                              
+INFO     👀 IA provider override enabled: OPENAI                    main.py:131
+INFO     👀 Oracle model override enabled: gpt-5.5                  main.py:134
+INFO     👀 Starting OracleWorker: oracle_openai_full_test (Max      main.py:44
+         Sessions: 1)                                                          
+INFO     👀 [OracleWorker:oracle_openai_full_test] Starting...    worker.py:244
+INFO     👀 [OracleWorker:oracle_openai_full_test] Output         worker.py:404
+         validation file enabled:                                              
+         C:\Projects\forex_system\services\ia_oracle\ia_oracle\da              
+         ta\oracle_output_results.json                                         
+INFO     👀 [IAProviderFactory] IA_PROVIDER='OPENAI_NATIVE'   ia_factory.py:180
+         (from OracleConfig)                                                   
+INFO     👀 [IAProviderFactory] Instantiated:                 ia_factory.py:162
+         OpenAIIAProvider (backend=OPENAI_NATIVE,                              
+         model=gpt-5.5)                                                        
+INFO     👀 [OpenAIIAProvider] Querying available     openai_ia_provider.py:329
+         OpenAI models...                                                      
+INFO     👀 HTTP Request: GET https://api.openai.com/v1/models  _client.py:1740
+         "HTTP/1.1 200 OK"                                                     
+INFO     👀 [OpenAIIAProvider] Discovered 68          openai_ia_provider.py:338
+         candidate models.                                                     
+INFO     👀 [OpenAIIAProvider] Initialized.           openai_ia_provider.py:212
+         primary=gpt-5.5 chain=68 concurrency=1                                
+         max_retries=15 reasoning=HIGH                                         
+         web_search=False structured_json=True                                 
+INFO     👀 [OracleWorker:oracle_openai_full_test] Provider       worker.py:254
+         ready: OPENAI_NATIVE | model=gpt-5.5                                  
+INFO     👀 [RabbitMQ Async] Conectando:          rabbitmq_provider_async.py:53
+         amqp://guest:guest@localhost:5672/                                    
+INFO     👀 [RabbitMQ Async] Conectando:          rabbitmq_provider_async.py:62
+         amqp://guest:guest@localhost:5672/                                    
+INFO     👀 [RabbitMQ Async] Conectado. Exchange  rabbitmq_provider_async.py:85
+         'forex_market_events' ativo.                                          
+INFO     👀 [OracleWorker:oracle_openai_full_test] MQ connected.  worker.py:264
+INFO     👀 [RabbitMQ Async] Inscrito:           rabbitmq_provider_async.py:218
+         'intel.oracle.review' → fila                                          
+         'amq_2e5f3774c2134849b3a24c81a5289924'                                
+INFO     👀 [OracleWorker:oracle_openai_full_test] Subscribed to  worker.py:267
+         intel.oracle.review                                                   
+INFO     👀 [OracleWorker:oracle_openai_full_test] Ready.         worker.py:270
+         concurrency=1                                                         
+INFO     👀 Bootstrapping default OracleSession...                   main.py:82
+INFO     👀 [OracleWorker:oracle_openai_full_test] Running.       worker.py:293
+         Waiting for messages...                                               
+INFO     👀 [RabbitMQ Async] Consumo ativo.      rabbitmq_provider_async.py:231
+         Aguardando eventos...                                                 
+INFO     👀 [OracleWorker:oracle_openai_full_test] Received       worker.py:321
+         review  id=4cbe67bb-9eab-4865-8d91-64dc8d4ad072                       
+         title=Scott Bassent, US Treasury Secretary, wrote on the              
+         social network X that followi                                         
+INFO     👀 [OracleWorker:oracle_openai_full_test] Calling        worker.py:332
+         OPENAI_NATIVE for                                                     
+         id=4cbe67bb-9eab-4865-8d91-64dc8d4ad072  model=gpt-5.5                
+INFO     👀 [OracleWorker:oracle_openai_full_test] Received       worker.py:321
+         review  id=91e05b6d-c44b-4e10-b413-bb75c8592299                       
+         title=Oil prices have risen dramatically since President              
+         Donald Trump met with oil com                                         
+INFO     👀 [OracleWorker:oracle_openai_full_test] Received       worker.py:321
+         review  id=faf5a411-6a82-4f5f-a0b5-daa337ec7edc                       
+         title=During the hearing of the House Armed Services                  
+         Committee, U.S. Secretary of War                                      
+INFO     👀 [OracleWorker:oracle_openai_full_test] Received       worker.py:321
+         review  id=a7f95de4-012f-46a4-80b3-d4f9cd2d97d1                       
+         title=Donald Trump, speaking to Axis on Wednesday,                    
+         emphasized that the Iranian naval b                                   
+INFO     👀 HTTP Request: POST                                  _client.py:1740
+         https://api.openai.com/v1/responses "HTTP/1.1 400 Bad                 
+         Request"                                                              
+WARNING  ⚠️ [OpenAIIAProvider] temperature            openai_ia_provider.py:279
+         unsupported on model=gpt-5.5; retrying with                           
+         fallback.                                                             
+INFO     👀 [OracleWorker:oracle_openai_full_test] Received       worker.py:321
+         review  id=641db5d9-834b-44dd-a139-8c6e0d10a420                       
+         title=The government news agency Esna reported that the               
+         dollar's free-market price was                                        
+INFO     👀 [OracleWorker:oracle_openai_full_test] Received       worker.py:321
+         review  id=04c7dc17-f6ec-422a-aee9-92220b976020                       
+         title=U.S. Secretary of War Pete Haggett said the                     
+         incident was still under investigati                                  
+INFO     👀 HTTP Request: POST                                  _client.py:1740
+         https://api.openai.com/v1/responses "HTTP/1.1 200 OK"                 
+INFO     👀 [OpenAIIAProvider] Succeeded on           openai_ia_provider.py:268
+         model=gpt-5.5 attempt=2                                               
+INFO     👀 [OracleWorker:oracle_openai_full_test] Resolved       worker.py:343
+         id=4cbe67bb-9eab-4865-8d91-64dc8d4ad072  action=EMIT                  
+         confidence=0.72  reasoning=The event has a clear                      
+         oil-market transmission channel through reported US                   
+         maximum-pressure sanctions                                            
+INFO     👀 [OracleWorker:oracle_openai_full_test] Published      worker.py:376
+         resolved  id=4cbe67bb-9eab-4865-8d91-64dc8d4ad072                     
+         topic=intel.oracle.resolved                                           
+INFO     👀 [OracleWorker:oracle_openai_full_test] Output file    worker.py:448
+         updated  count=1                                                      
+         path=C:\Projects\forex_system\services\ia_oracle\ia_orac              
+         le\data\oracle_output_results.json                                    
+INFO     👀 [OracleWorker:oracle_openai_full_test] GlobalTag      worker.py:482
+         emitted  asset=OIL  bias=bullish  risk=0.66                           
+         ttl_until=2026-05-06T07:31:45.899794+00:00                            
+         topic=intel.global_tags                                               
+INFO     👀 [OracleWorker:oracle_openai_full_test] GlobalTag      worker.py:482
+         emitted  asset=BRENT  bias=bullish  risk=0.64                         
+         ttl_until=2026-05-06T07:31:45.899794+00:00                            
+         topic=intel.global_tags                                               
+INFO     👀 [OracleWorker:oracle_openai_full_test] GlobalTag      worker.py:482
+         emitted  asset=WTI  bias=bullish  risk=0.60                           
+         ttl_until=2026-05-06T06:31:45.899794+00:00                            
+         topic=intel.global_tags                                               
+INFO     👀 [OracleWorker:oracle_openai_full_test] Calling        worker.py:332
+         OPENAI_NATIVE for                                                     
+         id=91e05b6d-c44b-4e10-b413-bb75c8592299  model=gpt-5.5                
+INFO     👀 HTTP Request: POST                                  _client.py:1740
+         https://api.openai.com/v1/responses "HTTP/1.1 400 Bad                 
+         Request"                                                              
+WARNING  ⚠️ [OpenAIIAProvider] temperature            openai_ia_provider.py:279
+         unsupported on model=gpt-5.5; retrying with                           
+         fallback.                                                             
+INFO     👀 HTTP Request: POST                                  _client.py:1740
+         https://api.openai.com/v1/responses "HTTP/1.1 200 OK"                 
+INFO     👀 [OpenAIIAProvider] Succeeded on           openai_ia_provider.py:268
+         model=gpt-5.5 attempt=2                                               
+INFO     👀 [OracleWorker:oracle_openai_full_test] Resolved       worker.py:343
+         id=91e05b6d-c44b-4e10-b413-bb75c8592299  action=EMIT                  
+         confidence=0.68  reasoning=The event describes an                     
+         Iran-related ports/shipping disruption and reports a                  
+         sharp oil-price reaction                                              
+INFO     👀 [OracleWorker:oracle_openai_full_test] Published      worker.py:376
+         resolved  id=91e05b6d-c44b-4e10-b413-bb75c8592299                     
+         topic=intel.oracle.resolved                                           
+INFO     👀 [OracleWorker:oracle_openai_full_test] Output file    worker.py:448
+         updated  count=2                                                      
+         path=C:\Projects\forex_system\services\ia_oracle\ia_orac              
+         le\data\oracle_output_results.json                                    
+INFO     👀 [OracleWorker:oracle_openai_full_test] GlobalTag      worker.py:482
+         emitted  asset=OIL  bias=bullish  risk=0.68                           
+         ttl_until=2026-05-06T07:32:02.851696+00:00                            
+         topic=intel.global_tags                                               
+INFO     👀 [OracleWorker:oracle_openai_full_test] GlobalTag      worker.py:482
+         emitted  asset=BRENT  bias=bullish  risk=0.64                         
+         ttl_until=2026-05-06T07:32:02.851696+00:00                            
+         topic=intel.global_tags                                               
+INFO     👀 [OracleWorker:oracle_openai_full_test] GlobalTag      worker.py:482
+         emitted  asset=WTI  bias=bullish  risk=0.60                           
+         ttl_until=2026-05-06T06:32:02.851696+00:00                            
+         topic=intel.global_tags                                               
+INFO     👀 [OracleWorker:oracle_openai_full_test] Calling        worker.py:332
+         OPENAI_NATIVE for                                                     
+         id=faf5a411-6a82-4f5f-a0b5-daa337ec7edc  model=gpt-5.5                
+INFO     👀 HTTP Request: POST                                  _client.py:1740
+         https://api.openai.com/v1/responses "HTTP/1.1 400 Bad                 
+         Request"                                                              
+WARNING  ⚠️ [OpenAIIAProvider] temperature            openai_ia_provider.py:279
+         unsupported on model=gpt-5.5; retrying with                           
+         fallback.                                                             
+INFO     👀 HTTP Request: POST                                  _client.py:1740
+         https://api.openai.com/v1/responses "HTTP/1.1 200 OK"                 
+INFO     👀 [OpenAIIAProvider] Succeeded on           openai_ia_provider.py:268
+         model=gpt-5.5 attempt=2                                               
+INFO     👀 [OracleWorker:oracle_openai_full_test] Resolved       worker.py:343
+         id=faf5a411-6a82-4f5f-a0b5-daa337ec7edc  action=HOLD                  
+         confidence=0.74  reasoning=The event describes a                      
+         politically charged hearing statement claiming past                   
+         U.S./Israeli action agains                                            
+INFO     👀 [OracleWorker:oracle_openai_full_test] Published      worker.py:376
+         resolved  id=faf5a411-6a82-4f5f-a0b5-daa337ec7edc                     
+         topic=intel.oracle.resolved                                           
+INFO     👀 [OracleWorker:oracle_openai_full_test] Output file    worker.py:448
+         updated  count=3                                                      
+         path=C:\Projects\forex_system\services\ia_oracle\ia_orac              
+         le\data\oracle_output_results.json                                    
+INFO     👀 [OracleWorker:oracle_openai_full_test] Calling        worker.py:332
+         OPENAI_NATIVE for                                                     
+         id=a7f95de4-012f-46a4-80b3-d4f9cd2d97d1  model=gpt-5.5                
+INFO     👀 HTTP Request: POST                                  _client.py:1740
+         https://api.openai.com/v1/responses "HTTP/1.1 400 Bad                 
+         Request"                                                              
+WARNING  ⚠️ [OpenAIIAProvider] temperature            openai_ia_provider.py:279
+         unsupported on model=gpt-5.5; retrying with                           
+         fallback.                                                             
+INFO     👀 HTTP Request: POST                                  _client.py:1740
+         https://api.openai.com/v1/responses "HTTP/1.1 200 OK"                 
+INFO     👀 [OpenAIIAProvider] Succeeded on           openai_ia_provider.py:268
+         model=gpt-5.5 attempt=2                                               
+INFO     👀 [OracleWorker:oracle_openai_full_test] Resolved       worker.py:343
+         id=a7f95de4-012f-46a4-80b3-d4f9cd2d97d1  action=HOLD                  
+         confidence=0.58  reasoning=The claim references a                     
+         potentially major Strait of Hormuz/naval blockade                     
+         scenario with a clear oil a                                           
+INFO     👀 [OracleWorker:oracle_openai_full_test] Published      worker.py:376
+         resolved  id=a7f95de4-012f-46a4-80b3-d4f9cd2d97d1                     
+         topic=intel.oracle.resolved                                           
+INFO     👀 [OracleWorker:oracle_openai_full_test] Output file    worker.py:448
+         updated  count=4                                                      
+         path=C:\Projects\forex_system\services\ia_oracle\ia_orac              
+         le\data\oracle_output_results.json                                    
+INFO     👀 [OracleWorker:oracle_openai_full_test] Calling        worker.py:332
+         OPENAI_NATIVE for                                                     
+         id=641db5d9-834b-44dd-a139-8c6e0d10a420  model=gpt-5.5                
+INFO     👀 HTTP Request: POST                                  _client.py:1740
+         https://api.openai.com/v1/responses "HTTP/1.1 400 Bad                 
+         Request"                                                              
+WARNING  ⚠️ [OpenAIIAProvider] temperature            openai_ia_provider.py:279
+         unsupported on model=gpt-5.5; retrying with                           
+         fallback.                                                             
+INFO     👀 HTTP Request: POST                                  _client.py:1740
+         https://api.openai.com/v1/responses "HTTP/1.1 200 OK"                 
+INFO     👀 [OpenAIIAProvider] Succeeded on           openai_ia_provider.py:268
+         model=gpt-5.5 attempt=2                                               
+INFO     👀 [OracleWorker:oracle_openai_full_test] Resolved       worker.py:343
+         id=641db5d9-834b-44dd-a139-8c6e0d10a420  action=HOLD                  
+         confidence=0.72  reasoning=Iranian rial/toman                         
+         free-market depreciation is economically significant and              
+         implies local USD/IRR up                                              
+INFO     👀 [OracleWorker:oracle_openai_full_test] Published      worker.py:376
+         resolved  id=641db5d9-834b-44dd-a139-8c6e0d10a420                     
+         topic=intel.oracle.resolved                                           
+INFO     👀 [OracleWorker:oracle_openai_full_test] Output file    worker.py:448
+         updated  count=5                                                      
+         path=C:\Projects\forex_system\services\ia_oracle\ia_orac              
+         le\data\oracle_output_results.json                                    
+INFO     👀 [OracleWorker:oracle_openai_full_test] Calling        worker.py:332
+         OPENAI_NATIVE for                                                     
+         id=04c7dc17-f6ec-422a-aee9-92220b976020  model=gpt-5.5                
+INFO     👀 HTTP Request: POST                                  _client.py:1740
+         https://api.openai.com/v1/responses "HTTP/1.1 400 Bad                 
+         Request"                                                              
+WARNING  ⚠️ [OpenAIIAProvider] temperature            openai_ia_provider.py:279
+         unsupported on model=gpt-5.5; retrying with                           
+         fallback.                                                             
+INFO     👀 HTTP Request: POST                                  _client.py:1740
+         https://api.openai.com/v1/responses "HTTP/1.1 200 OK"                 
+INFO     👀 [OpenAIIAProvider] Succeeded on           openai_ia_provider.py:268
+         model=gpt-5.5 attempt=2                                               
+INFO     👀 [OracleWorker:oracle_openai_full_test] Resolved       worker.py:343
+         id=04c7dc17-f6ec-422a-aee9-92220b976020  action=DISCARD               
+         confidence=0.86  reasoning=High-severity                              
+         geopolitical/humanitarian report, but it is an                        
+         investigation/commentary update about a                               
+INFO     👀 [OracleWorker:oracle_openai_full_test] Published      worker.py:376
+         resolved  id=04c7dc17-f6ec-422a-aee9-92220b976020                     
+         topic=intel.oracle.resolved                                           
+INFO     👀 [OracleWorker:oracle_openai_full_test] Output file    worker.py:448
+         updated  count=6                                                      
+         path=C:\Projects\forex_system\services\ia_oracle\ia_orac              
+         le\data\oracle_output_results.json                                    

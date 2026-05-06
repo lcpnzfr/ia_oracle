@@ -221,6 +221,8 @@ class OracleWorker(Loggable):
         worker_id: str = "oracle_worker_1",
         max_sessions: int = 1,
         store: Optional[OracleMongoStore] = None,
+        output_file: Optional[str | Path] = None,
+        reset_output_file: bool = False,
     ) -> None:
         self.worker_id    = worker_id
         self.max_sessions = max_sessions
@@ -230,6 +232,9 @@ class OracleWorker(Loggable):
         self._semaphore:  Optional[asyncio.Semaphore] = None
         self._stop_event  = asyncio.Event()
         self._system_prompt = _load_system_prompt()
+        self._output_file = Path(output_file) if output_file else None
+        self._reset_output_file = reset_output_file
+        self._output_file_lock = asyncio.Lock()
 
     # ------------------------------------------------------------------
     # Lifecycle
@@ -237,6 +242,7 @@ class OracleWorker(Loggable):
 
     async def start(self) -> None:
         self.log.info("[OracleWorker:%s] Starting...", self.worker_id)
+        await self._prepare_output_file()
 
         # ── IA provider ───────────────────────────────────────────────
         self._provider = IAProviderFactory.create_from_env()
@@ -364,7 +370,8 @@ class OracleWorker(Loggable):
 
     async def _publish_resolved(self, response: OracleReviewResponse) -> None:
         """Publish resolved decision to intel.oracle.resolved (audit topic)."""
-        ok = await self._mq.publish_event(OUTPUT_TOPIC, response.to_dict())
+        payload = response.to_dict()
+        ok = await self._mq.publish_event(OUTPUT_TOPIC, payload)
         if ok:
             self.log.info(
                 "[OracleWorker:%s] Published resolved  id=%s  topic=%s",
@@ -372,12 +379,85 @@ class OracleWorker(Loggable):
                 response.trigger_event_id,
                 OUTPUT_TOPIC,
             )
+            await self._write_output_result(payload)
         else:
             self.log.warning(
                 "[OracleWorker:%s] Failed to publish resolved id=%s",
                 self.worker_id,
                 response.trigger_event_id,
             )
+
+    async def _prepare_output_file(self) -> None:
+        """Initialize the optional validation output file as a JSON array."""
+        if self._output_file is None:
+            return
+
+        path = self._output_file
+
+        def _prepare() -> None:
+            path.parent.mkdir(parents=True, exist_ok=True)
+            if self._reset_output_file or not path.exists() or path.stat().st_size == 0:
+                path.write_text("[]\n", encoding="utf-8")
+
+        try:
+            await asyncio.to_thread(_prepare)
+            self.log.info(
+                "[OracleWorker:%s] Output validation file enabled: %s",
+                self.worker_id,
+                path,
+            )
+        except Exception as exc:
+            self.log.warning(
+                "[OracleWorker:%s] Failed to prepare output file %s: %s",
+                self.worker_id,
+                path,
+                exc,
+            )
+
+    async def _write_output_result(self, payload: Dict[str, Any]) -> None:
+        """Append one resolved response to the validation output JSON file."""
+        if self._output_file is None:
+            return
+
+        async with self._output_file_lock:
+            path = self._output_file
+
+            def _append() -> int:
+                path.parent.mkdir(parents=True, exist_ok=True)
+                existing: list[dict[str, Any]] = []
+                if path.exists() and path.stat().st_size > 0:
+                    try:
+                        loaded = json.loads(path.read_text(encoding="utf-8"))
+                        if isinstance(loaded, list):
+                            existing = loaded
+                    except json.JSONDecodeError:
+                        backup = path.with_suffix(path.suffix + ".invalid")
+                        path.replace(backup)
+
+                existing.append(payload)
+                tmp = path.with_suffix(path.suffix + ".tmp")
+                tmp.write_text(
+                    json.dumps(existing, ensure_ascii=False, indent=2, default=str) + "\n",
+                    encoding="utf-8",
+                )
+                tmp.replace(path)
+                return len(existing)
+
+            try:
+                count = await asyncio.to_thread(_append)
+                self.log.info(
+                    "[OracleWorker:%s] Output file updated  count=%d  path=%s",
+                    self.worker_id,
+                    count,
+                    path,
+                )
+            except Exception as exc:
+                self.log.warning(
+                    "[OracleWorker:%s] Failed to update output file %s: %s",
+                    self.worker_id,
+                    path,
+                    exc,
+                )
 
     async def _emit_global_tags(self, response: OracleReviewResponse) -> None:
         """Build GlobalTag(s) from EMIT directives and publish to intel.global_tags.

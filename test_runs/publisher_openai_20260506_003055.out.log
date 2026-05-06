@@ -1,0 +1,46 @@
+INFO     👀 Logging system initialized                     logger_config.py:182
+INFO     👀 === Oracle MQ Publisher Test ===            test_mq_publisher.py:99
+INFO     👀 Mock file :                                test_mq_publisher.py:100
+         C:\Projects\forex_system\services\ia_oracle\i                         
+         a_oracle\data\mock_intel_items_big_process_re                         
+         sult.json                                                             
+INFO     👀 Topic     : intel.oracle.review            test_mq_publisher.py:101
+INFO     👀 Count     : 6 items                        test_mq_publisher.py:102
+INFO     👀 Delay     : 0.5 s between messages         test_mq_publisher.py:103
+INFO     👀 Loaded 6 items                             test_mq_publisher.py:115
+INFO     👀 Connecting to MQ                           test_mq_publisher.py:117
+         (provider=RABBITMQ_ASYNC)...                                          
+INFO     👀 [RabbitMQ Async] Conectando:          rabbitmq_provider_async.py:53
+         amqp://guest:guest@localhost:5672/                                    
+INFO     👀 [RabbitMQ Async] Conectando:          rabbitmq_provider_async.py:62
+         amqp://guest:guest@localhost:5672/                                    
+INFO     👀 [RabbitMQ Async] Conectado. Exchange  rabbitmq_provider_async.py:85
+         'forex_market_events' ativo.                                          
+INFO     👀 MQ connected.                              test_mq_publisher.py:120
+INFO     👀 [1/6] Published                            test_mq_publisher.py:130
+         id=4cbe67bb-9eab-4865-8d91-64dc8d4ad072                               
+         title=Scott Bassent, US Treasury Secretary,                           
+         wrote on the social ne                                                
+INFO     👀 [2/6] Published                            test_mq_publisher.py:130
+         id=91e05b6d-c44b-4e10-b413-bb75c8592299                               
+         title=Oil prices have risen dramatically                              
+         since President Donald Tr                                             
+INFO     👀 [3/6] Published                            test_mq_publisher.py:130
+         id=faf5a411-6a82-4f5f-a0b5-daa337ec7edc                               
+         title=During the hearing of the House Armed                           
+         Services Committee, U.                                                
+INFO     👀 [4/6] Published                            test_mq_publisher.py:130
+         id=a7f95de4-012f-46a4-80b3-d4f9cd2d97d1                               
+         title=Donald Trump, speaking to Axis on                               
+         Wednesday, emphasized that                                            
+INFO     👀 [5/6] Published                            test_mq_publisher.py:130
+         id=641db5d9-834b-44dd-a139-8c6e0d10a420                               
+         title=The government news agency Esna                                 
+         reported that the dollar's f                                          
+INFO     👀 [6/6] Published                            test_mq_publisher.py:130
+         id=04c7dc17-f6ec-422a-aee9-92220b976020                               
+         title=U.S. Secretary of War Pete Haggett said                         
+         the incident was sti                                                  
+INFO     👀 Done. 6/6 published.                       test_mq_publisher.py:142
+INFO     👀 [RabbitMQ Async] Conexão encerrada.   rabbitmq_provider_async.py:94
+INFO     👀 MQ disconnected.                           test_mq_publisher.py:145

@@ -10,6 +10,7 @@ import logging
 import os
 import signal
 import sys
+from pathlib import Path
 from typing import Optional
 
 from forex_shared.env_config_manager import EnvConfigManager
@@ -29,7 +30,15 @@ except Exception as e:
 from ia_oracle.worker import OracleWorker
 from ia_oracle.store import OracleMongoStore
 
-async def run_worker(worker_id: str, max_sessions: int, enable_mongo: bool = True) -> None:
+DEFAULT_OUTPUT_FILE = Path(__file__).resolve().parent / "data" / "oracle_output_results.json"
+
+async def run_worker(
+    worker_id: str,
+    max_sessions: int,
+    enable_mongo: bool = True,
+    output_file: Optional[Path] = DEFAULT_OUTPUT_FILE,
+    reset_output_file: bool = True,
+) -> None:
     """Starts a standalone Oracle Worker process."""
 
     logger.info(f"Starting OracleWorker: {worker_id} (Max Sessions: {max_sessions})")
@@ -45,7 +54,13 @@ async def run_worker(worker_id: str, max_sessions: int, enable_mongo: bool = Tru
             logger.warning("MongoDB unavailable — persistence skipped: %s", exc)
             store = None
 
-    worker = OracleWorker(worker_id=worker_id, max_sessions=max_sessions, store=store)
+    worker = OracleWorker(
+        worker_id=worker_id,
+        max_sessions=max_sessions,
+        store=store,
+        output_file=output_file,
+        reset_output_file=reset_output_file,
+    )
     
     # Graceful shutdown handler
     loop = asyncio.get_running_loop()
@@ -92,6 +107,22 @@ def main():
         default=None,
         help="Provider model override, for example gpt-4.1 or gemini-2.5-pro",
     )
+    parser.add_argument(
+        "--output-file",
+        type=Path,
+        default=DEFAULT_OUTPUT_FILE,
+        help=f"Write resolved responses incrementally after MQ publish (default: {DEFAULT_OUTPUT_FILE})",
+    )
+    parser.add_argument(
+        "--no-output-file",
+        action="store_true",
+        help="Disable validation output file writes.",
+    )
+    parser.add_argument(
+        "--append-output",
+        action="store_true",
+        help="Append to the output file instead of resetting it at startup.",
+    )
     
     args = parser.parse_args()
 
@@ -103,7 +134,16 @@ def main():
         logger.info("Oracle model override enabled: %s", os.environ["ORACLE_MODEL"])
 
     try:
-        asyncio.run(run_worker(args.worker_id, args.max_sessions, enable_mongo=not args.no_mongo))
+        output_file = None if args.no_output_file else args.output_file
+        asyncio.run(
+            run_worker(
+                args.worker_id,
+                args.max_sessions,
+                enable_mongo=not args.no_mongo,
+                output_file=output_file,
+                reset_output_file=not args.append_output,
+            )
+        )
     except KeyboardInterrupt:
         logger.info("Exiting.")
     except Exception as e:
