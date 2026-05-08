@@ -6418,3 +6418,788 @@ INFO → ia_oracle.worker.OracleWorker → [OracleWorker:sprint3_oracle] MongoDB
 INFO → root → Logging system initialized
 INFO → forex_shared.env_config_manager → [EnvConfig] 🔏 47 chaves marcadas como Secret no arquivo.
 INFO → forex_shared.env_config_manager → [EnvConfig] 5 chaves bootstrap carregadas do arquivo.
+INFO → root → Logging system initialized
+ERROR → forex_shared.env_config_manager → [EnvConfig] Arquivo não encontrado: .env_config.md
+ERROR → forex_shared.env_config_manager → [EnvConfig] Arquivo não encontrado: .env_config.md
+WARNING → forex_shared.env_config_manager → [EnvConfig] Crypto engine não inicializado: Nenhum backend de CryptoBeast disponível. Configure CRYPTO_SECRET_BACKEND=azure-keyvault e AZURE_KEY_VAULT_URL, ou SYSTEM_X25519_PUBLIC_KEY/SYSTEM_X25519_PRIVATE_KEY. 
+ERROR → forex_shared.env_config_manager → [EnvConfig] Arquivo não encontrado: .env_config.md
+WARNING → forex_shared.env_config_manager → [EnvConfig] Nenhuma entrada em .env_config.md.
+ERROR → forex_shared.mongo_manager → [MongoManager] Tentativa 1 falhou: localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 10000.0ms), Timeout: 10.0s, Topology Description: <TopologyDescription id: 69fd8775e7c90194b770b762, topology_type: Unknown, servers: [<ServerDescription ('localhost', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 10000.0ms)')>]>. Retry em 1.60s
+ERROR → forex_shared.mongo_manager → [MongoManager] Tentativa 2 falhou: localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 10000.0ms), Timeout: 10.0s, Topology Description: <TopologyDescription id: 69fd8781e7c90194b770b763, topology_type: Unknown, servers: [<ServerDescription ('localhost', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 10000.0ms)')>]>. Retry em 2.84s
+ERROR → forex_shared.mongo_manager → [MongoManager] Tentativa 3 falhou: localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 10000.0ms), Timeout: 10.0s, Topology Description: <TopologyDescription id: 69fd8790e7c90194b770b764, topology_type: Unknown, servers: [<ServerDescription ('localhost', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 10000.0ms)')>]>. Retry em 4.85s
+ERROR → forex_shared.mongo_manager → [MongoManager] Tentativa 4 falhou: localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 10000.0ms), Timeout: 10.0s, Topology Description: <TopologyDescription id: 69fd879fe7c90194b770b765, topology_type: Unknown, servers: [<ServerDescription ('localhost', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 10000.0ms)')>]>. Retry em 8.43s
+ERROR → forex_shared.mongo_manager → [MongoManager] Tentativa 5 falhou: localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 10000.0ms), Timeout: 10.0s, Topology Description: <TopologyDescription id: 69fd87b4e7c90194b770b766, topology_type: Unknown, servers: [<ServerDescription ('localhost', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 10000.0ms)')>]>. Retry em 16.21s
+ERROR → forex_shared.env_config_manager → [EnvConfig] Falha ao carregar do MongoDB: [MongoManager] Falha crítica: impossível conectar ao MongoDB.
+INFO → __main__ → Starting OracleWorker: oracle_worker_1 (Max Sessions: 1)
+ERROR → forex_shared.mongo_manager → [MongoManager] Tentativa 1 falhou: localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 10000.0ms), Timeout: 10.0s, Topology Description: <TopologyDescription id: 69fd87d9e7c90194b770b767, topology_type: Unknown, servers: [<ServerDescription ('localhost', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 10000.0ms)')>]>. Retry em 1.21s
+ERROR → forex_shared.mongo_manager → [MongoManager] Tentativa 2 falhou: localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 10000.0ms), Timeout: 10.0s, Topology Description: <TopologyDescription id: 69fd87e5e7c90194b770b768, topology_type: Unknown, servers: [<ServerDescription ('localhost', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 10000.0ms)')>]>. Retry em 2.67s
+ERROR → forex_shared.mongo_manager → [MongoManager] Tentativa 3 falhou: localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 10000.0ms), Timeout: 10.0s, Topology Description: <TopologyDescription id: 69fd87f4e7c90194b770b769, topology_type: Unknown, servers: [<ServerDescription ('localhost', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 10000.0ms)')>]>. Retry em 4.23s
+ERROR → forex_shared.mongo_manager → [MongoManager] Tentativa 4 falhou: localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 10000.0ms), Timeout: 10.0s, Topology Description: <TopologyDescription id: 69fd8802e7c90194b770b76a, topology_type: Unknown, servers: [<ServerDescription ('localhost', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 10000.0ms)')>]>. Retry em 8.18s
+ERROR → forex_shared.mongo_manager → [MongoManager] Tentativa 5 falhou: localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 10000.0ms), Timeout: 10.0s, Topology Description: <TopologyDescription id: 69fd8817e7c90194b770b76b, topology_type: Unknown, servers: [<ServerDescription ('localhost', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 10000.0ms)')>]>. Retry em 16.41s
+WARNING → __main__ → MongoDB unavailable — persistence skipped: [MongoManager] Falha crítica: impossível conectar ao MongoDB.
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Starting...
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Output validation file enabled: /app/ia_oracle/data/oracle_output_results.json
+ERROR → forex_shared.mongo_manager → [MongoManager] Tentativa 1 falhou: localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 10000.0ms), Timeout: 10.0s, Topology Description: <TopologyDescription id: 69fd8835e7c90194b770b76c, topology_type: Unknown, servers: [<ServerDescription ('localhost', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 10000.0ms)')>]>. Retry em 1.92s
+ERROR → forex_shared.mongo_manager → [MongoManager] Tentativa 2 falhou: localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 10000.0ms), Timeout: 10.0s, Topology Description: <TopologyDescription id: 69fd8841e7c90194b770b76d, topology_type: Unknown, servers: [<ServerDescription ('localhost', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 10000.0ms)')>]>. Retry em 2.61s
+ERROR → forex_shared.mongo_manager → [MongoManager] Tentativa 3 falhou: localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 10000.0ms), Timeout: 10.0s, Topology Description: <TopologyDescription id: 69fd884ee7c90194b770b76e, topology_type: Unknown, servers: [<ServerDescription ('localhost', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 10000.0ms)')>]>. Retry em 4.65s
+ERROR → forex_shared.mongo_manager → [MongoManager] Tentativa 4 falhou: localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 10000.0ms), Timeout: 10.0s, Topology Description: <TopologyDescription id: 69fd885fe7c90194b770b76f, topology_type: Unknown, servers: [<ServerDescription ('localhost', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 10000.0ms)')>]>. Retry em 8.09s
+ERROR → forex_shared.mongo_manager → [MongoManager] Tentativa 5 falhou: localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 10000.0ms), Timeout: 10.0s, Topology Description: <TopologyDescription id: 69fd8871e7c90194b770b770, topology_type: Unknown, servers: [<ServerDescription ('localhost', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 10000.0ms)')>]>. Retry em 16.41s
+INFO → forex_shared.worker_api.ia_factory → [IAProviderFactory] IA_PROVIDER='GEMINI' (from OracleConfig)
+ERROR → forex_shared.mongo_manager → [MongoManager] Tentativa 1 falhou: localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 10000.0ms), Timeout: 10.0s, Topology Description: <TopologyDescription id: 69fd888ee7c90194b770b771, topology_type: Unknown, servers: [<ServerDescription ('localhost', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 10000.0ms)')>]>. Retry em 1.91s
+ERROR → forex_shared.mongo_manager → [MongoManager] Tentativa 2 falhou: localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 10000.0ms), Timeout: 10.0s, Topology Description: <TopologyDescription id: 69fd889de7c90194b770b772, topology_type: Unknown, servers: [<ServerDescription ('localhost', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 10000.0ms)')>]>. Retry em 2.14s
+ERROR → forex_shared.mongo_manager → [MongoManager] Tentativa 3 falhou: localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 10000.0ms), Timeout: 10.0s, Topology Description: <TopologyDescription id: 69fd88a9e7c90194b770b773, topology_type: Unknown, servers: [<ServerDescription ('localhost', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 10000.0ms)')>]>. Retry em 4.47s
+ERROR → forex_shared.mongo_manager → [MongoManager] Tentativa 4 falhou: localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 10000.0ms), Timeout: 10.0s, Topology Description: <TopologyDescription id: 69fd88bae7c90194b770b774, topology_type: Unknown, servers: [<ServerDescription ('localhost', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 10000.0ms)')>]>. Retry em 8.41s
+ERROR → forex_shared.mongo_manager → [MongoManager] Tentativa 5 falhou: localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 10000.0ms), Timeout: 10.0s, Topology Description: <TopologyDescription id: 69fd88cde7c90194b770b775, topology_type: Unknown, servers: [<ServerDescription ('localhost', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 10000.0ms)')>]>. Retry em 16.97s
+ERROR → __main__ → Fatal error running OracleWorker: [IAProviderFactory] GEMINI_API_KEY is not set.
+Traceback (most recent call last):
+  File "/app/ia_oracle/main.py", line 138, in main
+    asyncio.run(
+  File "/usr/local/lib/python3.12/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/asyncio/base_events.py", line 691, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/app/ia_oracle/main.py", line 79, in run_worker
+    await worker.start()
+  File "/app/ia_oracle/worker.py", line 248, in start
+    self._provider = IAProviderFactory.create_from_env()
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/forex_shared/worker_api/ia_factory.py", line 181, in create_from_env
+    config = cls._build_config(backend)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/forex_shared/worker_api/ia_factory.py", line 194, in _build_config
+    raise RuntimeError("[IAProviderFactory] GEMINI_API_KEY is not set.")
+RuntimeError: [IAProviderFactory] GEMINI_API_KEY is not set.
+INFO → root → Logging system initialized
+ERROR → forex_shared.env_config_manager → [EnvConfig] Arquivo não encontrado: .env_config.md
+ERROR → forex_shared.env_config_manager → [EnvConfig] Arquivo não encontrado: .env_config.md
+WARNING → forex_shared.env_config_manager → [EnvConfig] Crypto engine não inicializado: Nenhum backend de CryptoBeast disponível. Configure CRYPTO_SECRET_BACKEND=azure-keyvault e AZURE_KEY_VAULT_URL, ou SYSTEM_X25519_PUBLIC_KEY/SYSTEM_X25519_PRIVATE_KEY. 
+ERROR → forex_shared.env_config_manager → [EnvConfig] Arquivo não encontrado: .env_config.md
+WARNING → forex_shared.env_config_manager → [EnvConfig] Nenhuma entrada em .env_config.md.
+INFO → forex_shared.mongo_manager → [MongoManager] Conectado via connection string | db=forex_system
+INFO → __main__ → Starting OracleWorker: oracle_worker_1 (Max Sessions: 1)
+INFO → __main__ → MongoDB persistence enabled (collection: oracle_resolved)
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Starting...
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Output validation file enabled: /app/ia_oracle/data/oracle_output_results.json
+INFO → forex_shared.worker_api.ia_factory → [IAProviderFactory] IA_PROVIDER='GEMINI' (from OracleConfig)
+ERROR → __main__ → Fatal error running OracleWorker: [IAProviderFactory] GEMINI_API_KEY is not set.
+Traceback (most recent call last):
+  File "/app/ia_oracle/main.py", line 138, in main
+    asyncio.run(
+  File "/usr/local/lib/python3.12/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/asyncio/base_events.py", line 691, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/app/ia_oracle/main.py", line 79, in run_worker
+    await worker.start()
+  File "/app/ia_oracle/worker.py", line 248, in start
+    self._provider = IAProviderFactory.create_from_env()
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/forex_shared/worker_api/ia_factory.py", line 181, in create_from_env
+    config = cls._build_config(backend)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/forex_shared/worker_api/ia_factory.py", line 194, in _build_config
+    raise RuntimeError("[IAProviderFactory] GEMINI_API_KEY is not set.")
+RuntimeError: [IAProviderFactory] GEMINI_API_KEY is not set.
+INFO → root → Logging system initialized
+ERROR → forex_shared.env_config_manager → [EnvConfig] Arquivo não encontrado: .env_config.md
+ERROR → forex_shared.env_config_manager → [EnvConfig] Arquivo não encontrado: .env_config.md
+WARNING → forex_shared.env_config_manager → [EnvConfig] Crypto engine não inicializado: Nenhum backend de CryptoBeast disponível. Configure CRYPTO_SECRET_BACKEND=azure-keyvault e AZURE_KEY_VAULT_URL, ou SYSTEM_X25519_PUBLIC_KEY/SYSTEM_X25519_PRIVATE_KEY. 
+ERROR → forex_shared.env_config_manager → [EnvConfig] Arquivo não encontrado: .env_config.md
+WARNING → forex_shared.env_config_manager → [EnvConfig] Nenhuma entrada em .env_config.md.
+INFO → forex_shared.mongo_manager → [MongoManager] Conectado via connection string | db=forex_system
+INFO → __main__ → Starting OracleWorker: oracle_worker_1 (Max Sessions: 1)
+INFO → __main__ → MongoDB persistence enabled (collection: oracle_resolved)
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Starting...
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Output validation file enabled: /app/ia_oracle/data/oracle_output_results.json
+INFO → forex_shared.worker_api.ia_factory → [IAProviderFactory] IA_PROVIDER='GEMINI' (from OracleConfig)
+ERROR → __main__ → Fatal error running OracleWorker: GeminiIAProvider requires 'google-genai'. Install it with: pip install google-genai
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/forex_shared/worker_api/providers/gemini_ia_provider.py", line 132, in __init__
+    from google import genai  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^
+ImportError: cannot import name 'genai' from 'google' (unknown location)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/ia_oracle/main.py", line 138, in main
+    asyncio.run(
+  File "/usr/local/lib/python3.12/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/asyncio/base_events.py", line 691, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/app/ia_oracle/main.py", line 79, in run_worker
+    await worker.start()
+  File "/app/ia_oracle/worker.py", line 248, in start
+    self._provider = IAProviderFactory.create_from_env()
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/forex_shared/worker_api/ia_factory.py", line 182, in create_from_env
+    return cls.create_provider(config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/forex_shared/worker_api/ia_factory.py", line 161, in create_provider
+    provider = cls._PROVIDERS[key](provider_config)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/forex_shared/worker_api/providers/gemini_ia_provider.py", line 135, in __init__
+    raise ImportError(
+ImportError: GeminiIAProvider requires 'google-genai'. Install it with: pip install google-genai
+INFO → root → Logging system initialized
+ERROR → forex_shared.env_config_manager → [EnvConfig] Arquivo não encontrado: .env_config.md
+ERROR → forex_shared.env_config_manager → [EnvConfig] Arquivo não encontrado: .env_config.md
+WARNING → forex_shared.env_config_manager → [EnvConfig] Crypto engine não inicializado: Nenhum backend de CryptoBeast disponível. Configure CRYPTO_SECRET_BACKEND=azure-keyvault e AZURE_KEY_VAULT_URL, ou SYSTEM_X25519_PUBLIC_KEY/SYSTEM_X25519_PRIVATE_KEY. 
+ERROR → forex_shared.env_config_manager → [EnvConfig] Arquivo não encontrado: .env_config.md
+WARNING → forex_shared.env_config_manager → [EnvConfig] Nenhuma entrada em .env_config.md.
+ERROR → forex_shared.mongo_manager → [MongoManager] Tentativa 1 falhou: localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 10000.0ms), Timeout: 10.0s, Topology Description: <TopologyDescription id: 69fd91f6c4ae39c8f50df87e, topology_type: Unknown, servers: [<ServerDescription ('localhost', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 10000.0ms)')>]>. Retry em 1.24s
+ERROR → forex_shared.mongo_manager → [MongoManager] Tentativa 2 falhou: localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 10000.0ms), Timeout: 10.0s, Topology Description: <TopologyDescription id: 69fd9203c4ae39c8f50df87f, topology_type: Unknown, servers: [<ServerDescription ('localhost', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 10000.0ms)')>]>. Retry em 2.56s
+ERROR → forex_shared.mongo_manager → [MongoManager] Tentativa 3 falhou: localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 10000.0ms), Timeout: 10.0s, Topology Description: <TopologyDescription id: 69fd9212c4ae39c8f50df880, topology_type: Unknown, servers: [<ServerDescription ('localhost', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 10000.0ms)')>]>. Retry em 4.29s
+ERROR → forex_shared.mongo_manager → [MongoManager] Tentativa 4 falhou: localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 10000.0ms), Timeout: 10.0s, Topology Description: <TopologyDescription id: 69fd9221c4ae39c8f50df881, topology_type: Unknown, servers: [<ServerDescription ('localhost', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('localhost:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 10000.0ms)')>]>. Retry em 8.52s
+INFO → root → Logging system initialized
+ERROR → forex_shared.env_config_manager → [EnvConfig] Arquivo não encontrado: .env_config.md
+ERROR → forex_shared.env_config_manager → [EnvConfig] Arquivo não encontrado: .env_config.md
+WARNING → forex_shared.env_config_manager → [EnvConfig] Crypto engine não inicializado: Nenhum backend de CryptoBeast disponível. Configure CRYPTO_SECRET_BACKEND=azure-keyvault e AZURE_KEY_VAULT_URL, ou SYSTEM_X25519_PUBLIC_KEY/SYSTEM_X25519_PRIVATE_KEY. 
+ERROR → forex_shared.env_config_manager → [EnvConfig] Arquivo não encontrado: .env_config.md
+WARNING → forex_shared.env_config_manager → [EnvConfig] Nenhuma entrada em .env_config.md.
+INFO → forex_shared.mongo_manager → [MongoManager] Conectado via connection string | db=forex_system
+INFO → __main__ → OK! Environment config loaded.
+INFO → root → Logging system initialized
+ERROR → forex_shared.env_config_manager → [EnvConfig] Arquivo não encontrado: .env_config.md
+ERROR → forex_shared.env_config_manager → [EnvConfig] Arquivo não encontrado: .env_config.md
+WARNING → forex_shared.env_config_manager → [EnvConfig] Crypto engine não inicializado: (Forbidden) The user, group or application 'appid=5b0ef946-de73-4f21-818c-c4a6b52a7af2;oid=9cbfb8d0-a93d-4024-9117-f69f874c4217;iss=https://sts.windows.net/20805bf8-a8ad-43b8-b57f-8780a65dc1a6/' does not have secrets get permission on key vault 'forexsystemkeyvault;location=eastus'. For help resolving this issue, please see https://go.microsoft.com/fwlink/?linkid=2125287
+Code: Forbidden
+Message: The user, group or application 'appid=5b0ef946-de73-4f21-818c-c4a6b52a7af2;oid=9cbfb8d0-a93d-4024-9117-f69f874c4217;iss=https://sts.windows.net/20805bf8-a8ad-43b8-b57f-8780a65dc1a6/' does not have secrets get permission on key vault 'forexsystemkeyvault;location=eastus'. For help resolving this issue, please see https://go.microsoft.com/fwlink/?linkid=2125287
+Inner error: {
+    "code": "AccessDenied"
+}
+ERROR → forex_shared.env_config_manager → [EnvConfig] Arquivo não encontrado: .env_config.md
+WARNING → forex_shared.env_config_manager → [EnvConfig] Nenhuma entrada em .env_config.md.
+ERROR → forex_shared.mongo_manager → [MongoManager] Tentativa 1 falhou: mongodb:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 10000.0ms), Timeout: 10.0s, Topology Description: <TopologyDescription id: 69fda542eba915eee90eb24d, topology_type: Unknown, servers: [<ServerDescription ('mongodb', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('mongodb:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 10000.0ms)')>]>. Retry em 1.56s
+ERROR → forex_shared.mongo_manager → [MongoManager] Tentativa 2 falhou: mongodb:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 10000.0ms), Timeout: 10.0s, Topology Description: <TopologyDescription id: 69fda550eba915eee90eb24e, topology_type: Unknown, servers: [<ServerDescription ('mongodb', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('mongodb:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 10000.0ms)')>]>. Retry em 2.98s
+INFO → forex_shared.mongo_manager → [MongoManager] Conectado via connection string | db=forex_system
+INFO → __main__ → OK! Environment config loaded.
+INFO → root → Logging system initialized
+INFO → forex_shared.env_config_manager → [EnvConfig] 🔏 47 chaves marcadas como Secret no arquivo.
+ERROR → forex_shared.mongo_manager → [MongoManager] Tentativa 1 falhou: mongodb:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 10000.0ms), Timeout: 10.0s, Topology Description: <TopologyDescription id: 69fda97c2813769f69ad01dc, topology_type: Unknown, servers: [<ServerDescription ('mongodb', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('mongodb:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 10000.0ms)')>]>. Retry em 1.04s
+WARNING → forex_shared.env_config_manager → [EnvConfig] Sync Mongo excedeu 15.0s no startup; seguindo sem bloquear.
+INFO → forex_shared.env_config_manager → [EnvConfig] 142 novas chaves setadas em os.environ.
+ERROR → forex_shared.mongo_manager → [MongoManager] Tentativa 2 falhou: mongodb:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 10000.0ms), Timeout: 10.0s, Topology Description: <TopologyDescription id: 69fda9882813769f69ad01dd, topology_type: Unknown, servers: [<ServerDescription ('mongodb', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('mongodb:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 10000.0ms)')>]>. Retry em 2.42s
+ERROR → forex_shared.mongo_manager → [MongoManager] Tentativa 1 falhou: mongodb:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 10000.0ms), Timeout: 10.0s, Topology Description: <TopologyDescription id: 69fda98b2813769f69ad01de, topology_type: Unknown, servers: [<ServerDescription ('mongodb', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('mongodb:27017: [Errno 111] Connection refused (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 10000.0ms)')>]>. Retry em 1.50s
+INFO → forex_shared.mongo_manager → [MongoManager] Conectado via connection string | db=forex_system
+INFO → __main__ → OK! Environment config loaded.
+INFO → root → Logging system initialized
+INFO → forex_shared.env_config_manager → [EnvConfig] 🔏 47 chaves marcadas como Secret no arquivo.
+INFO → forex_shared.mongo_manager → [MongoManager] Conectado via connection string | db=forex_system
+INFO → forex_shared.mongo_manager → [MongoManager] bulk_sync(env_config): 150 novos, 0 atualizados.
+INFO → forex_shared.env_config_manager → [EnvConfig] 150 chaves sincronizadas com MongoDB.
+INFO → forex_shared.env_config_manager → [EnvConfig] 142 novas chaves setadas em os.environ.
+INFO → forex_shared.env_config_manager → [EnvConfig] 150 chaves recarregadas do MongoDB.
+INFO → __main__ → Starting OracleWorker: oracle_worker_1 (Max Sessions: 1)
+INFO → __main__ → MongoDB persistence enabled (collection: oracle_resolved)
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Starting...
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Output validation file enabled: /app/ia_oracle/data/oracle_output_results.json
+INFO → forex_shared.worker_api.ia_factory → [IAProviderFactory] IA_PROVIDER='GEMINI' (from OracleConfig)
+ERROR → __main__ → Fatal error running OracleWorker: GeminiIAProvider requires 'google-genai'. Install it with: pip install google-genai
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/forex_shared/worker_api/providers/gemini_ia_provider.py", line 132, in __init__
+    from google import genai  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^
+ImportError: cannot import name 'genai' from 'google' (unknown location)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/ia_oracle/main.py", line 138, in main
+    asyncio.run(
+  File "/usr/local/lib/python3.12/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/asyncio/base_events.py", line 691, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/app/ia_oracle/main.py", line 79, in run_worker
+    await worker.start()
+  File "/app/ia_oracle/worker.py", line 248, in start
+    self._provider = IAProviderFactory.create_from_env()
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/forex_shared/worker_api/ia_factory.py", line 182, in create_from_env
+    return cls.create_provider(config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/forex_shared/worker_api/ia_factory.py", line 161, in create_provider
+    provider = cls._PROVIDERS[key](provider_config)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/forex_shared/worker_api/providers/gemini_ia_provider.py", line 135, in __init__
+    raise ImportError(
+ImportError: GeminiIAProvider requires 'google-genai'. Install it with: pip install google-genai
+INFO → root → Logging system initialized
+INFO → forex_shared.env_config_manager → [EnvConfig] 🔏 47 chaves marcadas como Secret no arquivo.
+INFO → forex_shared.mongo_manager → [MongoManager] Conectado via connection string | db=forex_system
+INFO → forex_shared.mongo_manager → [MongoManager] bulk_sync(env_config): 0 novos, 26 atualizados.
+INFO → forex_shared.env_config_manager → [EnvConfig] 150 chaves sincronizadas com MongoDB.
+INFO → forex_shared.env_config_manager → [EnvConfig] 142 novas chaves setadas em os.environ.
+INFO → forex_shared.env_config_manager → [EnvConfig] 150 chaves recarregadas do MongoDB.
+INFO → __main__ → Starting OracleWorker: oracle_worker_1 (Max Sessions: 1)
+INFO → __main__ → MongoDB persistence enabled (collection: oracle_resolved)
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Starting...
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Output validation file enabled: /app/ia_oracle/data/oracle_output_results.json
+INFO → forex_shared.worker_api.ia_factory → [IAProviderFactory] IA_PROVIDER='GEMINI' (from OracleConfig)
+ERROR → __main__ → Fatal error running OracleWorker: GeminiIAProvider requires 'google-genai'. Install it with: pip install google-genai
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/forex_shared/worker_api/providers/gemini_ia_provider.py", line 132, in __init__
+    from google import genai  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^
+ImportError: cannot import name 'genai' from 'google' (unknown location)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/ia_oracle/main.py", line 138, in main
+    asyncio.run(
+  File "/usr/local/lib/python3.12/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/asyncio/base_events.py", line 691, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/app/ia_oracle/main.py", line 79, in run_worker
+    await worker.start()
+  File "/app/ia_oracle/worker.py", line 248, in start
+    self._provider = IAProviderFactory.create_from_env()
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/forex_shared/worker_api/ia_factory.py", line 182, in create_from_env
+    return cls.create_provider(config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/forex_shared/worker_api/ia_factory.py", line 161, in create_provider
+    provider = cls._PROVIDERS[key](provider_config)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/forex_shared/worker_api/providers/gemini_ia_provider.py", line 135, in __init__
+    raise ImportError(
+ImportError: GeminiIAProvider requires 'google-genai'. Install it with: pip install google-genai
+INFO → root → Logging system initialized
+INFO → forex_shared.env_config_manager → [EnvConfig] 🔏 47 chaves marcadas como Secret no arquivo.
+INFO → forex_shared.mongo_manager → [MongoManager] Conectado via connection string | db=forex_system
+INFO → forex_shared.mongo_manager → [MongoManager] bulk_sync(env_config): 0 novos, 26 atualizados.
+INFO → forex_shared.env_config_manager → [EnvConfig] 150 chaves sincronizadas com MongoDB.
+INFO → forex_shared.env_config_manager → [EnvConfig] 142 novas chaves setadas em os.environ.
+INFO → forex_shared.env_config_manager → [EnvConfig] 150 chaves recarregadas do MongoDB.
+INFO → __main__ → Starting OracleWorker: oracle_worker_1 (Max Sessions: 1)
+INFO → __main__ → MongoDB persistence enabled (collection: oracle_resolved)
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Starting...
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Output validation file enabled: /app/ia_oracle/data/oracle_output_results.json
+INFO → forex_shared.worker_api.ia_factory → [IAProviderFactory] IA_PROVIDER='GEMINI' (from OracleConfig)
+ERROR → __main__ → Fatal error running OracleWorker: GeminiIAProvider requires 'google-genai'. Install it with: pip install google-genai
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/forex_shared/worker_api/providers/gemini_ia_provider.py", line 132, in __init__
+    from google import genai  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^
+ImportError: cannot import name 'genai' from 'google' (unknown location)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/ia_oracle/main.py", line 138, in main
+    asyncio.run(
+  File "/usr/local/lib/python3.12/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/asyncio/base_events.py", line 691, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/app/ia_oracle/main.py", line 79, in run_worker
+    await worker.start()
+  File "/app/ia_oracle/worker.py", line 248, in start
+    self._provider = IAProviderFactory.create_from_env()
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/forex_shared/worker_api/ia_factory.py", line 182, in create_from_env
+    return cls.create_provider(config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/forex_shared/worker_api/ia_factory.py", line 161, in create_provider
+    provider = cls._PROVIDERS[key](provider_config)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/forex_shared/worker_api/providers/gemini_ia_provider.py", line 135, in __init__
+    raise ImportError(
+ImportError: GeminiIAProvider requires 'google-genai'. Install it with: pip install google-genai
+INFO → root → Logging system initialized
+INFO → forex_shared.env_config_manager → [EnvConfig] 🔏 47 chaves marcadas como Secret no arquivo.
+INFO → forex_shared.mongo_manager → [MongoManager] Conectado via connection string | db=forex_system
+INFO → forex_shared.mongo_manager → [MongoManager] bulk_sync(env_config): 0 novos, 26 atualizados.
+INFO → forex_shared.env_config_manager → [EnvConfig] 150 chaves sincronizadas com MongoDB.
+INFO → forex_shared.env_config_manager → [EnvConfig] 142 novas chaves setadas em os.environ.
+INFO → forex_shared.env_config_manager → [EnvConfig] 150 chaves recarregadas do MongoDB.
+INFO → __main__ → Starting OracleWorker: oracle_worker_1 (Max Sessions: 1)
+INFO → __main__ → MongoDB persistence enabled (collection: oracle_resolved)
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Starting...
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Output validation file enabled: /app/ia_oracle/data/oracle_output_results.json
+INFO → forex_shared.worker_api.ia_factory → [IAProviderFactory] IA_PROVIDER='GEMINI' (from OracleConfig)
+INFO → forex_shared.worker_api.ia_factory → [IAProviderFactory] Instantiated: GeminiIAProvider (backend=GEMINI, model=gemini-2.5-pro)
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] Querying available Gemini models...
+INFO → httpx → HTTP Request: GET https://generativelanguage.googleapis.com/v1beta/models "HTTP/1.1 403 Forbidden"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] Model discovery failed (403 PERMISSION_DENIED. {'error': {'code': 403, 'message': 'Your API key was reported as leaked. Please use another API key.', 'status': 'PERMISSION_DENIED'}}). Using static fallback chain.
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] Initialized. primary=gemini-2.5-pro chain=8 concurrency=1 max_retries=15 url_context=False google_search=False thinking=HIGH
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Provider ready: GEMINI | model=gemini-2.5-pro
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@rabbitmq:5672/
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@rabbitmq:5672/
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectado. Exchange 'forex_market_events' ativo (durable=True).
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] MQ connected.
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Inscrito: 'intel.oracle.review' → fila 'amq_6f61422c10644f46b30767edd4af756d'
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Subscribed to intel.oracle.review
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Ready. concurrency=1
+INFO → __main__ → Bootstrapping default OracleSession...
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Running. Waiting for messages...
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Consumo ativo. Aguardando eventos...
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Received review  id=telegram:VahidOnline:75306  title=Citing a military intelligence official, Sawsima reported that "Following the U.
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Calling GEMINI for id=telegram:VahidOnline:75306  model=gemini-2.5-pro
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.5-pro → rotating to gemini-2.5-pro-preview-05-06 (attempt 1/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro-preview-05-06:generateContent "HTTP/1.1 404 Not Found"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.5-pro-preview-05-06 → rotating to gemini-2.5-flash-preview-04-17 (attempt 2/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-04-17:generateContent "HTTP/1.1 404 Not Found"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.5-flash-preview-04-17 → rotating to gemini-2.0-flash (attempt 3/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 429 Too Many Requests"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.0-flash → rotating to gemini-2.0-flash-lite (attempt 4/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent "HTTP/1.1 429 Too Many Requests"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.0-flash-lite → rotating to gemini-1.5-flash (attempt 5/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent "HTTP/1.1 404 Not Found"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-1.5-flash → rotating to gemini-1.5-flash-8b (attempt 6/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-8b:generateContent "HTTP/1.1 404 Not Found"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-1.5-flash-8b → rotating to gemini-1.5-pro (attempt 7/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent "HTTP/1.1 404 Not Found"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-1.5-pro → rotating to gemini-2.5-pro (attempt 8/15)
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] 🔄 Full cycle! Safety pause 10 s...
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.5-pro → rotating to gemini-2.5-pro-preview-05-06 (attempt 9/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro-preview-05-06:generateContent "HTTP/1.1 404 Not Found"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.5-pro-preview-05-06 → rotating to gemini-2.5-flash-preview-04-17 (attempt 10/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-04-17:generateContent "HTTP/1.1 404 Not Found"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.5-flash-preview-04-17 → rotating to gemini-2.0-flash (attempt 11/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 429 Too Many Requests"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.0-flash → rotating to gemini-2.0-flash-lite (attempt 12/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent "HTTP/1.1 429 Too Many Requests"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.0-flash-lite → rotating to gemini-1.5-flash (attempt 13/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent "HTTP/1.1 404 Not Found"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-1.5-flash → rotating to gemini-1.5-flash-8b (attempt 14/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-8b:generateContent "HTTP/1.1 404 Not Found"
+ERROR → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ❌ All 8 models exhausted after 15 retries.
+ERROR → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Error processing id=telegram:VahidOnline:75306: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-1.5-flash-8b is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+Traceback (most recent call last):
+  File "/app/ia_oracle/worker.py", line 340, in _handle_review
+    raw      = await self._provider.generate(user_prompt)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/forex_shared/worker_api/providers/gemini_ia_provider.py", line 327, in generate
+    raise last_exc  # type: ignore[misc]
+    ^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/forex_shared/worker_api/providers/gemini_ia_provider.py", line 227, in generate
+    response = await self._client.aio.models.generate_content(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/google/genai/models.py", line 8422, in generate_content
+    response = await self._generate_content(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/google/genai/models.py", line 6953, in _generate_content
+    response = await self._api_client.async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/google/genai/_api_client.py", line 1655, in async_request
+    result = await self._async_request(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/google/genai/_api_client.py", line 1588, in _async_request
+    return await self._async_retry(  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/tenacity/asyncio/__init__.py", line 112, in __call__
+    do = await self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/tenacity/asyncio/__init__.py", line 157, in iter
+    result = await action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/tenacity/_utils.py", line 111, in inner
+    return call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/tenacity/__init__.py", line 413, in exc_check
+    raise retry_exc.reraise()
+          ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/tenacity/__init__.py", line 184, in reraise
+    raise self.last_attempt.result()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/usr/local/lib/python3.12/site-packages/tenacity/asyncio/__init__.py", line 116, in __call__
+    result = await fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/google/genai/_api_client.py", line 1568, in _async_request_once
+    await errors.APIError.raise_for_async_response(client_response)
+  File "/usr/local/lib/python3.12/site-packages/google/genai/errors.py", line 247, in raise_for_async_response
+    await cls.raise_error_async(status_code, response_json, response)
+  File "/usr/local/lib/python3.12/site-packages/google/genai/errors.py", line 269, in raise_error_async
+    raise ClientError(status_code, response_json, response)
+google.genai.errors.ClientError: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-1.5-flash-8b is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Received review  id=telegram:VahidOnline:75309  title=As if the message received by the mail was correct: The newsletter "Mehr al-Bamd
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Calling GEMINI for id=telegram:VahidOnline:75309  model=gemini-1.5-flash-8b
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-8b:generateContent "HTTP/1.1 404 Not Found"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-1.5-flash-8b → rotating to gemini-1.5-pro (attempt 1/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent "HTTP/1.1 404 Not Found"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-1.5-pro → rotating to gemini-2.5-pro (attempt 2/15)
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] 🔄 Full cycle! Safety pause 10 s...
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.5-pro → rotating to gemini-2.5-pro-preview-05-06 (attempt 3/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro-preview-05-06:generateContent "HTTP/1.1 404 Not Found"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.5-pro-preview-05-06 → rotating to gemini-2.5-flash-preview-04-17 (attempt 4/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-04-17:generateContent "HTTP/1.1 404 Not Found"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.5-flash-preview-04-17 → rotating to gemini-2.0-flash (attempt 5/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 429 Too Many Requests"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.0-flash → rotating to gemini-2.0-flash-lite (attempt 6/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent "HTTP/1.1 429 Too Many Requests"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.0-flash-lite → rotating to gemini-1.5-flash (attempt 7/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent "HTTP/1.1 404 Not Found"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-1.5-flash → rotating to gemini-1.5-flash-8b (attempt 8/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-8b:generateContent "HTTP/1.1 404 Not Found"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-1.5-flash-8b → rotating to gemini-1.5-pro (attempt 9/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent "HTTP/1.1 404 Not Found"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-1.5-pro → rotating to gemini-2.5-pro (attempt 10/15)
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] 🔄 Full cycle! Safety pause 10 s...
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.5-pro → rotating to gemini-2.5-pro-preview-05-06 (attempt 11/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro-preview-05-06:generateContent "HTTP/1.1 404 Not Found"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.5-pro-preview-05-06 → rotating to gemini-2.5-flash-preview-04-17 (attempt 12/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-04-17:generateContent "HTTP/1.1 404 Not Found"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.5-flash-preview-04-17 → rotating to gemini-2.0-flash (attempt 13/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 429 Too Many Requests"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.0-flash → rotating to gemini-2.0-flash-lite (attempt 14/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent "HTTP/1.1 429 Too Many Requests"
+ERROR → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ❌ All 8 models exhausted after 15 retries.
+ERROR → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Error processing id=telegram:VahidOnline:75309: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash-lite\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash-lite\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash-lite\nPlease retry in 38.113429585s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash-lite'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash-lite'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_input_token_count', 'quotaId': 'GenerateContentInputTokensPerModelPerMinute-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash-lite'}}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '38s'}]}}
+Traceback (most recent call last):
+  File "/app/ia_oracle/worker.py", line 340, in _handle_review
+    raw      = await self._provider.generate(user_prompt)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/forex_shared/worker_api/providers/gemini_ia_provider.py", line 327, in generate
+    raise last_exc  # type: ignore[misc]
+    ^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/forex_shared/worker_api/providers/gemini_ia_provider.py", line 227, in generate
+    response = await self._client.aio.models.generate_content(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/google/genai/models.py", line 8422, in generate_content
+    response = await self._generate_content(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/google/genai/models.py", line 6953, in _generate_content
+    response = await self._api_client.async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/google/genai/_api_client.py", line 1655, in async_request
+    result = await self._async_request(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/google/genai/_api_client.py", line 1588, in _async_request
+    return await self._async_retry(  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/tenacity/asyncio/__init__.py", line 112, in __call__
+    do = await self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/tenacity/asyncio/__init__.py", line 157, in iter
+    result = await action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/tenacity/_utils.py", line 111, in inner
+    return call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/tenacity/__init__.py", line 413, in exc_check
+    raise retry_exc.reraise()
+          ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/tenacity/__init__.py", line 184, in reraise
+    raise self.last_attempt.result()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/usr/local/lib/python3.12/site-packages/tenacity/asyncio/__init__.py", line 116, in __call__
+    result = await fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/google/genai/_api_client.py", line 1568, in _async_request_once
+    await errors.APIError.raise_for_async_response(client_response)
+  File "/usr/local/lib/python3.12/site-packages/google/genai/errors.py", line 247, in raise_for_async_response
+    await cls.raise_error_async(status_code, response_json, response)
+  File "/usr/local/lib/python3.12/site-packages/google/genai/errors.py", line 269, in raise_error_async
+    raise ClientError(status_code, response_json, response)
+google.genai.errors.ClientError: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash-lite\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash-lite\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash-lite\nPlease retry in 38.113429585s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash-lite'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash-lite'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_input_token_count', 'quotaId': 'GenerateContentInputTokensPerModelPerMinute-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash-lite'}}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '38s'}]}}
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Received review  id=telegram:VahidOnline:75311  title=U.S. Central Command's Sentinel Command, Sentinel, announced that U.S. forces ha
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Calling GEMINI for id=telegram:VahidOnline:75311  model=gemini-2.0-flash-lite
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent "HTTP/1.1 429 Too Many Requests"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.0-flash-lite → rotating to gemini-1.5-flash (attempt 1/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent "HTTP/1.1 404 Not Found"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-1.5-flash → rotating to gemini-1.5-flash-8b (attempt 2/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-8b:generateContent "HTTP/1.1 404 Not Found"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-1.5-flash-8b → rotating to gemini-1.5-pro (attempt 3/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent "HTTP/1.1 404 Not Found"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-1.5-pro → rotating to gemini-2.5-pro (attempt 4/15)
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] 🔄 Full cycle! Safety pause 10 s...
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.5-pro → rotating to gemini-2.5-pro-preview-05-06 (attempt 5/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro-preview-05-06:generateContent "HTTP/1.1 404 Not Found"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.5-pro-preview-05-06 → rotating to gemini-2.5-flash-preview-04-17 (attempt 6/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-04-17:generateContent "HTTP/1.1 404 Not Found"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.5-flash-preview-04-17 → rotating to gemini-2.0-flash (attempt 7/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 429 Too Many Requests"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.0-flash → rotating to gemini-2.0-flash-lite (attempt 8/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent "HTTP/1.1 429 Too Many Requests"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.0-flash-lite → rotating to gemini-1.5-flash (attempt 9/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent "HTTP/1.1 404 Not Found"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-1.5-flash → rotating to gemini-1.5-flash-8b (attempt 10/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-8b:generateContent "HTTP/1.1 404 Not Found"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-1.5-flash-8b → rotating to gemini-1.5-pro (attempt 11/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent "HTTP/1.1 404 Not Found"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-1.5-pro → rotating to gemini-2.5-pro (attempt 12/15)
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] 🔄 Full cycle! Safety pause 10 s...
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.5-pro → rotating to gemini-2.5-pro-preview-05-06 (attempt 13/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro-preview-05-06:generateContent "HTTP/1.1 404 Not Found"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.5-pro-preview-05-06 → rotating to gemini-2.5-flash-preview-04-17 (attempt 14/15)
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Received review  id=telegram:VahidOnline:75312  title=♦️Jennifer Griffin, a Fox News reporter, quoted a senior U.S. official on social
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-04-17:generateContent "HTTP/1.1 404 Not Found"
+ERROR → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ❌ All 8 models exhausted after 15 retries.
+ERROR → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Error processing id=telegram:VahidOnline:75311: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-2.5-flash-preview-04-17 is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+Traceback (most recent call last):
+  File "/app/ia_oracle/worker.py", line 340, in _handle_review
+    raw      = await self._provider.generate(user_prompt)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/forex_shared/worker_api/providers/gemini_ia_provider.py", line 327, in generate
+    raise last_exc  # type: ignore[misc]
+    ^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/forex_shared/worker_api/providers/gemini_ia_provider.py", line 227, in generate
+    response = await self._client.aio.models.generate_content(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/google/genai/models.py", line 8422, in generate_content
+    response = await self._generate_content(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/google/genai/models.py", line 6953, in _generate_content
+    response = await self._api_client.async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/google/genai/_api_client.py", line 1655, in async_request
+    result = await self._async_request(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/google/genai/_api_client.py", line 1588, in _async_request
+    return await self._async_retry(  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/tenacity/asyncio/__init__.py", line 112, in __call__
+    do = await self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/tenacity/asyncio/__init__.py", line 157, in iter
+    result = await action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/tenacity/_utils.py", line 111, in inner
+    return call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/tenacity/__init__.py", line 413, in exc_check
+    raise retry_exc.reraise()
+          ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/tenacity/__init__.py", line 184, in reraise
+    raise self.last_attempt.result()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/usr/local/lib/python3.12/site-packages/tenacity/asyncio/__init__.py", line 116, in __call__
+    result = await fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/google/genai/_api_client.py", line 1568, in _async_request_once
+    await errors.APIError.raise_for_async_response(client_response)
+  File "/usr/local/lib/python3.12/site-packages/google/genai/errors.py", line 247, in raise_for_async_response
+    await cls.raise_error_async(status_code, response_json, response)
+  File "/usr/local/lib/python3.12/site-packages/google/genai/errors.py", line 269, in raise_error_async
+    raise ClientError(status_code, response_json, response)
+google.genai.errors.ClientError: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-2.5-flash-preview-04-17 is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Calling GEMINI for id=telegram:VahidOnline:75312  model=gemini-2.5-flash-preview-04-17
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-04-17:generateContent "HTTP/1.1 404 Not Found"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.5-flash-preview-04-17 → rotating to gemini-2.0-flash (attempt 1/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 429 Too Many Requests"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.0-flash → rotating to gemini-2.0-flash-lite (attempt 2/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent "HTTP/1.1 429 Too Many Requests"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.0-flash-lite → rotating to gemini-1.5-flash (attempt 3/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent "HTTP/1.1 404 Not Found"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-1.5-flash → rotating to gemini-1.5-flash-8b (attempt 4/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-8b:generateContent "HTTP/1.1 404 Not Found"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-1.5-flash-8b → rotating to gemini-1.5-pro (attempt 5/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent "HTTP/1.1 404 Not Found"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-1.5-pro → rotating to gemini-2.5-pro (attempt 6/15)
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] 🔄 Full cycle! Safety pause 10 s...
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.5-pro → rotating to gemini-2.5-pro-preview-05-06 (attempt 7/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro-preview-05-06:generateContent "HTTP/1.1 404 Not Found"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.5-pro-preview-05-06 → rotating to gemini-2.5-flash-preview-04-17 (attempt 8/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-04-17:generateContent "HTTP/1.1 404 Not Found"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.5-flash-preview-04-17 → rotating to gemini-2.0-flash (attempt 9/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 429 Too Many Requests"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.0-flash → rotating to gemini-2.0-flash-lite (attempt 10/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent "HTTP/1.1 429 Too Many Requests"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.0-flash-lite → rotating to gemini-1.5-flash (attempt 11/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent "HTTP/1.1 404 Not Found"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-1.5-flash → rotating to gemini-1.5-flash-8b (attempt 12/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-8b:generateContent "HTTP/1.1 404 Not Found"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-1.5-flash-8b → rotating to gemini-1.5-pro (attempt 13/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent "HTTP/1.1 404 Not Found"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-1.5-pro → rotating to gemini-2.5-pro (attempt 14/15)
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] 🔄 Full cycle! Safety pause 10 s...
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+ERROR → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ❌ All 8 models exhausted after 15 retries.
+ERROR → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Error processing id=telegram:VahidOnline:75312: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.5-pro\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.5-pro\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.5-pro\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.5-pro\nPlease retry in 26.905985354s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_input_token_count', 'quotaId': 'GenerateContentInputTokensPerModelPerDay-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-pro'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_input_token_count', 'quotaId': 'GenerateContentInputTokensPerModelPerMinute-FreeTier', 'quotaDimensions': {'model': 'gemini-2.5-pro', 'location': 'global'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-pro'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-pro'}}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '26s'}]}}
+Traceback (most recent call last):
+  File "/app/ia_oracle/worker.py", line 340, in _handle_review
+    raw      = await self._provider.generate(user_prompt)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/forex_shared/worker_api/providers/gemini_ia_provider.py", line 327, in generate
+    raise last_exc  # type: ignore[misc]
+    ^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/forex_shared/worker_api/providers/gemini_ia_provider.py", line 227, in generate
+    response = await self._client.aio.models.generate_content(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/google/genai/models.py", line 8422, in generate_content
+    response = await self._generate_content(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/google/genai/models.py", line 6953, in _generate_content
+    response = await self._api_client.async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/google/genai/_api_client.py", line 1655, in async_request
+    result = await self._async_request(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/google/genai/_api_client.py", line 1588, in _async_request
+    return await self._async_retry(  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/tenacity/asyncio/__init__.py", line 112, in __call__
+    do = await self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/tenacity/asyncio/__init__.py", line 157, in iter
+    result = await action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/tenacity/_utils.py", line 111, in inner
+    return call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/tenacity/__init__.py", line 413, in exc_check
+    raise retry_exc.reraise()
+          ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/tenacity/__init__.py", line 184, in reraise
+    raise self.last_attempt.result()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/usr/local/lib/python3.12/site-packages/tenacity/asyncio/__init__.py", line 116, in __call__
+    result = await fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/google/genai/_api_client.py", line 1568, in _async_request_once
+    await errors.APIError.raise_for_async_response(client_response)
+  File "/usr/local/lib/python3.12/site-packages/google/genai/errors.py", line 247, in raise_for_async_response
+    await cls.raise_error_async(status_code, response_json, response)
+  File "/usr/local/lib/python3.12/site-packages/google/genai/errors.py", line 269, in raise_error_async
+    raise ClientError(status_code, response_json, response)
+google.genai.errors.ClientError: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.5-pro\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.5-pro\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.5-pro\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.5-pro\nPlease retry in 26.905985354s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_input_token_count', 'quotaId': 'GenerateContentInputTokensPerModelPerDay-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-pro'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_input_token_count', 'quotaId': 'GenerateContentInputTokensPerModelPerMinute-FreeTier', 'quotaDimensions': {'model': 'gemini-2.5-pro', 'location': 'global'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-pro'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-pro'}}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '26s'}]}}
+INFO → root → Logging system initialized
+INFO → forex_shared.env_config_manager → [EnvConfig] 🔏 47 chaves marcadas como Secret no arquivo.
+INFO → forex_shared.mongo_manager → [MongoManager] Conectado via connection string | db=forex_system
+INFO → forex_shared.mongo_manager → [MongoManager] bulk_sync(env_config): 0 novos, 26 atualizados.
+INFO → forex_shared.env_config_manager → [EnvConfig] 150 chaves sincronizadas com MongoDB.
+INFO → forex_shared.env_config_manager → [EnvConfig] 141 novas chaves setadas em os.environ.
+INFO → forex_shared.env_config_manager → [EnvConfig] 151 chaves recarregadas do MongoDB.
+INFO → __main__ → Starting OracleWorker: oracle_worker_1 (Max Sessions: 1)
+INFO → __main__ → MongoDB persistence enabled (collection: oracle_resolved)
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Starting...
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Output validation file enabled: /app/ia_oracle/data/oracle_output_results.json
+INFO → forex_shared.worker_api.ia_factory → [IAProviderFactory] IA_PROVIDER='GEMINI' (from OracleConfig)
+INFO → forex_shared.worker_api.ia_factory → [IAProviderFactory] Instantiated: GeminiIAProvider (backend=GEMINI, model=gemini-2.5-pro)
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] Querying available Gemini models...
+INFO → httpx → HTTP Request: GET https://generativelanguage.googleapis.com/v1beta/models "HTTP/1.1 403 Forbidden"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] Model discovery failed (403 PERMISSION_DENIED. {'error': {'code': 403, 'message': 'Your API key was reported as leaked. Please use another API key.', 'status': 'PERMISSION_DENIED'}}). Using static fallback chain.
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] Initialized. primary=gemini-2.5-pro chain=8 concurrency=1 max_retries=15 url_context=False google_search=False thinking=HIGH
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Provider ready: GEMINI | model=gemini-2.5-pro
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@rabbitmq:5672/
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@rabbitmq:5672/
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectado. Exchange 'forex_market_events' ativo (durable=True).
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] MQ connected.
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Inscrito: 'intel.oracle.review' → fila 'amq_ae3573c9472a44c1b58346e0edd2dfce'
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Subscribed to intel.oracle.review
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Ready. concurrency=1
+INFO → __main__ → Bootstrapping default OracleSession...
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Running. Waiting for messages...
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Consumo ativo. Aguardando eventos...

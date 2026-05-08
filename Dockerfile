@@ -10,6 +10,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
     && rm -rf /var/lib/apt/lists/*
 
+# Install internal dependencies
+COPY cryptor /app/cryptor
+RUN pip install --no-cache-dir ./cryptor
+
 # Install shared_lib
 COPY shared_lib /app/shared_lib
 RUN pip install --no-cache-dir ./shared_lib

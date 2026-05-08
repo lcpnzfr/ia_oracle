@@ -16,12 +16,5 @@ except Exception as e:
     logger.exception(f"Failed to sync with MongoDB EnvConfig: {e}")
     sys.exit(1)
 
-logger.info(f"OK!")
+logger.info(f"OK! Environment config loaded.")
 
-try:
-    EnvConfigManager.startup()
-except Exception as e:
-    logger.exception(f"Failed to sync with MongoDB EnvConfig: {e}")
-    sys.exit(1)
-
-logger.info(f"OK!")
