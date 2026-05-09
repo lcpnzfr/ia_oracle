@@ -8588,3 +8588,78 @@ INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Ready.
 INFO → __main__ → Bootstrapping default OracleSession...
 INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Running. Waiting for messages...
 INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Consumo ativo. Aguardando eventos...
+INFO → root → Logging system initialized
+INFO → forex_shared.env_config_manager → [EnvConfig] 🔏 47 chaves marcadas como Secret no arquivo.
+INFO → forex_shared.env_config_manager → [EnvConfig] 1 bootstrap secrets carregados.
+INFO → forex_shared.mongo_manager → [MongoManager] Conectado via connection string | db=forex_system
+INFO → forex_shared.mongo_manager → [MongoManager] bulk_sync(env_config): 0 novos, 26 atualizados.
+INFO → forex_shared.env_config_manager → [EnvConfig] 150 chaves sincronizadas com MongoDB.
+INFO → forex_shared.env_config_manager → [EnvConfig] 141 novas chaves setadas em os.environ.
+INFO → forex_shared.env_config_manager → [EnvConfig] 150 chaves recarregadas do MongoDB.
+INFO → __main__ → Starting OracleWorker: oracle_worker_1 (Max Sessions: 1)
+INFO → __main__ → MongoDB persistence enabled (collection: oracle_resolved)
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Starting...
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Output validation file enabled: /app/ia_oracle/data/oracle_output_results.json
+INFO → forex_shared.worker_api.ia_factory → [IAProviderFactory] IA_PROVIDER='OPENAI_NATIVE' (from OracleConfig)
+INFO → forex_shared.worker_api.ia_factory → [IAProviderFactory] Instantiated: OpenAIIAProvider (backend=OPENAI_NATIVE, model=gpt-4o)
+INFO → forex_shared.worker_api.providers.openai_ia_provider → [OpenAIIAProvider] Querying available OpenAI models...
+INFO → httpx → HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+INFO → forex_shared.worker_api.providers.openai_ia_provider → [OpenAIIAProvider] Discovered 68 candidate models.
+INFO → forex_shared.worker_api.providers.openai_ia_provider → [OpenAIIAProvider] Initialized. primary=gpt-4o chain=68 concurrency=1 max_retries=15 reasoning=HIGH web_search=False structured_json=True
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Provider ready: OPENAI_NATIVE | model=gpt-4o
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@rabbitmq:5672/
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@rabbitmq:5672/
+ERROR → aiormq.connection → error when creating transport: <AMQPConnectionError: (111, "Connect call failed ('172.18.0.3', 5672)")>
+WARNING → aio_pika.robust_connection → Connection attempt to "amqp://guest:******@rabbitmq:5672/" failed: [Errno 111] Connect call failed ('172.18.0.3', 5672). Reconnecting after 5 seconds.
+ERROR → aiormq.connection → error when creating transport: <AMQPConnectionError: (111, "Connect call failed ('172.18.0.3', 5672)")>
+WARNING → aio_pika.robust_connection → Connection attempt to "amqp://guest:******@rabbitmq:5672/" failed: [Errno 111] Connect call failed ('172.18.0.3', 5672). Reconnecting after 5 seconds.
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectado. Exchange 'forex_market_events' ativo (durable=True).
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] MQ connected.
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Inscrito: 'intel.oracle.review' → fila 'amq_28f1f9309052475cbdd843e6b9d1bbeb'
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Subscribed to intel.oracle.review
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Ready. concurrency=1
+INFO → __main__ → Bootstrapping default OracleSession...
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Running. Waiting for messages...
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Consumo ativo. Aguardando eventos...
+INFO → root → Logging system initialized
+INFO → forex_shared.env_config_manager → [EnvConfig] 🔏 47 chaves marcadas como Secret no arquivo.
+INFO → forex_shared.env_config_manager → [EnvConfig] 1 bootstrap secrets carregados.
+INFO → forex_shared.mongo_manager → [MongoManager] Conectado via connection string | db=forex_system
+INFO → forex_shared.mongo_manager → [MongoManager] bulk_sync(env_config): 0 novos, 26 atualizados.
+INFO → forex_shared.env_config_manager → [EnvConfig] 150 chaves sincronizadas com MongoDB.
+INFO → forex_shared.env_config_manager → [EnvConfig] 141 novas chaves setadas em os.environ.
+INFO → forex_shared.env_config_manager → [EnvConfig] 150 chaves recarregadas do MongoDB.
+INFO → __main__ → Starting OracleWorker: oracle_worker_1 (Max Sessions: 1)
+INFO → __main__ → MongoDB persistence enabled (collection: oracle_resolved)
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Starting...
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Output validation file enabled: /app/ia_oracle/data/oracle_output_results.json
+INFO → forex_shared.worker_api.ia_factory → [IAProviderFactory] IA_PROVIDER='OPENAI_NATIVE' (from OracleConfig)
+INFO → forex_shared.worker_api.ia_factory → [IAProviderFactory] Instantiated: OpenAIIAProvider (backend=OPENAI_NATIVE, model=gpt-4o)
+INFO → forex_shared.worker_api.providers.openai_ia_provider → [OpenAIIAProvider] Querying available OpenAI models...
+INFO → httpx → HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+INFO → forex_shared.worker_api.providers.openai_ia_provider → [OpenAIIAProvider] Discovered 68 candidate models.
+INFO → forex_shared.worker_api.providers.openai_ia_provider → [OpenAIIAProvider] Initialized. primary=gpt-4o chain=68 concurrency=1 max_retries=15 reasoning=HIGH web_search=False structured_json=True
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Provider ready: OPENAI_NATIVE | model=gpt-4o
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@rabbitmq:5672/
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@rabbitmq:5672/
+ERROR → aiormq.connection → error when creating transport: <AMQPConnectionError: (111, "Connect call failed ('172.18.0.3', 5672)")>
+WARNING → aio_pika.robust_connection → Connection attempt to "amqp://guest:******@rabbitmq:5672/" failed: [Errno 111] Connect call failed ('172.18.0.3', 5672). Reconnecting after 5 seconds.
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectado. Exchange 'forex_market_events' ativo (durable=True).
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] MQ connected.
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Inscrito: 'intel.oracle.review' → fila 'amq_ac85ce226b4843a4acba629671a70973'
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Subscribed to intel.oracle.review
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Ready. concurrency=1
+INFO → __main__ → Bootstrapping default OracleSession...
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Running. Waiting for messages...
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Consumo ativo. Aguardando eventos...
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Received review  id=telegram:firstsquaw:132421  title=CHINESE OIL TANKER ATTACKED IN HORMUZ ON MAY 4: CAIXIN (@FirstSquaw)
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Calling OPENAI_NATIVE for id=telegram:firstsquaw:132421  model=gpt-4o
+INFO → httpx → HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Resolved  id=telegram:firstsquaw:132421  action=EMIT  confidence=0.85  reasoning=The attack on a Chinese oil tanker in the strategic Strait of Hormuz is a significant geopolitical e
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Published resolved  id=telegram:firstsquaw:132421  topic=intel.oracle.resolved
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Output file updated  count=1  path=/app/ia_oracle/data/oracle_output_results.json
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] GlobalTag emitted  asset=OIL  bias=bullish  risk=0.75  ttl_until=2026-05-09T07:17:36.388341+00:00  topic=intel.global_tags
+INFO → ia_oracle.store.OracleMongoStore → OracleMongoStore: stored global tag for asset=OIL, trigger=telegram:firstsquaw:132421
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] MongoDB GlobalTag saved! Retrieved (stored in mongodb): {'_id': ObjectId('69fea750cb053ef3f00a2c95'), 'trigger_event_id': 'telegram:firstsquaw:132421', 'asset': 'OIL', 'bias': 'bullish', 'risk_score': 0.75, 'established_at': '2026-05-09T03:17:36.388341+00:00', 'expires_at': '2026-05-09T07:17:36.388341+00:00', 'active': True, 'updated_at': '2026-05-09T03:17:36.396832+00:00', 'created_at': '2026-05-09T03:17:36.396832+00:00'}
+INFO → ia_oracle.store.OracleMongoStore → OracleMongoStore: stored  id=telegram:firstsquaw:132421  action=EMIT  confidence=0.85
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] MongoDB new id=telegram:firstsquaw:132421. Retrieved (stored in mongodb): EMIT

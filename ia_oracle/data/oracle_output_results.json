@@ -1,1 +1,21 @@
-[]
+[
+  {
+    "trigger_event_id": "telegram:firstsquaw:132421",
+    "action": "EMIT",
+    "oracle_confidence": 0.85,
+    "reasoning": "The attack on a Chinese oil tanker in the strategic Strait of Hormuz is a significant geopolitical event with potential implications for global oil supply and market volatility. The Strait of Hormuz is a critical chokepoint for oil transportation, and any disruption can lead to increased oil prices and market uncertainty. The event's source and context suggest a credible threat to oil transportation, warranting a bullish bias on oil-related assets.",
+    "tags_to_emit": [
+      {
+        "asset": "OIL",
+        "bias": "bullish",
+        "confidence": 0.85,
+        "risk_score": 0.75,
+        "volatility_duration_minutes": 240,
+        "reason": "Attack on oil tanker in Hormuz increases risk of supply disruption.",
+        "transmission_channel": "geopolitical"
+      }
+    ],
+    "event_type": "ORACLE_REVIEW_RESOLVED",
+    "resolved_at": "2026-05-09T03:17:36.160066+00:00"
+  }
+]
