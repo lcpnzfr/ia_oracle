@@ -263,7 +263,7 @@ class OracleWorker(Loggable):
         await self._mq.connect()
         self.log.info("[OracleWorker:%s] MQ connected.", self.worker_id)
 
-        await self._mq.subscribe_event(INPUT_TOPIC, self._handle_review)
+        await self._mq.subscribe_event(INPUT_TOPIC, self._handle_review, prefetch_count=self.max_sessions)
         self.log.info("[OracleWorker:%s] Subscribed to %s", self.worker_id, INPUT_TOPIC)
 
         self._semaphore = asyncio.Semaphore(self.max_sessions)

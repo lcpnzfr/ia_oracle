@@ -8045,3 +8045,546 @@ WARNING → aio_pika.robust_connection → Connection attempt to "amqp://guest:*
 INFO → __main__ → Shutdown signal received. Stopping worker...
 INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Stopping...
 INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Stopped.
+INFO → root → Logging system initialized
+INFO → forex_shared.env_config_manager → [EnvConfig] 🔏 47 chaves marcadas como Secret no arquivo.
+INFO → forex_shared.env_config_manager → [EnvConfig] 1 bootstrap secrets carregados.
+INFO → forex_shared.mongo_manager → [MongoManager] Conectado via connection string | db=forex_system
+INFO → forex_shared.mongo_manager → [MongoManager] bulk_sync(env_config): 0 novos, 26 atualizados.
+INFO → forex_shared.env_config_manager → [EnvConfig] 150 chaves sincronizadas com MongoDB.
+INFO → forex_shared.env_config_manager → [EnvConfig] 141 novas chaves setadas em os.environ.
+INFO → forex_shared.env_config_manager → [EnvConfig] 150 chaves recarregadas do MongoDB.
+INFO → __main__ → Starting OracleWorker: oracle_worker_1 (Max Sessions: 1)
+INFO → __main__ → MongoDB persistence enabled (collection: oracle_resolved)
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Starting...
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Output validation file enabled: /app/ia_oracle/data/oracle_output_results.json
+INFO → forex_shared.worker_api.ia_factory → [IAProviderFactory] IA_PROVIDER='GEMINI' (from OracleConfig)
+INFO → forex_shared.worker_api.ia_factory → [IAProviderFactory] Instantiated: GeminiIAProvider (backend=GEMINI, model=gemini-2.5-pro)
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] Querying available Gemini models...
+INFO → httpx → HTTP Request: GET https://generativelanguage.googleapis.com/v1beta/models "HTTP/1.1 403 Forbidden"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] Model discovery failed (403 PERMISSION_DENIED. {'error': {'code': 403, 'message': 'Your API key was reported as leaked. Please use another API key.', 'status': 'PERMISSION_DENIED'}}). Using static fallback chain.
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] Initialized. primary=gemini-2.5-pro chain=8 concurrency=1 max_retries=15 url_context=False google_search=False thinking=HIGH
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Provider ready: GEMINI | model=gemini-2.5-pro
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@rabbitmq:5672/
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@rabbitmq:5672/
+ERROR → aiormq.connection → error when creating transport: <AMQPConnectionError: (111, "Connect call failed ('172.18.0.2', 5672)")>
+WARNING → aio_pika.robust_connection → Connection attempt to "amqp://guest:******@rabbitmq:5672/" failed: [Errno 111] Connect call failed ('172.18.0.2', 5672). Reconnecting after 5 seconds.
+ERROR → aiormq.connection → error when creating transport: <AMQPConnectionError: (111, "Connect call failed ('172.18.0.2', 5672)")>
+WARNING → aio_pika.robust_connection → Connection attempt to "amqp://guest:******@rabbitmq:5672/" failed: [Errno 111] Connect call failed ('172.18.0.2', 5672). Reconnecting after 5 seconds.
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectado. Exchange 'forex_market_events' ativo (durable=True).
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] MQ connected.
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Inscrito: 'intel.oracle.review' → fila 'amq_fc8af0010ac041ee8edf22f0c6329931'
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Subscribed to intel.oracle.review
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Ready. concurrency=1
+INFO → __main__ → Bootstrapping default OracleSession...
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Running. Waiting for messages...
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Consumo ativo. Aguardando eventos...
+ERROR → pymongo.client → MongoClient background task encountered an error:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/pymongo/pool_shared.py", line 492, in _configured_socket_interface
+    ssl_sock = ssl_context.wrap_socket(sock, server_hostname=host)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/ssl.py", line 455, in wrap_socket
+    return self.sslsocket_class._create(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/ssl.py", line 1041, in _create
+    self.do_handshake()
+  File "/usr/local/lib/python3.12/ssl.py", line 1319, in do_handshake
+    self._sslobj.do_handshake()
+TimeoutError: _ssl.c:993: The handshake operation timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/pymongo/synchronous/mongo_client.py", line 2276, in _process_periodic_tasks
+    self._topology.update_pool()
+  File "/usr/local/lib/python3.12/site-packages/pymongo/synchronous/topology.py", line 710, in update_pool
+    server.pool.remove_stale_sockets(generation)
+  File "/usr/local/lib/python3.12/site-packages/pymongo/synchronous/pool.py", line 966, in remove_stale_sockets
+    conn = self.connect()
+           ^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pymongo/synchronous/pool.py", line 1035, in connect
+    networking_interface = _configured_socket_interface(self.address, self.opts)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pymongo/pool_shared.py", line 506, in _configured_socket_interface
+    _raise_connection_failure(address, exc, "SSL handshake failed: ", timeout_details=details)
+  File "/usr/local/lib/python3.12/site-packages/pymongo/pool_shared.py", line 146, in _raise_connection_failure
+    raise NetworkTimeout(msg) from error
+pymongo.errors.NetworkTimeout: SSL handshake failed: fc-ec6e802b8303-000.global.mongocluster.cosmos.azure.com:10260: _ssl.c:993: The handshake operation timed out (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 10000.0ms)
+ERROR → pymongo.client → MongoClient background task encountered an error:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/pymongo/synchronous/pool.py", line 1035, in connect
+    networking_interface = _configured_socket_interface(self.address, self.opts)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pymongo/pool_shared.py", line 480, in _configured_socket_interface
+    sock = _create_connection(address, options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pymongo/pool_shared.py", line 385, in _create_connection
+    for res in socket.getaddrinfo(host, port, family=family, type=socket.SOCK_STREAM):  # type: ignore[attr-defined, unused-ignore]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/socket.py", line 978, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno -3] Temporary failure in name resolution
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/pymongo/synchronous/mongo_client.py", line 2276, in _process_periodic_tasks
+    self._topology.update_pool()
+  File "/usr/local/lib/python3.12/site-packages/pymongo/synchronous/topology.py", line 710, in update_pool
+    server.pool.remove_stale_sockets(generation)
+  File "/usr/local/lib/python3.12/site-packages/pymongo/synchronous/pool.py", line 966, in remove_stale_sockets
+    conn = self.connect()
+           ^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pymongo/synchronous/pool.py", line 1059, in connect
+    _raise_connection_failure(self.address, error, timeout_details=details)
+  File "/usr/local/lib/python3.12/site-packages/pymongo/pool_shared.py", line 148, in _raise_connection_failure
+    raise AutoReconnect(msg) from error
+pymongo.errors.AutoReconnect: fc-ec6e802b8303-000.global.mongocluster.cosmos.azure.com:10260: [Errno -3] Temporary failure in name resolution (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 10000.0ms)
+ERROR → pymongo.client → MongoClient background task encountered an error:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/pymongo/synchronous/pool.py", line 1035, in connect
+    networking_interface = _configured_socket_interface(self.address, self.opts)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pymongo/pool_shared.py", line 480, in _configured_socket_interface
+    sock = _create_connection(address, options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pymongo/pool_shared.py", line 385, in _create_connection
+    for res in socket.getaddrinfo(host, port, family=family, type=socket.SOCK_STREAM):  # type: ignore[attr-defined, unused-ignore]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/socket.py", line 978, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno -3] Temporary failure in name resolution
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/pymongo/synchronous/mongo_client.py", line 2276, in _process_periodic_tasks
+    self._topology.update_pool()
+  File "/usr/local/lib/python3.12/site-packages/pymongo/synchronous/topology.py", line 710, in update_pool
+    server.pool.remove_stale_sockets(generation)
+  File "/usr/local/lib/python3.12/site-packages/pymongo/synchronous/pool.py", line 966, in remove_stale_sockets
+    conn = self.connect()
+           ^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pymongo/synchronous/pool.py", line 1059, in connect
+    _raise_connection_failure(self.address, error, timeout_details=details)
+  File "/usr/local/lib/python3.12/site-packages/pymongo/pool_shared.py", line 148, in _raise_connection_failure
+    raise AutoReconnect(msg) from error
+pymongo.errors.AutoReconnect: fc-ec6e802b8303-000.global.mongocluster.cosmos.azure.com:10260: [Errno -3] Temporary failure in name resolution (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 10000.0ms)
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Received review  id=telegram:LebUpdate:60710  title=Airstrikes target Nabatieh
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Calling GEMINI for id=telegram:LebUpdate:60710  model=gemini-2.5-pro
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.5-pro → rotating to gemini-2.5-pro-preview-05-06 (attempt 1/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro-preview-05-06:generateContent "HTTP/1.1 404 Not Found"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.5-pro-preview-05-06 → rotating to gemini-2.5-flash-preview-04-17 (attempt 2/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-04-17:generateContent "HTTP/1.1 404 Not Found"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.5-flash-preview-04-17 → rotating to gemini-2.0-flash (attempt 3/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 429 Too Many Requests"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.0-flash → rotating to gemini-2.0-flash-lite (attempt 4/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent "HTTP/1.1 429 Too Many Requests"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.0-flash-lite → rotating to gemini-1.5-flash (attempt 5/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent "HTTP/1.1 404 Not Found"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-1.5-flash → rotating to gemini-1.5-flash-8b (attempt 6/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-8b:generateContent "HTTP/1.1 404 Not Found"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-1.5-flash-8b → rotating to gemini-1.5-pro (attempt 7/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent "HTTP/1.1 404 Not Found"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-1.5-pro → rotating to gemini-2.5-pro (attempt 8/15)
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] 🔄 Full cycle! Safety pause 10 s...
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.5-pro → rotating to gemini-2.5-pro-preview-05-06 (attempt 9/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro-preview-05-06:generateContent "HTTP/1.1 404 Not Found"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.5-pro-preview-05-06 → rotating to gemini-2.5-flash-preview-04-17 (attempt 10/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-04-17:generateContent "HTTP/1.1 404 Not Found"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.5-flash-preview-04-17 → rotating to gemini-2.0-flash (attempt 11/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 429 Too Many Requests"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.0-flash → rotating to gemini-2.0-flash-lite (attempt 12/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent "HTTP/1.1 429 Too Many Requests"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.0-flash-lite → rotating to gemini-1.5-flash (attempt 13/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent "HTTP/1.1 404 Not Found"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-1.5-flash → rotating to gemini-1.5-flash-8b (attempt 14/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-8b:generateContent "HTTP/1.1 404 Not Found"
+ERROR → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ❌ All 8 models exhausted after 15 retries.
+ERROR → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Error processing id=telegram:LebUpdate:60710: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-1.5-flash-8b is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+Traceback (most recent call last):
+  File "/app/ia_oracle/worker.py", line 340, in _handle_review
+    raw      = await self._provider.generate(user_prompt)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/forex_shared/worker_api/providers/gemini_ia_provider.py", line 327, in generate
+    raise last_exc  # type: ignore[misc]
+    ^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/forex_shared/worker_api/providers/gemini_ia_provider.py", line 227, in generate
+    response = await self._client.aio.models.generate_content(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/google/genai/models.py", line 8422, in generate_content
+    response = await self._generate_content(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/google/genai/models.py", line 6953, in _generate_content
+    response = await self._api_client.async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/google/genai/_api_client.py", line 1655, in async_request
+    result = await self._async_request(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/google/genai/_api_client.py", line 1588, in _async_request
+    return await self._async_retry(  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/tenacity/asyncio/__init__.py", line 112, in __call__
+    do = await self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/tenacity/asyncio/__init__.py", line 157, in iter
+    result = await action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/tenacity/_utils.py", line 111, in inner
+    return call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/tenacity/__init__.py", line 413, in exc_check
+    raise retry_exc.reraise()
+          ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/tenacity/__init__.py", line 184, in reraise
+    raise self.last_attempt.result()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/usr/local/lib/python3.12/site-packages/tenacity/asyncio/__init__.py", line 116, in __call__
+    result = await fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/google/genai/_api_client.py", line 1568, in _async_request_once
+    await errors.APIError.raise_for_async_response(client_response)
+  File "/usr/local/lib/python3.12/site-packages/google/genai/errors.py", line 247, in raise_for_async_response
+    await cls.raise_error_async(status_code, response_json, response)
+  File "/usr/local/lib/python3.12/site-packages/google/genai/errors.py", line 269, in raise_error_async
+    raise ClientError(status_code, response_json, response)
+google.genai.errors.ClientError: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-1.5-flash-8b is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+INFO → root → Logging system initialized
+INFO → forex_shared.env_config_manager → [EnvConfig] 🔏 47 chaves marcadas como Secret no arquivo.
+INFO → forex_shared.env_config_manager → [EnvConfig] 1 bootstrap secrets carregados.
+INFO → forex_shared.mongo_manager → [MongoManager] Conectado via connection string | db=forex_system
+INFO → forex_shared.mongo_manager → [MongoManager] bulk_sync(env_config): 0 novos, 26 atualizados.
+INFO → forex_shared.env_config_manager → [EnvConfig] 150 chaves sincronizadas com MongoDB.
+INFO → forex_shared.env_config_manager → [EnvConfig] 141 novas chaves setadas em os.environ.
+INFO → forex_shared.env_config_manager → [EnvConfig] 150 chaves recarregadas do MongoDB.
+INFO → __main__ → Starting OracleWorker: oracle_worker_1 (Max Sessions: 1)
+INFO → __main__ → MongoDB persistence enabled (collection: oracle_resolved)
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Starting...
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Output validation file enabled: /app/ia_oracle/data/oracle_output_results.json
+INFO → forex_shared.worker_api.ia_factory → [IAProviderFactory] IA_PROVIDER='GEMINI' (from OracleConfig)
+INFO → forex_shared.worker_api.ia_factory → [IAProviderFactory] Instantiated: GeminiIAProvider (backend=GEMINI, model=gemini-2.5-pro)
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] Querying available Gemini models...
+INFO → httpx → HTTP Request: GET https://generativelanguage.googleapis.com/v1beta/models "HTTP/1.1 403 Forbidden"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] Model discovery failed (403 PERMISSION_DENIED. {'error': {'code': 403, 'message': 'Your API key was reported as leaked. Please use another API key.', 'status': 'PERMISSION_DENIED'}}). Using static fallback chain.
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] Initialized. primary=gemini-2.5-pro chain=8 concurrency=1 max_retries=15 url_context=False google_search=False thinking=HIGH
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Provider ready: GEMINI | model=gemini-2.5-pro
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@rabbitmq:5672/
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@rabbitmq:5672/
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectado. Exchange 'forex_market_events' ativo (durable=True).
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] MQ connected.
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Inscrito: 'intel.oracle.review' → fila 'amq_2685ed6cd3aa4e109865de3e35d04822'
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Subscribed to intel.oracle.review
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Ready. concurrency=1
+INFO → __main__ → Bootstrapping default OracleSession...
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Running. Waiting for messages...
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Consumo ativo. Aguardando eventos...
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Received review  id=telegram:firstsquaw:132256  title=FED’S GOOLSBEE says the labor market remains steady, but inflation has stayed ab
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Calling GEMINI for id=telegram:firstsquaw:132256  model=gemini-2.5-pro
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.5-pro → rotating to gemini-2.5-pro-preview-05-06 (attempt 1/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro-preview-05-06:generateContent "HTTP/1.1 404 Not Found"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.5-pro-preview-05-06 → rotating to gemini-2.5-flash-preview-04-17 (attempt 2/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-04-17:generateContent "HTTP/1.1 404 Not Found"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.5-flash-preview-04-17 → rotating to gemini-2.0-flash (attempt 3/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 429 Too Many Requests"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.0-flash → rotating to gemini-2.0-flash-lite (attempt 4/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent "HTTP/1.1 429 Too Many Requests"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.0-flash-lite → rotating to gemini-1.5-flash (attempt 5/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent "HTTP/1.1 404 Not Found"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-1.5-flash → rotating to gemini-1.5-flash-8b (attempt 6/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-8b:generateContent "HTTP/1.1 404 Not Found"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-1.5-flash-8b → rotating to gemini-1.5-pro (attempt 7/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent "HTTP/1.1 404 Not Found"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-1.5-pro → rotating to gemini-2.5-pro (attempt 8/15)
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] 🔄 Full cycle! Safety pause 10 s...
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.5-pro → rotating to gemini-2.5-pro-preview-05-06 (attempt 9/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro-preview-05-06:generateContent "HTTP/1.1 404 Not Found"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.5-pro-preview-05-06 → rotating to gemini-2.5-flash-preview-04-17 (attempt 10/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-04-17:generateContent "HTTP/1.1 404 Not Found"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.5-flash-preview-04-17 → rotating to gemini-2.0-flash (attempt 11/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 429 Too Many Requests"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.0-flash → rotating to gemini-2.0-flash-lite (attempt 12/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent "HTTP/1.1 429 Too Many Requests"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-2.0-flash-lite → rotating to gemini-1.5-flash (attempt 13/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent "HTTP/1.1 404 Not Found"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ⚠️ Quota on model=gemini-1.5-flash → rotating to gemini-1.5-flash-8b (attempt 14/15)
+INFO → google_genai.models → AFC is enabled with max remote calls: 10.
+INFO → httpx → HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-8b:generateContent "HTTP/1.1 404 Not Found"
+ERROR → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] ❌ All 8 models exhausted after 15 retries.
+ERROR → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Error processing id=telegram:firstsquaw:132256: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-1.5-flash-8b is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+Traceback (most recent call last):
+  File "/app/ia_oracle/worker.py", line 340, in _handle_review
+    raw      = await self._provider.generate(user_prompt)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/forex_shared/worker_api/providers/gemini_ia_provider.py", line 327, in generate
+    raise last_exc  # type: ignore[misc]
+    ^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/forex_shared/worker_api/providers/gemini_ia_provider.py", line 227, in generate
+    response = await self._client.aio.models.generate_content(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/google/genai/models.py", line 8422, in generate_content
+    response = await self._generate_content(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/google/genai/models.py", line 6953, in _generate_content
+    response = await self._api_client.async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/google/genai/_api_client.py", line 1655, in async_request
+    result = await self._async_request(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/google/genai/_api_client.py", line 1588, in _async_request
+    return await self._async_retry(  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/tenacity/asyncio/__init__.py", line 112, in __call__
+    do = await self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/tenacity/asyncio/__init__.py", line 157, in iter
+    result = await action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/tenacity/_utils.py", line 111, in inner
+    return call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/tenacity/__init__.py", line 413, in exc_check
+    raise retry_exc.reraise()
+          ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/tenacity/__init__.py", line 184, in reraise
+    raise self.last_attempt.result()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/usr/local/lib/python3.12/site-packages/tenacity/asyncio/__init__.py", line 116, in __call__
+    result = await fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/google/genai/_api_client.py", line 1568, in _async_request_once
+    await errors.APIError.raise_for_async_response(client_response)
+  File "/usr/local/lib/python3.12/site-packages/google/genai/errors.py", line 247, in raise_for_async_response
+    await cls.raise_error_async(status_code, response_json, response)
+  File "/usr/local/lib/python3.12/site-packages/google/genai/errors.py", line 269, in raise_error_async
+    raise ClientError(status_code, response_json, response)
+google.genai.errors.ClientError: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-1.5-flash-8b is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+INFO → root → Logging system initialized
+INFO → forex_shared.env_config_manager → [EnvConfig] 🔏 47 chaves marcadas como Secret no arquivo.
+INFO → forex_shared.env_config_manager → [EnvConfig] 1 bootstrap secrets carregados.
+INFO → forex_shared.mongo_manager → [MongoManager] Conectado via connection string | db=forex_system
+WARNING → forex_shared.env_config_manager → [EnvConfig] Sync Mongo excedeu 15.0s no startup; seguindo sem bloquear.
+INFO → forex_shared.env_config_manager → [EnvConfig] 141 novas chaves setadas em os.environ.
+INFO → forex_shared.mongo_manager → [MongoManager] bulk_sync(env_config): 0 novos, 26 atualizados.
+INFO → forex_shared.env_config_manager → [EnvConfig] 150 chaves recarregadas do MongoDB.
+INFO → __main__ → Starting OracleWorker: oracle_worker_1 (Max Sessions: 1)
+INFO → __main__ → MongoDB persistence enabled (collection: oracle_resolved)
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Starting...
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Output validation file enabled: /app/ia_oracle/data/oracle_output_results.json
+INFO → forex_shared.worker_api.ia_factory → [IAProviderFactory] IA_PROVIDER='GEMINI' (from OracleConfig)
+INFO → forex_shared.worker_api.ia_factory → [IAProviderFactory] Instantiated: GeminiIAProvider (backend=GEMINI, model=gemini-2.5-pro)
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] Querying available Gemini models...
+INFO → httpx → HTTP Request: GET https://generativelanguage.googleapis.com/v1beta/models "HTTP/1.1 403 Forbidden"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] Model discovery failed (403 PERMISSION_DENIED. {'error': {'code': 403, 'message': 'Your API key was reported as leaked. Please use another API key.', 'status': 'PERMISSION_DENIED'}}). Using static fallback chain.
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] Initialized. primary=gemini-2.5-pro chain=8 concurrency=1 max_retries=15 url_context=False google_search=False thinking=HIGH
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Provider ready: GEMINI | model=gemini-2.5-pro
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@rabbitmq:5672/
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@rabbitmq:5672/
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectado. Exchange 'forex_market_events' ativo (durable=True).
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] MQ connected.
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Inscrito: 'intel.oracle.review' → fila 'amq_339c0d80b6bf4dd1b2f9fa2bb60229a9'
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Subscribed to intel.oracle.review
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Ready. concurrency=1
+INFO → __main__ → Bootstrapping default OracleSession...
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Running. Waiting for messages...
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Consumo ativo. Aguardando eventos...
+INFO → root → Logging system initialized
+INFO → forex_shared.env_config_manager → [EnvConfig] 🔏 47 chaves marcadas como Secret no arquivo.
+INFO → forex_shared.env_config_manager → [EnvConfig] 1 bootstrap secrets carregados.
+INFO → forex_shared.mongo_manager → [MongoManager] Conectado via connection string | db=forex_system
+INFO → forex_shared.mongo_manager → [MongoManager] bulk_sync(env_config): 0 novos, 26 atualizados.
+INFO → forex_shared.env_config_manager → [EnvConfig] 150 chaves sincronizadas com MongoDB.
+INFO → forex_shared.env_config_manager → [EnvConfig] 141 novas chaves setadas em os.environ.
+INFO → forex_shared.env_config_manager → [EnvConfig] 150 chaves recarregadas do MongoDB.
+INFO → __main__ → Starting OracleWorker: oracle_worker_1 (Max Sessions: 1)
+INFO → __main__ → MongoDB persistence enabled (collection: oracle_resolved)
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Starting...
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Output validation file enabled: /app/ia_oracle/data/oracle_output_results.json
+INFO → forex_shared.worker_api.ia_factory → [IAProviderFactory] IA_PROVIDER='GEMINI' (from OracleConfig)
+INFO → forex_shared.worker_api.ia_factory → [IAProviderFactory] Instantiated: GeminiIAProvider (backend=GEMINI, model=gemini-2.5-pro)
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] Querying available Gemini models...
+INFO → httpx → HTTP Request: GET https://generativelanguage.googleapis.com/v1beta/models "HTTP/1.1 403 Forbidden"
+WARNING → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] Model discovery failed (403 PERMISSION_DENIED. {'error': {'code': 403, 'message': 'Your API key was reported as leaked. Please use another API key.', 'status': 'PERMISSION_DENIED'}}). Using static fallback chain.
+INFO → forex_shared.worker_api.providers.gemini_ia_provider → [GeminiIAProvider] Initialized. primary=gemini-2.5-pro chain=8 concurrency=1 max_retries=15 url_context=False google_search=False thinking=HIGH
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Provider ready: GEMINI | model=gemini-2.5-pro
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@rabbitmq:5672/
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@rabbitmq:5672/
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectado. Exchange 'forex_market_events' ativo (durable=True).
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] MQ connected.
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Inscrito: 'intel.oracle.review' → fila 'amq_ba90643d03fb403fa7457bdcab9faa9d'
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Subscribed to intel.oracle.review
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Ready. concurrency=1
+INFO → __main__ → Bootstrapping default OracleSession...
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Running. Waiting for messages...
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Consumo ativo. Aguardando eventos...
+INFO → root → Logging system initialized
+INFO → forex_shared.env_config_manager → [EnvConfig] 🔏 47 chaves marcadas como Secret no arquivo.
+INFO → forex_shared.env_config_manager → [EnvConfig] 1 bootstrap secrets carregados.
+INFO → forex_shared.mongo_manager → [MongoManager] Conectado via connection string | db=forex_system
+INFO → forex_shared.mongo_manager → [MongoManager] bulk_sync(env_config): 0 novos, 28 atualizados.
+INFO → forex_shared.env_config_manager → [EnvConfig] 150 chaves sincronizadas com MongoDB.
+INFO → forex_shared.env_config_manager → [EnvConfig] 141 novas chaves setadas em os.environ.
+INFO → forex_shared.env_config_manager → [EnvConfig] 150 chaves recarregadas do MongoDB.
+INFO → __main__ → Starting OracleWorker: oracle_worker_1 (Max Sessions: 1)
+INFO → __main__ → MongoDB persistence enabled (collection: oracle_resolved)
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Starting...
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Output validation file enabled: /app/ia_oracle/data/oracle_output_results.json
+INFO → forex_shared.worker_api.ia_factory → [IAProviderFactory] IA_PROVIDER='OPENAI_NATIVE' (from OracleConfig)
+INFO → forex_shared.worker_api.ia_factory → [IAProviderFactory] Instantiated: OpenAIIAProvider (backend=OPENAI_NATIVE, model=gpt-4o)
+INFO → forex_shared.worker_api.providers.openai_ia_provider → [OpenAIIAProvider] Querying available OpenAI models...
+INFO → httpx → HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+INFO → forex_shared.worker_api.providers.openai_ia_provider → [OpenAIIAProvider] Discovered 68 candidate models.
+INFO → forex_shared.worker_api.providers.openai_ia_provider → [OpenAIIAProvider] Initialized. primary=gpt-4o chain=68 concurrency=1 max_retries=15 reasoning=HIGH web_search=False structured_json=True
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Provider ready: OPENAI_NATIVE | model=gpt-4o
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@rabbitmq:5672/
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@rabbitmq:5672/
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectado. Exchange 'forex_market_events' ativo (durable=True).
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] MQ connected.
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Inscrito: 'intel.oracle.review' → fila 'amq_3187441d383e4fb9be6dee64be50b42a'
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Subscribed to intel.oracle.review
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Ready. concurrency=1
+INFO → __main__ → Bootstrapping default OracleSession...
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Running. Waiting for messages...
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Consumo ativo. Aguardando eventos...
+ERROR → aiormq.connection → Unexpected connection close from remote "amqp://guest:******@rabbitmq:5672/", Connection.Close(reply_code=320, reply_text="CONNECTION_FORCED - broker forced connection closure with reason 'shutdown'")
+NoneType: None
+ERROR → aio_pika.tools → Callback <OneShotCallback: cb=<bound method RobustChannel._on_close of <aio_pika.robust_channel.RobustChannel object at 0x742cc15a6f00>>> error: ChannelInvalidStateError: No active transport in channel
+ERROR → aiormq.connection → error when creating transport: <AMQPConnectionError: (111, "Connect call failed ('172.18.0.2', 5672)")>
+WARNING → aio_pika.robust_connection → Connection attempt to "amqp://guest:******@rabbitmq:5672/" failed: [Errno 111] Connect call failed ('172.18.0.2', 5672). Reconnecting after 5 seconds.
+ERROR → aiormq.connection → error when creating transport: <AMQPConnectionError: (-2, 'Name or service not known')>
+WARNING → aio_pika.robust_connection → Connection attempt to "amqp://guest:******@rabbitmq:5672/" failed: [Errno -2] Name or service not known. Reconnecting after 5 seconds.
+ERROR → aiormq.connection → error when creating transport: <AMQPConnectionError: (111, "Connect call failed ('172.18.0.2', 5672)")>
+WARNING → aio_pika.robust_connection → Connection attempt to "amqp://guest:******@rabbitmq:5672/" failed: [Errno 111] Connect call failed ('172.18.0.2', 5672). Reconnecting after 5 seconds.
+ERROR → aiormq.connection → error when creating transport: <AMQPConnectionError: (111, "Connect call failed ('172.18.0.2', 5672)")>
+WARNING → aio_pika.robust_connection → Connection attempt to "amqp://guest:******@rabbitmq:5672/" failed: [Errno 111] Connect call failed ('172.18.0.2', 5672). Reconnecting after 5 seconds.
+ERROR → aiormq.connection → error when creating transport: <AMQPConnectionError: (111, "Connect call failed ('172.18.0.2', 5672)")>
+WARNING → aio_pika.robust_connection → Connection attempt to "amqp://guest:******@rabbitmq:5672/" failed: [Errno 111] Connect call failed ('172.18.0.2', 5672). Reconnecting after 5 seconds.
+ERROR → aiormq.connection → error when creating transport: <AMQPConnectionError: (111, "Connect call failed ('172.18.0.2', 5672)")>
+WARNING → aio_pika.robust_connection → Connection attempt to "amqp://guest:******@rabbitmq:5672/" failed: [Errno 111] Connect call failed ('172.18.0.2', 5672). Reconnecting after 5 seconds.
+ERROR → aiormq.connection → error when creating transport: <AMQPConnectionError: (111, "Connect call failed ('172.18.0.2', 5672)")>
+WARNING → aio_pika.robust_connection → Connection attempt to "amqp://guest:******@rabbitmq:5672/" failed: [Errno 111] Connect call failed ('172.18.0.2', 5672). Reconnecting after 5 seconds.
+ERROR → aiormq.connection → error when creating transport: <AMQPConnectionError: (111, "Connect call failed ('172.18.0.2', 5672)")>
+WARNING → aio_pika.robust_connection → Connection attempt to "amqp://guest:******@rabbitmq:5672/" failed: [Errno 111] Connect call failed ('172.18.0.2', 5672). Reconnecting after 5 seconds.
+ERROR → aiormq.connection → error when creating transport: <AMQPConnectionError: (111, "Connect call failed ('172.18.0.2', 5672)")>
+WARNING → aio_pika.robust_connection → Connection attempt to "amqp://guest:******@rabbitmq:5672/" failed: [Errno 111] Connect call failed ('172.18.0.2', 5672). Reconnecting after 5 seconds.
+ERROR → aiormq.connection → error when creating transport: <AMQPConnectionError: (111, "Connect call failed ('172.18.0.2', 5672)")>
+WARNING → aio_pika.robust_connection → Connection attempt to "amqp://guest:******@rabbitmq:5672/" failed: [Errno 111] Connect call failed ('172.18.0.2', 5672). Reconnecting after 5 seconds.
+ERROR → aiormq.connection → error when creating transport: <AMQPConnectionError: (111, "Connect call failed ('172.18.0.2', 5672)")>
+WARNING → aio_pika.robust_connection → Connection attempt to "amqp://guest:******@rabbitmq:5672/" failed: [Errno 111] Connect call failed ('172.18.0.2', 5672). Reconnecting after 5 seconds.
+ERROR → aiormq.connection → error when creating transport: <AMQPConnectionError: (111, "Connect call failed ('172.18.0.2', 5672)")>
+WARNING → aio_pika.robust_connection → Connection attempt to "amqp://guest:******@rabbitmq:5672/" failed: [Errno 111] Connect call failed ('172.18.0.2', 5672). Reconnecting after 5 seconds.
+INFO → root → Logging system initialized
+INFO → forex_shared.env_config_manager → [EnvConfig] 🔏 47 chaves marcadas como Secret no arquivo.
+INFO → forex_shared.env_config_manager → [EnvConfig] 1 bootstrap secrets carregados.
+INFO → forex_shared.mongo_manager → [MongoManager] Conectado via connection string | db=forex_system
+INFO → forex_shared.mongo_manager → [MongoManager] bulk_sync(env_config): 0 novos, 26 atualizados.
+INFO → forex_shared.env_config_manager → [EnvConfig] 150 chaves sincronizadas com MongoDB.
+INFO → forex_shared.env_config_manager → [EnvConfig] 141 novas chaves setadas em os.environ.
+INFO → forex_shared.env_config_manager → [EnvConfig] 150 chaves recarregadas do MongoDB.
+INFO → __main__ → Starting OracleWorker: oracle_worker_1 (Max Sessions: 1)
+INFO → __main__ → MongoDB persistence enabled (collection: oracle_resolved)
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Starting...
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Output validation file enabled: /app/ia_oracle/data/oracle_output_results.json
+INFO → forex_shared.worker_api.ia_factory → [IAProviderFactory] IA_PROVIDER='OPENAI_NATIVE' (from OracleConfig)
+INFO → forex_shared.worker_api.ia_factory → [IAProviderFactory] Instantiated: OpenAIIAProvider (backend=OPENAI_NATIVE, model=gpt-4o)
+INFO → forex_shared.worker_api.providers.openai_ia_provider → [OpenAIIAProvider] Querying available OpenAI models...
+INFO → httpx → HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+INFO → forex_shared.worker_api.providers.openai_ia_provider → [OpenAIIAProvider] Discovered 68 candidate models.
+INFO → forex_shared.worker_api.providers.openai_ia_provider → [OpenAIIAProvider] Initialized. primary=gpt-4o chain=68 concurrency=1 max_retries=15 reasoning=HIGH web_search=False structured_json=True
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Provider ready: OPENAI_NATIVE | model=gpt-4o
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@rabbitmq:5672/
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@rabbitmq:5672/
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectado. Exchange 'forex_market_events' ativo (durable=True).
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] MQ connected.
+ERROR → __main__ → Fatal error running OracleWorker: RabbitMQProviderAsync.subscribe_event() got an unexpected keyword argument 'prefetch_count'
+Traceback (most recent call last):
+  File "/app/ia_oracle/main.py", line 138, in main
+    asyncio.run(
+  File "/usr/local/lib/python3.12/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/asyncio/base_events.py", line 691, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/app/ia_oracle/main.py", line 79, in run_worker
+    await worker.start()
+  File "/app/ia_oracle/worker.py", line 266, in start
+    await self._mq.subscribe_event(INPUT_TOPIC, self._handle_review, prefetch_count=self.max_sessions)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: RabbitMQProviderAsync.subscribe_event() got an unexpected keyword argument 'prefetch_count'
+INFO → root → Logging system initialized
+INFO → forex_shared.env_config_manager → [EnvConfig] 🔏 47 chaves marcadas como Secret no arquivo.
+INFO → forex_shared.env_config_manager → [EnvConfig] 1 bootstrap secrets carregados.
+INFO → forex_shared.mongo_manager → [MongoManager] Conectado via connection string | db=forex_system
+INFO → forex_shared.mongo_manager → [MongoManager] bulk_sync(env_config): 0 novos, 26 atualizados.
+INFO → forex_shared.env_config_manager → [EnvConfig] 150 chaves sincronizadas com MongoDB.
+INFO → forex_shared.env_config_manager → [EnvConfig] 141 novas chaves setadas em os.environ.
+INFO → forex_shared.env_config_manager → [EnvConfig] 150 chaves recarregadas do MongoDB.
+INFO → __main__ → Starting OracleWorker: oracle_worker_1 (Max Sessions: 1)
+INFO → __main__ → MongoDB persistence enabled (collection: oracle_resolved)
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Starting...
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Output validation file enabled: /app/ia_oracle/data/oracle_output_results.json
+INFO → forex_shared.worker_api.ia_factory → [IAProviderFactory] IA_PROVIDER='OPENAI_NATIVE' (from OracleConfig)
+INFO → forex_shared.worker_api.ia_factory → [IAProviderFactory] Instantiated: OpenAIIAProvider (backend=OPENAI_NATIVE, model=gpt-4o)
+INFO → forex_shared.worker_api.providers.openai_ia_provider → [OpenAIIAProvider] Querying available OpenAI models...
+INFO → httpx → HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+INFO → forex_shared.worker_api.providers.openai_ia_provider → [OpenAIIAProvider] Discovered 68 candidate models.
+INFO → forex_shared.worker_api.providers.openai_ia_provider → [OpenAIIAProvider] Initialized. primary=gpt-4o chain=68 concurrency=1 max_retries=15 reasoning=HIGH web_search=False structured_json=True
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Provider ready: OPENAI_NATIVE | model=gpt-4o
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@rabbitmq:5672/
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectando: amqp://guest:guest@rabbitmq:5672/
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Conectado. Exchange 'forex_market_events' ativo (durable=True).
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] MQ connected.
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Inscrito: 'intel.oracle.review' → fila 'amq_f9fce38eeddb4b21a200e07d3233ed4b'
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Subscribed to intel.oracle.review
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Ready. concurrency=1
+INFO → __main__ → Bootstrapping default OracleSession...
+INFO → ia_oracle.worker.OracleWorker → [OracleWorker:oracle_worker_1] Running. Waiting for messages...
+INFO → forex_shared.providers.mq.rabbitmq_provider_async.RabbitMQProviderAsync → [RabbitMQ Async] Consumo ativo. Aguardando eventos...

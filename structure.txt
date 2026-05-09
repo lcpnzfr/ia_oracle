@@ -1,0 +1,43 @@
+ia_oracle/
+├── .env
+├── .env_config.md
+├── .gitignore
+├── Dockerfile
+├── ia_oracle/
+│   ├── AGENTS.md
+│   ├── GEMINI.md
+│   ├── __init__.py
+│   ├── docs/
+│   │   ├── mermaid-diagram.-1.png
+│   │   └── mermaid-diagram.-2.png
+│   ├── main.py
+│   ├── main2.py
+│   ├── prompts/
+│   │   ├── __init__.py
+│   │   ├── ia_trend_oracle.md
+│   │   └── ia_trend_oracle_original.md
+│   ├── store.py
+│   ├── test_mq_publisher.py
+│   ├── test_mq_subscriber.py
+│   └── worker.py
+├── ia_oracle.egg-info/
+│   ├── PKG-INFO
+│   ├── SOURCES.txt
+│   ├── dependency_links.txt
+│   ├── requires.txt
+│   └── top_level.txt
+├── oracle_raw_response.json
+├── pyproject.toml
+├── requirements.txt
+├── structure.txt
+├── test_mongo_save.py
+├── test_runs/
+│   ├── publisher_openai_20260506_003055.err.log
+│   ├── publisher_openai_20260506_003055.out.log
+│   ├── sprint3_full_oracle_output.json
+│   ├── sprint3_full_oracle_threshold045_output.json
+│   ├── subscriber_openai_20260506_003055.err.log
+│   ├── subscriber_openai_20260506_003055.out.log
+│   ├── worker_openai_20260506_003055.err.log
+│   └── worker_openai_20260506_003055.out.log
+└── worker.log
