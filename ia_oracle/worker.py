@@ -39,6 +39,9 @@ from ia_oracle.store import OracleMongoStore
 from forex_shared.providers.mq.mq_factory import MQFactory
 from forex_shared.providers.mq.topics import IntelTopics
 from forex_shared.worker_api.ia_factory import IAProviderFactory
+from ia_oracle.providers.ollama_provider import OllamaProvider
+from ia_oracle.providers.gemini_provider import GeminiIAProvider
+from ia_oracle.providers.openai_provider import OpenAIIAProvider
 
 # ── topic constants (via shared IntelTopics) ──────────────────────────────────
 INPUT_TOPIC  = IntelTopics.ORACLE_REVIEW    # intel.oracle.review
@@ -243,6 +246,11 @@ class OracleWorker(Loggable):
     async def start(self) -> None:
         self.log.info("[OracleWorker:%s] Starting...", self.worker_id)
         await self._prepare_output_file()
+
+        # ── Register Local Providers ──────────────────────────────────
+        IAProviderFactory.register_provider("OLLAMA", OllamaProvider)
+        IAProviderFactory.register_provider("GEMINI", GeminiIAProvider)
+        IAProviderFactory.register_provider("OPENAI_NATIVE", OpenAIIAProvider)
 
         # ── IA provider ───────────────────────────────────────────────
         self._provider = IAProviderFactory.create_from_env()
