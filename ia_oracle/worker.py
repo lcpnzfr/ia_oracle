@@ -36,8 +36,10 @@ from forex_shared.domain.intel import GlobalTag
 from forex_shared.domain.oracle import OracleReviewRequest, OracleReviewResponse
 from forex_shared.logging.loggable import Loggable
 from ia_oracle.store import OracleMongoStore
+from ia_oracle.strategist_store import StrategistStore
 from forex_shared.providers.mq.mq_factory import MQFactory
 from forex_shared.providers.mq.topics import IntelTopics
+from forex_shared.providers.cache.redis_provider import RedisProvider
 from forex_shared.worker_api.ia_factory import IAProviderFactory
 from ia_oracle.providers.ollama_provider import OllamaProvider
 from ia_oracle.providers.gemini_provider import GeminiIAProvider
@@ -94,6 +96,9 @@ def _build_user_prompt(req: OracleReviewRequest) -> str:
             "trigger_event_id":   req.trigger_event_id,
             "title":              req.title,
             "body":               req.body,
+            "analysis_summary":   req.analysis_summary,
+            "forex_impact":       req.forex_impact,
+            "macro_context":      req.macro_context,
             "domain":             req.domain,
             "source":             req.source,
             "reason":             req.reason,
@@ -254,6 +259,7 @@ class OracleWorker(Loggable):
         self._mq          = None
         self._provider    = None
         self._store: Optional[OracleMongoStore] = store  # None = MongoDB disabled
+        self._strategist_store: Optional[StrategistStore] = None
         self._semaphore:  Optional[asyncio.Semaphore] = None
         self._stop_event  = asyncio.Event()
         self._output_file = Path(output_file) if output_file else None
@@ -283,6 +289,13 @@ class OracleWorker(Loggable):
         # ── IA provider ───────────────────────────────────────────────
         self._provider = IAProviderFactory.create_from_env()
         await self._provider.initialize()
+
+        # ── Strategist store ──────────────────────────────────────────
+        try:
+            self._strategist_store = StrategistStore()
+            await self._strategist_store.ensure_indexes()
+        except Exception as e:
+            self.log.warning("[OracleWorker] StrategistStore unavailable: %s", e)
 
         # self._provider is initialized; no default prompt set here anymore
         # as it is now per-request.
@@ -364,6 +377,26 @@ class OracleWorker(Loggable):
         async with self._semaphore:
             try:
                 # ── Step 2-4: prompt -> IA provider -> parse ─────────
+                
+                # Fetch latest Global Pulse to provide macro awareness (Refinement #5: Redis Cache)
+                pulse = None
+                try:
+                    redis = await RedisProvider.shared_from_env()
+                    pulse = await redis.get_json("global_pulse:latest")
+                    if pulse:
+                        self.log.debug("[OracleWorker] Fetched macro context from Redis cache.")
+                except Exception as re_e:
+                    self.log.warning("[OracleWorker] Redis pulse lookup failed: %s", re_e)
+
+                # Fallback to MongoDB if Redis failed/empty
+                if not pulse and self._strategist_store:
+                    pulse = await self._strategist_store.get_latest_pulse()
+                    if pulse:
+                        self.log.debug("[OracleWorker] Fetched macro context from MongoDB fallback.")
+
+                if pulse:
+                    req.macro_context = pulse.get("bluf", "Stable global market conditions.")
+                
                 prompt_type = req.prompt_type or "trend"
                 system_prompt = _load_system_prompt(prompt_type)
                 user_prompt = _build_user_prompt(req)
