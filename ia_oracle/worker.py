@@ -51,19 +51,32 @@ TAGS_TOPIC   = IntelTopics.GLOBAL_TAGS      # intel.global_tags
 # ── default TTL when directive has no volatility_duration_minutes ─────────────
 _DEFAULT_TAG_TTL_MINUTES = 240  # 4 hours
 
-# ── prompt ────────────────────────────────────────────────────────────────────
-_PROMPT_FILE = Path(__file__).parent / "prompts" / "ia_trend_oracle.md"
+# ── prompt mapping ────────────────────────────────────────────────────────────
+_PROMPTS_DIR = Path(__file__).parent / "prompts"
+
+_PROMPT_MAP = {
+    "trend":      "ia_trend_oracle.md",
+    "summarizer": "ia_summarizer.md",
+}
 
 
-def _load_system_prompt() -> str:
-    if _PROMPT_FILE.exists():
-        return _PROMPT_FILE.read_text(encoding="utf-8")
-    return (
-        "You are an expert geopolitical and financial analyst. "
-        "Analyse the event provided and return a JSON object with keys: "
-        "action (EMIT|DISCARD|HOLD), oracle_confidence (0.0-1.0), "
-        "reasoning (string), tags_to_emit (list)."
-    )
+def _load_system_prompt(prompt_type: str = "trend") -> str:
+    filename = _PROMPT_MAP.get(prompt_type, "ia_trend_oracle.md")
+    path = _PROMPTS_DIR / filename
+    
+    if path.exists():
+        return path.read_text(encoding="utf-8")
+    
+    # Fallback for trend
+    if prompt_type == "trend":
+        return (
+            "You are an expert geopolitical and financial analyst. "
+            "Analyse the event provided and return a JSON object with keys: "
+            "action (EMIT|DISCARD|HOLD), oracle_confidence (0.0-1.0), "
+            "reasoning (string), tags_to_emit (list)."
+        )
+    # Generic fallback
+    return "You are a helpful AI assistant. Return your answer in JSON format."
 
 
 def _build_user_prompt(req: OracleReviewRequest) -> str:
@@ -234,7 +247,6 @@ class OracleWorker(Loggable):
         self._store: Optional[OracleMongoStore] = store  # None = MongoDB disabled
         self._semaphore:  Optional[asyncio.Semaphore] = None
         self._stop_event  = asyncio.Event()
-        self._system_prompt = _load_system_prompt()
         self._output_file = Path(output_file) if output_file else None
         self._reset_output_file = reset_output_file
         self._output_file_lock = asyncio.Lock()
@@ -256,8 +268,8 @@ class OracleWorker(Loggable):
         self._provider = IAProviderFactory.create_from_env()
         await self._provider.initialize()
 
-        if hasattr(self._provider, "set_default_system_prompt"):
-            self._provider.set_default_system_prompt(self._system_prompt)
+        # self._provider is initialized; no default prompt set here anymore
+        # as it is now per-request.
 
         self.log.info(
             "[OracleWorker:%s] Provider ready: %s | model=%s",
@@ -336,16 +348,20 @@ class OracleWorker(Loggable):
         async with self._semaphore:
             try:
                 # ── Step 2-4: prompt -> IA provider -> parse ─────────
+                prompt_type = req.prompt_type or "trend"
+                system_prompt = _load_system_prompt(prompt_type)
                 user_prompt = _build_user_prompt(req)
+                
                 self.log.info(
-                    "[OracleWorker:%s] Calling %s for id=%s  model=%s",
+                    "[OracleWorker:%s] Calling %s for id=%s  model=%s  prompt=%s",
                     self.worker_id,
                     self._provider.provider_type,
                     event_id,
                     self._provider.model_name,
+                    prompt_type,
                 )
 
-                raw      = await self._provider.generate(user_prompt)
+                raw      = await self._provider.generate(user_prompt, system_prompt=system_prompt)
                 response = _parse_response(raw, event_id)
 
                 self.log.info(

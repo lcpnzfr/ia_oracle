@@ -12,3 +12,7 @@ ia_oracle.egg-info/dependency_links.txt
 ia_oracle.egg-info/requires.txt
 ia_oracle.egg-info/top_level.txt
 ia_oracle/prompts/__init__.py
+ia_oracle/providers/__init__.py
+ia_oracle/providers/gemini_provider.py
+ia_oracle/providers/ollama_provider.py
+ia_oracle/providers/openai_provider.py

@@ -1,9 +1,7 @@
-google-generativeai
+google-genai
 openai
 aiofiles
 
 [dev]
-google-genai
-aiofiles
 python-dotenv
-openai
+pytest
