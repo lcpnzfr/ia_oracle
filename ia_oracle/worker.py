@@ -58,6 +58,7 @@ _PROMPT_MAP = {
     "trend":       "ia_trend_oracle.md",
     "summarizer":  "ia_summarizer.md",
     "fundamental": "ia_fundamental_oracle.md",
+    "interest_rate": "ia_interest_rate_oracle.md",
 }
 
 
@@ -75,6 +76,13 @@ def _load_system_prompt(prompt_type: str = "trend") -> str:
             "Analyse the event provided and return a JSON object with keys: "
             "action (EMIT|DISCARD|HOLD), oracle_confidence (0.0-1.0), "
             "reasoning (string), tags_to_emit (list)."
+        )
+    # Fallback for interest_rate
+    if prompt_type == "interest_rate":
+        return (
+            "You are a Central Bank Policy Analyst. Analyze the interest rate event "
+            "and determine the Guidance (HAWKISH|DOVISH|NEUTRAL). "
+            "Return a JSON object with bias, confidence, and global_tag."
         )
     # Generic fallback
     return "You are a helpful AI assistant. Return your answer in JSON format."
