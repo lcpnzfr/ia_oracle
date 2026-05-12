@@ -55,8 +55,9 @@ _DEFAULT_TAG_TTL_MINUTES = 240  # 4 hours
 _PROMPTS_DIR = Path(__file__).parent / "prompts"
 
 _PROMPT_MAP = {
-    "trend":      "ia_trend_oracle.md",
-    "summarizer": "ia_summarizer.md",
+    "trend":       "ia_trend_oracle.md",
+    "summarizer":  "ia_summarizer.md",
+    "fundamental": "ia_fundamental_oracle.md",
 }
 
 
