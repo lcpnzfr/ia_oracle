@@ -257,6 +257,13 @@ class OracleWorker(Loggable):
 
     async def start(self) -> None:
         self.log.info("[OracleWorker:%s] Starting...", self.worker_id)
+        
+        import os
+        from pathlib import Path
+        audit_dir = os.environ.get("TEST_AUDIT_DIR")
+        if audit_dir and not self._output_file:
+            self._output_file = Path(audit_dir) / "intel_item_oracle.json"
+            
         await self._prepare_output_file()
 
         # ── Register Local Providers ──────────────────────────────────
