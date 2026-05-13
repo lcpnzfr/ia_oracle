@@ -98,7 +98,8 @@ class StrategistWorker:
     async def perform_full_synthesis(self, reason: str = "MANUAL", min_danger: float = 0.4):
         """Execute the 3-pass synthesis pipeline."""
         async with self._synthesis_lock:
-            log.info("Starting Full Global Pulse Synthesis (Reason: %s, min_danger=%.2f)", reason, min_danger)
+            log.info("Starting Full Global Pulse Synthesis (Reason: %s, min_danger=%.2f) | Provider: %s | Host: %s", 
+                     reason, min_danger, self.provider.provider_type, getattr(self.provider, '_host', 'unknown'))
             try:
                 # Pass 0: Aggregation (Refinement #4: Semantic Gem Selection)
                 items = await self.store.fetch_semantic_gems(hours=6, limit=100, min_danger=min_danger)
