@@ -108,7 +108,12 @@ async def run_worker(
 def main():
     parser = argparse.ArgumentParser(description="IA Oracle Worker Node")
     parser.add_argument("--worker-id", type=str, default="oracle_worker_1", help="Unique ID for this worker")
-    parser.add_argument("--max-sessions", type=int, default=1, help="Max concurrent LLM sessions on this worker")
+    parser.add_argument(
+        "--max-sessions",
+        type=int,
+        default=OracleConfig.CONCURRENCY,
+        help="Max concurrent LLM sessions on this worker",
+    )
     parser.add_argument("--no-mongo", action="store_true", help="Disable MongoDB persistence (dry-run mode)")
     parser.add_argument(
         "--provider",

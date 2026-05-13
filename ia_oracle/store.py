@@ -62,6 +62,8 @@ class OracleMongoStore(BaseStore):
             self.TAGS_COLLECTION,
             [
                 [("trigger_event_id", 1), ("asset", 1)], # composite lookup key
+                [("trigger_event_id", 1), ("record_type", 1)],
+                [("action", 1)],
                 [("asset", 1)],
                 [("established_at", -1)],
             ],
@@ -168,6 +170,48 @@ class OracleMongoStore(BaseStore):
             tag.asset, tag.trigger_event_id
         )
         return f"{tag.asset}_{tag.trigger_event_id}"
+
+    async def store_oracle_decision_tag(self, response: OracleReviewResponse) -> str:
+        """Persist every Oracle result into global_tags, including HOLD/DISCARD.
+
+        Operational EMIT directives are still stored by ``store_global_tag``.
+        This method stores the decision envelope itself so a successful Oracle
+        return is never invisible just because no trade tag was emitted.
+        """
+        now = datetime.now(timezone.utc).isoformat()
+        doc_id = f"oracle_decision:{response.trigger_event_id}"
+        doc = {
+            "record_type": "oracle_decision",
+            "event_type": "ORACLE_REVIEW_RESOLVED",
+            "trigger_event_id": response.trigger_event_id,
+            "asset": "ORACLE_DECISION",
+            "action": response.action,
+            "active": False,
+            "emitted": response.action == "EMIT",
+            "oracle_confidence": response.oracle_confidence,
+            "reasoning": response.reasoning,
+            "tags_to_emit": response.tags_to_emit or [],
+            "resolved_at": response.resolved_at,
+            "updated_at": now,
+        }
+
+        await self._mongo.async_update_one(
+            self.TAGS_COLLECTION,
+            {"_id": doc_id},
+            {
+                "$set": doc,
+                "$setOnInsert": {"created_at": now},
+                "$inc": {"update_count": 1},
+            },
+            upsert=True,
+        )
+
+        self.log.info(
+            "OracleMongoStore: stored oracle decision tag id=%s action=%s",
+            response.trigger_event_id,
+            response.action,
+        )
+        return doc_id
 
     async def get_global_tag(self, trigger_event_id: str, asset: str) -> Optional[Dict[str, Any]]:
         """Retrieve a single global_tag document."""

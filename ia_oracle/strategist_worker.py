@@ -14,6 +14,7 @@ Pipeline:
 from __future__ import annotations
 
 import asyncio
+import hashlib
 import json
 import re
 from datetime import datetime, timezone
@@ -98,6 +99,8 @@ class StrategistWorker:
     async def perform_full_synthesis(self, reason: str = "MANUAL", min_danger: float = 0.4):
         """Execute the 3-pass synthesis pipeline."""
         async with self._synthesis_lock:
+            run_id = self._build_run_id(reason, min_danger, [])
+            pulse_id: str | None = None
             log.info("Starting Full Global Pulse Synthesis (Reason: %s, min_danger=%.2f) | Provider: %s | Host: %s", 
                      reason, min_danger, self.provider.provider_type, getattr(self.provider, '_host', 'unknown'))
             try:
@@ -105,10 +108,26 @@ class StrategistWorker:
                 items = await self.store.fetch_semantic_gems(hours=6, limit=100, min_danger=min_danger)
                 if not items:
                     log.info("No semantic gems found in last 6 hours. Skipping pulse.")
+                    pulse_id = await self.store.start_pulse_run(
+                        run_id=run_id,
+                        reason=reason,
+                        min_danger=min_danger,
+                        item_ids=[],
+                    )
+                    await self.store.update_pulse_run(
+                        pulse_id,
+                        stage="skipped_no_items",
+                        status="SKIPPED",
+                        fields={
+                            "completed_at": datetime.now(timezone.utc).isoformat(),
+                            "bluf": "No semantic gems found in the configured window.",
+                        },
+                    )
                     return
 
                 # Deduplication Step A: Check if input items have changed
                 current_item_ids = sorted([str(i.get("_id") or i.get("id")) for i in items])
+                run_id = self._build_run_id(reason, min_danger, current_item_ids)
                 current_hash = hash(tuple(current_item_ids))
                 if current_hash == self._last_item_ids_hash and reason == "SCHEDULED_PULSE":
                     log.info("Input items haven't changed since last scheduled pulse. Skipping synthesis.")
@@ -120,20 +139,92 @@ class StrategistWorker:
                 # Refinement #1: Narrative Continuity (Get Previous Pulse)
                 previous_pulse = await self.store.get_latest_pulse()
                 previous_bluf = previous_pulse.get("bluf", "Stable market conditions.") if previous_pulse else "No previous SITREP available."
+                previous_pulse_id = str(previous_pulse.get("_id")) if previous_pulse else None
+
+                pulse_id = await self.store.start_pulse_run(
+                    run_id=run_id,
+                    reason=reason,
+                    min_danger=min_danger,
+                    item_ids=current_item_ids,
+                    previous_pulse_id=previous_pulse_id,
+                )
+                await self.store.update_pulse_run(
+                    pulse_id,
+                    stage="market_context",
+                    fields={
+                        "market_context": market_context,
+                        "previous_bluf": previous_bluf,
+                    },
+                )
+                await self.store.save_synthesis_checkpoint(
+                    run_id=run_id,
+                    stage="market_context",
+                    payload={
+                        "reason": reason,
+                        "min_danger": min_danger,
+                        "item_count": len(items),
+                        "item_ids": current_item_ids,
+                        "market_context": market_context,
+                    },
+                )
 
                 # Pass 1: Story Aggregation
-                stories = await self._pass_story_aggregation(items, previous_bluf)
+                stories = await self._pass_story_aggregation(
+                    items,
+                    previous_bluf,
+                    run_id=run_id,
+                    pulse_id=pulse_id,
+                )
+                await self.store.save_synthesis_checkpoint(
+                    run_id=run_id,
+                    stage="stories_complete",
+                    payload={"stories": stories},
+                )
+                await self.store.update_pulse_run(
+                    pulse_id,
+                    stage="stories_complete",
+                    fields={
+                        "stories": stories,
+                        "story_count": len(stories),
+                    },
+                )
                 
                 # Pass 2: Domain Synthesis
-                domains = await self._pass_domain_synthesis(stories, previous_bluf)
+                domains = await self._pass_domain_synthesis(
+                    stories,
+                    previous_bluf,
+                    run_id=run_id,
+                    pulse_id=pulse_id,
+                )
+                await self.store.save_synthesis_checkpoint(
+                    run_id=run_id,
+                    stage="domains_complete",
+                    payload={"domains": domains},
+                )
+                await self.store.update_pulse_run(
+                    pulse_id,
+                    stage="domains_complete",
+                    fields={
+                        "domain_pulses": domains,
+                    },
+                )
                 
                 # Pass 3: Global Pulse (BLUF)
-                pulse = await self._pass_global_synthesis(stories, domains, previous_bluf, market_context)
+                pulse = await self._pass_global_synthesis(
+                    stories,
+                    domains,
+                    previous_bluf,
+                    market_context,
+                    run_id=run_id,
+                    pulse_id=pulse_id,
+                )
                 
                 # Finalize and Save
                 pulse["reason"] = reason
                 pulse["item_count"] = len(items)
                 pulse["story_count"] = len(stories)
+                pulse["synthesis_run_id"] = run_id
+                pulse["_id"] = pulse_id
                 
                 # Deduplication Step B: Semantic ID Reuse and Content Hashing
                 if previous_pulse:
@@ -141,18 +232,39 @@ class StrategistWorker:
                     is_similar = self._is_narratively_similar(pulse.get("bluf", ""), previous_pulse.get("bluf", ""))
                     
                     if is_identical:
-                        log.info("Pulse content is identical to the latest record. Skipping persistence.")
-                        return
-
-                    if is_similar:
-                        pulse["_id"] = previous_pulse["_id"]
-                        # Preserve original narrative start time, but track the update
-                        pulse["timestamp"] = previous_pulse.get("timestamp", pulse.get("timestamp"))
+                        pulse["previous_similar_pulse_id"] = previous_pulse["_id"]
                         pulse["updated_at"] = datetime.now(timezone.utc).isoformat()
-                        log.info("Semantically similar narrative detected. Updating existing pulse id=%s", pulse["_id"])
+                        pulse["content_unchanged"] = True
+                        log.info(
+                            "Pulse content is identical to latest record id=%s; preserving current run id=%s",
+                            previous_pulse["_id"],
+                            pulse_id,
+                        )
 
-                # Persistence: MongoDB (Full History)
-                await self.store.save_pulse(pulse)
+                    elif is_similar:
+                        pulse["previous_similar_pulse_id"] = previous_pulse["_id"]
+                        pulse["updated_at"] = datetime.now(timezone.utc).isoformat()
+                        log.info(
+                            "Semantically similar narrative detected. Linking previous pulse id=%s to run id=%s",
+                            previous_pulse["_id"],
+                            pulse_id,
+                        )
+
+                final_fields = {k: v for k, v in pulse.items() if k != "_id"}
+                await self.store.update_pulse_run(
+                    pulse_id,
+                    stage="pulse_persisted",
+                    status="COMPLETED",
+                    fields=final_fields | {
+                        "completed_at": datetime.now(timezone.utc).isoformat(),
+                        "pulse": pulse,
+                    },
+                )
+                await self.store.save_synthesis_checkpoint(
+                    run_id=run_id,
+                    stage="pulse_persisted",
+                    payload={"pulse_id": pulse_id, "pulse": pulse},
+                )
                 
                 # Persistence: Redis (Oracle Cache)
                 try:
@@ -166,7 +278,29 @@ class StrategistWorker:
                 self._last_item_ids_hash = current_hash
                 log.info("Global Pulse Synthesis completed successfully.")
                 
+            except asyncio.CancelledError:
+                if pulse_id:
+                    await self.store.update_pulse_run(
+                        pulse_id,
+                        stage="cancelled",
+                        status="CANCELLED",
+                        fields={
+                            "cancelled_at": datetime.now(timezone.utc).isoformat(),
+                            "error": "Synthesis coroutine was cancelled.",
+                        },
+                    )
+                raise
             except Exception as e:
+                if pulse_id:
+                    await self.store.update_pulse_run(
+                        pulse_id,
+                        stage="failed",
+                        status="FAILED",
+                        fields={
+                            "failed_at": datetime.now(timezone.utc).isoformat(),
+                            "error": str(e),
+                        },
+                    )
                 log.error("Global Pulse Synthesis failed: %s", e)
 
     def _is_narratively_similar(self, new_bluf: str, old_bluf: str) -> bool:
@@ -187,9 +321,35 @@ class StrategistWorker:
         similarity = len(overlap) / max_words if max_words > 0 else 0
         return len(overlap) >= 5 or similarity > 0.4
 
+    def _build_run_id(self, reason: str, min_danger: float, item_ids: List[str]) -> str:
+        """Stable pulse id for the same reason/min-danger/input set.
+
+        This prevents repeated failed or interrupted synthesis attempts from
+        creating duplicate global_pulse documents for identical inputs.
+        """
+        normalized_reason = re.sub(r"[^a-z0-9]+", "_", str(reason).lower()).strip("_") or "manual"
+        payload = json.dumps(
+            {
+                "reason": normalized_reason,
+                "min_danger": round(float(min_danger), 4),
+                "item_ids": sorted(str(i) for i in item_ids),
+            },
+            separators=(",", ":"),
+            sort_keys=True,
+        )
+        digest = hashlib.sha1(payload.encode("utf-8")).hexdigest()[:16]
+        return f"{normalized_reason}:{digest}"
+
     # ── Synthesis Passes ──────────────────────────────────────────────
 
-    async def _pass_story_aggregation(self, items: List[Dict[str, Any]], previous_bluf: str) -> List[Dict[str, Any]]:
+    async def _pass_story_aggregation(
+        self,
+        items: List[Dict[str, Any]],
+        previous_bluf: str,
+        *,
+        run_id: str,
+        pulse_id: str,
+    ) -> List[Dict[str, Any]]:
         """Group items by entities/keywords and summarize them."""
         # 1. Clustering Logic (Refinement #2: Entity/Keyword Overlap)
         clusters: Dict[str, List[Dict[str, Any]]] = {}
@@ -218,7 +378,7 @@ class StrategistWorker:
         # Process top 10 most dangerous clusters to keep it fast
         sorted_clusters = sorted(clusters.items(), key=lambda x: max(float(i.get("danger_score", 0)) for i in x[1]), reverse=True)[:10]
 
-        for cluster_id, cluster_items in sorted_clusters:
+        for cluster_index, (cluster_id, cluster_items) in enumerate(sorted_clusters, start=1):
             log.debug("Synthesizing story for cluster: %s", cluster_id)
             context = "\n---\n".join([
                 f"SOURCE: {i.get('source')}\nTITLE: {i.get('title')}\nSUMMARY: {i.get('extra', {}).get('analysis_summary')}"
@@ -227,13 +387,38 @@ class StrategistWorker:
             
             raw = await self.provider.generate(f"CLUSTER ITEMS:\n{context}", system_prompt=system_prompt)
             story_data = self._parse_json(raw)
+            await self.store.save_synthesis_checkpoint(
+                run_id=run_id,
+                stage=f"story_{cluster_index}_{cluster_id}",
+                payload={
+                    "cluster_id": cluster_id,
+                    "item_count": len(cluster_items),
+                    "raw": raw,
+                    "parsed": story_data,
+                },
+            )
+            await self.store.update_pulse_run(
+                pulse_id,
+                stage=f"story_{cluster_index}_{cluster_id}",
+                fields={
+                    f"story_outputs.{cluster_id}": story_data,
+                    f"story_raw_outputs.{cluster_id}": raw,
+                },
+            )
             if story_data:
                 story_data["cluster_id"] = cluster_id
                 stories.append(story_data)
         
         return stories
 
-    async def _pass_domain_synthesis(self, stories: List[Dict[str, Any]], previous_bluf: str) -> Dict[str, str]:
+    async def _pass_domain_synthesis(
+        self,
+        stories: List[Dict[str, Any]],
+        previous_bluf: str,
+        *,
+        run_id: str,
+        pulse_id: str,
+    ) -> Dict[str, str]:
         """Synthesize stories into Domain SITREPs."""
         domain_groups: Dict[str, List[Dict[str, Any]]] = {}
         for s in stories:
@@ -251,12 +436,39 @@ class StrategistWorker:
             context = json.dumps(d_stories, indent=2)
             raw = await self.provider.generate(f"DOMAIN STORIES:\n{context}", system_prompt=system_prompt)
             d_data = self._parse_json(raw)
+            await self.store.save_synthesis_checkpoint(
+                run_id=run_id,
+                stage=f"domain_{domain.lower()}",
+                payload={
+                    "domain": domain,
+                    "story_count": len(d_stories),
+                    "raw": raw,
+                    "parsed": d_data,
+                },
+            )
+            await self.store.update_pulse_run(
+                pulse_id,
+                stage=f"domain_{domain.lower()}",
+                fields={
+                    f"domain_raw_outputs.{domain.lower()}": raw,
+                    f"domain_outputs.{domain.lower()}": d_data,
+                },
+            )
             if d_data:
                 domain_pulses[domain.lower()] = d_data.get("domain_sitrep", "")
         
         return domain_pulses
 
-    async def _pass_global_synthesis(self, stories: List[Dict[str, Any]], domains: Dict[str, str], previous_bluf: str, market_context: str = "") -> Dict[str, Any]:
+    async def _pass_global_synthesis(
+        self,
+        stories: List[Dict[str, Any]],
+        domains: Dict[str, str],
+        previous_bluf: str,
+        market_context: str = "",
+        *,
+        run_id: str,
+        pulse_id: str,
+    ) -> Dict[str, Any]:
         """Final Pass: CIO-Level BLUF and Market Implications."""
         prompt_file = self.prompts_dir / "ia_strategist_global.md"
         base_system_prompt = prompt_file.read_text(encoding="utf-8") if prompt_file.exists() else "Final synthesis."
@@ -268,7 +480,24 @@ class StrategistWorker:
         }
         
         raw = await self.provider.generate(f"CONSOLIDATED INTELLIGENCE:\n{json.dumps(context, indent=2)}", system_prompt=system_prompt)
-        return self._parse_json(raw) or {"bluf": "Synthesis failed."}
+        parsed = self._parse_json(raw)
+        await self.store.save_synthesis_checkpoint(
+            run_id=run_id,
+            stage="global",
+            payload={
+                "raw": raw,
+                "parsed": parsed,
+            },
+        )
+        await self.store.update_pulse_run(
+            pulse_id,
+            stage="global",
+            fields={
+                "global_raw_output": raw,
+                "global_output": parsed,
+            },
+        )
+        return parsed or {"bluf": "Synthesis failed.", "raw_response": raw}
 
     async def _fetch_market_context(self) -> str:
         """Fetch current prices for core assets to provide divergence awareness."""
@@ -307,5 +536,12 @@ class StrategistWorker:
 
     async def stop(self):
         self._is_running = False
-        if self._mq: await self._mq.close()
-        if self.provider: await self.provider.close()
+        if self._mq:
+            if hasattr(self._mq, "close"):
+                await self._mq.close()
+            elif hasattr(self._mq, "disconnect"):
+                await self._mq.disconnect()
+            elif hasattr(self._mq, "stop_consuming"):
+                await self._mq.stop_consuming()
+        if self.provider:
+            await self.provider.close()

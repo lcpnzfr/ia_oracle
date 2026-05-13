@@ -18,6 +18,7 @@ class OllamaProvider(IAProvider):
     def __init__(self, config: IAProviderConfig) -> None:
         super().__init__(config)
         self._client: Optional[Client] = None
+        self._async_client: Any = None
         # Priority: explicit extra['host'] > OracleConfig.OLLAMA_HOST > fallback
         self._host = self._config.extra.get("host") or OracleConfig.OLLAMA_HOST or "http://localhost:11434"
 
@@ -25,7 +26,10 @@ class OllamaProvider(IAProvider):
         """Initialize the Ollama client."""
         logger.info("[OllamaProvider] Initializing client at %s", self._host)
         from ollama import AsyncClient
-        self._async_client = AsyncClient(host=self._host)
+        self._async_client = AsyncClient(
+            host=self._host,
+            timeout=float(self._config.extra.get("timeout", 180.0)),
+        )
         logger.info("[OllamaProvider] Initialized. model=%s", self._config.model_name)
 
     async def generate(
@@ -47,19 +51,33 @@ class OllamaProvider(IAProvider):
 
         try:
             # Use extra overrides or optimized defaults
+            num_predict = int(self._config.extra.get("num_predict") or min(int(self._config.max_tokens or 512), 512))
             options = {
-                "temperature": self._config.extra.get("temperature", self._config.temperature or 0.4),
-                "num_predict": self._config.extra.get("num_predict", self._config.max_tokens or 100),
+                "temperature": self._config.extra.get("temperature", self._config.temperature),
+                "num_predict": num_predict,
                 "repeat_penalty": self._config.extra.get("repeat_penalty", 1.1),
                 "top_k": self._config.extra.get("top_k", 40),
                 "top_p": self._config.extra.get("top_p", 0.9),
             }
+            if self._config.extra.get("num_ctx"):
+                options["num_ctx"] = int(self._config.extra["num_ctx"])
+            if self._config.extra.get("num_thread"):
+                options["num_thread"] = int(self._config.extra["num_thread"])
 
-            response = await self._async_client.chat(
-                model=self._config.model_name,
-                messages=messages,
-                options=options
-            )
+            chat_kwargs = {
+                "model": self._config.model_name,
+                "messages": messages,
+                "options": options,
+                "stream": False,
+                "keep_alive": self._config.extra.get("keep_alive", "30m"),
+            }
+            if bool(self._config.extra.get("format_json", True)):
+                chat_kwargs["format"] = "json"
+            if "think" in self._config.extra:
+                chat_kwargs["think"] = bool(self._config.extra.get("think"))
+
+            logger.debug("[OllamaProvider] chat options=%s", options)
+            response = await self._async_client.chat(**chat_kwargs)
             return response["message"]["content"]
         except Exception as e:
             logger.error("[OllamaProvider] Error during generate: %s", e)

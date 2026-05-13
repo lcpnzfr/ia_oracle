@@ -22,6 +22,7 @@ class StrategistStore(BaseStore):
 
     COLLECTION_PULSE = "global_pulse"
     COLLECTION_INTEL = "intel_items"
+    COLLECTION_SYNTHESIS = "global_pulse_synthesis_runs"
 
     def __init__(self, mongo_manager: Optional[MongoManager] = None) -> None:
         super().__init__(mongo_manager)
@@ -42,6 +43,13 @@ class StrategistStore(BaseStore):
             self.COLLECTION_INTEL,
             [
                 [("event_type", 1), ("extra.oracle_review_candidate", 1), ("published_at", -1)],
+            ],
+        )
+        await self._mongo.async_ensure_indexes(
+            self.COLLECTION_SYNTHESIS,
+            [
+                [("run_id", 1), ("stage", 1), ("created_at", -1)],
+                [("created_at", -1)],
             ],
         )
         log.info("StrategistStore: indexes ensured.")
@@ -103,11 +111,125 @@ class StrategistStore(BaseStore):
         log.info("StrategistStore: saved new Global Pulse snapshot id=%s", pulse_doc["_id"])
         return pulse_doc["_id"]
 
+    async def start_pulse_run(
+        self,
+        *,
+        run_id: str,
+        reason: str,
+        min_danger: float,
+        item_ids: List[str],
+        previous_pulse_id: Optional[str] = None,
+    ) -> str:
+        """Create the live Global Pulse document at synthesis start."""
+        now = datetime.now(timezone.utc).isoformat()
+        doc = {
+            "synthesis_run_id": run_id,
+            "status": "IN_PROGRESS",
+            "stage": "started",
+            "reason": reason,
+            "min_danger": min_danger,
+            "item_count": len(item_ids),
+            "item_ids": item_ids,
+            "previous_pulse_id": previous_pulse_id,
+            "updated_at": now,
+            "progress": {},
+        }
+
+        await self._mongo.async_update_one(
+            self.COLLECTION_PULSE,
+            {"_id": run_id},
+            {
+                "$set": doc,
+                "$setOnInsert": {
+                    "created_at": now,
+                    "started_at": now,
+                },
+                "$inc": {"run_attempts": 1},
+            },
+            upsert=True,
+        )
+
+        log.info("StrategistStore: started Global Pulse run id=%s", run_id)
+        return run_id
+
+    async def update_pulse_run(
+        self,
+        run_id: str,
+        *,
+        stage: str,
+        status: str = "IN_PROGRESS",
+        fields: Optional[Dict[str, Any]] = None,
+    ) -> None:
+        """Update the live Global Pulse document as synthesis progresses."""
+        now = datetime.now(timezone.utc).isoformat()
+        update_fields: Dict[str, Any] = {
+            "stage": stage,
+            "status": status,
+            "updated_at": now,
+            f"progress.{stage}.updated_at": now,
+            f"progress.{stage}.status": status,
+        }
+
+        for key, value in (fields or {}).items():
+            update_fields[key] = value
+
+        await self._mongo.async_update_one(
+            self.COLLECTION_PULSE,
+            {"_id": run_id},
+            {"$set": update_fields},
+            upsert=True,
+        )
+
+        log.info(
+            "StrategistStore: updated Global Pulse run id=%s stage=%s status=%s",
+            run_id,
+            stage,
+            status,
+        )
+
+    async def save_synthesis_checkpoint(
+        self,
+        *,
+        run_id: str,
+        stage: str,
+        payload: Dict[str, Any],
+    ) -> str:
+        """Persist intermediate Strategist LLM outputs so completed calls are not lost."""
+        now = datetime.now(timezone.utc).isoformat()
+        checkpoint_id = f"{run_id}:{stage}"
+        doc = {
+            "_id": checkpoint_id,
+            "run_id": run_id,
+            "stage": stage,
+            "payload": payload,
+            "created_at": now,
+            "updated_at": now,
+        }
+
+        await self._mongo.async_replace_one(
+            self.COLLECTION_SYNTHESIS,
+            {"_id": checkpoint_id},
+            doc,
+            upsert=True,
+        )
+
+        log.info(
+            "StrategistStore: saved synthesis checkpoint run_id=%s stage=%s",
+            run_id,
+            stage,
+        )
+        return checkpoint_id
+
     async def get_latest_pulse(self) -> Optional[Dict[str, Any]]:
         """Retrieve the most recent SITREP snapshot."""
         results = await self._mongo.async_find_many(
             self.COLLECTION_PULSE,
-            {},
+            {
+                "$or": [
+                    {"status": "COMPLETED"},
+                    {"status": {"$exists": False}},
+                ],
+            },
             sort=[("timestamp", -1)],
             limit=1
         )

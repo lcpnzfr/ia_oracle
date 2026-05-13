@@ -58,6 +58,7 @@ _PROMPTS_DIR = Path(__file__).parent / "prompts"
 
 _PROMPT_MAP = {
     "trend":       "ia_trend_oracle.md",
+    "trend_fast":  "ia_trend_oracle_fast.md",
     "summarizer":  "ia_summarizer.md",
     "fundamental": "ia_fundamental_oracle.md",
     "interest_rate": "ia_interest_rate_oracle.md",
@@ -107,7 +108,7 @@ def _build_user_prompt(req: OracleReviewRequest) -> str:
             "candidate_directives": req.candidate_directives,
         },
         ensure_ascii=False,
-        indent=2,
+        separators=(",", ":"),
     )
 
 
@@ -398,6 +399,11 @@ class OracleWorker(Loggable):
                     req.macro_context = pulse.get("bluf", "Stable global market conditions.")
                 
                 prompt_type = req.prompt_type or "trend"
+                if (
+                    prompt_type == "trend"
+                    and getattr(self._provider, "provider_type", "").upper() == "OLLAMA"
+                ):
+                    prompt_type = "trend_fast"
                 system_prompt = _load_system_prompt(prompt_type)
                 user_prompt = _build_user_prompt(req)
                 
@@ -595,15 +601,17 @@ class OracleWorker(Loggable):
             return
         try:
             outcome = await self._store.store_item(response)
+            decision_tag_id = await self._store.store_oracle_decision_tag(response)
             
             # TEST: Lendo de volta do MongoDB para validar a gravação
             saved_item = await self._store.get_item({"trigger_event_id": response.trigger_event_id})
             
             self.log.info(
-                "[OracleWorker:%s] MongoDB %s id=%s. Retrieved (stored in mongodb): %s",
+                "[OracleWorker:%s] MongoDB %s id=%s decision_tag=%s. Retrieved (stored in mongodb): %s",
                 self.worker_id,
                 outcome,
                 response.trigger_event_id,
+                decision_tag_id,
                 saved_item.get("action") if saved_item else "NOT FOUND",
             )
         except Exception as exc:

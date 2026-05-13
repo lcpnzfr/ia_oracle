@@ -1,11 +1,1 @@
-[
-  {
-    "trigger_event_id": "telegram:operativnoZSU:210624",
-    "action": "HOLD",
-    "oracle_confidence": 0.8648,
-    "reasoning": "No direct market transmission pathway. Sanctions on individuals/organizations linked to a humanitarian claim do not translate into currency or asset market movements. The event is unverified, lacks economic mechanism, and appears to be propagandistic. No credible financial or trade channel exists. Therefore, no market directive or tag is warranted.",
-    "tags_to_emit": [],
-    "event_type": "ORACLE_REVIEW_RESOLVED",
-    "resolved_at": "2026-05-13T14:31:55.924248+00:00"
-  }
-]
+[]
