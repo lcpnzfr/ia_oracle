@@ -379,21 +379,27 @@ class OracleWorker(Loggable):
             try:
                 # ── Step 2-4: prompt -> IA provider -> parse ─────────
                 
-                # Fetch latest Global Pulse to provide macro awareness (Refinement #5: Redis Cache)
+                # Fetch latest Global Pulse to provide macro awareness (MongoDB is the System of Record)
                 pulse = None
-                try:
-                    redis = await RedisProvider.shared_from_env()
-                    pulse = await redis.get_json("global_pulse:latest")
-                    if pulse:
-                        self.log.debug("[OracleWorker] Fetched macro context from Redis cache.")
-                except Exception as re_e:
-                    self.log.warning("[OracleWorker] Redis pulse lookup failed: %s", re_e)
+                
+                # 1. MongoDB Priority (The GOLD source)
+                if self._strategist_store:
+                    try:
+                        pulse = await self._strategist_store.get_latest_pulse()
+                        if pulse:
+                            self.log.debug("[OracleWorker] Fetched macro context from MongoDB (System of Record).")
+                    except Exception as e:
+                        self.log.warning("[OracleWorker] MongoDB pulse lookup failed: %s", e)
 
-                # Fallback to MongoDB if Redis failed/empty
-                if not pulse and self._strategist_store:
-                    pulse = await self._strategist_store.get_latest_pulse()
-                    if pulse:
-                        self.log.debug("[OracleWorker] Fetched macro context from MongoDB fallback.")
+                # 2. Redis Fallback (Superficial/Ephemeral Cache)
+                if not pulse:
+                    try:
+                        redis = await RedisProvider.shared_from_env()
+                        pulse = await redis.get_json("global_pulse:latest")
+                        if pulse:
+                            self.log.debug("[OracleWorker] Fetched macro context from Redis (Fallback).")
+                    except Exception as re_e:
+                        self.log.debug("[OracleWorker] Redis pulse lookup failed (ignoring): %s", re_e)
 
                 if pulse:
                     req.macro_context = pulse.get("bluf", "Stable global market conditions.")
