@@ -47,6 +47,7 @@ class StrategistWorker:
         self._mq = None
         self._is_running = False
         self._last_pulse_at = datetime.fromtimestamp(0, tz=timezone.utc)
+        self._last_item_ids_hash = None
         self._synthesis_lock = asyncio.Lock()
 
     async def start(self):
@@ -99,20 +100,27 @@ class StrategistWorker:
         async with self._synthesis_lock:
             log.info("Starting Full Global Pulse Synthesis (Reason: %s, min_danger=%.2f)", reason, min_danger)
             try:
-                # Pass -1: Market Context (Refinement #3: Divergence Awareness)
-                market_context = await self._fetch_market_context()
-
                 # Pass 0: Aggregation (Refinement #4: Semantic Gem Selection)
                 items = await self.store.fetch_semantic_gems(hours=6, limit=100, min_danger=min_danger)
                 if not items:
                     log.info("No semantic gems found in last 6 hours. Skipping pulse.")
                     return
 
+                # Deduplication Step A: Check if input items have changed
+                current_item_ids = sorted([str(i.get("_id") or i.get("id")) for i in items])
+                current_hash = hash(tuple(current_item_ids))
+                if current_hash == self._last_item_ids_hash and reason == "SCHEDULED_PULSE":
+                    log.info("Input items haven't changed since last scheduled pulse. Skipping synthesis.")
+                    return
+
+                # Pass -1: Market Context
+                market_context = await self._fetch_market_context()
+
                 # Refinement #1: Narrative Continuity (Get Previous Pulse)
                 previous_pulse = await self.store.get_latest_pulse()
                 previous_bluf = previous_pulse.get("bluf", "Stable market conditions.") if previous_pulse else "No previous SITREP available."
 
-                # Pass 1: Story Aggregation (Refinement #2: Entity-Based Clustering)
+                # Pass 1: Story Aggregation
                 stories = await self._pass_story_aggregation(items, previous_bluf)
                 
                 # Pass 2: Domain Synthesis
@@ -126,23 +134,57 @@ class StrategistWorker:
                 pulse["item_count"] = len(items)
                 pulse["story_count"] = len(stories)
                 
+                # Deduplication Step B: Semantic ID Reuse and Content Hashing
+                if previous_pulse:
+                    is_identical = pulse.get("bluf") == previous_pulse.get("bluf")
+                    is_similar = self._is_narratively_similar(pulse.get("bluf", ""), previous_pulse.get("bluf", ""))
+                    
+                    if is_identical:
+                        log.info("Pulse content is identical to the latest record. Skipping persistence.")
+                        return
+
+                    if is_similar:
+                        pulse["_id"] = previous_pulse["_id"]
+                        # Preserve original narrative start time, but track the update
+                        pulse["timestamp"] = previous_pulse.get("timestamp", pulse.get("timestamp"))
+                        pulse["updated_at"] = datetime.now(timezone.utc).isoformat()
+                        log.info("Semantically similar narrative detected. Updating existing pulse id=%s", pulse["_id"])
+
                 # Persistence: MongoDB (Full History)
                 await self.store.save_pulse(pulse)
                 
-                # Persistence: Redis (Oracle Cache Refinement #5)
+                # Persistence: Redis (Oracle Cache)
                 try:
                     redis = await RedisProvider.shared_from_env()
-                    # Store for 1 hour
                     await redis.set_json("global_pulse:latest", pulse, ttl=3600)
                     log.info("Global Pulse cached to Redis.")
                 except Exception as re_e:
                     log.warning("Failed to cache Global Pulse to Redis: %s", re_e)
 
                 self._last_pulse_at = datetime.now(timezone.utc)
+                self._last_item_ids_hash = current_hash
                 log.info("Global Pulse Synthesis completed successfully.")
                 
             except Exception as e:
                 log.error("Global Pulse Synthesis failed: %s", e)
+
+    def _is_narratively_similar(self, new_bluf: str, old_bluf: str) -> bool:
+        """Heuristic to detect if two BLUFs describe the same core event."""
+        def get_keywords(text: str):
+            # Extract words longer than 4 chars and convert to lowercase
+            return {w.lower() for w in re.findall(r'\w{5,}', text)}
+            
+        new_words = get_keywords(new_bluf)
+        old_words = get_keywords(old_bluf)
+        
+        if not new_words or not old_words:
+            return False
+            
+        overlap = new_words.intersection(old_words)
+        # If they share at least 5 significant words OR > 40% of content, it's the same narrative
+        max_words = max(len(new_words), len(old_words))
+        similarity = len(overlap) / max_words if max_words > 0 else 0
+        return len(overlap) >= 5 or similarity > 0.4
 
     # ── Synthesis Passes ──────────────────────────────────────────────
 
