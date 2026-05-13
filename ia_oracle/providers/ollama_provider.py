@@ -7,6 +7,7 @@ import logging
 from typing import Any, List, Optional
 
 from ollama import Client
+from forex_shared.config.categories import OracleConfig
 from forex_shared.worker_api.ia_provider import IAProvider, IAProviderConfig
 
 logger = logging.getLogger(__name__)
@@ -17,7 +18,8 @@ class OllamaProvider(IAProvider):
     def __init__(self, config: IAProviderConfig) -> None:
         super().__init__(config)
         self._client: Optional[Client] = None
-        self._host = self._config.extra.get("host", "http://localhost:11434")
+        # Priority: explicit extra['host'] > OracleConfig.OLLAMA_HOST > fallback
+        self._host = self._config.extra.get("host") or OracleConfig.OLLAMA_HOST or "http://localhost:11434"
 
     async def initialize(self) -> None:
         """Initialize the Ollama client."""

@@ -62,9 +62,10 @@ class StrategistWorker:
         
         self._is_running = True
         self._mq = MQFactory.create_async_from_env()
+        await self._mq.connect()
         
         # 1. Listen for new enriched items to trigger delta-re-synthesis
-        await self._mq.subscribe("intel.enriched.#", self._handle_trigger_event)
+        await self._mq.subscribe_event("intel.enriched.#", self._handle_trigger_event)
         
         # 2. Start the periodic pulse timer (every 30 minutes)
         asyncio.create_task(self._periodic_loop())
@@ -93,16 +94,16 @@ class StrategistWorker:
             if (datetime.now(timezone.utc) - self._last_pulse_at).total_seconds() > 1700:
                 await self.perform_full_synthesis(reason="SCHEDULED_PULSE")
 
-    async def perform_full_synthesis(self, reason: str = "MANUAL"):
+    async def perform_full_synthesis(self, reason: str = "MANUAL", min_danger: float = 0.4):
         """Execute the 3-pass synthesis pipeline."""
         async with self._synthesis_lock:
-            log.info("Starting Full Global Pulse Synthesis (Reason: %s)", reason)
+            log.info("Starting Full Global Pulse Synthesis (Reason: %s, min_danger=%.2f)", reason, min_danger)
             try:
                 # Pass -1: Market Context (Refinement #3: Divergence Awareness)
                 market_context = await self._fetch_market_context()
 
                 # Pass 0: Aggregation (Refinement #4: Semantic Gem Selection)
-                items = await self.store.fetch_semantic_gems(hours=6, limit=100, min_danger=0.4)
+                items = await self.store.fetch_semantic_gems(hours=6, limit=100, min_danger=min_danger)
                 if not items:
                     log.info("No semantic gems found in last 6 hours. Skipping pulse.")
                     return

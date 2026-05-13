@@ -13,6 +13,7 @@ import sys
 from pathlib import Path
 from typing import Optional
 
+from dotenv import load_dotenv
 from forex_shared.env_config_manager import EnvConfigManager
 from forex_shared.logging.get_logger import get_logger, setup_logging
 
@@ -24,8 +25,22 @@ try:
     EnvConfigManager.startup()
 except Exception as e:
     logger.exception(f"Failed to sync with MongoDB EnvConfig: {e}")
-    raise Exception(f"Failed to sync with MongoDB EnvConfig: {e}")
-    sys.exit(1)
+    # Don't fail here if we have local .env overrides
+    pass
+
+# Debug current environment before override
+logger.info(f"PRE-OVERRIDE os.environ['OLLAMA_HOST']: {os.environ.get('OLLAMA_HOST')}")
+
+# Load local .env AFTER startup to OVERRIDE MongoDB/os.environ
+env_path = Path(__file__).resolve().parent.parent / ".env"
+load_dotenv(dotenv_path=env_path, override=True)
+logger.info(f"Loaded .env from: {env_path} (exists: {env_path.exists()}, override=True)")
+
+# Debug current environment after override
+logger.info(f"POST-OVERRIDE os.environ['OLLAMA_HOST']: {os.environ.get('OLLAMA_HOST')}")
+
+from forex_shared.config.categories import OracleConfig
+logger.info(f"RESOLVED OLLAMA_HOST: {OracleConfig.OLLAMA_HOST}")
 
 from ia_oracle.worker import OracleWorker
 from ia_oracle.store import OracleMongoStore

@@ -61,7 +61,6 @@ class StrategistStore(BaseStore):
         cutoff = (datetime.now(timezone.utc) - timedelta(hours=hours)).isoformat()
         
         query = {
-            "event_type": "INTEL_ITEM_ENRICHED",
             "extra.oracle_review_candidate": True,
             "danger_score": {"$gte": min_danger},
             "extra.analysis_summary": {"$exists": True, "$ne": ""},
@@ -123,6 +122,22 @@ class StrategistStore(BaseStore):
             "affected_currencies": {"$in": [c.upper() for c in currencies]}
         }
         
+        results = await self._mongo.async_find_many(
+            self.COLLECTION_PULSE,
+            query,
+            sort=[("timestamp", -1)],
+            limit=1
+        )
+        return results[0] if results else None
+
+    # ── BaseStore contract ────────────────────────────────────────────
+
+    async def store_item(self, item: Any) -> str:
+        """Alias for save_pulse (BaseStore contract)."""
+        return await self.save_pulse(item)
+
+    async def get_item(self, query: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+        """General retrieval (BaseStore contract)."""
         results = await self._mongo.async_find_many(
             self.COLLECTION_PULSE,
             query,
