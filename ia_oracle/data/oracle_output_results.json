@@ -1,11 +1,1 @@
-[
-  {
-    "trigger_event_id": "fred:10:2026-05-12",
-    "action": "HOLD",
-    "oracle_confidence": 1.0,
-    "reasoning": "The event is unverified and originates from FRED, a data source, not a real-world incident. The surge in oil prices is not linked to a confirmed supply disruption. No directional bias or clear asset route exists. The danger score is inflated by source weighting, not event validity. This is a noise event with no operational grounding.",
-    "tags_to_emit": [],
-    "event_type": "ORACLE_REVIEW_RESOLVED",
-    "resolved_at": "2026-05-13T02:49:41.166670+00:00"
-  }
-]
+[]
