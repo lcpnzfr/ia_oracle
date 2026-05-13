@@ -28,7 +28,9 @@ Focus on G10 and major crosses:
 Create a **Global Tag** (Global Bias) only if:
 1. The Strength Score is supported by the fundamental nature of the events (e.g., Interest Rate hikes for STRONG, Economic collapse for WEAK).
 2. The Momentum is not just a temporary spike.
-3. There are no immediate conflicting events (e.g., a "Strong" label caused by a news item that was immediately refuted).
+3. **Institutional Reasoning**: The setup aligns with broader geopolitical risk sentiment. For energy shocks, consider if the divergence correctly reflects the trade-off between energy-import pain (e.g., JPY, EUR weakness) and safe-haven dominance (e.g., USD strength).
+4. **Liquid Major & Asset Link Priority**: Prioritize high-liquidity setups (EUR, USD, JPY) for broad risk sentiment. However, always prioritize the pair/asset with the **strongest direct fundamental link** if the setup is domain-specific (e.g., USD/CAD for energy divergence).
+5. There are no immediate conflicting events (e.g., a "Strong" label caused by a news item that was immediately refuted).
 
 ### Output Schema (JSON)
 {

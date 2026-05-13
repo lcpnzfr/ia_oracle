@@ -66,13 +66,19 @@ Important interpretation rules:
 - If asset route is ambiguous but the event is important, prefer review-only output.
 - If the item was sent to Oracle because of high severity but no clear market path, do not force a trade directive.
 - If the event is about local currency collapse, identify the native pair if possible, such as USD/IRR, but do not invent signals for EUR/USD or USD/JPY unless there is a clear global USD transmission mechanism.
-- If the event is about oil supply, sanctions on oil exports, refineries, ports, shipping routes, Hormuz, pipelines, OPEC, tankers, or energy infrastructure, evaluate OIL, BRENT, WTI and related risk-off assets.
+- If the event is about oil supply, sanctions on oil exports, refineries, ports, shipping routes, Hormuz, pipelines, OPEC, tankers, or energy infrastructure, evaluate OIL, BRENT, WTI and related risk-off assets. 
+- **Institutional Reasoning for Energy Shocks**: When evaluating energy-driven escalations (e.g., Middle East attacks), weigh the **USD safe-haven dominance** against the **regional energy-import dependency**.
+- **Liquid Major & Asset Link Priority**: 
+    - For **broad, non-specific global risk-off events**, prioritize the most liquid majors (EUR/USD, USD/JPY, XAU/USD). 
+    - However, always prioritize the pair/asset with the **strongest direct fundamental link** if the event is domain-specific (e.g., use **USD/CAD** or **OIL** for energy supply shocks, **AUD/USD** for commodity price shifts). 
+    - Do not force a EUR/USD signal if a more direct and liquid link exists.
 - If the event is about nuclear escalation, direct US/Russia/China/Iran/Israel conflict, major attacks, strategic infrastructure, or regional escalation, evaluate safe havens such as XAU, XAU/USD, JPY, CHF and equity risk such as SPX/NQ bearish.
 - If the event is only propaganda or rhetorical threat, reduce confidence unless supported by concrete action.
 - If the event is battlefield tactical report, map update, brigade-level action, donation post, or local front-line micro-update, do not create global market tags unless it references strategic assets, major escalation, nuclear facilities, energy infrastructure, ports, or state-level escalation.
 - If bias is neutral, do not create an operational Global Tag for that asset.
 - Never create a tag just because an asset is mentioned.
 - Never create a tag for entertainment, celebrity gossip, self-promotion, anniversary posts, or historical remembrance unless it reports a new active threat.
+- **Strict Format (Implicit)**: Your reasoning_summary should reflect the trade-off between safe-haven flows and economic fundamental impact.
 
 Asset universe:
 

@@ -24,8 +24,8 @@ class OllamaProvider(IAProvider):
     async def initialize(self) -> None:
         """Initialize the Ollama client."""
         logger.info("[OllamaProvider] Initializing client at %s", self._host)
-        self._client = Client(host=self._host)
-        # Check if model is available? Ollama usually pulls on demand or fails.
+        from ollama import AsyncClient
+        self._async_client = AsyncClient(host=self._host)
         logger.info("[OllamaProvider] Initialized. model=%s", self._config.model_name)
 
     async def generate(
@@ -36,7 +36,7 @@ class OllamaProvider(IAProvider):
         tools: Optional[List[Any]] = None,
     ) -> str:
         """Call Ollama chat API."""
-        if self._client is None:
+        if self._async_client is None:
             raise RuntimeError("OllamaProvider.initialize() must be called before generate().")
 
         messages = []
@@ -46,19 +46,19 @@ class OllamaProvider(IAProvider):
         messages.append({"role": "user", "content": user_prompt})
 
         try:
-            # ollama.Client.chat is synchronous, but we can run it in a thread or 
-            # if the library supports async we should use it. 
-            # The official 'ollama' library has an AsyncClient.
-            from ollama import AsyncClient
-            
-            async_client = AsyncClient(host=self._host)
-            response = await async_client.chat(
+            # Use extra overrides or optimized defaults
+            options = {
+                "temperature": self._config.extra.get("temperature", self._config.temperature or 0.4),
+                "num_predict": self._config.extra.get("num_predict", self._config.max_tokens or 100),
+                "repeat_penalty": self._config.extra.get("repeat_penalty", 1.1),
+                "top_k": self._config.extra.get("top_k", 40),
+                "top_p": self._config.extra.get("top_p", 0.9),
+            }
+
+            response = await self._async_client.chat(
                 model=self._config.model_name,
                 messages=messages,
-                options={
-                    "temperature": self._config.temperature,
-                    "num_predict": self._config.max_tokens,
-                }
+                options=options
             )
             return response["message"]["content"]
         except Exception as e:
