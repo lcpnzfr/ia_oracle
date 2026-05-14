@@ -60,19 +60,20 @@ class StrategistStore(BaseStore):
         """Fetch recently enriched items ranked by danger and impact.
         
         Refinement #4: Semantic Gem Selection
-        Filters for:
-        - INTEL_ITEM_ENRICHED event type.
-        - oracle_review_candidate = True.
-        - danger_score >= min_danger.
-        - Must have an analysis_summary.
+        Prefer Oracle-reviewed semantic items, but allow high-danger raw/enriched
+        intel as a fallback so a fresh pipeline can produce an initial pulse
+        before Oracle summaries exist.
         """
         cutoff = (datetime.now(timezone.utc) - timedelta(hours=hours)).isoformat()
+        high_danger_floor = max(min_danger, 0.75)
         
         query = {
-            "extra.oracle_review_candidate": True,
             "danger_score": {"$gte": min_danger},
-            "extra.analysis_summary": {"$exists": True, "$ne": ""},
-            "created_at": {"$gte": cutoff}
+            "created_at": {"$gte": cutoff},
+            "$or": [
+                {"extra.oracle_review_candidate": True},
+                {"danger_score": {"$gte": high_danger_floor}},
+            ],
         }
         
         # Sort by danger_score and impact_category weight (if we had it, fallback to danger)
@@ -82,6 +83,16 @@ class StrategistStore(BaseStore):
             sort=[("danger_score", -1), ("created_at", -1)],
             limit=limit
         )
+        for item in results:
+            extra = item.setdefault("extra", {})
+            if not extra.get("analysis_summary"):
+                text = " ".join(
+                    str(part).strip()
+                    for part in (item.get("title"), item.get("body"))
+                    if str(part or "").strip()
+                )
+                if text:
+                    extra["analysis_summary"] = text[:500]
         return results
 
     # ── Pulse Persistence ─────────────────────────────────────────────
@@ -185,6 +196,56 @@ class StrategistStore(BaseStore):
             run_id,
             stage,
             status,
+        )
+
+    async def fetch_recoverable_failed_global_pulses(
+        self,
+        *,
+        limit: int = 5,
+        max_retries: int = 3,
+    ) -> List[Dict[str, Any]]:
+        """Fetch failed pulse runs whose story/domain stages are complete."""
+        query = {
+            "status": "FAILED",
+            "$and": [
+                {
+                    "$or": [
+                        {"stories": {"$exists": True, "$ne": []}},
+                        {"domain_pulses": {"$exists": True, "$ne": {}}},
+                    ],
+                },
+                {
+                    "$or": [
+                        {"global_retry_attempts": {"$exists": False}},
+                        {"global_retry_attempts": {"$lt": max_retries}},
+                    ],
+                },
+            ],
+        }
+        return await self._mongo.async_find_many(
+            self.COLLECTION_PULSE,
+            query,
+            sort=[("updated_at", -1)],
+            limit=limit,
+        )
+
+    async def mark_global_retry_start(self, run_id: str) -> None:
+        """Mark a failed pulse as being retried at the final global stage."""
+        now = datetime.now(timezone.utc).isoformat()
+        await self._mongo.async_update_one(
+            self.COLLECTION_PULSE,
+            {"_id": run_id},
+            {
+                "$set": {
+                    "status": "IN_PROGRESS",
+                    "stage": "global_retry",
+                    "updated_at": now,
+                    "progress.global_retry.updated_at": now,
+                    "progress.global_retry.status": "IN_PROGRESS",
+                },
+                "$inc": {"global_retry_attempts": 1},
+            },
+            upsert=False,
         )
 
     async def save_synthesis_checkpoint(

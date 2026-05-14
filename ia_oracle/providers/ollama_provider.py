@@ -76,12 +76,25 @@ class OllamaProvider(IAProvider):
             if "think" in self._config.extra:
                 chat_kwargs["think"] = bool(self._config.extra.get("think"))
 
-            logger.debug("[OllamaProvider] chat options=%s", options)
+            prompt_chars = sum(len(str(m.get("content", ""))) for m in messages)
+            logger.debug(
+                "[OllamaProvider] chat model=%s prompt_chars=%s messages=%s options=%s format_json=%s timeout=%s",
+                self._config.model_name,
+                prompt_chars,
+                len(messages),
+                options,
+                bool(self._config.extra.get("format_json", True)),
+                self._config.extra.get("timeout", 180.0),
+            )
             response = await self._async_client.chat(**chat_kwargs)
             return response["message"]["content"]
         except Exception as e:
-            logger.error("[OllamaProvider] Error during generate: %s", e)
-            raise RuntimeError(f"Ollama generation failed: {e}") from e
+            detail = f"{type(e).__name__}: {e!r}"
+            cause = getattr(e, "__cause__", None) or getattr(e, "__context__", None)
+            if cause:
+                detail = f"{detail}; cause={type(cause).__name__}: {cause!r}"
+            logger.exception("[OllamaProvider] Error during generate: %s", detail)
+            raise RuntimeError(f"Ollama generation failed: {detail}") from e
 
     async def close(self) -> None:
         """Clean up resources."""
