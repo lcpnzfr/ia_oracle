@@ -95,8 +95,8 @@ class StrategistWorker:
     async def _periodic_loop(self):
         """Background loop for scheduled SITREP updates."""
         while self._is_running:
-            await asyncio.sleep(1800) # 30 minutes
-            if (datetime.now(timezone.utc) - self._last_pulse_at).total_seconds() > 1700:
+            await asyncio.sleep(720) # 12 minutes
+            if (datetime.now(timezone.utc) - self._last_pulse_at).total_seconds() > 660:
                 await self.perform_full_synthesis(reason="SCHEDULED_PULSE")
 
     async def _failed_global_recovery_loop(self):
