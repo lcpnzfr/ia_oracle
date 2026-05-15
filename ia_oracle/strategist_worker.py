@@ -453,13 +453,21 @@ class StrategistWorker:
             extra = it.get("extra", {})
             # Use top entities if available, otherwise fallback to domain+country
             entities = extra.get("entities", [])
-            if entities and isinstance(entities, list):
+            if entities and isinstance(entities, list) and len(entities) > 0:
                 # Simple grouping by the primary entity (first one)
-                c_id = f"entity_{entities[0].lower().replace(' ', '_')}"
+                entity_name = str(entities[0]).lower().replace(' ', '_')
+                c_id = f"entity_{entity_name}"
             else:
                 # Fallback to domain + primary country
-                country = it.get("country", ["WORLD"])
-                c_id = f"{it.get('domain')}_{country[0]}"
+                country = it.get("country")
+                primary_country = "WORLD"
+                if isinstance(country, list) and len(country) > 0:
+                    primary_country = str(country[0])
+                elif isinstance(country, str) and country:
+                    primary_country = country
+                
+                domain = it.get("domain") or "global"
+                c_id = f"{domain}_{primary_country}"
             
             if c_id not in clusters: clusters[c_id] = []
             clusters[c_id].append(it)
