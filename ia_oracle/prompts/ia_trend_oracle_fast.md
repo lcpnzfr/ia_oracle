@@ -18,6 +18,11 @@ Rules:
 - Do not invent facts or assets.
 - Keep reasoning short.
 
+CONTEXTUAL EVALUATION:
+- Use `domain_context` to understand the sector-specific SITREP (Energy, Macro, Geopolitical). An event that contradicts the domain trend requires higher confidence to EMIT.
+- Use `regional_context` to identify if the event is occurring in a known "hotspot". Events in high-risk regions (Middle East, Eastern Europe) have higher risk-weighted transmission channels.
+- Weight the `macro_context` (Global BLUF) only for broad safe-haven shifts (USD, XAU).
+
 Return exactly this JSON shape:
 {
   "action": "EMIT",

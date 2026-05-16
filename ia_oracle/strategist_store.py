@@ -76,13 +76,43 @@ class StrategistStore(BaseStore):
             ],
         }
         
-        # Sort by danger_score and impact_category weight (if we had it, fallback to danger)
-        results = await self._mongo.async_find_many(
-            self.COLLECTION_INTEL,
-            query,
-            sort=[("danger_score", -1), ("created_at", -1)],
-            limit=limit
-        )
+        # Pipeline Refinement #4: Confidence-Weighted Aggregation
+        pipeline = [
+            {"$match": query},
+            {
+                "$lookup": {
+                    "from": "oracle_resolved",
+                    "localField": "intel_id",
+                    "foreignField": "trigger_event_id",
+                    "as": "oracle_info"
+                }
+            },
+            {
+                "$addFields": {
+                    "oracle_resolution": {"$arrayElemAt": ["$oracle_info", 0]}
+                }
+            },
+            {
+                "$addFields": {
+                    "oracle_confidence": {"$ifNull": ["$oracle_resolution.oracle_confidence", 0.0]},
+                    "oracle_action": {"$ifNull": ["$oracle_resolution.action", "PENDING"]}
+                }
+            },
+            {
+                "$addFields": {
+                    "weighted_score": {
+                        "$add": [
+                            {"$multiply": ["$danger_score", 0.4]},
+                            {"$multiply": ["$oracle_confidence", 0.6]}
+                        ]
+                    }
+                }
+            },
+            {"$sort": {"weighted_score": -1, "created_at": -1}},
+            {"$limit": limit}
+        ]
+        
+        results = await self._mongo.get_collection(self.COLLECTION_INTEL).aggregate(pipeline).to_list(limit)
         for item in results:
             extra = item.setdefault("extra", {})
             if not extra.get("analysis_summary"):

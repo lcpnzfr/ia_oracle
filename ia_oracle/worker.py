@@ -100,6 +100,8 @@ def _build_user_prompt(req: OracleReviewRequest) -> str:
             "analysis_summary":   req.analysis_summary,
             "forex_impact":       req.forex_impact,
             "macro_context":      req.macro_context,
+            "domain_context":     req.domain_context,
+            "regional_context":    req.regional_context,
             "domain":             req.domain,
             "source":             req.source,
             "reason":             req.reason,
@@ -402,7 +404,33 @@ class OracleWorker(Loggable):
                         self.log.debug("[OracleWorker] Redis pulse lookup failed (ignoring): %s", re_e)
 
                 if pulse:
+                    # Global context (fallback)
                     req.macro_context = pulse.get("bluf", "Stable global market conditions.")
+                    
+                    # Domain context (Zoom-in)
+                    domain_pulses = pulse.get("domain_pulses", {})
+                    # Try exact match or case-insensitive match
+                    target_domain = (req.domain or "").lower()
+                    domain_sitrep = domain_pulses.get(target_domain)
+                    if not domain_sitrep:
+                        # Fallback: check if target_domain is a substring of any key (e.g. 'economic' in 'economic_us')
+                        for k, v in domain_pulses.items():
+                            if target_domain in k:
+                                domain_sitrep = v
+                                break
+                    
+                    req.domain_context = domain_sitrep if domain_sitrep else req.macro_context
+                    
+                    # Regional context
+                    regional = pulse.get("regional_highlights", {})
+                    # If the event has a country, check that region
+                    # For now, we join all highlights as a summary of hotspots
+                    hotspots = []
+                    for reg, highlights in regional.items():
+                        if highlights:
+                            hotspots.append(f"{reg.upper()}: {', '.join(highlights)}")
+                    
+                    req.regional_context = " | ".join(hotspots) if hotspots else "No major regional hotspots identified."
                 
                 prompt_type = req.prompt_type or "trend"
                 if (

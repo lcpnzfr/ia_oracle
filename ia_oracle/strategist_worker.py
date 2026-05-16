@@ -23,6 +23,8 @@ from typing import Any, Dict, List, Optional
 
 from forex_shared.worker_api.ia_factory import IAProviderFactory
 from forex_shared.providers.mq.mq_factory import MQFactory
+from forex_shared.providers.mq.topics import IntelTopics
+from forex_shared.domain.intel import GlobalTag
 from forex_shared.providers.market_data.yahoo_provider import YahooFinanceProvider, ProviderConfig
 from forex_shared.providers.cache.redis_provider import RedisProvider
 from forex_shared.logging.get_logger import get_logger
@@ -371,6 +373,13 @@ class StrategistWorker:
                 self._last_pulse_at = datetime.now(timezone.utc)
                 self._last_item_ids_hash = current_hash
                 log.info("Global Pulse Synthesis completed successfully.")
+                
+                # Emit Regional Bias Tags (Refinement #3: Actionable Regional Execution)
+                try:
+                    await self._emit_regional_bias_tags(pulse)
+                except Exception as reg_e:
+                    log.warning("Failed to emit regional bias tags: %s", reg_e)
+                
                 return "COMPLETED"
                 
             except asyncio.CancelledError:
@@ -484,10 +493,21 @@ class StrategistWorker:
 
         for cluster_index, (cluster_id, cluster_items) in enumerate(sorted_clusters, start=1):
             log.debug("Synthesizing story for cluster: %s", cluster_id)
-            context = "\n---\n".join([
-                f"SOURCE: {i.get('source')}\nTITLE: {i.get('title')}\nSUMMARY: {i.get('extra', {}).get('analysis_summary')}"
-                for i in cluster_items[:5] # Max 5 items per story
-            ])
+            context_parts = []
+            for i in cluster_items[:10]: # Max 10 items per story for richer context
+                part = f"SOURCE: {i.get('source')}\nTITLE: {i.get('title')}\nSUMMARY: {i.get('extra', {}).get('analysis_summary')}"
+                
+                # Add Oracle insights if available (from the aggregation join)
+                oracle_action = i.get("oracle_action")
+                if oracle_action and oracle_action != "PENDING":
+                    part += f"\nORACLE VERDICT: {oracle_action} (Conf: {i.get('oracle_confidence')})"
+                    reasoning = i.get("oracle_resolution", {}).get("reasoning")
+                    if reasoning:
+                        part += f"\nORACLE REASONING: {reasoning}"
+                
+                context_parts.append(part)
+            
+            context = "\n---\n".join(context_parts)
             
             raw = await self.provider.generate(f"CLUSTER ITEMS:\n{context}", system_prompt=system_prompt)
             story_data = self._parse_json(raw)
@@ -831,3 +851,42 @@ class StrategistWorker:
                 await self._mq.stop_consuming()
         if self.provider:
             await self.provider.close()
+
+    async def _emit_regional_bias_tags(self, pulse: Dict[str, Any]) -> None:
+        """Converts regional highlights into actionable GlobalTags.
+        
+        This notifies sessions that specific geographic regions are experiencing 
+        high volatility, even if no specific currency trade is suggested.
+        """
+        regional = pulse.get("regional_highlights", {})
+        if not regional:
+            return
+            
+        now = datetime.now(timezone.utc)
+        expires_at = (now + timedelta(hours=2)).isoformat() # 2h TTL for regional alerts
+        
+        tags_emitted = 0
+        for region, highlights in regional.items():
+            if not highlights:
+                continue
+                
+            # Create a tag for the region
+            tag = GlobalTag(
+                asset=f"REGION_{region.upper()}",
+                bias="neutral",
+                risk_score=0.90, # High risk for active hotspots
+                trigger_event_id=pulse.get("_id", "global_pulse"),
+                established_at=now.isoformat(),
+                expires_at=expires_at,
+                active=True,
+                reason=f"Regional Hotspot Detected: {', '.join(highlights[:3])}"
+            )
+            
+            payload = tag.to_mq_payload(event_type="REGIONAL_BIAS_UPDATED")
+            ok = await self._mq.publish_event(IntelTopics.GLOBAL_TAGS, payload)
+            if ok:
+                tags_emitted += 1
+                log.info("Emitted Regional Bias Tag for %s", region)
+                
+        if tags_emitted > 0:
+            log.info("Total Regional Bias Tags emitted: %d", tags_emitted)
