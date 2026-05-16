@@ -1,39 +1,20 @@
 [
   {
-    "trigger_event_id": "telegram:VahidOnline:75455",
+    "trigger_event_id": "bis:policy:GB",
     "action": "HOLD",
-    "oracle_confidence": 0.35,
-    "reasoning": "Event involves social media censorship of a football event in Iran, with no clear link to oil supply, geopolitical escalation, or financial market transmission. Domain is 'conflict' but lacks actionable market path or tradable asset route. Source is Telegram, low signal quality, and content is cultural/social, not macro or financial. No clear direction or asset impact.",
+    "oracle_confidence": 0.5,
+    "reasoning": "UK policy rate update is neutral in bias, with no clear directional impact on tradable assets. Currency-specific directive (GBP) has low confidence and no transmission to broader markets. Risk sentiment remains stable, and asset movements are modest and non-directional.",
     "tags_to_emit": [],
     "event_type": "ORACLE_REVIEW_RESOLVED",
-    "resolved_at": "2026-05-15T20:04:30.536995+00:00"
+    "resolved_at": "2026-05-16T11:45:43.853882+00:00"
   },
   {
-    "trigger_event_id": "telegram:VahidOnline:75460",
-    "action": "EMIT",
-    "oracle_confidence": 0.92,
-    "reasoning": "The event involves a U.S.-China agreement on Iran's nuclear program and the maintenance of the Strait of Hormuz, directly impacting oil supply risk. This elevates supply-side uncertainty for global oil, particularly Brent and WTI, and triggers safe-haven demand. The domain is conflict, with high danger and attention scores, and a strong signal from a credible source (Telegram) with adjusted cluster and domain weights. The macro context shows a bearish move in XAU/USD, which contradicts the safe-haven demand; however, the core oil supply risk remains valid. Given the clear asset route (oil supply) and direction (bearish for oil, bullish for safe havens), and high confidence in the transmission channel (global oil markets), XAU/USD is the most responsive tradable asset.",
-    "tags_to_emit": [
-      {
-        "asset": "XAU/USD",
-        "bias": "bullish",
-        "confidence": 0.92,
-        "risk_score": 0.85,
-        "volatility_duration_minutes": 120,
-        "reason": "Agreement to maintain Strait of Hormuz and constrain Iran's nuclear program increases supply risk, triggering safe-haven demand. U.S. and China coordination enhances geopolitical stability, but the risk of disruption remains elevated. XAU/USD is the primary safe-haven asset with direct exposure to such events.",
-        "transmission_channel": "geopolitical risk sentiment"
-      },
-      {
-        "asset": "BRENT",
-        "bias": "bearish",
-        "confidence": 0.88,
-        "risk_score": 0.75,
-        "volatility_duration_minutes": 180,
-        "reason": "The agreement to keep the Strait of Hormuz open and constrain Iran's nuclear program reduces immediate supply disruption risk, but the underlying geopolitical tension remains. This creates a short-term bearish bias in oil prices due to reduced supply-side shocks.",
-        "transmission_channel": "oil supply risk"
-      }
-    ],
+    "trigger_event_id": "bis:policy:CA",
+    "action": "HOLD",
+    "oracle_confidence": 0.3,
+    "reasoning": "Event is a policy rate announcement for Canada, affecting CAD, but no clear market impact on tradable assets like oil, gold, or major forex pairs. Bias is neutral, and transmission channel (JPMorgan stock) is not directly linked to broader market movements. Confidence in directional bias is low (0.5), and no clear asset route or market path is established.",
+    "tags_to_emit": [],
     "event_type": "ORACLE_REVIEW_RESOLVED",
-    "resolved_at": "2026-05-15T20:09:17.691725+00:00"
+    "resolved_at": "2026-05-16T11:47:31.144291+00:00"
   }
 ]
