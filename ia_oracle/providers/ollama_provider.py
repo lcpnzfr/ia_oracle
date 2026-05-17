@@ -4,7 +4,7 @@
 from __future__ import annotations
 
 import logging
-from typing import Any, List, Optional
+from typing import Any, Dict, List, Optional
 
 from ollama import Client
 from forex_shared.config.categories import OracleConfig
@@ -21,6 +21,7 @@ class OllamaProvider(IAProvider):
         self._async_client: Any = None
         # Priority: explicit extra['host'] > OracleConfig.OLLAMA_HOST > fallback
         self._host = self._config.extra.get("host") or OracleConfig.OLLAMA_HOST or "http://localhost:11434"
+        self._timeout = float(self._config.extra.get("timeout", 600.0))
 
     async def initialize(self) -> None:
         """Initialize the Ollama client."""
@@ -28,7 +29,7 @@ class OllamaProvider(IAProvider):
         from ollama import AsyncClient
         self._async_client = AsyncClient(
             host=self._host,
-            timeout=float(self._config.extra.get("timeout", 600.0)),
+            timeout=self._timeout,
         )
         logger.info("[OllamaProvider] Initialized. model=%s", self._config.model_name)
 
@@ -86,7 +87,7 @@ class OllamaProvider(IAProvider):
                 chat_kwargs["think"] = bool(self._config.extra.get("think"))
 
             # Per-call timeout or config default
-            request_timeout = timeout if timeout is not None else float(self._config.extra.get("timeout", 180.0))
+            request_timeout = float(timeout if timeout is not None else self._config.extra.get("timeout", self._timeout))
 
             prompt_chars = sum(len(str(m.get("content", ""))) for m in messages)
             logger.debug(
@@ -110,7 +111,21 @@ class OllamaProvider(IAProvider):
             # The current AsyncClient doesn't seem to have a per-request timeout in the chat() method easily.
             # BUT we can try passing it.
             
-            response = await self._async_client.chat(**chat_kwargs)
+            client = self._async_client
+            transient_client = None
+            if request_timeout != self._timeout:
+                from ollama import AsyncClient
+                transient_client = AsyncClient(host=self._host, timeout=request_timeout)
+                client = transient_client
+
+            try:
+                response = await client.chat(**chat_kwargs)
+            finally:
+                if transient_client is not None:
+                    raw_client = getattr(transient_client, "_client", None)
+                    close = getattr(raw_client, "aclose", None)
+                    if close is not None:
+                        await close()
             return response["message"]["content"]
         except Exception as e:
             detail = f"{type(e).__name__}: {e!r}"

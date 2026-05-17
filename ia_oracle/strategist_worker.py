@@ -528,7 +528,7 @@ class StrategistWorker:
                 f"CLUSTER ITEMS:\n{context}", 
                 system_prompt=system_prompt,
                 options={"num_ctx": 4096, "num_predict": 512},
-                timeout=300.0
+                timeout=600.0
             )
             story_data = self._parse_json(raw)
             await self.store.save_synthesis_checkpoint(
@@ -582,7 +582,7 @@ class StrategistWorker:
                 f"DOMAIN STORIES:\n{context}", 
                 system_prompt=system_prompt,
                 options={"num_ctx": 8192, "num_predict": 1024},
-                timeout=600.0
+                timeout=1200.0
             )
             d_data = self._parse_json(raw)
             await self.store.save_synthesis_checkpoint(
@@ -648,7 +648,7 @@ class StrategistWorker:
                     f"Summarize these histories: {prompt_payload}",
                     system_prompt=system_prompt,
                     options={"num_ctx": 8192, "num_predict": 1024},
-                    timeout=600.0
+                    timeout=1200.0
                 )
             finally:
                 if restore_format_json is not None and hasattr(self.provider, "_config"):
@@ -715,7 +715,7 @@ class StrategistWorker:
                 f"New histories: {prompt_payload}",
                 system_prompt=system_prompt,
                 options={"num_ctx": 8192, "num_predict": 1024},
-                timeout=600.0
+                timeout=1200.0
             )
         finally:
             if restore_format_json is not None and hasattr(self.provider, "_config"):
@@ -816,7 +816,7 @@ class StrategistWorker:
                 user_prompt, 
                 system_prompt=system_prompt,
                 options={"num_ctx": 8192, "num_predict": 1024},
-                timeout=600.0
+                timeout=1200.0
             )
             implications = self._parse_json(raw)
             if isinstance(implications, list):

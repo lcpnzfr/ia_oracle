@@ -1,20 +1,83 @@
 [
   {
-    "trigger_event_id": "ecb:fx:EURBRL",
+    "trigger_event_id": "reuters_world:2ecc593d93faafaf",
     "action": "HOLD",
-    "oracle_confidence": 0.35,
-    "reasoning": "The event involves a cybersecurity threat in the Americas with no direct financial impact or clear tradable market path. While danger score is above threshold, the domain context shows low volatility and risk neutrality, and no asset shows clear directional bias or transmission channel. No oil, safe-haven, or macro shift is evident. The EUR/BRL pair is not a key market route, and the threat is isolated to industrial control systems without financial exposure.",
+    "oracle_confidence": 0.3,
+    "reasoning": "Starbucks' job cuts are a corporate-level event with no direct link to energy, financial stability, or macro risk sentiment. The domain and regional context show no transmission to oil, safe havens, or currency markets. While the danger score is above threshold, the event lacks a tradable market path or asset route.",
     "tags_to_emit": [],
     "event_type": "ORACLE_REVIEW_RESOLVED",
-    "resolved_at": "2026-05-17T18:04:46.038570+00:00"
+    "resolved_at": "2026-05-17T20:23:34.855950+00:00"
   },
   {
-    "trigger_event_id": "ecb:fx:EURCAD",
+    "trigger_event_id": "reuters_world:b07e5c9ddfc6d7ed",
     "action": "HOLD",
-    "oracle_confidence": 0.5,
-    "reasoning": "Cybersecurity threat detection in industrial control systems is noted, but no direct financial impact or clear tradable market path is established. The event occurs in a regional context (AMERICAS) with low volatility and risk neutrality, and no clear directional bias for key assets like EUR/USD, USD/JPY, or XAU/USD is evident. Market movements are modest and consistent with equilibrium, lacking a strong transmission channel to a specific asset or direction.",
+    "oracle_confidence": 0.35,
+    "reasoning": "Event in Comoros relates to domestic fuel pricing and protests, not oil supply, shipping, or regional energy security. No transmission to oil markets or safe-haven assets. Regional context is Americas-focused with cyber threats, not energy or geopolitical hotspots. Domain and macro contexts show low volatility and risk neutrality; no clear directional impact on tradable assets.",
     "tags_to_emit": [],
     "event_type": "ORACLE_REVIEW_RESOLVED",
-    "resolved_at": "2026-05-17T18:08:13.256044+00:00"
+    "resolved_at": "2026-05-17T20:27:51.011813+00:00"
+  },
+  {
+    "trigger_event_id": "ap_news:a7ec84a214e632fe",
+    "action": "DISCARD",
+    "oracle_confidence": 0.0,
+    "reasoning": "Event pertains to Argentina's beef consumption, a domestic agricultural issue with no direct market transmission to global oil, currencies, or assets. No link to energy, geopolitics, or safe-haven dynamics. Regional context is limited to cyber and social signals, not financial or macro risk channels. No tradable market path identified.",
+    "tags_to_emit": [],
+    "event_type": "ORACLE_REVIEW_RESOLVED",
+    "resolved_at": "2026-05-17T20:35:17.782647+00:00"
+  },
+  {
+    "trigger_event_id": "bbc_world:5c2da7efa4d4c6d1",
+    "action": "DISCARD",
+    "oracle_confidence": 0.0,
+    "reasoning": "Event involves a Pakistani strike on a rehab centre in Kabul, with no verified link to oil, energy, safe havens, or global financial markets. Regional context is in AMERICAS, not a geopolitical hotspot with energy or financial transmission. No tradable market path identified; asset directives are limited to low-confidence, non-tradable currencies (PKR, AFN, BYN, EUR). No clear market impact or asset route.",
+    "tags_to_emit": [],
+    "event_type": "ORACLE_REVIEW_RESOLVED",
+    "resolved_at": "2026-05-17T20:38:50.757794+00:00"
+  },
+  {
+    "trigger_event_id": "cnn_world:9bf745e4caee181c",
+    "action": "HOLD",
+    "oracle_confidence": 0.5,
+    "reasoning": "Retail spending decline is a macroeconomic signal, but lacks direct link to tradable assets with clear directional impact. No clear transmission channel to oil, safe havens, or major currencies. Cybersecurity threats are not linked to financial asset movements. Market prices show modest movements with minimal divergences, indicating low volatility and risk neutrality. No strong bias or asset route established.",
+    "tags_to_emit": [],
+    "event_type": "ORACLE_REVIEW_RESOLVED",
+    "resolved_at": "2026-05-17T20:42:28.682373+00:00"
+  },
+  {
+    "trigger_event_id": "cnn_world:b650d7229c46418f",
+    "action": "DISCARD",
+    "oracle_confidence": 0.0,
+    "reasoning": "Event pertains to Lake Powell's water level and reservoir capacity, a domestic U.S. environmental issue with no direct market transmission to tradable assets. No link to oil, safe havens, geopolitical risk, or macro financial flows. Domain and regional context show no risk-off or supply-chain impact. Asset directives are irrelevant (e.g., ISK, INR, USD) and lack tradable market path.",
+    "tags_to_emit": [],
+    "event_type": "ORACLE_REVIEW_RESOLVED",
+    "resolved_at": "2026-05-17T20:46:54.901520+00:00"
+  },
+  {
+    "trigger_event_id": "wsj:95c20169b6a9a378",
+    "action": "HOLD",
+    "oracle_confidence": 0.5,
+    "reasoning": "Vanke's property loss reflects a domestic Chinese real-estate issue with limited direct transmission to global markets; no clear asset route, direction, or macro transmission channel identified; domain and regional context show low volatility and risk neutrality; no significant shift in safe-haven or energy markets; candidate directives are neutral and currency-specific with low confidence.",
+    "tags_to_emit": [],
+    "event_type": "ORACLE_REVIEW_RESOLVED",
+    "resolved_at": "2026-05-17T20:50:27.189189+00:00"
+  },
+  {
+    "trigger_event_id": "wsj:aa7456421e4c27e2",
+    "action": "DISCARD",
+    "oracle_confidence": 0.0,
+    "reasoning": "Event occurs in Rwanda-Congo region, not a recognized oil or geopolitical hotspot with direct supply chain or safe-haven transmission; no link to OIL, BTC, or major FX pairs; affected currencies (RWF, XAF, CDF) are local and not tradable in global markets; no clear asset route or market impact path.",
+    "tags_to_emit": [],
+    "event_type": "ORACLE_REVIEW_RESOLVED",
+    "resolved_at": "2026-05-17T20:54:01.862145+00:00"
+  },
+  {
+    "trigger_event_id": "wsj:52925311b98e4849",
+    "action": "HOLD",
+    "oracle_confidence": 0.35,
+    "reasoning": "The event involves Houthi targeting in the Red Sea, which could impact shipping and oil supply, but the domain context shows a stable monetary policy and low volatility. No clear asset route or directional bias is established for tradable assets like OIL, XAU, or FX pairs. The danger score is above threshold, but market prices show modest movements with minimal divergences, and no direct financial impact is observed. Regional context is limited to Americas with no explicit energy or safe-haven transmission. Candidate directives are neutral and low-confidence.",
+    "tags_to_emit": [],
+    "event_type": "ORACLE_REVIEW_RESOLVED",
+    "resolved_at": "2026-05-17T20:57:56.649973+00:00"
   }
 ]
