@@ -1,182 +1,20 @@
 [
   {
-    "trigger_event_id": "bis:policy:CN",
+    "trigger_event_id": "crypto:solana",
     "action": "DISCARD",
     "oracle_confidence": 0.0,
-    "reasoning": "The policy rate in China remained unchanged at 3.0% (no change from previous level), with no explicit signals of future rate hikes or cuts. The central bank's messaging is described as stable and data-driven, with no mention of inflation concerns, growth risks, or shifts in monetary stance. The absence of directional language—such as 'persistent inflation' or 'recession risk'—and the neutral numeric change indicate a balanced, non-escalating posture. While the broader macro context shows stable risk sentiment and financial sector confidence, the lack of any clear bias in guidance points to neutrality.",
+    "reasoning": "Event is a crypto price point with no tradable market path, no asset route, no clear direction or transmission channel. Domain context shows stable macro conditions with minimal volatility; no risk-off or supply disruption signals. Source is crypto-specific with no link to oil, equities, or safe havens. No valid tradable asset route or market impact.",
     "tags_to_emit": [],
     "event_type": "ORACLE_REVIEW_RESOLVED",
-    "resolved_at": "2026-05-16T17:46:44.880079+00:00"
+    "resolved_at": "2026-05-17T00:07:06.069244+00:00"
   },
   {
-    "trigger_event_id": "ecb:fx:EURAUD",
-    "action": "HOLD",
-    "oracle_confidence": 0.0,
-    "reasoning": "Event is forex-specific (EUR/AUD) with no clear tradable asset route or market impact beyond minor price movements; no direct link to oil, safe havens, or broad risk sentiment; source is ECB FX with low domain-weighted signal and no transmission channel to core assets.",
-    "tags_to_emit": [],
-    "event_type": "ORACLE_REVIEW_RESOLVED",
-    "resolved_at": "2026-05-16T17:49:34.858007+00:00"
-  },
-  {
-    "trigger_event_id": "bis:policy:CA",
-    "action": "DISCARD",
-    "oracle_confidence": 0.0,
-    "reasoning": "The Canadian policy rate remained unchanged at 2.25%, with no explicit signal of future rate hikes or cuts. The central bank's messaging is described as stable and data-driven, with no mention of inflation concerns, economic slowdowns, or disinflationary trends. The absence of directional language—such as 'higher for longer' or 'easing bias'—and the neutral numeric change (diff = +0.00%) indicate a balanced, non-committal stance. The macro context emphasizes stable financial sector sentiment and minimal market volatility, reinforcing a neutral policy posture.",
-    "tags_to_emit": [],
-    "event_type": "ORACLE_REVIEW_RESOLVED",
-    "resolved_at": "2026-05-16T17:53:31.629696+00:00"
-  },
-  {
-    "trigger_event_id": "eia:natgas:2026-05-08",
+    "trigger_event_id": "crypto:avalanche-2",
     "action": "HOLD",
     "oracle_confidence": 0.3,
-    "reasoning": "Event is within natural gas storage, not directly linked to oil, equities, or safe-haven assets. No clear market impact path to tradable assets. Source is EIA, but domain and asset mismatch with preferred market-intelligence events.",
+    "reasoning": "Event is crypto-specific (Avalanche $9.29) with no clear tradable asset route or market impact; domain context shows stable monetary policy and minimal volatility; no direct link to oil, safe havens, or macro risk-off shifts; source is Coingecko with low signal weight in tradable markets.",
     "tags_to_emit": [],
     "event_type": "ORACLE_REVIEW_RESOLVED",
-    "resolved_at": "2026-05-16T17:56:40.278935+00:00"
-  },
-  {
-    "trigger_event_id": "stress:composite:latest",
-    "action": "HOLD",
-    "oracle_confidence": 0.35,
-    "reasoning": "Economic stress is elevated but lacks clear directional impact on tradable assets; market movements are modest and broadly stable, with no discernible supply risk, safe-haven shift, or oil disruption. No asset shows strong directional bias or high confidence in transmission. Source is generic and domain-weighted, but no specific event or mechanism links to oil, FX, or commodities with clear path.",
-    "tags_to_emit": [],
-    "event_type": "ORACLE_REVIEW_RESOLVED",
-    "resolved_at": "2026-05-16T18:00:29.825465+00:00"
-  },
-  {
-    "trigger_event_id": "ecb:fx:EURBRL",
-    "action": "HOLD",
-    "oracle_confidence": 0.0,
-    "reasoning": "Event is forex-specific (EUR/BRL) with no clear tradable asset route, direction, or market impact beyond minor price movements; lacks connection to oil, safe havens, or broad risk sentiment; source is ECB FX with low domain relevance to core assets.",
-    "tags_to_emit": [],
-    "event_type": "ORACLE_REVIEW_RESOLVED",
-    "resolved_at": "2026-05-16T18:02:23.134999+00:00"
-  },
-  {
-    "trigger_event_id": "eia:crude:2026-05-08",
-    "action": "HOLD",
-    "oracle_confidence": 0.3,
-    "reasoning": "Event is a routine inventory report with no clear directional impact on oil or safe-haven assets; market movements are modest and consistent with stable policy sentiment; no elevated risk or supply disruption signal detected.",
-    "tags_to_emit": [],
-    "event_type": "ORACLE_REVIEW_RESOLVED",
-    "resolved_at": "2026-05-16T18:04:56.977704+00:00"
-  },
-  {
-    "trigger_event_id": "bis:policy:CH",
-    "action": "DISCARD",
-    "oracle_confidence": 0.0,
-    "reasoning": "The Swiss National Bank maintained a policy rate of 0.0% with no change (diff = +0.00%), and the statement reflects a stable, data-driven policy posture with no explicit signals of future hikes or cuts. The absence of inflation concerns, growth risks, or directional guidance—combined with the neutral rate movement and stable macro context—indicates no clear hawkish or dovish tilt. The phrase 'sustained FOMC meetings' is contextually misplaced (FOMC is US), suggesting a possible error in metadata, but the actual Swiss rate decision shows no deviation. The neutral bias is reinforced by the lack of forward guidance or risk sentiment shifts.",
-    "tags_to_emit": [],
-    "event_type": "ORACLE_REVIEW_RESOLVED",
-    "resolved_at": "2026-05-16T18:08:18.653146+00:00"
-  },
-  {
-    "trigger_event_id": "eia:natgas:2026-05-01",
-    "action": "HOLD",
-    "oracle_confidence": 0.5,
-    "reasoning": "Event pertains to US natural gas storage, not directly linked to oil, equities, or safe-haven assets. No clear market impact path to tradable assets. Source is EIA, domain is economic, but no transmission channel connects to OIL, XAU, or major forex pairs with clear direction or volatility. Danger score is high, but asset route is non-tradable and contextually isolated.",
-    "tags_to_emit": [],
-    "event_type": "ORACLE_REVIEW_RESOLVED",
-    "resolved_at": "2026-05-16T18:12:10.094005+00:00"
-  },
-  {
-    "trigger_event_id": "ecb:fx:EURCAD",
-    "action": "HOLD",
-    "oracle_confidence": 0.0,
-    "reasoning": "Event is a forex pair (EUR/CAD) with no direct market impact on core assets like oil, gold, or major equities; analysis shows minimal volatility and stable macro conditions; no clear asset route or direction.",
-    "tags_to_emit": [],
-    "event_type": "ORACLE_REVIEW_RESOLVED",
-    "resolved_at": "2026-05-16T18:14:42.296516+00:00"
-  },
-  {
-    "trigger_event_id": "eia:crude:2026-05-01",
-    "action": "HOLD",
-    "oracle_confidence": 0.3,
-    "reasoning": "Event is a routine inventory report with no clear supply disruption, escalation, or risk-off trigger. No directional bias in asset performance beyond minor movements. Source is reliable but context is neutral; no market impact path established.",
-    "tags_to_emit": [],
-    "event_type": "ORACLE_REVIEW_RESOLVED",
-    "resolved_at": "2026-05-16T18:16:18.128129+00:00"
-  },
-  {
-    "trigger_event_id": "bis:policy:GB",
-    "action": "DISCARD",
-    "oracle_confidence": 0.0,
-    "reasoning": "The UK policy rate remained unchanged at 3.75% (no change from previous), with no explicit signals of inflation concerns or economic weakness. The central bank's messaging is described as stable and data-driven, with no directional cues toward hikes or cuts. The absence of any inflation or growth-related concerns, combined with a neutral rate decision, indicates balanced guidance. The context emphasizes stability and non-cyclical conditions, reinforcing a neutral stance.",
-    "tags_to_emit": [],
-    "event_type": "ORACLE_REVIEW_RESOLVED",
-    "resolved_at": "2026-05-16T18:20:22.482794+00:00"
-  },
-  {
-    "trigger_event_id": "eia:natgas:2026-04-24",
-    "action": "HOLD",
-    "oracle_confidence": 0.35,
-    "reasoning": "Event pertains to US natural gas storage, not directly linked to oil, equities, or safe-haven assets. No clear market impact path to tradable assets. Source is EIA, but domain and asset mismatch with preferred market-intelligence events. Direction and transmission channel are ambiguous for tradable assets.",
-    "tags_to_emit": [],
-    "event_type": "ORACLE_REVIEW_RESOLVED",
-    "resolved_at": "2026-05-16T18:23:22.848944+00:00"
-  },
-  {
-    "trigger_event_id": "ecb:fx:EURCHF",
-    "action": "HOLD",
-    "oracle_confidence": 0.3,
-    "reasoning": "Event is a forex pair (EUR/CHF) with no direct market impact on core assets like oil, metals, or equities; analysis shows stable macro conditions and minimal volatility. No clear asset route, direction, or tradable market path is established despite high danger score. Source is limited to FX domain with no transmission channel linking to tradable assets.",
-    "tags_to_emit": [],
-    "event_type": "ORACLE_REVIEW_RESOLVED",
-    "resolved_at": "2026-05-16T18:25:04.726793+00:00"
-  },
-  {
-    "trigger_event_id": "eia:crude:2026-04-24",
-    "action": "HOLD",
-    "oracle_confidence": 0.3,
-    "reasoning": "Event is a routine inventory report with no clear directional impact on oil or safe-haven assets; risk sentiment stable, no escalation or supply disruption; source signal is strong but asset route and direction are neutral or weak (USD only, bias neutral).",
-    "tags_to_emit": [],
-    "event_type": "ORACLE_REVIEW_RESOLVED",
-    "resolved_at": "2026-05-16T18:27:17.182236+00:00"
-  },
-  {
-    "trigger_event_id": "bis:policy:JP",
-    "action": "DISCARD",
-    "oracle_confidence": 0.0,
-    "reasoning": "The policy rate in Japan remained unchanged at 0.75%, with no explicit signal of future rate hikes or cuts. The central bank's messaging is described as stable and data-driven, with no mention of inflation concerns, economic weakness, or disinflationary trends. The absence of directional language—such as 'higher for longer' or 'easing bias'—and the minimal market movement in USDJPY (only +0.28%) suggest a neutral stance. The analysis notes sustained monetary conditions and stable risk sentiment, reinforcing a balanced, non-escalatory policy posture.",
-    "tags_to_emit": [],
-    "event_type": "ORACLE_REVIEW_RESOLVED",
-    "resolved_at": "2026-05-16T18:31:17.927885+00:00"
-  },
-  {
-    "trigger_event_id": "eia:natgas:2026-04-17",
-    "action": "HOLD",
-    "oracle_confidence": 0.35,
-    "reasoning": "Event pertains to US natural gas storage, not directly linked to oil, equities, or safe-haven assets. No clear market impact path to tradable assets. Source is EIA, domain is economic, but no transmission channel connects to OIL, XAU, or major forex pairs with clear direction or volatility. Bias is neutral for USD, and no directional signal emerges for key assets.",
-    "tags_to_emit": [],
-    "event_type": "ORACLE_REVIEW_RESOLVED",
-    "resolved_at": "2026-05-16T18:34:11.335657+00:00"
-  },
-  {
-    "trigger_event_id": "ecb:fx:EURCNY",
-    "action": "HOLD",
-    "oracle_confidence": 0.3,
-    "reasoning": "Event is a forex pair (EUR/CNY) with no direct tradable asset impact; market movements are modest and not linked to oil, safe havens, or broad risk sentiment; no clear asset route or direction.",
-    "tags_to_emit": [],
-    "event_type": "ORACLE_REVIEW_RESOLVED",
-    "resolved_at": "2026-05-16T18:38:03.427784+00:00"
-  },
-  {
-    "trigger_event_id": "eia:crude:2026-04-17",
-    "action": "HOLD",
-    "oracle_confidence": 0.3,
-    "reasoning": "Event is a routine inventory report with no clear directional impact on oil or safe-haven assets; market movements are modest and consistent with stable policy, lacking a clear tradable signal or supply-risk trigger.",
-    "tags_to_emit": [],
-    "event_type": "ORACLE_REVIEW_RESOLVED",
-    "resolved_at": "2026-05-16T18:39:56.087649+00:00"
-  },
-  {
-    "trigger_event_id": "bis:policy:KR",
-    "action": "DISCARD",
-    "oracle_confidence": 0.0,
-    "reasoning": "The policy rate in South Korea remained unchanged at 2.5% with no directional shift (diff = +0.00%). The central bank's statement reflects a stable, data-driven posture with no explicit signals of inflation concerns or economic weakness. The absence of any forward guidance on future hikes or cuts, combined with the lack of inflation or growth commentary, indicates a neutral stance. The context emphasizes stability and non-cyclical conditions, reinforcing no clear bias toward hawkish or dovish action.",
-    "tags_to_emit": [],
-    "event_type": "ORACLE_REVIEW_RESOLVED",
-    "resolved_at": "2026-05-16T18:43:57.983748+00:00"
+    "resolved_at": "2026-05-17T00:09:57.246201+00:00"
   }
 ]

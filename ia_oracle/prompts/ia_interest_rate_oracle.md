@@ -36,3 +36,9 @@ The input includes:
 - **BUY**: High-conviction HAWKISH guidance for the currency.
 - **SELL**: High-conviction DOVISH guidance for the currency.
 - **WAIT**: NEUTRAL or low-confidence guidance.
+
+### Market Context Grounding
+If 'Market Technical Context' (Price Action Divergence) is provided:
+- If your classification (e.g. HAWKISH) aligns with the technical price action (e.g. positive divergence/strength on the currency), upgrade your **Confidence** (0.85+) and set a **BUY/SELL** directive accordingly.
+- If the price action strongly conflicts with the fundamental guidance, reduce your **Confidence** and prefer a **WAIT** directive.
+- Mention "Price action confirms central bank guidance" in the reasoning if applicable.

@@ -108,6 +108,7 @@ def _build_user_prompt(req: OracleReviewRequest) -> str:
             "scores":             req.scores,
             "trade_emit_score":   req.trade_emit_score,
             "candidate_directives": req.candidate_directives,
+            "market_context":     req.market_context,
         },
         ensure_ascii=False,
         separators=(",", ":"),
@@ -432,6 +433,22 @@ class OracleWorker(Loggable):
                     
                     req.regional_context = " | ".join(hotspots) if hotspots else "No major regional hotspots identified."
                 
+                # --- Grounding with Market Opportunities (Technical Context) ---
+                if self._strategist_store:
+                    try:
+                        opps = await self._strategist_store.fetch_market_opportunities(limit=5)
+                        if opps:
+                            lines = []
+                            for o in opps:
+                                lines.append(
+                                    f"{o['symbol']}: Div={o['divergence']:+.2f} "
+                                    f"(Base:{o['base_strength']:.2f} Quote:{o['quote_strength']:.2f})"
+                                )
+                            req.market_context = " | ".join(lines)
+                            self.log.debug("[OracleWorker] Injected Market Opportunities context.")
+                    except Exception as me:
+                        self.log.warning("[OracleWorker] Market context lookup failed: %s", me)
+
                 prompt_type = req.prompt_type or "trend"
                 if (
                     prompt_type == "trend"

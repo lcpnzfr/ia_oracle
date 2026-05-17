@@ -52,6 +52,7 @@ class StrategistWorker:
         self._last_pulse_at = datetime.fromtimestamp(0, tz=timezone.utc)
         self._last_item_ids_hash = None
         self._synthesis_lock = asyncio.Lock()
+        self._current_prices: Dict[str, float] = {}
 
     async def start(self):
         """Initialize IA provider and start the synthesis loop/trigger listener."""
@@ -313,7 +314,15 @@ class StrategistWorker:
                     stage="domains_bluf",
                 )
                 
-                pulse = self._wrap_global_bluf(final_bluf, stories, domains, market_context)
+                # Pass 3: Market Implications (Refinement #5: Fundamental-Technical Fusion)
+                market_implications = await self._generate_market_implications(
+                    final_bluf,
+                    market_context,
+                    run_id=run_id,
+                    pulse_id=pulse_id,
+                )
+                
+                pulse = self._wrap_global_bluf(final_bluf, stories, domains, market_context, market_implications)
                 
                 # Finalize and Save
                 pulse["reason"] = reason
@@ -379,6 +388,12 @@ class StrategistWorker:
                     await self._emit_regional_bias_tags(pulse)
                 except Exception as reg_e:
                     log.warning("Failed to emit regional bias tags: %s", reg_e)
+
+                # Emit High Conviction Trading Signals (Refinement #5: Fundamental-Technical Fusion)
+                try:
+                    await self._emit_high_conviction_signals(pulse)
+                except Exception as sig_e:
+                    log.warning("Failed to emit high conviction signals: %s", sig_e)
                 
                 return "COMPLETED"
                 
@@ -509,7 +524,12 @@ class StrategistWorker:
             
             context = "\n---\n".join(context_parts)
             
-            raw = await self.provider.generate(f"CLUSTER ITEMS:\n{context}", system_prompt=system_prompt)
+            raw = await self.provider.generate(
+                f"CLUSTER ITEMS:\n{context}", 
+                system_prompt=system_prompt,
+                options={"num_ctx": 4096, "num_predict": 512},
+                timeout=300.0
+            )
             story_data = self._parse_json(raw)
             await self.store.save_synthesis_checkpoint(
                 run_id=run_id,
@@ -558,7 +578,12 @@ class StrategistWorker:
 
         for domain, d_stories in domain_groups.items():
             context = json.dumps(d_stories, indent=2)
-            raw = await self.provider.generate(f"DOMAIN STORIES:\n{context}", system_prompt=system_prompt)
+            raw = await self.provider.generate(
+                f"DOMAIN STORIES:\n{context}", 
+                system_prompt=system_prompt,
+                options={"num_ctx": 8192, "num_predict": 1024},
+                timeout=600.0
+            )
             d_data = self._parse_json(raw)
             await self.store.save_synthesis_checkpoint(
                 run_id=run_id,
@@ -617,11 +642,13 @@ class StrategistWorker:
             restore_format_json = None
             if hasattr(self.provider, "_config"):
                 restore_format_json = self.provider._config.extra.get("format_json")
-                self.provider._config.extra["format_json"] = False
+                self.provider._config.extra["format_json"] = True
             try:
                 raw = await self.provider.generate(
                     f"Summarize these histories: {prompt_payload}",
                     system_prompt=system_prompt,
+                    options={"num_ctx": 8192, "num_predict": 1024},
+                    timeout=600.0
                 )
             finally:
                 if restore_format_json is not None and hasattr(self.provider, "_config"):
@@ -683,9 +710,12 @@ class StrategistWorker:
             restore_format_json = self.provider._config.extra.get("format_json")
             self.provider._config.extra["format_json"] = False
         try:
+            # Increase timeout for complex synthesis
             raw = await self.provider.generate(
                 f"New histories: {prompt_payload}",
                 system_prompt=system_prompt,
+                options={"num_ctx": 8192, "num_predict": 1024},
+                timeout=600.0
             )
         finally:
             if restore_format_json is not None and hasattr(self.provider, "_config"):
@@ -726,8 +756,14 @@ class StrategistWorker:
         stories: List[Dict[str, Any]],
         domains: Dict[str, str],
         market_context: str,
+        market_implications: List[Dict[str, Any]] = None,
     ) -> Dict[str, Any]:
-        bluf = " ".join(str(raw or "").replace("\n", " ").split()).strip()
+        if isinstance(raw, dict):
+            bluf_text = raw.get("bluf") or str(raw)
+        else:
+            bluf_text = str(raw or "")
+            
+        bluf = " ".join(bluf_text.replace("\n", " ").split()).strip()
         story_titles = [str(s.get("title") or s.get("cluster_id") or "Untitled story") for s in stories]
         return {
             "bluf": bluf[:1200] or "No dominant macro narrative identified.",
@@ -740,7 +776,7 @@ class StrategistWorker:
                 "asia_pacific": [],
                 "africa": [],
             },
-            "market_implications": [
+            "market_implications": market_implications or [
                 {
                     "asset": "USD",
                     "sentiment": "NEUTRAL",
@@ -753,6 +789,48 @@ class StrategistWorker:
             "domain_pulses": domains,
             "market_context": market_context,
         }
+
+    async def _generate_market_implications(
+        self,
+        bluf: str,
+        market_context: str,
+        run_id: str,
+        pulse_id: str,
+    ) -> List[Dict[str, Any]]:
+        """Pass 3: Generate actionable market implications by fusing BLUF and Technical Context."""
+        prompt_path = Path(__file__).parent / "prompts" / "ia_strategist_implications.md"
+        system_prompt = prompt_path.read_text(encoding="utf-8") if prompt_path.exists() else "Return a JSON list of market implications."
+        
+        user_prompt = f"BLUF: {bluf}\n\nMarket Technical Context: {market_context}"
+        
+        log.info("Generating Market Implications... run_id=%s", run_id)
+        
+        # Ensure LLM provider uses JSON mode if possible
+        restore_format_json = None
+        if hasattr(self.provider, "_config"):
+            restore_format_json = self.provider._config.extra.get("format_json")
+            self.provider._config.extra["format_json"] = True
+            
+        try:
+            raw = await self.provider.generate(
+                user_prompt, 
+                system_prompt=system_prompt,
+                options={"num_ctx": 8192, "num_predict": 1024},
+                timeout=600.0
+            )
+            implications = self._parse_json(raw)
+            if isinstance(implications, list):
+                log.info("Successfully generated %d market implications.", len(implications))
+                return implications
+            else:
+                log.warning("Market implications generation returned invalid format (not a list).")
+                return []
+        except Exception as e:
+            log.warning("Failed to generate market implications: %s", e)
+            return []
+        finally:
+            if restore_format_json is not None and hasattr(self.provider, "_config"):
+                self.provider._config.extra["format_json"] = restore_format_json
 
     def _compact_story_for_global(self, story: Dict[str, Any]) -> Dict[str, Any]:
         """Keep final synthesis focused and avoid oversized Ollama requests."""
@@ -805,28 +883,132 @@ class StrategistWorker:
             "market_context": market_context,
         }
 
-    async def _fetch_market_context(self) -> str:
-        """Fetch current prices for core assets to provide divergence awareness."""
-        try:
-            # Note: YahooFinanceProvider methods are sync, but we call them here.
-            # In a production async loop, we'd use run_in_executor.
-            provider = YahooFinanceProvider(ProviderConfig(provider_type="YAHOO"))
-            symbols = ["EURUSD", "USDJPY", "XAUUSD", "CL=F", "^GSPC", "^TNX"]
+    async def _emit_high_conviction_signals(self, pulse: Dict[str, Any]) -> None:
+        """Analyzes market implications and emits TradingSignals for high-conviction matches."""
+        implications = pulse.get("market_implications", [])
+        if not implications or not isinstance(implications, list):
+            return
+
+        signals_emitted = 0
+        for imp in implications:
+            # Threshold: Only emit for HIGH or CRITICAL impact with BULLISH/BEARISH sentiment
+            impact = str(imp.get("impact_level", "")).upper()
+            sentiment = str(imp.get("sentiment", "")).upper()
+            confidence = float(imp.get("confidence", 0.0))
             
-            lines = []
-            for s in symbols:
-                # get last 1 candle (D1) to get price
-                df = provider.get_historical_data(s, "D1", count=2)
-                if not df.empty:
-                    last = df.iloc[-1]
-                    prev = df.iloc[-2] if len(df) > 1 else last
-                    change = ((last["close"] - prev["close"]) / prev["close"]) * 100 if prev["close"] != 0 else 0
-                    lines.append(f"{s}: {last['close']:.4f} ({change:+.2f}%)")
+            if impact not in ("HIGH", "CRITICAL") or sentiment not in ("BULLISH", "BEARISH"):
+                continue
+                
+            if confidence < 0.70: # Minimum confidence threshold for meta-signals
+                continue
+
+            asset = str(imp.get("asset", "")).replace("/", "").replace(" ", "").upper()
+            # Normalize common symbols
+            if asset == "EURUSD": asset = "EURUSD" # Placeholder for more complex mapping if needed
+            
+            # Map sentiment to direction
+            direction = "BUY" if sentiment == "BULLISH" else "SELL"
+            
+            # Get current price from cache or default to 0
+            entry_price = self._current_prices.get(asset, 0.0)
+            
+            # Create a TradingSignal-compatible payload
+            signal_id = f"oracle:{uuid.uuid4().hex[:12]}"
+            reasoning = f"ORACLE HIGH CONVICTION: {imp.get('reasoning')} [Pulse: {pulse.get('_id')}]"
+            
+            signal_payload = {
+                "event_type":    "SIGNAL_GENERATED",
+                "signal_id":     signal_id,
+                "session_id":    "ORACLE_STRATEGIST",
+                "session_name":  "Oracle Strategist Meta-Signals",
+                "symbol":        asset,
+                "timeframe":     "D1", # Meta-signals are usually macro/daily
+                "direction":     direction,
+                "price":         entry_price,
+                "tp":            float(imp.get("tp", 0.0)),
+                "sl":            float(imp.get("sl", 0.0)),
+                "confidence":    confidence,
+                "strategy_name": "IA_ORACLE_STRATEGIST",
+                "expired":       False,
+                "outcome":       None,
+                "generated_at":  datetime.now(timezone.utc).isoformat(),
+                "reasoning":     reasoning,
+            }
+            
+            # Publish to trading.signals
+            ok = await self._mq.publish("trading.signals", signal_payload)
+            if ok:
+                signals_emitted += 1
+                log.info("🚀 EMITTED HIGH CONVICTION SIGNAL: %s %s @ %s (Conf: %.2f)", 
+                         direction, asset, entry_price, confidence)
+        
+        if signals_emitted > 0:
+            log.info("Total High Conviction Signals emitted: %d", signals_emitted)
+
+    async def _fetch_market_context(self) -> str:
+        """Fetch current prices and technical divergences to provide grounded awareness."""
+        lines = []
+        
+        # 1. Technical Context (MongoDB - Divergences)
+        try:
+            opps = await self.store.fetch_market_opportunities(limit=12) # Increased limit
+            if opps:
+                lines.append("--- Technical Divergences ---")
+                for o in opps:
+                    lines.append(
+                        f"{o['symbol']}: Div={o['divergence']:+.2f} "
+                        f"(Base:{o['base_strength']:.2f} Quote:{o['quote_strength']:.2f})"
+                    )
+                lines.append("")
+        except Exception as e:
+            log.warning("Failed to fetch market opportunities for Strategist: %s", e)
+
+        # 2. Price Context (Yahoo Finance)
+        try:
+            # YahooFinanceProvider methods are sync, so we wrap them
+            def _get_prices():
+                provider = YahooFinanceProvider(ProviderConfig(provider_type="YAHOO"))
+                symbols = ["EURUSD", "USDJPY", "GBPUSD", "AUDUSD", "USDCAD", "USDCHF", "XAUUSD", "CL=F", "^GSPC", "^TNX"]
+                price_results = []
+                price_map = {}
+                
+                for s in symbols:
+                    try:
+                        # get last 2 candles (D1) to get price and change
+                        df = provider.get_historical_data(s, "D1", count=2)
+                        if not df.empty:
+                            last = df.iloc[-1]
+                            prev = df.iloc[-2] if len(df) > 1 else last
+                            price = float(last["close"])
+                            change = ((price - float(prev["close"])) / float(prev["close"])) * 100 if prev["close"] != 0 else 0
+                            
+                            # Normalize symbol for internal mapping
+                            norm_s = s.replace("=X", "").replace("=F", "").replace("^", "")
+                            if norm_s == "GSPC": norm_s = "SP500"
+                            if norm_s == "TNX": norm_s = "US10Y"
+                            
+                            price_map[norm_s] = price
+                            price_results.append(f"{norm_s}: {price:.4f} ({change:+.2f}%)")
+                    except Exception as sym_e:
+                        log.debug("Failed to fetch price for %s: %s", s, sym_e)
+                return price_results, price_map
+
+            loop = asyncio.get_event_loop()
+            price_lines, price_map = await loop.run_in_executor(None, _get_prices)
+            
+            # Update internal price cache
+            self._current_prices.update(price_map)
+            
+            if price_lines:
+                lines.append("--- Current Market Prices ---")
+                lines.extend(price_lines)
             
             return "\n".join(lines)
         except Exception as e:
-            log.warning("Failed to fetch market context for Strategist: %s", e)
-            return "Market data unavailable."
+            log.warning("Failed to fetch price context for Strategist: %s", e)
+            if not lines:
+                return "Market data unavailable."
+            return "\n".join(lines)
 
     # ── Utilities ─────────────────────────────────────────────────────
 

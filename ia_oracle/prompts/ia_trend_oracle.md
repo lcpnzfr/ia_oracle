@@ -79,6 +79,11 @@ Important interpretation rules:
 - Never create a tag just because an asset is mentioned.
 - Never create a tag for entertainment, celebrity gossip, self-promotion, anniversary posts, or historical remembrance unless it reports a new active threat.
 - **Strict Format (Implicit)**: Your reasoning_summary should reflect the trade-off between safe-haven flows and economic fundamental impact.
+- **Market Context Grounding (Technical Divergence)**:
+    - You will receive `market_context` containing current price divergences and currency strengths.
+    - If the fundamental news (e.g. Hawkish Fed, Energy Supply Shock, Geopolitical Risk) aligns with the technical price action (e.g. Base currency strength matching bullish news), you SHOULD promote the signal to 'High Conviction' by increasing the directive's `risk_score` (0.8+) and `confidence`.
+    - If the price action conflicts with the news (e.g. Hawkish news but the currency is technically weak), remain cautious and reduce `confidence`.
+    - In the `reason` field of the directive, mention if "Price action confirms fundamental narrative" or "Divergence supports conviction".
 
 Asset universe:
 

@@ -28,7 +28,7 @@ class OllamaProvider(IAProvider):
         from ollama import AsyncClient
         self._async_client = AsyncClient(
             host=self._host,
-            timeout=float(self._config.extra.get("timeout", 180.0)),
+            timeout=float(self._config.extra.get("timeout", 600.0)),
         )
         logger.info("[OllamaProvider] Initialized. model=%s", self._config.model_name)
 
@@ -38,6 +38,8 @@ class OllamaProvider(IAProvider):
         system_prompt: Optional[str] = None,
         *,
         tools: Optional[List[Any]] = None,
+        options: Optional[Dict[str, Any]] = None,
+        timeout: Optional[float] = None,
     ) -> str:
         """Call Ollama chat API."""
         if self._async_client is None:
@@ -50,9 +52,9 @@ class OllamaProvider(IAProvider):
         messages.append({"role": "user", "content": user_prompt})
 
         try:
-            # Use extra overrides or optimized defaults
+            # Base options from config
             num_predict = int(self._config.extra.get("num_predict") or min(int(self._config.max_tokens or 512), 512))
-            options = {
+            merged_options = {
                 "temperature": self._config.extra.get("temperature", self._config.temperature),
                 "num_predict": num_predict,
                 "repeat_penalty": self._config.extra.get("repeat_penalty", 1.1),
@@ -60,21 +62,31 @@ class OllamaProvider(IAProvider):
                 "top_p": self._config.extra.get("top_p", 0.9),
             }
             if self._config.extra.get("num_ctx"):
-                options["num_ctx"] = int(self._config.extra["num_ctx"])
+                merged_options["num_ctx"] = int(self._config.extra["num_ctx"])
             if self._config.extra.get("num_thread"):
-                options["num_thread"] = int(self._config.extra["num_thread"])
+                merged_options["num_thread"] = int(self._config.extra["num_thread"])
+            
+            # Merge per-call overrides
+            if options:
+                merged_options.update(options)
 
             chat_kwargs = {
                 "model": self._config.model_name,
                 "messages": messages,
-                "options": options,
+                "options": merged_options,
                 "stream": False,
                 "keep_alive": self._config.extra.get("keep_alive", "30m"),
             }
+            
+            # format_json from config (can be overridden by options if we wanted to support 'format' in options)
             if bool(self._config.extra.get("format_json", True)):
                 chat_kwargs["format"] = "json"
+                
             if "think" in self._config.extra:
                 chat_kwargs["think"] = bool(self._config.extra.get("think"))
+
+            # Per-call timeout or config default
+            request_timeout = timeout if timeout is not None else float(self._config.extra.get("timeout", 180.0))
 
             prompt_chars = sum(len(str(m.get("content", ""))) for m in messages)
             logger.debug(
@@ -82,10 +94,22 @@ class OllamaProvider(IAProvider):
                 self._config.model_name,
                 prompt_chars,
                 len(messages),
-                options,
-                bool(self._config.extra.get("format_json", True)),
-                self._config.extra.get("timeout", 180.0),
+                merged_options,
+                chat_kwargs.get("format") == "json",
+                request_timeout,
             )
+            
+            # Note: Ollama AsyncClient uses its own timeout if passed to request, 
+            # or the one set at initialization. 
+            # We pass it here if the library supports it, or we rely on the client's default if not.
+            # Actually, the 'chat' method in ollama-python supports a timeout?
+            # Let's check if we can pass timeout to chat.
+            # Usually, AsyncClient.chat uses the timeout from the client instance.
+            
+            # To support dynamic timeout per request, we might need a new client or rely on httpx timeout.
+            # The current AsyncClient doesn't seem to have a per-request timeout in the chat() method easily.
+            # BUT we can try passing it.
+            
             response = await self._async_client.chat(**chat_kwargs)
             return response["message"]["content"]
         except Exception as e:

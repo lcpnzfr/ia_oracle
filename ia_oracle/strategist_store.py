@@ -112,7 +112,13 @@ class StrategistStore(BaseStore):
             {"$limit": limit}
         ]
         
-        results = await self._mongo.get_collection(self.COLLECTION_INTEL).aggregate(pipeline).to_list(limit)
+        # MongoManager is sync-based with async wrappers. 
+        # For aggregate, we need to wrap the whole blocking operation.
+        def _run_aggregation():
+            coll = self._mongo.get_collection(self.COLLECTION_INTEL)
+            return list(coll.aggregate(pipeline))
+
+        results = await self._mongo._run_mongo_io(_run_aggregation)
         for item in results:
             extra = item.setdefault("extra", {})
             if not extra.get("analysis_summary"):
@@ -312,19 +318,23 @@ class StrategistStore(BaseStore):
         return checkpoint_id
 
     async def get_latest_pulse(self) -> Optional[Dict[str, Any]]:
-        """Retrieve the most recent SITREP snapshot."""
+        """Retrieve the most recent Global Pulse snapshot."""
         results = await self._mongo.async_find_many(
             self.COLLECTION_PULSE,
-            {
-                "$or": [
-                    {"status": "COMPLETED"},
-                    {"status": {"$exists": False}},
-                ],
-            },
+            filter_={},
             sort=[("timestamp", -1)],
             limit=1
         )
         return results[0] if results else None
+
+    async def fetch_market_opportunities(self, limit: int = 10) -> List[Dict[str, Any]]:
+        """Fetch the latest identified market opportunities (divergences)."""
+        return await self._mongo.async_find_many(
+            "market_opportunities",
+            filter_={},
+            sort=[("created_at", -1)],
+            limit=limit
+        )
 
     async def get_pulse_for_currencies(self, currencies: List[str], hours: int = 24) -> Optional[Dict[str, Any]]:
         """Retrieve the latest pulse that affected any of the specified currencies."""
