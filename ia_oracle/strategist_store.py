@@ -216,6 +216,9 @@ class StrategistStore(BaseStore):
             f"progress.{stage}.updated_at": now,
             f"progress.{stage}.status": status,
         }
+        if status == "COMPLETED":
+            update_fields["completed_at"] = now
+            update_fields["timestamp"] = now
 
         for key, value in (fields or {}).items():
             update_fields[key] = value
@@ -321,8 +324,8 @@ class StrategistStore(BaseStore):
         """Retrieve the most recent Global Pulse snapshot."""
         results = await self._mongo.async_find_many(
             self.COLLECTION_PULSE,
-            filter_={},
-            sort=[("timestamp", -1)],
+            filter_={"status": "COMPLETED"},
+            sort=[("timestamp", -1), ("completed_at", -1), ("updated_at", -1)],
             limit=1
         )
         return results[0] if results else None
@@ -332,7 +335,7 @@ class StrategistStore(BaseStore):
         return await self._mongo.async_find_many(
             "market_opportunities",
             filter_={},
-            sort=[("created_at", -1)],
+            sort=[("updated_at", -1), ("created_at", -1)],
             limit=limit
         )
 

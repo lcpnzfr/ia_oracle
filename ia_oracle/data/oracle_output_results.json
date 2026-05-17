@@ -1,20 +1,20 @@
 [
   {
-    "trigger_event_id": "crypto:solana",
-    "action": "DISCARD",
-    "oracle_confidence": 0.0,
-    "reasoning": "Event is a crypto price point with no tradable market path, no asset route, no clear direction or transmission channel. Domain context shows stable macro conditions with minimal volatility; no risk-off or supply disruption signals. Source is crypto-specific with no link to oil, equities, or safe havens. No valid tradable asset route or market impact.",
+    "trigger_event_id": "ecb:fx:EURBRL",
+    "action": "HOLD",
+    "oracle_confidence": 0.35,
+    "reasoning": "The event involves a cybersecurity threat in the Americas with no direct financial impact or clear tradable market path. While danger score is above threshold, the domain context shows low volatility and risk neutrality, and no asset shows clear directional bias or transmission channel. No oil, safe-haven, or macro shift is evident. The EUR/BRL pair is not a key market route, and the threat is isolated to industrial control systems without financial exposure.",
     "tags_to_emit": [],
     "event_type": "ORACLE_REVIEW_RESOLVED",
-    "resolved_at": "2026-05-17T00:07:06.069244+00:00"
+    "resolved_at": "2026-05-17T18:04:46.038570+00:00"
   },
   {
-    "trigger_event_id": "crypto:avalanche-2",
+    "trigger_event_id": "ecb:fx:EURCAD",
     "action": "HOLD",
-    "oracle_confidence": 0.3,
-    "reasoning": "Event is crypto-specific (Avalanche $9.29) with no clear tradable asset route or market impact; domain context shows stable monetary policy and minimal volatility; no direct link to oil, safe havens, or macro risk-off shifts; source is Coingecko with low signal weight in tradable markets.",
+    "oracle_confidence": 0.5,
+    "reasoning": "Cybersecurity threat detection in industrial control systems is noted, but no direct financial impact or clear tradable market path is established. The event occurs in a regional context (AMERICAS) with low volatility and risk neutrality, and no clear directional bias for key assets like EUR/USD, USD/JPY, or XAU/USD is evident. Market movements are modest and consistent with equilibrium, lacking a strong transmission channel to a specific asset or direction.",
     "tags_to_emit": [],
     "event_type": "ORACLE_REVIEW_RESOLVED",
-    "resolved_at": "2026-05-17T00:09:57.246201+00:00"
+    "resolved_at": "2026-05-17T18:08:13.256044+00:00"
   }
 ]
