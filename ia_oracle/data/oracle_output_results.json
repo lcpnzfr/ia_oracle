@@ -79,5 +79,534 @@
     "tags_to_emit": [],
     "event_type": "ORACLE_REVIEW_RESOLVED",
     "resolved_at": "2026-05-17T20:57:56.649973+00:00"
+  },
+  {
+    "trigger_event_id": "wsj:cc4d91d17118a1ec",
+    "action": "HOLD",
+    "oracle_confidence": 0.3,
+    "reasoning": "Event discusses Germany's economic model but lacks direct link to tradable assets; no clear supply risk, geopolitical escalation, or market transmission channel. Cybersecurity threats are noted but no financial impact observed. Market movements are modest and within equilibrium, with no directional bias in key assets. No clear asset route or direction.",
+    "tags_to_emit": [],
+    "event_type": "ORACLE_REVIEW_RESOLVED",
+    "resolved_at": "2026-05-17T21:06:42.655254+00:00"
+  },
+  {
+    "trigger_event_id": "euronews_en:e6d6b56ac51806d0",
+    "action": "HOLD",
+    "oracle_confidence": 0.35,
+    "reasoning": "Drone strike near UAE nuclear plant is geographically localized and lacks verified supply disruption or radiation risk; no direct impact on oil or safe-haven assets is evident. Market reactions are muted and consistent with low-volatility, risk-neutral conditions. Cybersecurity threat is unconfirmed and not linked to financial markets. Regional context shows no escalation in energy or geopolitical supply chains. No clear tradable market path or directional bias in preferred assets.",
+    "tags_to_emit": [],
+    "event_type": "ORACLE_REVIEW_RESOLVED",
+    "resolved_at": "2026-05-17T21:12:29.432271+00:00"
+  },
+  {
+    "trigger_event_id": "euronews_en:642b2a8c3ef2d983",
+    "action": "DISCARD",
+    "oracle_confidence": 0.0,
+    "reasoning": "Event involves a maritime accident in the Maldives with no link to oil, geopolitics, or financial market transmission; no tradable asset route or market impact identified; regional context is non-critical; candidate directives pertain to minor currencies with no market path.",
+    "tags_to_emit": [],
+    "event_type": "ORACLE_REVIEW_RESOLVED",
+    "resolved_at": "2026-05-17T21:19:48.232943+00:00"
+  },
+  {
+    "trigger_event_id": "le_monde_en:cdf16eb9566a81b7",
+    "action": "DISCARD",
+    "oracle_confidence": 0.0,
+    "reasoning": "Event is a social/immigration issue in the Americas with no direct link to energy, financial stability, or market-moving risk factors. No transmission channel to tradable assets like OIL, XAU, or forex pairs. Domain and regional context show no risk-off or supply-chain triggers. Cybersecurity threat is isolated and lacks financial impact. No asset route or clear market direction.",
+    "tags_to_emit": [],
+    "event_type": "ORACLE_REVIEW_RESOLVED",
+    "resolved_at": "2026-05-17T21:29:02.113503+00:00"
+  },
+  {
+    "trigger_event_id": "le_monde_en:1b389bfe7f11f139",
+    "action": "HOLD",
+    "oracle_confidence": 0.35,
+    "reasoning": "Ukraine drone strike in Russia is regional and does not directly impact oil supply, shipping, or safe-haven assets. No transmission channel links to OIL, XAU, or major FX pairs. Event is within AMERICAS regional context with no cross-domain risk (e.g., Middle East, Hormuz, sanctions). Domain context shows elevated global risk but no clear asset route or direction. Candidate directives involve non-tradable currencies (UAH, RUB, EUR, INR) with neutral bias and low confidence.",
+    "tags_to_emit": [],
+    "event_type": "ORACLE_REVIEW_RESOLVED",
+    "resolved_at": "2026-05-17T21:32:52.723304+00:00"
+  },
+  {
+    "trigger_event_id": "le_monde_en:a751a17b44de6121",
+    "action": "DISCARD",
+    "oracle_confidence": 0.0,
+    "reasoning": "Event involves a diving accident in the Maldives with no link to oil, shipping, geopolitics, or financial markets; regional context includes Russia and Austria, not a recognized hotspot for energy or risk transmission; no tradable market path or asset route established; domain and macro context point to geopolitical risks in Middle East/Hormuz, but this event is unrelated and lacks transmission channel.",
+    "tags_to_emit": [],
+    "event_type": "ORACLE_REVIEW_RESOLVED",
+    "resolved_at": "2026-05-17T21:37:06.359719+00:00"
+  },
+  {
+    "trigger_event_id": "bis:policy:CN",
+    "action": "DISCARD",
+    "oracle_confidence": 0.0,
+    "reasoning": "The Chinese policy rate remained unchanged at 3.0% in July 2026, with no explicit signal of future rate hikes or cuts. The central bank's messaging is described as stable and data-driven, with no indication of inflationary pressures or economic weakness. While global risk sentiment is elevated due to geopolitical and natural events, these do not directly influence the monetary policy stance in China. The absence of directional language—such as 'persistent inflation' or 'growth concerns'—and the lack of any shift in rate guidance point to a neutral posture. The market context shows minimal technical divergences, reflecting equilibrium, which aligns with the central bank's stable messaging. No clear hawkish or dovish cues are present in the trigger event or metadata.",
+    "tags_to_emit": [],
+    "event_type": "ORACLE_REVIEW_RESOLVED",
+    "resolved_at": "2026-05-17T21:42:18.220153+00:00"
+  },
+  {
+    "trigger_event_id": "bis:policy:CA",
+    "action": "DISCARD",
+    "oracle_confidence": 0.0,
+    "reasoning": "The Canadian policy rate remained unchanged at 2.25% with no numerical change (diff = +0.00%), indicating no explicit signal of future rate hikes or cuts. The central bank's messaging is described as stable and data-driven, with no language indicating concern about inflation, growth, or risk. The broader macro context shows a stable environment with minimal technical divergences and no clear directional policy shift. While global risk sentiment is elevated due to geopolitical and natural hazards, these do not directly influence the rate decision. The absence of any hawkish or dovish language in the trigger event, combined with a neutral rate decision, supports a neutral bias. Price action in the market context shows modest divergences, consistent with a stable, equilibrium market—this aligns with the central bank's neutral guidance.",
+    "tags_to_emit": [],
+    "event_type": "ORACLE_REVIEW_RESOLVED",
+    "resolved_at": "2026-05-17T21:46:37.700797+00:00"
+  },
+  {
+    "trigger_event_id": "bis:policy:GB",
+    "action": "DISCARD",
+    "oracle_confidence": 0.0,
+    "reasoning": "The UK policy rate remained unchanged at 3.75% with no numerical change (diff = +0.00%), indicating no explicit signal of future rate hikes or cuts. The central bank's statement is described in the context as 'stable, data-driven' with no mention of inflation concerns, growth risks, or directional policy shifts. While global risk sentiment is elevated due to geopolitical and natural hazards, this does not translate into a clear monetary policy stance in the UK. The absence of any directional language—such as 'persistent inflation' or 'recession risks'—and the neutral rate decision, point to a balanced, non-committal guidance. Price action in GBP pairs (e.g., GBPCAD showing positive divergence) suggests underlying strength, but since the guidance is neutral, the technical signal does not override the fundamental neutrality. Thus, the guidance is best classified as neutral, with high confidence due to clear absence of hawkish or dovish cues.",
+    "tags_to_emit": [],
+    "event_type": "ORACLE_REVIEW_RESOLVED",
+    "resolved_at": "2026-05-17T21:50:15.227534+00:00"
+  },
+  {
+    "trigger_event_id": "bis:policy:CH",
+    "action": "DISCARD",
+    "oracle_confidence": 0.0,
+    "reasoning": "The Swiss National Bank (SNB) maintained its policy rate at 0.0% with no change (diff = +0.00%), indicating no shift in monetary policy stance. The absence of any explicit forward guidance on future rate movements—such as signals of rate hikes or cuts—aligns with a neutral posture. The broader macro context shows a stable, data-driven policy environment in the US, but no direct inflation or growth concerns are raised in the Swiss context. While global risk sentiment is elevated due to geopolitical and natural hazards, these do not translate into explicit central bank policy signals. The lack of directional language in the trigger event and the absence of inflation or growth concerns in the regional or domain context support a neutral bias. Price action in CHFJPY shows a negative divergence (Div = -4.05), which may reflect market expectations of stability, but this does not override the fundamental neutrality of the rate decision. Thus, the guidance is neutral, and the market remains in equilibrium despite rising risk perception.",
+    "tags_to_emit": [],
+    "event_type": "ORACLE_REVIEW_RESOLVED",
+    "resolved_at": "2026-05-17T21:54:48.956223+00:00"
+  },
+  {
+    "trigger_event_id": "bis:policy:JP",
+    "action": "DISCARD",
+    "oracle_confidence": 0.0,
+    "reasoning": "The Japanese policy rate remained unchanged at 0.75%, with no explicit signal of future rate hikes or cuts. The central bank's statement reflects a stable, data-driven posture without any indication of inflation concerns or economic weakness. The absence of directional language—such as 'persistent inflation' or 'growth risks'—and the lack of any forward guidance on rate changes point to a neutral stance. While global risk sentiment is elevated due to geopolitical and natural hazards, these do not directly influence the monetary policy decision. The policy action is consistent with a steady, non-reactive approach, aligning with a neutral bias. Price action in the broader forex market shows minimal divergence, suggesting market equilibrium, which confirms the central bank's guidance is not driving significant directional movement.",
+    "tags_to_emit": [],
+    "event_type": "ORACLE_REVIEW_RESOLVED",
+    "resolved_at": "2026-05-17T21:58:16.896583+00:00"
+  },
+  {
+    "trigger_event_id": "bis:policy:KR",
+    "action": "DISCARD",
+    "oracle_confidence": 0.0,
+    "reasoning": "The South Korea policy rate remained unchanged at 2.5% with no directional shift (diff = +0.00%), indicating no explicit signal of future rate hikes or cuts. The central bank's statement is absent in the provided body, and the analysis summary is empty, resulting in no clear inflation or growth concerns being articulated. The macro context highlights global risk sentiment and geopolitical tensions, but these do not directly influence South Korea's monetary policy stance. There is no mention of inflation, growth, or financial stability concerns in the regional or domain context. The absence of any keywords such as 'persistent inflation', 'disinflation', 'growth slowdown', or 'higher for longer' supports a neutral posture. While global risk sentiment is elevated, it does not translate into a clear policy bias for Korea. Price action data (e.g., EURNOK, EURCAD, etc.) is not directly relevant to KRW, and no divergence is reported in the KRW-specific market context. Thus, the guidance is neutral and grounded in data inactivity.",
+    "tags_to_emit": [],
+    "event_type": "ORACLE_REVIEW_RESOLVED",
+    "resolved_at": "2026-05-17T22:01:24.413036+00:00"
+  },
+  {
+    "trigger_event_id": "bis:policy:IN",
+    "action": "DISCARD",
+    "oracle_confidence": 0.0,
+    "reasoning": "The Indian policy rate remained unchanged at 5.25% with no directional shift (diff = +0.00%), indicating no explicit signal of future rate hikes or cuts. The central bank's statement lacks clear language expressing concern about inflation, growth, or financial stability, and there is no mention of 'higher for longer' or 'wait and see' policy bias. The macro context highlights global risk sentiment and geopolitical tensions, but these do not directly influence the Indian rate decision. The absence of any forward guidance or tone shift—such as inflation concerns or growth slowdowns—supports a neutral stance. While the market context shows minimal technical divergences and stable asset prices, this aligns with a neutral policy posture rather than a directional bias.",
+    "tags_to_emit": [],
+    "event_type": "ORACLE_REVIEW_RESOLVED",
+    "resolved_at": "2026-05-17T22:08:34.448772+00:00"
+  },
+  {
+    "trigger_event_id": "bis:policy:XM",
+    "action": "DISCARD",
+    "oracle_confidence": 0.0,
+    "reasoning": "The Euro Area policy rate remained unchanged at 2.0% (no change from previous rate), signaling a stable and data-driven monetary policy posture. There is no explicit language indicating concern about inflation, growth, or risk, nor any directional signal toward future hikes or cuts. The absence of a rate move, combined with a stable macro environment and minimal technical divergences in asset prices, reflects a neutral stance. While global risk sentiment is elevated due to geopolitical and natural hazards, these do not directly influence the central bank's rate decision. The guidance is consistent with a 'wait-and-see' approach, with no clear hawkish or dovish tilt. Price action in EURUSD shows a negative divergence (Div = -4.17), which slightly conflicts with a hawkish guidance, but given the actual neutral rate decision, this divergence is likely a reflection of market risk sentiment rather than policy bias. Thus, the guidance aligns with the technical context in terms of stability, reinforcing the neutral classification.",
+    "tags_to_emit": [],
+    "event_type": "ORACLE_REVIEW_RESOLVED",
+    "resolved_at": "2026-05-17T22:15:44.723344+00:00"
+  },
+  {
+    "trigger_event_id": "bis:policy:US",
+    "action": "DISCARD",
+    "oracle_confidence": 0.0,
+    "reasoning": "The Federal Reserve maintained the policy rate at 3.625% with no change (diff = +0.00%), reflecting a stable, data-driven monetary policy posture with consistent messaging. There is no explicit signal of future rate hikes or cuts—no mention of inflation concerns, growth risks, or a 'higher for longer' stance. The guidance is anchored in stability, with resilient financial sector sentiment and minimal volatility in asset prices. While global risk sentiment is elevated due to geopolitical and natural hazards, these do not translate into monetary policy shifts. The absence of directional language in the policy statement, combined with a stable macro environment and minimal technical divergences, supports a neutral bias. Price action in USD pairs shows modest divergence, with USDHUF showing positive divergence (Div=+3.64), which aligns with the central bank's stable, non-escalating stance—confirming that the guidance is not hawkish or dovish but neutral, and thus the market remains in equilibrium under rising risk perception.",
+    "tags_to_emit": [],
+    "event_type": "ORACLE_REVIEW_RESOLVED",
+    "resolved_at": "2026-05-17T22:20:48.448096+00:00"
+  },
+  {
+    "trigger_event_id": "bis:policy:BR",
+    "action": "DISCARD",
+    "oracle_confidence": 0.0,
+    "reasoning": "The Brazilian central bank raised its policy rate by 0.25 percentage points to 14.5%, signaling a tightening monetary stance. This action reflects concern about inflationary pressures or economic overheating, consistent with a hawkish bias. While the provided context does not explicitly mention inflation or economic data, the rate hike itself is a clear indicator of tightening policy. The guidance aligns with a 'higher for longer' posture, typical of hawkish central banks responding to persistent inflation or financial stability concerns. Although the broader macro context emphasizes global risk and volatility, the rate hike is not explained by external shocks but rather by domestic policy decisions, reinforcing the hawkish interpretation. No dovish signals or growth concerns are present in the text.",
+    "tags_to_emit": [],
+    "event_type": "ORACLE_REVIEW_RESOLVED",
+    "resolved_at": "2026-05-17T22:28:23.824469+00:00"
+  },
+  {
+    "trigger_event_id": "bis:policy:AU",
+    "action": "DISCARD",
+    "oracle_confidence": 0.0,
+    "reasoning": "The Australian Reserve Bank maintained its policy rate at 4.1% with no change from the previous rate (diff = +0.00%), indicating no explicit signal of future rate hikes or cuts. The absence of directional language—such as 'increasing concerns about inflation' or 'growth slowdown'—suggests a stable, data-driven stance. While the broader global risk environment is elevated, this does not directly translate to a clear bias in the RBA's guidance. The neutral rate decision, combined with no inflation or growth signals in the provided context, supports a neutral bias. No price action is explicitly tied to the AUD in the market context, though elevated global risk sentiment may indirectly affect volatility.",
+    "tags_to_emit": [],
+    "event_type": "ORACLE_REVIEW_RESOLVED",
+    "resolved_at": "2026-05-17T22:31:41.399646+00:00"
+  },
+  {
+    "trigger_event_id": "dw_news_en:8932572b1026ee7a",
+    "action": "HOLD",
+    "oracle_confidence": 0.5,
+    "reasoning": "Event pertains to child well-being in Germany and a local tiger incident, with no direct link to oil, energy, geopolitical supply chains, or financial market transmission channels. Domain and regional context show elevated risk sentiment from geopolitical escalations, but the trigger event itself is unrelated to energy, safe havens, or tradable asset routes. No clear asset route or market direction is established.",
+    "tags_to_emit": [],
+    "event_type": "ORACLE_REVIEW_RESOLVED",
+    "resolved_at": "2026-05-17T22:34:57.943673+00:00"
+  },
+  {
+    "trigger_event_id": "dw_news_en:cb6cf85803d850c5",
+    "action": "HOLD",
+    "oracle_confidence": 0.5,
+    "reasoning": "Event involves Venezuela and a personal deportation, not linked to oil supply, energy flows, or major geopolitical escalation in energy or safe-haven regions. No clear transmission channel to OIL, XAU, or major currency pairs. Domain and regional context show risk narrative but no direct supply or risk-off trigger. Asset directives are neutral and low-confidence; no tradable market path established.",
+    "tags_to_emit": [],
+    "event_type": "ORACLE_REVIEW_RESOLVED",
+    "resolved_at": "2026-05-17T22:37:56.395332+00:00"
+  },
+  {
+    "trigger_event_id": "dw_news_en:ea54673e575e4dce",
+    "action": "HOLD",
+    "oracle_confidence": 0.3,
+    "reasoning": "Latvia's political resignation is a domestic event with no clear link to energy supply, safe havens, or global risk transmission. No direct or indirect market path to OIL, XAU, or major currency pairs is established. The regional context is limited to Americas, and the event does not trigger a measurable shift in risk sentiment or asset pricing. Despite high danger score, the domain and macro context emphasize geopolitical escalations in other regions (Ukraine, Middle East, Hormuz), not the Baltic. No tradable market route is identified.",
+    "tags_to_emit": [],
+    "event_type": "ORACLE_REVIEW_RESOLVED",
+    "resolved_at": "2026-05-17T22:41:51.261748+00:00"
+  },
+  {
+    "trigger_event_id": "dw_news_en:8157449e1048e332",
+    "action": "HOLD",
+    "oracle_confidence": 0.5,
+    "reasoning": "Event pertains to Honda's EV strategy and financial performance, which is within the automotive sector and has no direct transmission to energy, currencies, or safe-haven assets. Geopolitical risk context is present but not linked to oil supply, shipping, or energy flows; regional context is limited to Americas. No clear tradable market path or asset route is established.",
+    "tags_to_emit": [],
+    "event_type": "ORACLE_REVIEW_RESOLVED",
+    "resolved_at": "2026-05-17T22:44:29.285544+00:00"
+  },
+  {
+    "trigger_event_id": "dw_news_en:35f51fd8b3aa9384",
+    "action": "HOLD",
+    "oracle_confidence": 0.5,
+    "reasoning": "Event pertains to German retailers and pro-Palestinian activists in Stuttgart, with no direct link to oil supply, energy flows, or safe-haven assets. Geopolitical context mentions Middle East and Hormuz, but no specific supply disruption or escalation is confirmed. Domain and regional context show elevated risk sentiment, but no clear tradable market path or asset route is established. Candidate directives are neutral and low-confidence. No direct transmission channel to OIL, XAU, or major currency pairs is evident.",
+    "tags_to_emit": [],
+    "event_type": "ORACLE_REVIEW_RESOLVED",
+    "resolved_at": "2026-05-17T22:47:30.994242+00:00"
+  },
+  {
+    "trigger_event_id": "dw_news_en:d778e8512b4fa644",
+    "action": "HOLD",
+    "oracle_confidence": 0.35,
+    "reasoning": "Event involves Ukraine-specific child abductions and sanctions, but no direct link to oil supply, energy flows, or safe-haven assets. Regional context is limited to Americas; domain context highlights broader geopolitical risk but no clear transmission to tradable assets like OIL, XAU, or FX pairs with directional bias. Candidate directives are neutral and low-confidence; no clear asset route or market direction established.",
+    "tags_to_emit": [],
+    "event_type": "ORACLE_REVIEW_RESOLVED",
+    "resolved_at": "2026-05-17T22:50:25.435410+00:00"
+  },
+  {
+    "trigger_event_id": "dw_news_en:2473fccf2eb71229",
+    "action": "HOLD",
+    "oracle_confidence": 0.55,
+    "reasoning": "Somali piracy is a regional shipping disruption with no direct link to oil supply, energy flows, or major safe-haven assets. While it increases transit costs, the domain context shows broader geopolitical risk, but the event is not tied to a clear tradable asset route or market direction. The candidate directives involve non-tradable or low-impact currencies (SOS, XOF, ISK), and no valid asset in the preferred list (OIL, XAU, USD, EUR/USD, etc.) is directly impacted. The danger score is above threshold, but transmission channel is weak and asset route is absent.",
+    "tags_to_emit": [],
+    "event_type": "ORACLE_REVIEW_RESOLVED",
+    "resolved_at": "2026-05-17T22:53:36.333515+00:00"
+  },
+  {
+    "trigger_event_id": "dw_news_en:9e88562c276a6876",
+    "action": "HOLD",
+    "oracle_confidence": 0.3,
+    "reasoning": "Event is a domestic policy in Germany with no link to energy, supply chains, or geopolitical risk chains; domain and regional context show no transmission to oil, shipping, or safe-haven assets; macro context indicates risk sentiment but no direct market path to tradable assets.",
+    "tags_to_emit": [],
+    "event_type": "ORACLE_REVIEW_RESOLVED",
+    "resolved_at": "2026-05-17T22:55:51.841067+00:00"
+  },
+  {
+    "trigger_event_id": "dw_news_en:d1d816c22a008ca8",
+    "action": "HOLD",
+    "oracle_confidence": 0.5,
+    "reasoning": "Event involves US troop withdrawal from Germany, but no direct link to oil supply, energy flows, or safe-haven assets. Geopolitical risk is present in regional context, but transmission to tradable assets like OIL, XAU, or FX pairs is indirect and unverified. No clear asset route, direction, or market impact established despite elevated danger score. Domain and macro context emphasize risk sentiment without specific tradable path.",
+    "tags_to_emit": [],
+    "event_type": "ORACLE_REVIEW_RESOLVED",
+    "resolved_at": "2026-05-17T22:58:47.326084+00:00"
+  },
+  {
+    "trigger_event_id": "dw_news_en:ee3a72e7d82b6913",
+    "action": "HOLD",
+    "oracle_confidence": 0.3,
+    "reasoning": "Event is domestic German political, not linked to energy, geopolitics, or financial markets; no transmission to oil, safe havens, or key currency pairs; domain and regional context show no direct risk exposure to OIL, XAU, or major FX pairs.",
+    "tags_to_emit": [],
+    "event_type": "ORACLE_REVIEW_RESOLVED",
+    "resolved_at": "2026-05-17T23:01:04.525234+00:00"
+  },
+  {
+    "trigger_event_id": "dw_news_en:04b937454dcd8ee0",
+    "action": "EMIT",
+    "oracle_confidence": 0.65,
+    "reasoning": "UAE's exit from OPEC increases oil supply uncertainty, directly impacting Brent and WTI prices. The Middle East regional context amplifies supply risk, with Hormuz and energy flows under threat. This triggers a supply-side risk transmission to oil assets, with strong domain and regional alignment. Despite stable macro policy, geopolitical escalation elevates risk sentiment, favoring safe-haven assets like XAU/USD.",
+    "tags_to_emit": [
+      {
+        "asset": "BRENT",
+        "bias": "bearish",
+        "confidence": 0.65,
+        "risk_score": 0.65,
+        "volatility_duration_minutes": 120,
+        "reason": "UAE exit from OPEC increases oil supply uncertainty, directly affecting Brent pricing and regional energy flows.",
+        "transmission_channel": "oil_supply_risk"
+      },
+      {
+        "asset": "XAU/USD",
+        "bias": "bullish",
+        "confidence": 0.65,
+        "risk_score": 0.65,
+        "volatility_duration_minutes": 120,
+        "reason": "Geopolitical escalation in Middle East elevates risk sentiment, driving demand for safe-haven assets.",
+        "transmission_channel": "global_risk_sentiment"
+      }
+    ],
+    "event_type": "ORACLE_REVIEW_RESOLVED",
+    "resolved_at": "2026-05-17T23:06:27.981941+00:00"
+  },
+  {
+    "trigger_event_id": "dw_news_en:f8750b970ecde28f",
+    "action": "EMIT",
+    "oracle_confidence": 0.74,
+    "reasoning": "Geopolitical escalation in the Strait of Hormuz directly threatens oil supply, with Gulf leaders advancing bypass pipelines to protect oil empires—this aligns with oil supply risk in the domain context. The event is in a high-risk regional hotspot (Middle East), and oil is the primary tradable asset under such supply threats. Despite stable macro policy, rising risk sentiment amplifies energy sector volatility. The danger score (0.74) exceeds threshold (0.68), and the domain context confirms energy supply risk as a key transmission channel.",
+    "tags_to_emit": [
+      {
+        "asset": "BRENT",
+        "bias": "strong_bullish",
+        "confidence": 0.74,
+        "risk_score": 0.74,
+        "volatility_duration_minutes": 120,
+        "reason": "Strait of Hormuz escalation threatens oil supply; Gulf leaders plan bypass pipelines to safeguard oil empires, directly impacting Brent as a key oil benchmark.",
+        "transmission_channel": "oil_supply_risk"
+      },
+      {
+        "asset": "XAU/USD",
+        "bias": "bullish",
+        "confidence": 0.65,
+        "risk_score": 0.74,
+        "volatility_duration_minutes": 180,
+        "reason": "Geopolitical escalation increases risk-off demand, driving safe-haven flows to gold.",
+        "transmission_channel": "global_risk_sentiment"
+      }
+    ],
+    "event_type": "ORACLE_REVIEW_RESOLVED",
+    "resolved_at": "2026-05-17T23:11:35.809040+00:00"
+  },
+  {
+    "trigger_event_id": "dw_news_en:5e5e08ea34a30330",
+    "action": "HOLD",
+    "oracle_confidence": 0.5,
+    "reasoning": "Event involves Russia blocking Kazakh oil flows to a German refinery, but no direct supply disruption to global oil markets is confirmed. Regional context is limited to Americas; domain and macro contexts emphasize broad geopolitical risk, not specific energy supply chain impact. No clear asset route or direction for OIL, XAU, or FX pairs is established. Asset-level bias and transmission channel remain uncertain despite elevated danger score.",
+    "tags_to_emit": [],
+    "event_type": "ORACLE_REVIEW_RESOLVED",
+    "resolved_at": "2026-05-17T23:14:33.756053+00:00"
+  },
+  {
+    "trigger_event_id": "dw_news_en:14234fa52c067d70",
+    "action": "EMIT",
+    "oracle_confidence": 0.83,
+    "reasoning": "Jet fuel crisis due to Hormuz Strait closure directly impacts oil supply chains, triggering supply risk in energy sector. Event occurs in a high-risk regional hotspot (Middle East), with clear transmission to oil prices and safe-haven assets. Despite no direct financial impact, the geopolitical escalation amplifies market risk sentiment, supported by high danger score (0.83) and domain/regional context alignment. OIL, BRENT, WTI are primary assets; safe-haven assets like XAU/USD are logically exposed to risk-off flows.",
+    "tags_to_emit": [
+      {
+        "asset": "BRENT",
+        "bias": "bearish",
+        "confidence": 0.83,
+        "risk_score": 0.83,
+        "volatility_duration_minutes": 120,
+        "reason": "Hormuz Strait closure disrupts oil supply, directly impacting Brent as a key benchmark.",
+        "transmission_channel": "oil_supply_risk"
+      },
+      {
+        "asset": "XAU/USD",
+        "bias": "bullish",
+        "confidence": 0.75,
+        "risk_score": 0.83,
+        "volatility_duration_minutes": 180,
+        "reason": "Geopolitical escalation in Middle East triggers risk-off flows, increasing demand for safe-haven assets like gold.",
+        "transmission_channel": "global_risk_sentiment"
+      },
+      {
+        "asset": "USD/JPY",
+        "bias": "neutral",
+        "confidence": 0.6,
+        "risk_score": 0.83,
+        "volatility_duration_minutes": 120,
+        "reason": "USD strength is anchored by stable monetary policy, but risk sentiment may pressure carry trade dynamics.",
+        "transmission_channel": "risk_sentiment"
+      }
+    ],
+    "event_type": "ORACLE_REVIEW_RESOLVED",
+    "resolved_at": "2026-05-17T23:21:23.238423+00:00"
+  },
+  {
+    "trigger_event_id": "kyiv_independent:9a9e4067b13ceb50",
+    "action": "HOLD",
+    "oracle_confidence": 0.3,
+    "reasoning": "Drone strike on a Russian fertilizer plant linked to explosives is geographically and sectorally specific; no direct link to oil supply, energy flows, or major safe-haven triggers. While regional risk is elevated, the event lacks clear transmission to core assets like OIL, XAU, or USD via established channels. Domain and macro context show broad risk sentiment, but no clear directional impact on tradable assets. Source is regional (AMERICAS) and lacks verification of scale or strategic significance.",
+    "tags_to_emit": [],
+    "event_type": "ORACLE_REVIEW_RESOLVED",
+    "resolved_at": "2026-05-17T23:28:57.846543+00:00"
+  },
+  {
+    "trigger_event_id": "kyiv_independent:643539f53a3e38ce",
+    "action": "HOLD",
+    "oracle_confidence": 0.45,
+    "reasoning": "Event involves Cuba and Russia discussing military equipment and Guantanamo Bay, but no direct link to oil supply, energy flows, or safe-haven assets. Regional context is Americas, with no clear transmission channel to OIL, XAU, or major currency pairs. Domain and macro contexts emphasize risk sentiment but no clear directional impact on tradable assets. Source is Kyiv Independent, with low signal strength in asset route. Candidate directives are neutral and currency-specific, not aligned with core market-intelligence assets.",
+    "tags_to_emit": [],
+    "event_type": "ORACLE_REVIEW_RESOLVED",
+    "resolved_at": "2026-05-17T23:37:26.866848+00:00"
+  },
+  {
+    "trigger_event_id": "kyiv_independent:6fc266eeaadff12c",
+    "action": "HOLD",
+    "oracle_confidence": 0.5,
+    "reasoning": "Drone strike on a Russian fertilizer plant linked to explosives production is regionally specific and lacks clear transmission to oil supply or global risk-off assets. No direct link to energy flows or safe-haven demand. While danger score is above threshold, the event is not tied to oil, shipping, or major geopolitical supply risks (e.g., Hormuz, Middle East). Domain and macro context show elevated risk sentiment, but this incident does not materially shift energy or safe-haven asset dynamics. Asset routes (e.g., XAU, OIL) are not clearly impacted.",
+    "tags_to_emit": [],
+    "event_type": "ORACLE_REVIEW_RESOLVED",
+    "resolved_at": "2026-05-17T23:42:32.583154+00:00"
+  },
+  {
+    "trigger_event_id": "tass:f7d81253bc2add27",
+    "action": "HOLD",
+    "oracle_confidence": 0.5,
+    "reasoning": "Event involves drone attacks on Moscow but no direct link to oil supply, energy flows, or safe-haven assets. Regional context is Americas, not a high-risk energy or geopolitical hotspot like Middle East or Strait of Hormuz. Domain and macro context show rising global risk sentiment, but no clear transmission to tradable assets like OIL, XAU, or USD pairs. No direct market path or asset route established.",
+    "tags_to_emit": [],
+    "event_type": "ORACLE_REVIEW_RESOLVED",
+    "resolved_at": "2026-05-17T23:49:01.719080+00:00"
+  },
+  {
+    "trigger_event_id": "rt:f9da6e1a4d47b7d3",
+    "action": "EMIT",
+    "oracle_confidence": 0.78,
+    "reasoning": "Gulf states' strikes in Iraq amid Middle East escalation directly threaten oil supply chains and regional stability, triggering supply risk in oil markets. The event occurs in a high-risk regional hotspot (Middle East), with strong domain and regional context alignment. Despite no direct financial impact, the geopolitical tension amplifies risk sentiment, particularly in energy and safe-haven assets. Oil supply risk is the primary transmission channel, with clear market impact on OIL, BRENT, WTI, and safe-haven assets like XAU/USD.",
+    "tags_to_emit": [
+      {
+        "asset": "BRENT",
+        "bias": "bearish",
+        "confidence": 0.85,
+        "risk_score": 0.85,
+        "volatility_duration_minutes": 180,
+        "reason": "Middle East escalation in Iraq increases oil supply risk via regional instability and potential disruption of oil transit routes.",
+        "transmission_channel": "oil_supply_risk"
+      },
+      {
+        "asset": "WTI",
+        "bias": "bearish",
+        "confidence": 0.82,
+        "risk_score": 0.82,
+        "volatility_duration_minutes": 180,
+        "reason": "Global oil supply chain disruptions from Middle East conflict directly impact WTI pricing and volatility.",
+        "transmission_channel": "oil_supply_risk"
+      },
+      {
+        "asset": "XAU/USD",
+        "bias": "bullish",
+        "confidence": 0.7,
+        "risk_score": 0.7,
+        "volatility_duration_minutes": 120,
+        "reason": "Geopolitical escalation in the Middle East triggers risk-off flows to safe-haven assets, including gold.",
+        "transmission_channel": "global_risk_sentiment"
+      }
+    ],
+    "event_type": "ORACLE_REVIEW_RESOLVED",
+    "resolved_at": "2026-05-17T23:54:29.503984+00:00"
+  },
+  {
+    "trigger_event_id": "bbc_middle_east:cc397b7af4b95f48",
+    "action": "EMIT",
+    "oracle_confidence": 0.92,
+    "reasoning": "A 'floating armoury' vessel seized by Iran in the Gulf of Oman directly implicates a high-risk maritime incident in a critical oil transit zone. This escalates supply risk for OIL, particularly BRENT and WTI, as the Gulf of Oman is a key route for global oil shipments. The event aligns with regional context (Middle East) and domain context (energy risk), where supply disruptions are already stressed by Russia’s blockade of Kazakh oil and declining US crude output. The danger score (0.644) exceeds threshold (0.64), and the transmission channel is clear: oil supply risk → Brent/WTI prices → safe-haven demand. No neutral or low-confidence assets are emitted; only relevant, tradable assets with clear directional bias are included.",
+    "tags_to_emit": [
+      {
+        "asset": "BRENT",
+        "bias": "strong_bullish",
+        "confidence": 0.95,
+        "risk_score": 0.85,
+        "volatility_duration_minutes": 180,
+        "reason": "Seizure of a vessel in the Gulf of Oman raises immediate supply risk for global oil transit, directly impacting Brent as a benchmark.",
+        "transmission_channel": "oil_supply_risk"
+      },
+      {
+        "asset": "XAU/USD",
+        "bias": "bullish",
+        "confidence": 0.85,
+        "risk_score": 0.75,
+        "volatility_duration_minutes": 120,
+        "reason": "Geopolitical escalation in the Middle East triggers risk-off sentiment, increasing demand for safe-haven assets like gold.",
+        "transmission_channel": "geopolitical_risk"
+      },
+      {
+        "asset": "USD/JPY",
+        "bias": "bearish",
+        "confidence": 0.75,
+        "risk_score": 0.65,
+        "volatility_duration_minutes": 150,
+        "reason": "Market risk-off flows into safe-haven currencies, but USD strength is anchored by stable monetary policy; JPY may weaken as risk sentiment rises.",
+        "transmission_channel": "risk_sentiment"
+      }
+    ],
+    "event_type": "ORACLE_REVIEW_RESOLVED",
+    "resolved_at": "2026-05-18T00:02:12.592537+00:00"
+  },
+  {
+    "trigger_event_id": "bbc_middle_east:57b3a9587ec436d8",
+    "action": "EMIT",
+    "oracle_confidence": 0.77,
+    "reasoning": "Iran ceasefire criticized by US president amid Middle East escalation; combined with Hormuz supply risk and oil shortages, this amplifies oil supply uncertainty. Domain and regional context confirm high geopolitical risk in Middle East and Strait of Hormuz, directly impacting oil markets. Supply chain disruptions and declining US crude output reinforce energy stress. Clear transmission channel to OIL and safe-haven assets.",
+    "tags_to_emit": [
+      {
+        "asset": "BRENT",
+        "bias": "bearish",
+        "confidence": 0.85,
+        "risk_score": 0.8,
+        "volatility_duration_minutes": 180,
+        "reason": "Geopolitical escalation in Middle East and Hormuz region threatens oil supply; US criticism of Iranian ceasefire signals instability in key conflict zones.",
+        "transmission_channel": "oil_supply_risk"
+      },
+      {
+        "asset": "XAU/USD",
+        "bias": "bullish",
+        "confidence": 0.75,
+        "risk_score": 0.7,
+        "volatility_duration_minutes": 120,
+        "reason": "Growing global risk sentiment from Middle East and Baltic escalations triggers safe-haven demand.",
+        "transmission_channel": "global_risk_sentiment"
+      },
+      {
+        "asset": "USD/JPY",
+        "bias": "neutral",
+        "confidence": 0.6,
+        "risk_score": 0.6,
+        "volatility_duration_minutes": 90,
+        "reason": "USD strength anchored by FOMC stability, but risk sentiment pressures currency pairs; limited direct impact on USD/JPY.",
+        "transmission_channel": "risk_off_sentiment"
+      }
+    ],
+    "event_type": "ORACLE_REVIEW_RESOLVED",
+    "resolved_at": "2026-05-18T00:08:54.311245+00:00"
+  },
+  {
+    "trigger_event_id": "bbc_middle_east:6c29a5762653e66b",
+    "action": "EMIT",
+    "oracle_confidence": 0.92,
+    "reasoning": "Hezbollah-Israel conflict in south Lebanon escalates regional instability, with direct implications for the Strait of Hormuz and oil supply chains. This triggers supply risk in oil markets and activates safe-haven demand. The domain context confirms heightened global risk sentiment, particularly in energy and tech sectors, and supply disruptions (Russia’s blockade of Kazakh oil, declining US crude output) strain energy markets. The regional context includes Middle East conflict and Hormuz exposure, aligning with oil supply risk. Despite no direct financial impact, the transmission channel is clear: oil supply risk → OIL/BRENT/WTI, and risk-off sentiment → safe-haven assets like XAU/USD. Confidence is high due to domain-weighted risk, danger score above threshold, and clear asset route.",
+    "tags_to_emit": [
+      {
+        "asset": "BRENT",
+        "bias": "bearish",
+        "confidence": 0.92,
+        "risk_score": 0.85,
+        "volatility_duration_minutes": 180,
+        "reason": "Geopolitical escalation in Lebanon and Middle East threatens oil supply via Hormuz and regional instability",
+        "transmission_channel": "oil_supply_risk"
+      },
+      {
+        "asset": "XAU/USD",
+        "bias": "bullish",
+        "confidence": 0.88,
+        "risk_score": 0.8,
+        "volatility_duration_minutes": 120,
+        "reason": "Global risk sentiment amplifies safe-haven demand during Middle East conflict",
+        "transmission_channel": "risk_off_sentiment"
+      },
+      {
+        "asset": "USD/JPY",
+        "bias": "bullish",
+        "confidence": 0.85,
+        "risk_score": 0.75,
+        "volatility_duration_minutes": 120,
+        "reason": "Risk-off flows into USD and JPY as safe-haven assets during regional escalation",
+        "transmission_channel": "risk_off_sentiment"
+      }
+    ],
+    "event_type": "ORACLE_REVIEW_RESOLVED",
+    "resolved_at": "2026-05-18T00:16:35.551816+00:00"
   }
 ]
