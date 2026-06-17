@@ -187,7 +187,7 @@ Oracle/IA environment config.
   translate raw `intel.events.#` payloads into English.
 - `forex_nlp.NLPEnrichmentSession` creates `OracleReviewRequest` payloads for
   high-impact enriched intel and publishes them to `intel.oracle.review`.
-- `collector_events.events_extractors` and OSINT Telegram relay create raw
+- `osint_engine` and the legacy `collector_events.events_extractors` Telegram relay create raw
   IntelItems that eventually flow into translation/NLP/Oracle.
 - `session_manager.EventDrivenTradingSession` consumes `intel.global_tags` and
   passes macro/rate context into strategy `additional_data`.
@@ -209,4 +209,3 @@ Oracle/IA environment config.
   work; use checkpoints/recovery.
 - Be careful editing prompts: downstream parsers expect JSON fields for Oracle
   decisions, directives, and strategist implications.
-
