@@ -25,7 +25,6 @@ grpc-google-iam-v1==0.14.4
 grpcio==1.80.0
 grpcio-status==1.71.2
 httplib2==0.31.2
--e git+https://github.com/lcpnzfr/ia_oracle.git@9a5486bae1fad2b82349f9de6dbcc71a9e6204d5#egg=ia_oracle
 idna==3.13
 llvmlite==0.44.0
 markdown-it-py==4.0.0
