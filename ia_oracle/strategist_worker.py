@@ -39,7 +39,7 @@ class StrategistWorker:
         self, 
         store: StrategistStore, 
         worker_id: str = "strategist_1",
-        model_override: Optional[str] = "qwen3:4b-instruct-2507-q4_K_M"
+        model_override: Optional[str] = None
     ):
         self.store = store
         self.worker_id = worker_id
@@ -56,7 +56,7 @@ class StrategistWorker:
 
     async def start(self):
         """Initialize IA provider and start the synthesis loop/trigger listener."""
-        self.provider = IAProviderFactory.create_from_env()
+        self.provider = IAProviderFactory.create_from_env(ollama_profile="strategist")
         # Ensure we are using the local Qwen model for synthesis
         if hasattr(self.provider, "model") and self.model_override:
             self.provider.model = self.model_override

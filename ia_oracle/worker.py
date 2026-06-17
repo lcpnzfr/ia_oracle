@@ -291,7 +291,7 @@ class OracleWorker(Loggable):
         IAProviderFactory.register_provider("OPENAI_NATIVE", OpenAIIAProvider)
 
         # ── IA provider ───────────────────────────────────────────────
-        self._provider = IAProviderFactory.create_from_env()
+        self._provider = IAProviderFactory.create_from_env(ollama_profile="oracle")
         await self._provider.initialize()
 
         # ── Strategist store ──────────────────────────────────────────

@@ -29,7 +29,8 @@ except Exception as e:
     pass
 
 # Debug current environment before override
-logger.info(f"PRE-OVERRIDE os.environ['OLLAMA_HOST']: {os.environ.get('OLLAMA_HOST')}")
+logger.info("PRE-OVERRIDE OLLAMA_HOST_ORACLE: %s", os.environ.get("OLLAMA_HOST_ORACLE"))
+logger.info("PRE-OVERRIDE OLLAMA_HOST_STRATEGIST: %s", os.environ.get("OLLAMA_HOST_STRATEGIST"))
 
 # Load local .env AFTER startup to OVERRIDE MongoDB/os.environ
 env_path = Path(__file__).resolve().parent.parent / ".env"
@@ -37,10 +38,12 @@ load_dotenv(dotenv_path=env_path, override=True)
 logger.info(f"Loaded .env from: {env_path} (exists: {env_path.exists()}, override=True)")
 
 # Debug current environment after override
-logger.info(f"POST-OVERRIDE os.environ['OLLAMA_HOST']: {os.environ.get('OLLAMA_HOST')}")
+logger.info("POST-OVERRIDE OLLAMA_HOST_ORACLE: %s", os.environ.get("OLLAMA_HOST_ORACLE"))
+logger.info("POST-OVERRIDE OLLAMA_HOST_STRATEGIST: %s", os.environ.get("OLLAMA_HOST_STRATEGIST"))
 
-from forex_shared.config.categories import OracleConfig
-logger.info(f"RESOLVED OLLAMA_HOST: {OracleConfig.OLLAMA_HOST}")
+from forex_shared.config.categories import AIConfig, OracleConfig
+logger.info("RESOLVED OLLAMA_HOST_ORACLE: %s", AIConfig.OLLAMA_HOST_ORACLE)
+logger.info("RESOLVED OLLAMA_HOST_STRATEGIST: %s", AIConfig.OLLAMA_HOST_STRATEGIST)
 
 from ia_oracle.worker import OracleWorker
 from ia_oracle.store import OracleMongoStore

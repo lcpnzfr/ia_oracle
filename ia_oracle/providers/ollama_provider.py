@@ -7,7 +7,7 @@ import logging
 from typing import Any, Dict, List, Optional
 
 from ollama import Client
-from forex_shared.config.categories import OracleConfig
+from forex_shared.config.categories import AIConfig
 from forex_shared.worker_api.ia_provider import IAProvider, IAProviderConfig
 
 logger = logging.getLogger(__name__)
@@ -19,18 +19,33 @@ class OllamaProvider(IAProvider):
         super().__init__(config)
         self._client: Optional[Client] = None
         self._async_client: Any = None
-        # Priority: explicit extra['host'] > OracleConfig.OLLAMA_HOST > fallback
-        self._host = self._config.extra.get("host") or OracleConfig.OLLAMA_HOST or "http://localhost:11434"
+        self._profile = str(self._config.extra.get("ollama_profile") or "oracle").strip().lower()
+        self._host = self._resolve_host()
         self._timeout = float(self._config.extra.get("timeout", 600.0))
+        self._auth = self._resolve_auth()
+
+    def _resolve_host(self) -> str:
+        if self._config.extra.get("host"):
+            return str(self._config.extra["host"])
+        if self._profile == "strategist":
+            return AIConfig.OLLAMA_HOST_STRATEGIST or "http://localhost:11434"
+        return AIConfig.OLLAMA_HOST_ORACLE or "http://localhost:11434"
+
+    def _resolve_auth(self) -> Optional[tuple[str, str]]:
+        user_name = self._config.extra.get("user_name") or AIConfig.OLLAMA_USER_NAME
+        password = self._config.extra.get("password") or AIConfig.OLLAMA_PASSWORD
+        if user_name and password:
+            return (str(user_name), str(password))
+        return None
 
     async def initialize(self) -> None:
         """Initialize the Ollama client."""
-        logger.info("[OllamaProvider] Initializing client at %s", self._host)
+        logger.info("[OllamaProvider] Initializing %s client at %s", self._profile, self._host)
         from ollama import AsyncClient
-        self._async_client = AsyncClient(
-            host=self._host,
-            timeout=self._timeout,
-        )
+        client_kwargs: Dict[str, Any] = {"host": self._host, "timeout": self._timeout}
+        if self._auth is not None:
+            client_kwargs["auth"] = self._auth
+        self._async_client = AsyncClient(**client_kwargs)
         logger.info("[OllamaProvider] Initialized. model=%s", self._config.model_name)
 
     async def generate(
@@ -115,7 +130,10 @@ class OllamaProvider(IAProvider):
             transient_client = None
             if request_timeout != self._timeout:
                 from ollama import AsyncClient
-                transient_client = AsyncClient(host=self._host, timeout=request_timeout)
+                client_kwargs = {"host": self._host, "timeout": request_timeout}
+                if self._auth is not None:
+                    client_kwargs["auth"] = self._auth
+                transient_client = AsyncClient(**client_kwargs)
                 client = transient_client
 
             try:
