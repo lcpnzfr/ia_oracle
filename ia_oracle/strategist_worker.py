@@ -1061,10 +1061,12 @@ class StrategistWorker:
                 established_at=now.isoformat(),
                 expires_at=expires_at,
                 active=True,
-                reason=f"Regional Hotspot Detected: {', '.join(highlights[:3])}"
+                domain="conflict",
+                source="ia_oracle_strategist",
+                reason=f"Regional Hotspot Detected: {', '.join(highlights[:3])}",
             )
             
-            payload = tag.to_mq_payload(event_type="REGIONAL_BIAS_UPDATED")
+            payload = tag.to_mq_payload(event_type="GLOBAL_TAG_UPDATED")
             ok = await self._mq.publish_event(IntelTopics.GLOBAL_TAGS, payload)
             if ok:
                 tags_emitted += 1

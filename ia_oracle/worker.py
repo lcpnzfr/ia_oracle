@@ -201,6 +201,9 @@ def _parse_response(raw: str, event_id: str) -> OracleReviewResponse:
 
 def _build_global_tags(
     response: OracleReviewResponse,
+    *,
+    domain: str = "",
+    source: str = "ia_oracle",
 ) -> List[GlobalTag]:
     """Convert OracleReviewResponse directives → list of GlobalTag objects.
 
@@ -227,6 +230,8 @@ def _build_global_tags(
                 established_at=now.isoformat(),
                 expires_at=expires_at,
                 active=True,
+                domain=directive.get("domain") or domain,
+                source=directive.get("source") or source,
             )
         )
 
@@ -484,7 +489,11 @@ class OracleWorker(Loggable):
 
                 # ── Step 6: emit GlobalTag(s) if EMIT ────────────────
                 if response.action == "EMIT":
-                    await self._emit_global_tags(response)
+                    await self._emit_global_tags(
+                        response,
+                        domain=req.domain,
+                        source=req.source or "ia_oracle",
+                    )
 
                 # ── Step 7: persist to MongoDB (optional) ─────────────
                 await self._persist(response)
@@ -589,14 +598,20 @@ class OracleWorker(Loggable):
                     exc,
                 )
 
-    async def _emit_global_tags(self, response: OracleReviewResponse) -> None:
+    async def _emit_global_tags(
+        self,
+        response: OracleReviewResponse,
+        *,
+        domain: str = "",
+        source: str = "ia_oracle",
+    ) -> None:
         """Build GlobalTag(s) from EMIT directives and publish to intel.global_tags.
 
         Each directive in tags_to_emit becomes one GlobalTag.
         Directives without an 'asset' field are silently skipped.
         TTL = directive.volatility_duration_minutes (default: 240 min / 4h).
         """
-        tags = _build_global_tags(response)
+        tags = _build_global_tags(response, domain=domain, source=source)
         if not tags:
             self.log.debug(
                 "[OracleWorker:%s] EMIT with no emittable directives for id=%s",
