@@ -1,3 +1,8 @@
+# --- forex_system polyrepo: local editable modules (managed) ---
+-e ../../shared_lib
+-e ../../cryptor
+# --- end polyrepo block ---
+
 aio-pika==9.6.2
 aiofiles==25.1.0
 aiormq==6.9.4
@@ -10,7 +15,6 @@ colorama==0.4.6
 cryptography==47.0.0
 debugpy==1.8.20
 dnspython==2.8.0
--e ../../shared_lib
 google-ai-generativelanguage==0.6.15
 google-api-core==2.30.3
 google-api-python-client==2.195.0
