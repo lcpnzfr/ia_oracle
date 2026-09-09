@@ -1,6 +1,8 @@
-Estude o repo services/collector_events, alguns arquivos apenas, e veja como o Orchestrator gerencia a execução dos extratores, e o pipeline que as mensagens passam, como Tradução (se não for inglês), por services/NLP (que gera atributos de sentimento, extrai entidades, etc., e gera o campo crítico DANGER_SCORE, que é avaliado e se o score de perigo for >= 0.7, ele solicita suporte ao  services/IA_Oracle (que hoje um modelo quantizado tipo Qwen-Instruct_4b, devido às limitações de custo/hardware/projeto), porém você vai logo perceber que eu tenho na arquitetura clássica do sistema (Abstract Provider -> Factory -> Concrete Provider), que tenho providers para grande parte dos LLMs pagos do mercado.
+Estude os repo `services/collector_events`e seja como se inicia e se mantém o pipeline de `Central de Inteligência Fundamental` em andamento.
 
-E o services/IA_Oracle ainda tem o Strategist, responsável por manter o Global Pulse (um contexto global do status do mundo - pelo menos essa é a ideia romântica) e promover um contexto (por entidade, por país, moeda, etc) global e sempre atualizado.
+Veja como o Orchestrator gerencia a execução dos extratores, e o pipeline que as mensagens passam, como `Tradução` (se não for inglês), por `services/NLP` (que gera atributos de sentimento, extrai entidades, etc., e gera o campo crítico `DANGER_SCORE`, que é avaliado e se o score de perigo for >= 0.7, ele `solicita suporte ao services/IA_Oracle` (hoje tô usando um modelo quantizado tipo Qwen-Instruct_4b, devido às limitações de custo/hardware/projeto), porém você vai logo perceber que eu tenho na arquitetura clássica do sistema (Abstract Provider -> Factory -> Concrete Provider), que tenho providers para grande parte dos LLMs pagos do mercado.
+
+E o `services/IA_Oracle` ainda tem o Strategist, responsável por manter o Global Pulse (um contexto global do status do mundo - pelo menos essa é a ideia romântica) e promover um contexto (por entidade, por país, moeda, etc) global e sempre atualizado.
 
 `Note que Mensagens MQ` são enviadas `durante todo o pipeline`(para diversos fins), tipo, para ativar alguma específicas do pipeline (como o Translator) como para gerar TAGs de cunho Global do sistema, inclusive como instruções como, por exemplo, BUY_ENTRY/SELL_ENTRY. Ou até de LockDown, que é qdo o RiskManager detecta que a conta tá em risco e nehuma ordem é mais aceita até que o LockDown seja desativados fluxos do sistema são basicamente todos baseados em MessageMQ (tô usando `RabbitMQ`).
 
@@ -16,19 +18,26 @@ Sem esta conjunção das duas dimensões do sistema, `Análise Técnica` haje co
 
 É aqui que entra a grande conexão/integração que precisamos refinar e testar:
 
-- os módulos acima, que caracterizam a `Base de Inteligência Fundamental`
-  *com*
-- os módulos que foram o `Analista/Operador de Análise Técnica`(services/collector_history, services/session_manager, services/indicator_engine, /services/geo_vision, services/signal_generator, services/signal_persister, services/trading_session)
+- Os principais repos de `Análise Técnica` são: 
+  - services/collector_history
+  - services/session_manager
+  - services/signal_generator
+  - services/trading_session
+  - services/executor_trading
+  - services/risk_manager
 
+- os módulos acima, que caracterizam a `Base de Inteligência Fundamental`  
+*com*
+- os outromódulos que foram o `Analista/Operador de Análise Técnica`(services/collector_history, services/session_manager, services/indicator_engine, /services/geo_vision, services/signal_generator, services/signal_persister, services/trading_session)
   A interagação entre a`Base de Inteligência`com os motores de `Análise Técnica` (como o Fire Triangle, por exemplo), até que existem, embora somente até um determinado grau), mas foi muito pouco testada e a `Análise Técnica` precisa de `um maior grau de conexão` com a `Gigante` e `Extremamente Valiosa` `Base de Inteligência`.
 
 ---
 
 E ainda tenho o Strategist que de tempos em tempos sumariza as últimas mensagens e cria o BLUF (Bottom Line Up Front), sumarizando todas o fluxo de mensagens e informações dos extratores e gerando um Contexto Global que é atualizado periodicamente com novas informações dos extratores e levando em conta o BLUF anterior
 
-e assim ele pulsa, no que chamei de Global Pulse
-essa é a parte de Inteligência de Análise Fundamental que vai se conectar com a Inteligência de Dados e Análise Técnica (tipo Fire Triangle),
-dependendo dos diversos contextos globais do planeta ele o sistema se prepara para dispara um Trading autônomo, que vai só aguardar o setup técnico sincronizar para disparar a ordem.
+e assim ele pulsa, no que chamei de Global Pulse  
+essa é a parte de Inteligência de Análise Fundamental que vai se conectar com a Inteligência de Dados e Análise Técnica (tipo Fire Triangle),  
+dependendo dos diversos contextos globais do planeta ele o sistema se prepara para dispara um Trading autônomo, que vai só aguardar o setup técnico sincronizar para disparar a ordem.  
 Assim eu não tenho apenas um conjunto de extrator OHLC & Indicators & Motores Técnicos & Estratégias sem noção do POR QUE daquele movimento. Sem a conjunção entre as duas dimensões, a análise técnica haje como se o mercado fosse um conjunto de criaturas impiedosas e gigantes guiados por fluxos infernais e caóticos de números.
 
 Só a análise técnica fica parecido como tentar entender um alfabeto que veio de um outro tipo de ser, sem ter nenhuma espécie de relação, proximidade ou entendimento com este outro tipo de ser.
@@ -49,51 +58,51 @@ O que está escrito nela é uma matriz criptográfica complexa. A tábua foi pro
 
 Nas quatro pontas da cruz formada pela grade, assentam-se os nomes de quatro letras que governam os quadrantes:
 
-Borda Esquerda (lida de cima para baixo): L - V - A - H (Os Louvadores).
-Borda Direita (lida de baixo para cima): S - A - C - H (Os Confirmadores).
-Borda Superior (lida da direita para a esquerda): V - R - C - H (Os Perturbadores).
-Borda Inferior (lida da esquerda para a direita): L - A - N - G (Os Servos).
+Borda Esquerda (lida de cima para baixo): L - V - A - H (Os Louvadores).  
+Borda Direita (lida de baixo para cima): S - A - C - H (Os Confirmadores).  
+Borda Superior (lida da direita para a esquerda): V - R - C - H (Os Perturbadores).  
+Borda Inferior (lida da esquerda para a direita): L - A - N - G (Os Servos).  
 2. Os Ministros (Lidos em direção ao centro)
 
 A partir de cada letra individual das bordas, um novo nome de 4 letras se estende em linha reta para dentro da tabela, correspondendo às forças ativas daquele quadrante:
 
-Lendo da Esquerda (LVAH) para o centro:
-L → L A O I
-V → V M Z R
-A → A B N A
-H → H D A Z
-Lendo da Direita (SACH) para o centro:
-S → S A E S
-A → A S O F
-C → C R R V
-H → H D O G
-Lendo do Topo (VRCH) para baixo:
-V → V A O R
-R → R S G V
-C → C Z I R
-H → H D O Z
-Lendo da Base (LANG) para cima:
-L → L A A N
-A → A B Z A
-N → N R S F
-G → G D E O
+Lendo da Esquerda (LVAH) para o centro:  
+L → L A O I  
+V → V M Z R  
+A → A B N A  
+H → H D A Z  
+Lendo da Direita (SACH) para o centro:  
+S → S A E S  
+A → A S O F  
+C → C R R V  
+H → H D O G  
+Lendo do Topo (VRCH) para baixo:  
+V → V A O R  
+R → R S G V  
+C → C Z I R  
+H → H D O Z  
+Lendo da Base (LANG) para cima:  
+L → L A A N  
+A → A B Z A  
+N → N R S F  
+G → G D E O  
 3. A Interseção Matemática (O Núcleo)
 
 O elemento mais notável da tábua de Nalvage é o seu núcleo. O centro exato da grade é um quadrado isolado de apenas quatro letras: R, V, A, e F.
 
 Todas as 16 linhas de ministros que vêm das bordas convergem e se sobrepõem de forma idêntica nessas exatas quatro letras, fechando o quebra-cabeça. Por exemplo:
 
-A letra R é simultaneamente o fim do nome VMZR (vindo da esquerda) e o fim de CZIR (vindo do topo).
+A letra R é simultaneamente o fim do nome VMZR (vindo da esquerda) e o fim de CZIR (vindo do topo).  
 A letra A é o fim de ABNA (da esquerda) e de ABZA (do fundo).
 
 Na doutrina recebida por John Dee, o Corpus Omnium funciona como um MAPA DO UNIVERSO (** CONECTE ISSO AO MEU CONCEITO DE GLOBAL PULSE**):
 
 os nomes nas bordas circulares governam o movimento das estrelas no firmamento, enquanto os nomes lidos para o centro canalizam essas influências estelares para as regiões elementais da criação.
 
-RESPONDENDO POIS SEI QUE IRIA QUESTIONAR:
+RESPONDENDO POIS SEI QUE IRIA QUESTIONAR:  
 "Mas quem no final das contas conseguiu expor informações tão fundamentais a nível existencial que permitiu com que outras pessoas tivessem finalmente acesso ao CONTEXTO e ESTRUTURA CONSCIENCIAL necessárias para desvelar as verdadeiras informações contidas nesta grade com Alfabeto Celestial e tornar uma leitura cujo significado era no mínimo angustiante em verdadeiras Revelações Divinas? E tem mais, quem e como esse alfabeto foi descoberto e qual sua origem?
 
-RESPONDO SIM GATA, E VC VAI FAZENDO OS PARALELOS:
+RESPONDO SIM GATA, E VC VAI FAZENDO OS PARALELOS:  
 O ocultista John Dee, cuja verdadeira motivação era uma profunda frustração com as limitações do conhecimento humano, acreditava que a ciência tradicional havia estagnado e buscava descobrir as leis fundamentais da natureza acessando diretamente a sabedoria divina (EU COMPARTILHO A MESMA FRUSTRAÇÃO E A MESMA DIREÇÃO MOTIVACIONAL).
 
 John Dee se juntou ao vidente Edward Kelley e os dois criaram e a missão/jornada de contarem os Anjos (com o apoio da Rainha Elizabeth I).
