@@ -1,16 +1,49 @@
-Estude os repo `services/collector_events`e seja como se inicia e se mantém o pipeline de `Central de Inteligência Fundamental` em andamento.
+## OBJETIVO
 
-Veja como o Orchestrator gerencia a execução dos extratores, e o pipeline que as mensagens passam, como `Tradução` (se não for inglês), por `services/NLP` (que gera atributos de sentimento, extrai entidades, etc., e gera o campo crítico `DANGER_SCORE`, que é avaliado e se o score de perigo for >= 0.7, ele `solicita suporte ao services/IA_Oracle` (hoje tô usando um modelo quantizado tipo Qwen-Instruct_4b, devido às limitações de custo/hardware/projeto), porém você vai logo perceber que eu tenho na arquitetura clássica do sistema (Abstract Provider -> Factory -> Concrete Provider), que tenho providers para grande parte dos LLMs pagos do mercado.
+Planejar e integração definitiva entre as duas dimensões de funcionamento do sistema:  a `Central de Inteligência Fundamental e a Central de Análise Técnica e Operações`
 
-E o `services/IA_Oracle` ainda tem o Strategist, responsável por manter o Global Pulse (um contexto global do status do mundo - pelo menos essa é a ideia romântica) e promover um contexto (por entidade, por país, moeda, etc) global e sempre atualizado.
+### Central de Inteligência Fundamental
 
-`Note que Mensagens MQ` são enviadas `durante todo o pipeline`(para diversos fins), tipo, para ativar alguma específicas do pipeline (como o Translator) como para gerar TAGs de cunho Global do sistema, inclusive como instruções como, por exemplo, BUY_ENTRY/SELL_ENTRY. Ou até de LockDown, que é qdo o RiskManager detecta que a conta tá em risco e nehuma ordem é mais aceita até que o LockDown seja desativados fluxos do sistema são basicamente todos baseados em MessageMQ (tô usando `RabbitMQ`).
+Os principais repos da `Central de Inteligência Fundamental` são:
 
-O Strategist, em intervalos regulares, sumariza as últimas mensagens/eventos recebidas pelo pipeline e cria o `BLUF` (`Bottom Line Up Front`), sumarizando todo o fluxo de mensagens e informações dos extratores e gerando um `Contexto Global`que é atualizado periodicamente com `NOVAS`informações dos extratores mas também levando em conta o `CONTEXTO` anterior. Isto é, o Strategist promove o contexto atual mas leva em conta também o contexto anterior criando um processo `auto-evolutivo` e `retroalimentável`.
+- services/collector_events
+- services/collector_events/translation
+- services/osint_engine
+- services/nlp
+- services/ia_oracle
 
-`E assim ele PULSA`, no que chamei de `Global Pulse`(o coração da `Base de Inteligência`) e `esta parte do sistema` deve ter `impacto comportamental`na`Análise Técnica`, que passará a ter ciência dos `Pulsos de Contexto do Mundo`e `deverá se adaptar` à eles.
+O `Orchestrator` (em `services/collector_events/globalintel`) gerencia a execução dos extratores, e note todo o percurso (não linear/MQ based) que as mensagens e eventos coletados fazem pelo `pipeline`:
 
-A `Inteligência de Dados` (Histórico, Backtesting, Machine Learning, dentre outras tecnologias e metodologias) e a `Análise Técnica` (Estratégias de Trading, Mecanismos de Análise do Fluxo Financeiro, Análise Geométrica e de  `Execução de Ordens de Compra e Venda`) `irão respirar juntos`, pois afinal de contas, não são dois sistemas, é um único sistema que deve viver em harmonia com seus diferentes aspectos e dimensões de existência e propósito implementados, formando um único ser (solução): muito bem informado, inteligente, robusto, rápido e que atua  harmonicamente sobre as múltiplas facetas do `Gigantesco`e`Complexo Mercado Financeiro`.
+- `Deduplicação:`(***não só por texto exato, mas por semântica contextual)***.
+- `Tradução:`(se a mensagem\evento **NÃO** for em Inglês)
+- `NLP:` gera atributos de sentimento, extrai entidades, etc., e gera o campo crítico `DANGER_SCORE`, que é avaliado após o cálculo de NLP multifase, e se este score de perigo for >= 0.7, ele `solicita suporte ao IA_Oracle` 
+  - hoje tô usando um modelo quantizado tipo Qwen-Instruct_4b, devido às limitações de custo/hospedagem/assinaturas de serviços/assinaturas de API's/etc), porém eu tenho na `Arquitetura Clássica do Sistema` (***Abstract Provider -> Factory -> Concrete Provider***), que tenho providers para grande parte dos LLMs pagos do mercado.
+- `IA Oracle`**: Serviço que consulta LLMs para: **
+  - **resumo de texto**
+  - **consoliação de eventos e mensagens**
+  - **interpretação da mensagem ou evento enviado pelo serviço NLP que teve DANGER_SCORE >=0.7**
+    - O LLM como arbitragem final nestes casos decide se cria ou não TAGs (via Message MQ) que irão ativar ou mudar certos comportamentos do sistema. 
+    - ***❤️ ESTE É UM PONTO QUE FOI DESENHADO PARA SER INTERCEPTADO PELA DIMENSÃO DE `ANÁLISE TÉCNICA E OPERACIONAL` DO SISTEMA.***
+  - O serviço `IA_Oracle` ainda tem o `STRATEGIST`, responsável por manter o que chamei de `GLOBAL PULSE` (um contexto pulsante global do status do mundo - pelo menos essa é a ideia romântica) que promove um contextos por entidade, país, moeda, etc) globais e sempre atualizados.
+  - ❤️‍🔥 O Strategist, em intervalos regulares, sumariza as últimas mensagens/eventos recebidas pelo pipeline e cria o `BLUF` (`Bottom Line Up Front`), sumarizando todo o fluxo de mensagens e informações dos extratores e gerando um `Contexto Global`que é atualizado periodicamente com `NOVAS`informações dos extratores mas também levando em conta o `CONTEXTO` anterior. Isto é, o Strategist promove o contexto atual mas leva em conta também o contexto anterior criando um processo `auto-evolutivo` e `retroalimentável`.  
+    - `E assim ele PULSA`, no que chamei de `Global Pulse`(o coração da `Base de Inteligência`) e `esta parte do sistema` deve ter `impacto comportamental`na`Análise Técnica`, que passará a ter ciência dos `Pulsos de Contexto do Mundo`e `deverá se adaptar` à eles.
+
+> As `Mensagens MQ` são enviadas `durante todo o pipeline` para ativar ações específicas de fluxo e `Alertas` a nível de contexto global do sistema, como, por exemplo, `BUY_ENTRY`/ `SELL_ENTRY`.  
+> Ou mensagens de `Geração de TAGs`, como o `LOCK_DOWN`, que é qdo o `RiskManager` detecta que a conta DE TRADING `tá em risco` e qualquer ordem de compra ou venda é rejeitada e não executada, até que o `LOCK_DOWN` seja desativado.  
+> Todos principais pontos de fluxos do sistema são baseados em MessageMQ (atualmente usando `RabbitMQ`).
+
+A dimensão de `Análise Técnica:`
+
+- Estratégias de Trading, 
+- Mecanismos de Análise do Fluxo Financeiro, 
+- Análise Geométrica e 
+- `Execução de Ordens de Compra e Venda` 
+- Conta com recursos como: 
+  - Históricos OHLC, 
+  - Backtesting, 
+  - Machine Learning (ainda não iniciado), 
+  - Dentre outras tecnologias e metodologias ainda a serem incorporadas  
+- `irão respirar juntos`, pois afinal de contas, não são dois sistemas, é um único sistema que deve viver em harmonia com seus diferentes aspectos e dimensões de existência e propósito implementados, formando um único ser (solução): muito bem informado, inteligente, robusto, rápido e que atua  harmonicamente sobre as múltiplas facetas do `Gigantesco`e`Complexo Mercado Financeiro`.
 
 Sem esta conjunção das duas dimensões do sistema, `Análise Técnica` haje como se o mercado fosse um conjunto de criaturas gigantescas impiedosas guiadas por fluxos infernais e caóticos de números.
 
@@ -21,15 +54,16 @@ Sem esta conjunção das duas dimensões do sistema, `Análise Técnica` haje co
 - Os principais repos de `Análise Técnica` são: 
   - services/collector_history
   - services/session_manager
+  - services/indicator_engine
   - services/signal_generator
+  - services/geo_vision 
   - services/trading_session
   - services/executor_trading
   - services/risk_manager
-
 - os módulos acima, que caracterizam a `Base de Inteligência Fundamental`  
 *com*
-- os outromódulos que foram o `Analista/Operador de Análise Técnica`(services/collector_history, services/session_manager, services/indicator_engine, /services/geo_vision, services/signal_generator, services/signal_persister, services/trading_session)
-  A interagação entre a`Base de Inteligência`com os motores de `Análise Técnica` (como o Fire Triangle, por exemplo), até que existem, embora somente até um determinado grau), mas foi muito pouco testada e a `Análise Técnica` precisa de `um maior grau de conexão` com a `Gigante` e `Extremamente Valiosa` `Base de Inteligência`.
+- os outromódulos que foram o `Analista/Operador de Análise Técnica`(services/collector_history, services/session_manager, services/indicator_engine, /services/geo_vision, services/signal_generator, services/signal_persister, services/trading_session)  
+A interagação entre a`Base de Inteligência`com os motores de `Análise Técnica` (como o Fire Triangle, por exemplo), até que existem, embora somente até um determinado grau), mas foi muito pouco testada e a `Análise Técnica` precisa de `um maior grau de conexão` com a `Gigante` e `Extremamente Valiosa` `Base de Inteligência`.
 
 ---
 
