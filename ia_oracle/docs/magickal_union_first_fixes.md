@@ -1,4 +1,6 @@
-## OBJETIVO
+# Forex System Conceptual / Ontological Specification
+
+#### OBJETIVO
 
 Planejar e integração definitiva entre as duas dimensões de funcionamento do sistema:  a `Central de Inteligência Fundamental e a Central de Análise Técnica e Operações`
 
@@ -80,9 +82,11 @@ Possui intercominunicação veloz e de conteúdo precioso, e uma equipe de agent
 
 Este comportamento e sofisticação da `Dimensão de Inteligência`eu nomei de `Global Pulse`.
 
-Com o `Global Pulse` eu não me limito apenas um conjunto de extrator de dados de `Preço de MErcado`(OHLC), Indicatores Técnicos, Motores Técnicos, Estratégias que não possuem noção do `POR QUE`certo movimento de preços acontecem.
+Com o `Global Pulse` eu não me limito apenas um conjunto de extrator de dados de `Preço de MErcado`(OHLC), Indicatores Técnicos, Motores Técnicos, Estratégias que não possuem noção do `POR QUE`certo movimento de preços acontecem.x
 
-A `Inteligência Fundamental`vai além de explicar os movimentos para a `Análise Técnica,`ela funciona como uma  ***representação dinâmica do estado do mundo***, enquanto a Análise Técnica `observa` **como os preços do mercado estão reagindo a esse estado.**
+A `Inteligência Fundamental`constitui uma ***representação dinâmica, causal e temporal do estado do mundo***.
+
+***A `Inteligência Técnica`observa como os mercados estão reagindo a esse estado***. A `Grande União`ocorre quando a ***reação observada retroalimenta continuamente a interpretação do mundo***, fazendo com que ***contexto e comportamento de mercado evoluam como dimensões de um único sistema cognitivo***.
 
 Sem esta `Grande União`a `Análise Técnica`haje como se o mercado fosse um conjunto de criaturas impiedosas e gigantes guiadas por fluxos infernais de comportamentos caóticos e muitas vezes catastróficos.
 
