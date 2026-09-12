@@ -3,6 +3,8 @@ ia_oracle/__init__.py
 ia_oracle/main.py
 ia_oracle/main2.py
 ia_oracle/store.py
+ia_oracle/strategist_store.py
+ia_oracle/strategist_worker.py
 ia_oracle/test_mq_publisher.py
 ia_oracle/test_mq_subscriber.py
 ia_oracle/worker.py
@@ -14,5 +16,7 @@ ia_oracle.egg-info/top_level.txt
 ia_oracle/prompts/__init__.py
 ia_oracle/providers/__init__.py
 ia_oracle/providers/gemini_provider.py
+ia_oracle/providers/ia_service_openai.py
+ia_oracle/providers/ia_service_openai_samples.py
 ia_oracle/providers/ollama_provider.py
 ia_oracle/providers/openai_provider.py

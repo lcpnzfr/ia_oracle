@@ -1,6 +1,7 @@
 google-genai
 openai
 aiofiles
+ollama
 
 [dev]
 python-dotenv

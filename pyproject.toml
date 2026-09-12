@@ -10,7 +10,8 @@ requires-python = ">=3.12.10"
 dependencies = [
     "google-genai",
     "openai",
-    "aiofiles"
+    "aiofiles",
+    "ollama"
 ]
 
 [project.optional-dependencies]

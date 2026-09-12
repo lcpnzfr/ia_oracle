@@ -6,6 +6,7 @@ Requires-Python: >=3.12.10
 Requires-Dist: google-genai
 Requires-Dist: openai
 Requires-Dist: aiofiles
+Requires-Dist: ollama
 Provides-Extra: dev
 Requires-Dist: python-dotenv; extra == "dev"
 Requires-Dist: pytest; extra == "dev"

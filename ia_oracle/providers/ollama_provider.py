@@ -22,6 +22,7 @@ class OllamaProvider(IAProvider):
         self._profile = str(self._config.extra.get("ollama_profile") or "oracle").strip().lower()
         self._host = self._resolve_host()
         self._timeout = float(self._config.extra.get("timeout", 600.0))
+        self._verify_ssl = self._resolve_verify_ssl()
         self._auth = self._resolve_auth()
 
     def _resolve_host(self) -> str:
@@ -38,11 +39,21 @@ class OllamaProvider(IAProvider):
             return (str(user_name), str(password))
         return None
 
+    def _resolve_verify_ssl(self) -> bool:
+        value = self._config.extra.get("verify_ssl", AIConfig.OLLAMA_VERIFY_SSL)
+        if isinstance(value, str):
+            return value.strip().lower() not in {"0", "false", "no", "off"}
+        return bool(value)
+
     async def initialize(self) -> None:
         """Initialize the Ollama client."""
         logger.info("[OllamaProvider] Initializing %s client at %s", self._profile, self._host)
         from ollama import AsyncClient
-        client_kwargs: Dict[str, Any] = {"host": self._host, "timeout": self._timeout}
+        client_kwargs: Dict[str, Any] = {
+            "host": self._host,
+            "timeout": self._timeout,
+            "verify": self._verify_ssl,
+        }
         if self._auth is not None:
             client_kwargs["auth"] = self._auth
         self._async_client = AsyncClient(**client_kwargs)
@@ -130,7 +141,11 @@ class OllamaProvider(IAProvider):
             transient_client = None
             if request_timeout != self._timeout:
                 from ollama import AsyncClient
-                client_kwargs = {"host": self._host, "timeout": request_timeout}
+                client_kwargs = {
+                    "host": self._host,
+                    "timeout": request_timeout,
+                    "verify": self._verify_ssl,
+                }
                 if self._auth is not None:
                     client_kwargs["auth"] = self._auth
                 transient_client = AsyncClient(**client_kwargs)
